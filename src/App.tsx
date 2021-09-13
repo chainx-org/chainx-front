@@ -2,7 +2,6 @@ import React from "react";
 import Home from "./pages/HomePage";
 import Block from "./pages/Block";
 import { Switch, Route, BrowserRouter } from "react-router-dom";
-import HomePage from "./pages/HomePage";
 
 function App()
 {
