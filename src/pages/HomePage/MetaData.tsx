@@ -12,7 +12,7 @@ export default function MetaData()
         width:248px;
         padding-bottom:21px;
         &.border-bottom{
-            border-bottom:1px solid #000;
+            border-bottom:1px solid #E9E9E9FF;
         }
         .name{
             color:#000;
