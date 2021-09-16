@@ -67,8 +67,8 @@ export default function MetaData()
         data: '191,121'
     }]
     return (
-        <div className="flex flex-row justify-start flex-wrap text-gray-bgWhite bg-white"
-            style={{ 'background': '#fff', width: '1249px', borderRadius: '6px', marginBottom: '24px' }}>
+        <div className="flex flex-row justify-start flex-wrap text-gray-bgWhite bg-gray-white"
+            style={{ 'background': '#fff', borderRadius: '6px', marginBottom: '24px' }}>
             {metaDataList?.map((item, i) =>
             {
                 return (

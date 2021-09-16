@@ -10,16 +10,24 @@ export default function Container()
         width:100%;
         background:black;
     `;
-    const ContainerBox1 = styled.div`
-        width:1248px;
-        margin: 0 auto;
+
+
+    const TableWrapper = styled.div`
+        display: grid;
+        column-gap: 24px;
+        row-gap: 32px;
+        padding-top:9rem;
+        grid-template-columns: repeat(auto-fill, minmax(588px, 1fr));
+        @media screen and (max-width: 900px) {
+            grid-template-columns: 1fr;
+        }
     `;
-    const ContainerBox2 = styled.div`
-        width:1248px;
-        margin: 0 auto;
-        display:flex;
-        flex-direction:row;
-        justify-content:space-between;
+    const FloatBox = styled.div`
+        position:absolute;
+        margin-top:-50px;
+        @media screen and (max-width: 900px) {
+            margin-top:-30px;
+        }
     `;
     const ListData = [{
         block: 1,
@@ -85,16 +93,16 @@ export default function Container()
     }]
     return (
         <ContainerBox>
-            <ContainerBox1>
-                <HomeSearch />
+            <HomeSearch />
+            <FloatBox>
                 <MetaData />
-            </ContainerBox1>
+            </FloatBox>
 
             <div className="bg-gray-bgWhite">
-                <ContainerBox2>
+                <TableWrapper>
                     <LatestItem title="最新区块" icon="latestblock" ListData={ListData} />
                     <LatestItem title="最新交易" icon="icon" ListData={ListData1} />
-                </ContainerBox2>
+                </TableWrapper>
             </div>
         </ContainerBox>
     )

@@ -2,16 +2,33 @@ import React from 'react'
 import Search from '../../components/Search'
 import icon from '../../assets/icon.png'
 import Model_echarts from './charts.jsx'
+import styled from 'styled-components';
 
 export default function HomeSearch()
 {
+
+    const TableWrapper = styled.div`
+    display: grid;
+    grid-template-columns: 50% 40%;
+    place-content: space-around space-evenly;
+    padding-top:3rem;
+    padding-bottom:5rem;
+    @media screen and (max-width: 900px) {
+      grid-template-columns: 80%;
+      >div{
+          >div{
+            font-size:1.5rem !important;
+          }
+      }
+    }
+  `;
     return (
-        <div className="flex flex-row flex-wrap justify-between bg-gray-arrow">
-            <div className="flex flex-col">
+        <TableWrapper>
+            <div className="grid grid-rows-2">
                 <div className="h-13 text-4xl PingFangSC-Medium, PingFang SC text-textColor-white">ChainX Blockchain Explorer</div>
-                <Search />
+                <Search className="Home_pageSearch" />
             </div>
-            <div className="border-gray-borderGray bg-gray-backgroundGray rounded-lg flex flex-row">
+            <div className="border-gray-borderGray bg-gray-backgroundGray rounded-lg flex flex-row justify-around">
                 <div className="flex flex-col justify-start px-6 py-1">
                     <div className="flex flex-row" >
                         <img src={icon} alt="" className="w-6 h-6 pr-1" />
@@ -37,7 +54,6 @@ export default function HomeSearch()
                     <Model_echarts />
                 </div>
             </div>
-
-        </div >
+        </TableWrapper>
     )
 }

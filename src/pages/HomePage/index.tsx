@@ -11,7 +11,7 @@ export default function HomePage()
         <>
             <Header />
             <Container />
-            <Footer />
+            {/* <Footer /> */}
         </>
     )
 }

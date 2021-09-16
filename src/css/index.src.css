@@ -207,8 +207,8 @@ html {
   color: #fff;
   line-height: 0;
   width: 48px;
-  background: #ffe403;
-  border-color: #ffe403;
+  background: #2c83eaff;
+  border-color: #2c83eaff;
   text-shadow: 0 0 0 rgb(0 0 0 / 12%);
   box-shadow: 0 2px 0 rgb(0 0 0 / 5%);
   border-radius: 4px !important;
@@ -218,10 +218,57 @@ html {
   border: 0;
 }
 
-.ant-input-search .ant-input:hover,
-.ant-input-search .ant-input:focus {
-  border-color: white;
+.NavSearch {
+  width: 430px;
+  margin: auto 0;
 }
+
+.Home_pageSearch {
+  margin: 0 auto;
+}
+
+.NavSearch .ant-input {
+  background: rgba(0, 0, 0, 0);
+  /* border: 1px solid rgba(0, 0, 0, 0.2); */
+  box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.04);
+  border: 0px solid rgba(105, 168, 237, 0.21);
+  color: #bfbfbf;
+}
+
+.NavSearch .ant-input-search .ant-input:focus,
+.ant-input-search .ant-input:hover {
+  border-color: transparent;
+}
+.NavSearch .ant-input-group {
+  background-color: rgba(255, 255, 255, 0);
+}
+.NavSearch .ant-btn-primary {
+  background: transparent;
+  border: none;
+}
+.NavSearch .ant-btn-primary:focus {
+  background: transparent;
+  border: none;
+}
+.NavSearch .ant-btn-primary:hover {
+  background: transparent;
+  border: none;
+}
+.NavSearch .ant-btn .ant-btn-primary .ant-input-search-button {
+  background: rgba(10, 0, 0, 0);
+  box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.04);
+  border: 0px solid rgba(105, 168, 237, 0.21);
+  color: transparent;
+}
+
+.NavSearch .ant-input-group-addon {
+  background: transparent;
+}
+
+/* .NavSearch .ant-btn .ant-btn-primary .ant-input-search-button .ant-input-search .ant-input:hover,
+.ant-input-search .ant-input:focus {
+  border-color: transparent;
+} */
 
 .ant-input-group {
   background-color: white;
@@ -233,8 +280,8 @@ html {
 .ant-btn-primary:hover,
 .ant-btn-primary:focus {
   color: #fff;
-  border-color: #ffe403;
-  background: #ffe403;
+  border-color: #2c83eaff;
+  background: #2c83eaff;
 }
 
 @tailwind utilities;
