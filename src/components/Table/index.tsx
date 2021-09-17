@@ -1,11 +1,8 @@
 import React from 'react'
-import ReactDOM from 'react-dom';
 import { Table } from 'antd';
-import 'antd/dist/antd.css';
-import './index.css';
 interface TableXProps
 {
-    dataList: Array<any>;
+    dataList?: Array<any>;
 
 }
 export default function TableX(dataList: TableXProps)
