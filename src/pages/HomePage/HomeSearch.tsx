@@ -21,14 +21,18 @@ export default function HomeSearch()
           }
       }
     }
+
+    
   `;
+
+
     return (
         <TableWrapper>
             <div className="grid grid-rows-2">
                 <div className="h-13 text-4xl PingFangSC-Medium, PingFang SC text-textColor-white">ChainX Blockchain Explorer</div>
                 <Search className="Home_pageSearch" />
             </div>
-            <div className="border-gray-borderGray bg-gray-backgroundGray rounded-lg flex flex-row justify-around">
+            <div className="grid grid-cols-2 border-gray-borderGray bg-gray-backgroundGray rounded-lg ">
                 <div className="flex flex-col justify-start px-6 py-1">
                     <div className="flex flex-row" >
                         <img src={icon} alt="" className="w-6 h-6 pr-1" />
@@ -49,7 +53,7 @@ export default function HomeSearch()
                         <span className="miniGrayFront">$ 12,423</span>
                     </div>
                 </div>
-                <div className="Linecol" />
+                {/* <div className="Linecol" /> */}
                 <div className='w-fitContent h-12'>
                     <Model_echarts />
                 </div>

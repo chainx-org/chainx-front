@@ -224,7 +224,7 @@ html {
 }
 
 .Home_pageSearch {
-  margin: 0 auto;
+  width: 66%;
 }
 
 .NavSearch .ant-input {
@@ -260,15 +260,9 @@ html {
   border: 0px solid rgba(105, 168, 237, 0.21);
   color: transparent;
 }
-
-.NavSearch .ant-input-group-addon {
+.ant-input-group-addon {
   background: transparent;
 }
-
-/* .NavSearch .ant-btn .ant-btn-primary .ant-input-search-button .ant-input-search .ant-input:hover,
-.ant-input-search .ant-input:focus {
-  border-color: transparent;
-} */
 
 .ant-input-group {
   background-color: white;
@@ -279,7 +273,7 @@ html {
 }
 .ant-btn-primary:hover,
 .ant-btn-primary:focus {
-  color: #fff;
+  /* color: #fff; */
   border-color: #2c83eaff;
   background: #2c83eaff;
 }

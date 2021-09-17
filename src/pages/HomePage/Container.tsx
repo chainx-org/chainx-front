@@ -6,7 +6,7 @@ import MetaData from './MetaData'
 
 export default function Container()
 {
-    const ContainerBox = styled.div`
+    const ContainerBox = styled.div`  
         width:100%;
         background:black;
     `;
@@ -16,13 +16,17 @@ export default function Container()
         display: grid;
         column-gap: 24px;
         row-gap: 32px;
-        padding-top:9rem;
+        padding:9rem 3rem 0rem 3rem;
         grid-template-columns: repeat(auto-fill, minmax(588px, 1fr));
         @media screen and (max-width: 900px) {
             grid-template-columns: 1fr;
+            padding:5rem 2rem 0rem 2rem;
+
         }
     `;
     const FloatBox = styled.div`
+        width:100%;
+        z-index:999;
         position:absolute;
         margin-top:-50px;
         @media screen and (max-width: 900px) {
@@ -94,9 +98,9 @@ export default function Container()
     return (
         <ContainerBox>
             <HomeSearch />
-            <FloatBox>
-                <MetaData />
-            </FloatBox>
+            {/* <FloatBox> */}
+            <MetaData />
+            {/* </FloatBox> */}
 
             <div className="bg-gray-bgWhite">
                 <TableWrapper>

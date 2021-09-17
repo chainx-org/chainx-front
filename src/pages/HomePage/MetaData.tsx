@@ -4,7 +4,6 @@ import styled from 'styled-components';
 export default function MetaData()
 {
     const CardDiv = styled.div`
-    width:312px;
     height:87.5px;
     padding:20px 0px 0px 36px;
     display:flex;
@@ -20,7 +19,7 @@ export default function MetaData()
         .date{
             color:#000;
         }
-        
+
     }
     .line{
         height:67px;
@@ -66,14 +65,34 @@ export default function MetaData()
         name: '确认高度',
         data: '191,121'
     }]
+
+    const Wrapper = styled.div`
+        display: grid;
+        grid-template-columns: repeat(auto-fit, 310px);
+        background:white;
+        box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.04);
+        border: 1px solid #E9E9E9;
+        border-radius:6px;
+        position: absolute;
+        width: 94%;
+        margin:-3rem 3rem 0rem 3rem;
+    `;
+    // const MetaBox = styled.div`
+    //     width: 100px;
+    //     height: 100px;
+    //     border-left:50px solid #000;
+    //     border-right:50px solid #fff;
+    //     box-sizing: border-box;
+    // `;
+
     return (
-        <div className="flex flex-row justify-start flex-wrap text-gray-bgWhite bg-gray-white"
-            style={{ 'background': '#fff', borderRadius: '6px', marginBottom: '24px' }}>
+        // <MetaBox>
+        <Wrapper>
             {metaDataList?.map((item, i) =>
             {
                 return (
                     <CardDiv>
-                        <img src={item.icon} alt="" />
+                        <img src={first} alt="" />
                         <div className={['flex', 'flex-col', 'justify-start', 'card-item', i < 4 ? 'border-bottom' : ''].join(' ')}>
                             <span className="name">{item.name}</span>
                             <span className="date">{item.data}</span>
@@ -82,6 +101,8 @@ export default function MetaData()
                     </CardDiv>
                 )
             })}
-        </div>
+        </Wrapper>
+        // </MetaBox>
+
     )
 }

@@ -18,11 +18,18 @@ export default function LatestItem({ title, icon, ListData }: LatestItemPop)
         box-shadow:0px 2px 10px 0px rgba(0, 0, 0, 0.04);
         border-radius:10px;
         padding:16px;
+        @media screen and (max-width: 900px) {
+            >div{
+                >span{
+                    font-size:16px;
+                }
+            }
+        }
     `;
     return (
         <LatestItem>
             <div className="flex flex-row justify-between">
-                <span className="text-gray-backgroundGray text-xl font-medium" style={{ marginRight: '18.75rem' }}>{title}</span>
+                <span className="text-gray-backgroundGray text-xl font-medium" >{title}</span>
                 <div id="homePageBtn">
                     <span>查看全部</span>
                 </div>
@@ -34,8 +41,8 @@ export default function LatestItem({ title, icon, ListData }: LatestItemPop)
                         <div className="latestDiv">
                             <span>BX</span>
                         </div>
-                        <div className="flex flex-col justify-start ml-4">
-                            <div className="w-100 flex flex-row justify-between">
+                        <div className="flex flex-col justify-start ml-4 w-overSpread">
+                            <div className=" flex flex-row justify-between">
                                 <span>{item.block}</span>
                                 <div>
                                     <span>验证人</span>
@@ -61,8 +68,8 @@ export default function LatestItem({ title, icon, ListData }: LatestItemPop)
                         <div className="latestDiv">
                             <span>TX</span>
                         </div>
-                        <div className="flex flex-col justify-start ml-4">
-                            <div className="w-100 flex flex-row justify-between">
+                        <div className="flex flex-col justify-start ml-4 w-overSpread">
+                            <div className="flex flex-row justify-between">
                                 <span>{item.exe}</span>
                                 <div className="flex flex-row">
                                     <span>{item.pcxnum}</span>
