@@ -12,16 +12,31 @@ const  Model_echarts = (props) => {
     const option = {
         xAxis: {
             type: 'category',
-            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+            boundaryGap: false,
         },
         yAxis: {
-            type: 'value'
+            type: 'value',
+            splitLine :{    //网格线
+                lineStyle:{
+                    type:'dashed'    //设置网格线类型 dotted：虚线   solid:实线
+                },
+                show:true //隐藏或显示
+            }
+        
         },
         series: [{
             data: [820, 932, 901, 934, 1290, 1330, 1320],
             type: 'line',
-            smooth: true
-        }]
+            smooth: true,
+            lineStyle: {
+                width: 0
+            },
+            showSymbol: false,
+            areaStyle: {
+            },
+        },
+        ]
     };
     useEffect(()=>{
         var node = document.getElementById('main')
