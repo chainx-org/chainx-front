@@ -38,10 +38,12 @@ export default function HomeSearch()
                         <img src={icon} alt="" className="w-6 h-6 pr-1" />
                         <span className="text-base text-gray-white">ChainX</span>
                     </div>
-                    <div className="flex flex-row justify-center pb-2">
+                    <div className="flex flex-row justify-between pb-2">
                         <span className="text-3xl text-gray-white pr-6">$ 3.375</span>
-                        <span className="miniGrayFront">11%</span>
-                        <div id="triangle" className=" leading-12"></div>
+                        <div className="flex flex-row justify-start">
+                            <span className="miniGrayFront">11%</span>
+                            <div id="triangle" className="leading-12"></div>
+                        </div>
                     </div>
                     <div className="Line" />
                     <div className="flex flex-row justify-between pt-1">
