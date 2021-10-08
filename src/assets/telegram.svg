@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="52px" height="52px" viewBox="0 0 52 52" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>telegram</title>
+    <defs>
+        <path d="M16,0 C7.16129032,0 0,7.16129032 0,16 C0,24.8387097 7.16129032,32 16,32 C24.8387097,32 32,24.8387097 32,16 C32,7.16129032 24.8387097,0 16,0 Z" id="path-1"></path>
+        <filter x="-50.0%" y="-43.8%" width="200.0%" height="200.0%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.0445070067 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="001首页" transform="translate(-130.000000, -1144.000000)">
+            <g id="编组-20" transform="translate(0.000000, 1127.000000)">
+                <g id="编组-25" transform="translate(28.000000, 25.000000)">
+                    <g id="telegram" transform="translate(112.000000, 0.000000)">
+                        <g id="形状">
+                            <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                            <path stroke-opacity="0.175359553" stroke="#E9E9E9" stroke-width="1" d="M16,0.5 C20.28125,0.5 24.1562688,2.2343433 26.9609627,5.03903726 C29.7656567,7.84373122 31.5,11.71875 31.5,16 C31.5,20.28125 29.7656567,24.1562688 26.9609627,26.9609627 C24.1562688,29.7656567 20.28125,31.5 16,31.5 C11.71875,31.5 7.84373122,29.7656567 5.03903726,26.9609627 C2.2343433,24.1562688 0.5,20.28125 0.5,16 C0.5,11.71875 2.2343433,7.84373122 5.03903726,5.03903726 C7.84373122,2.2343433 11.71875,0.5 16,0.5 Z" stroke-linejoin="square" fill-opacity="0.08" fill="#FFFFFF" fill-rule="evenodd"></path>
+                        </g>
+                        <path d="M23.8580645,10.9612903 L21.2322581,23.3354839 C21.0387097,24.2129032 20.516129,24.4258065 19.7870968,24.0129032 L15.7870968,21.0645161 L13.8580645,22.9225806 C13.6451613,23.1354839 13.4645161,23.316129 13.0516129,23.316129 L13.3354839,19.2451613 L20.7483871,12.5483871 C21.0709677,12.2645161 20.6774194,12.1032258 20.2516129,12.3870968 L11.0903226,18.1548387 L7.14193548,16.9225806 C6.28387097,16.6516129 6.26451613,16.0645161 7.32258065,15.6516129 L22.7483871,9.70322581 C23.4645161,9.44516129 24.0903226,9.87741935 23.8580645,10.9612903 Z" id="路径" fill="#FFFFFF" fill-rule="nonzero"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

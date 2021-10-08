@@ -1,36 +1,89 @@
-import React from 'react'
-import icon from '../../assets/Group8Copy1.svg'
-import Search from '../Search'
-interface HeaderPop
-{
-    showSearch?: boolean
-}
-export default function Footer(showSearch: HeaderPop)
-{
-    const handleClick = (e: any) =>
-    {
-        e.persist()
-        console.log(e)
-        if (e._targetInst.key === '1') {
+import React from "react";
+import { Select } from 'antd';
+import logo from "../../assets/Group8white.svg"
+import email from "../../assets/email.svg"
+import github from "../../assets/github.svg"
+import medium from "../../assets/medium.svg"
+import telegram from "../../assets/telegram.svg"
+import twitter from "../../assets/twitter.svg"
+import wechat from "../../assets/wechat.svg"
+import wechatImg from "../../assets/wechatImg.png"
+import styled from 'styled-components';
+import { copy } from "../../helper/copy";
+import LangSelect from "./langSelect";
 
-        } else if (e._targetInst.key === '2') {
 
+const { Option } = Select;
+function Footer(): React.ReactElement
+{
+
+    const ImgContent = styled.div`
+        display:flex;
+        flex-direction:row;
+        .wechatimg{
+            cursor: pointer;
         }
-    }
-    // 添加搜索框组件，通过传参来设置是否显示
-    return (
-        <div className="flex flex-row justify-between bg-gray-arrow">
-            <div className="flex flex-row">
-                <img src={icon} alt="" />
-                <div onClick={handleClick} className="flex flex-row items-center h-12">
-                    <span className="pl-2 text-gray-white mr-9.5">EXPLORER</span>
-                    <span key="1" className="text-gray-white mr-9.5">首页</span>
-                    <span key="2" className="text-gray-white mr-9.5">区块链</span>
-                    <span key="3" className="text-gray-white mr-9.5">验证节点</span>
-                    <span></span>
-                </div>
-            </div>
+        
+        #wechatHover img{
+        display:none;
+        }
 
+        #idd {
+            position: absolute;
+            left: 17rem; //位置和大小自己定义
+            top: 2rem; 
+            width: 100px;
+            height:9rem;
+            cursor: pointer;//cursor即鼠标悬浮时鼠标样式,pointer为小手
+           }
+        #idd img{
+           display:none;
+        }
+        #idd:hover img{
+           display:block;
+           }
+    `;
+
+    function handleChange(value:string) {
+        console.log(`selected ${value}`);
+    }
+
+    return (
+        <div className="flex flex-row justify-between bg-topBar-black mt-29 px-7">
+            <ImgContent>
+                <div id='span' onClick={() => copy('hi@chainx.org')} >
+                    <img src={email} alt="" />
+                </div>
+                <a href="https://github.com/chainx-org/sherpax-web" target="_black">
+                    <img src={github} alt="" />
+                </a>
+                <a href="https://chainx-org.medium.com/" target="_black">
+                    <img src={medium} alt="" />
+                </a>
+                <a href="https://t.me/chainx_org" target="_black">
+                    <img src={telegram} alt=""  />
+                </a>
+                <a href="https://twitter.com/chainx_org" target="_black">
+                    <img src={twitter} alt="" />
+                </a>
+                <div className="wechatimg">
+                    <img src={wechat} alt="" />
+                </div>
+                <div id="wechatHover">
+                    <img src={wechatImg} alt="" />
+                </div>
+                <div id="idd">
+                    <img src={wechatImg} />
+                </div>
+
+            </ImgContent>
+            <div className={'text-topBar-white mx-0 my-auto'}>All rights reserved © 2019 ChainX</div>
+            <LangSelect/>
+            <img src={logo} alt=""/>
         </div>
-    )
+    );
 }
+
+export default Footer
+
+

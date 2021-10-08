@@ -38,9 +38,11 @@ module.exports = {
         dark: "#fbfafc",
       },
       topBar: {
-        black: "#2F2F2F",
+        black: "#000000",
         blue: "#040B38",
         light: "#F2F5F9",
+        gray:"#0A000000",
+        white:'#fff'
       },
       textColor: {
         gray: " #504862;",
@@ -190,7 +192,6 @@ module.exports = {
         6: "1.5rem",
         6.5: "1.625rem",
         7: "1.75rem",
-        7.5: "1.75rem",
         8: "2rem",
         10: "2.5rem",
         11: "2.75rem",
@@ -286,7 +287,6 @@ module.exports = {
         175: "39.75rem",
         180: "40rem",
       },
-
       minWidth: {
         10: "3.5rem",
         11: "4rem",
@@ -320,6 +320,18 @@ module.exports = {
           row: "row",
           column: "column",
         },
+      },
+      ringWidth: {
+        'select': '0px 2px 10px 0px rgba(0, 0, 0, 0.04);'
+      },
+      borderWidth: {
+        DEFAULT: '0px',
+        '1': '1px',
+        '2': '2px',
+        '3': '3px',
+        '4': '4px',
+        '6': '6px',
+        '8': '8px',
       },
       backgroundImage: (theme) => ({
         indexBg: "url('./src/assets/background.png')",

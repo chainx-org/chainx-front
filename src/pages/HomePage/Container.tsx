@@ -99,7 +99,7 @@ export default function Container()
         <ContainerBox>
             <HomeSearch />
             {/* <FloatBox> */}
-            <MetaData />
+            {/*<MetaData />*/}
             {/* </FloatBox> */}
 
             <div className="bg-gray-bgWhite">

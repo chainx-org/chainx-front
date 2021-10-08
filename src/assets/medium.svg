@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="52px" height="52px" viewBox="0 0 52 52" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>medium (1)</title>
+    <defs>
+        <path d="M16,0 C7.168,0 0,7.168 0,16 C0,24.832 7.168,32 16,32 C24.832,32 32,24.832 32,16 C32,7.168 24.832,0 16,0 Z" id="path-1"></path>
+        <filter x="-50.0%" y="-43.8%" width="200.0%" height="200.0%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.0445070067 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="001首页" transform="translate(-74.000000, -1144.000000)">
+            <g id="编组-20" transform="translate(0.000000, 1127.000000)">
+                <g id="编组-25" transform="translate(28.000000, 25.000000)">
+                    <g id="medium-(1)" transform="translate(56.000000, 0.000000)">
+                        <g id="形状">
+                            <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                            <path stroke-opacity="0.175359553" stroke="#E9E9E9" stroke-width="1" d="M16,0.5 C20.278,0.5 24.1529603,2.23606706 26.9584466,5.04155339 C29.7639329,7.84703972 31.5,11.722 31.5,16 C31.5,20.278 29.7639329,24.1529603 26.9584466,26.9584466 C24.1529603,29.7639329 20.278,31.5 16,31.5 C11.722,31.5 7.84703972,29.7639329 5.04155339,26.9584466 C2.23606706,24.1529603 0.5,20.278 0.5,16 C0.5,11.722 2.23606706,7.84703972 5.04155339,5.04155339 C7.84703972,2.23606706 11.722,0.5 16,0.5 Z" stroke-linejoin="square" fill-opacity="0.08" fill="#FFFFFF" fill-rule="evenodd"></path>
+                        </g>
+                        <path d="M24,20.48 L24,22.352 L18.272,22.352 L18.272,20.48 L19.472,20.48 L19.472,12.192 L19.424,12.192 L16.624,22.368 L14.432,22.368 L11.68,12.192 L11.616,12.192 L11.616,20.48 L12.8,20.48 L12.8,22.352 L8,22.352 L8,20.48 L8.608,20.48 C8.736,20.48 8.864,20.416 8.992,20.304 C9.12,20.192 9.184,20.08 9.184,19.968 L9.184,12.08 C9.184,11.968 9.12,11.856 8.992,11.728 C8.864,11.6 8.736,11.536 8.608,11.536 L8,11.536 L8,9.648 L14,9.648 L15.968,17.008 L16.016,17.008 L18,9.648 L24,9.648 L24,11.52 L23.36,11.52 C23.248,11.52 23.12,11.584 22.992,11.712 C22.864,11.84 22.8,11.968 22.8,12.064 L22.8,19.952 C22.8,20.064 22.864,20.176 22.992,20.288 C23.12,20.4 23.248,20.464 23.36,20.464 L24,20.48 L24,20.48 Z" id="路径" fill="#FFFFFF" fill-rule="nonzero"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
