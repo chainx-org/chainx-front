@@ -36,7 +36,6 @@
     "Public key": "账户公钥",
     "Number of transactions": "交易数",
     "Assets": "资产",
-    "Transfer": "转账",
     "Asset category": "资产类别",
     "Quantity": "数量",
     "Recent transactions": "最近交易",
@@ -59,5 +58,10 @@
     "Finalized Block": "已确认块高",
     "Holders": "持有人总数",
     "Signed Extrinsics": "签名交易",
-    "No data": "暂无数据"
+    "No data": "暂无数据",
+    "status":"状态",
+    "Transfer": "转账列表",
+    "Events": "事件列表",
+    "Accounts": "账户列表",
+    "Extrinsic": "交易列表"
 }

@@ -60,5 +60,9 @@
     "Finalized Block": "Finalized Block",
     "Holders": "Holders",
     "Signed Extrinsics": "Signed Extrinsics",
-    "No data": "No data"
+    "No data": "No data",
+    "status":"status",
+    "Events": "Events",
+    "Accounts": "Accounts",
+    "Extrinsic": "Extrinsic"
 }

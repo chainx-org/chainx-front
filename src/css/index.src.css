@@ -85,9 +85,9 @@ html {
 /*  transition: none;*/
 /*  color: #bfbfbf;*/
 /*}*/
-/*.ui--switchTabs-lg .ant-tabs-ink-bar {*/
-/*  background: #040b38;*/
-/*}*/
+.ui--switchTabs-lg .ant-tabs-ink-bar {
+  background:  #080810;
+}
 /*.ant-tabs-top > .ant-tabs-nav,*/
 /*.ant-tabs-bottom > .ant-tabs-nav,*/
 /*.ant-tabs-top > div > .ant-tabs-nav,*/
