@@ -16,7 +16,7 @@ export default function Container()
         display: grid;
         column-gap: 24px;
         row-gap: 32px;
-        padding:9rem 3rem 0rem 3rem;
+        padding:2rem 3rem 0rem 3rem;
         grid-template-columns: repeat(auto-fill, minmax(588px, 1fr));
         @media screen and (max-width: 900px) {
             grid-template-columns: 1fr;
@@ -99,15 +99,16 @@ export default function Container()
         <ContainerBox>
             <HomeSearch />
             {/* <FloatBox> */}
-            {/*<MetaData />*/}
-            {/* </FloatBox> */}
-
-            <div className="bg-gray-bgWhite">
-                <TableWrapper>
-                    <LatestItem title="最新区块" icon="latestblock" ListData={ListData} />
-                    <LatestItem title="最新交易" icon="icon" ListData={ListData1} />
-                </TableWrapper>
+            <div>
+                <MetaData />
+                <div className="bg-gray-bgWhite">
+                    <TableWrapper>
+                        <LatestItem title="最新区块" icon="latestblock" ListData={ListData} />
+                        <LatestItem title="最新交易" icon="icon" ListData={ListData1} />
+                    </TableWrapper>
+                </div>
             </div>
+            {/* </FloatBox> */}
         </ContainerBox>
     )
 }

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="26px" height="26px" viewBox="0 0 26 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>icon_success</title>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="002-01区块列表" transform="translate(-306.000000, -378.000000)" fill-rule="nonzero">
+            <g id="Group-33" transform="translate(96.000000, 72.000000)">
+                <g id="icon_success" transform="translate(211.000000, 307.000000)">
+                    <polygon id="路径" fill="#29DE5F" points="10.5069877 16.4555576 5.80282482 11.7513948 7.02375258 10.530467 10.5069877 14.0137021 16.9762474 7.54444236 18.1971752 8.76537012"></polygon>
+                    <circle id="椭圆形" stroke="#29DE5F" stroke-width="1.5" fill-opacity="0.1" fill="#02FE03" cx="12" cy="12" r="12"></circle>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

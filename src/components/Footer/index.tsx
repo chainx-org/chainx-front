@@ -1,26 +1,27 @@
-import React from "react";
+import React from 'react';
 import { Select } from 'antd';
-import logo from "../../assets/Group8white.svg"
-import email from "../../assets/email.svg"
-import github from "../../assets/github.svg"
-import medium from "../../assets/medium.svg"
-import telegram from "../../assets/telegram.svg"
-import twitter from "../../assets/twitter.svg"
-import wechat from "../../assets/wechat.svg"
-import wechatImg from "../../assets/wechatImg.png"
+import logo from '../../assets/Group8white.svg';
+import email from '../../assets/email.svg';
+import github from '../../assets/github.svg';
+import medium from '../../assets/medium.svg';
+import telegram from '../../assets/telegram.svg';
+import twitter from '../../assets/twitter.svg';
+import wechat from '../../assets/wechat.svg';
+import wechatImg from '../../assets/wechatImg.png';
 import styled from 'styled-components';
-import { copy } from "../../helper/copy";
-import LangSelect from "./langSelect";
+import { copy } from '../../helper/copy';
+import LangSelect from './langSelect';
 
 
-const { Option } = Select;
-function Footer(): React.ReactElement
-{
+const {Option} = Select;
+
+function Footer(): React.ReactElement {
 
     const ImgContent = styled.div`
-        display:flex;
-        flex-direction:row;
-        .wechatimg{
+        display: flex;
+        flex-direction: row;
+
+        .wechatimg {
             cursor: pointer;
         }
         
@@ -49,7 +50,7 @@ function Footer(): React.ReactElement
     }
 
     return (
-        <div className="flex flex-row justify-between bg-topBar-black mt-29 px-7">
+        <div className="flex bg-topBar-black mt-29 desktop:px-7 desktop:flex-row desktop:justify-between screen:flex-col screen:items-center">
             <ImgContent>
                 <div id='span' onClick={() => copy('hi@chainx.org')} >
                     <img src={email} alt="" />
@@ -70,16 +71,18 @@ function Footer(): React.ReactElement
                     <img src={wechat} alt="" />
                 </div>
                 <div id="wechatHover">
-                    <img src={wechatImg} alt="" />
+                    <img src={wechatImg} alt=""/>
                 </div>
                 <div id="idd">
-                    <img src={wechatImg} />
+                    <img src={wechatImg}/>
                 </div>
 
             </ImgContent>
             <div className={'text-topBar-white mx-0 my-auto'}>All rights reserved © 2019 ChainX</div>
-            <LangSelect/>
-            <img src={logo} alt=""/>
+            <div className="flex flex-row">
+                <LangSelect/>
+                <img src={logo} alt=""/>
+            </div>
         </div>
     );
 }

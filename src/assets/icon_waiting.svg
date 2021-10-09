@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="26px" height="26px" viewBox="0 0 26 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>icon_waiting</title>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="002-01区块列表" transform="translate(-306.000000, -216.000000)" fill="#2C83EA" fill-rule="nonzero">
+            <g id="Group-33" transform="translate(96.000000, 72.000000)">
+                <g id="icon_waiting" transform="translate(211.000000, 145.000000)">
+                    <circle id="椭圆形" stroke="#2C83EA" stroke-width="1.5" fill-opacity="0.1" cx="12" cy="12" r="12"></circle>
+                    <polygon id="路径" transform="translate(12.787229, 11.212771) rotate(-315.000000) translate(-12.787229, -11.212771) " points="12.9872047 15.1611981 6.31127883 8.48527225 7.53220659 7.26434449 12.9872047 12.7193425 18.0422509 7.66429635 19.2631786 8.88522411"></polygon>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

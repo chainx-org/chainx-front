@@ -7,6 +7,7 @@ export default function MetaData()
     height:87.5px;
     padding:20px 0px 0px 36px;
     display:flex;
+
     .card-item{
         width:248px;
         padding-bottom:21px;
@@ -31,6 +32,7 @@ export default function MetaData()
             top:-21px;
         }
     }
+    
     `;
     const metaDataList = [{
         icon: 'first',
@@ -73,9 +75,27 @@ export default function MetaData()
         box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.04);
         border: 1px solid #E9E9E9;
         border-radius:6px;
-        position: absolute;
+        //position: absolute;
         width: 94%;
         margin:-3rem 3rem 0rem 3rem;
+        @media screen and (min-width: 1366px) {
+            & > div:nth-child(4n+4) {
+                .line {
+                    display: none;
+                }
+
+            }
+        }
+        @media screen and (min-width: 800px) and (max-width: 1280px){
+            & > div:nth-child(3n+3) {
+                .line {
+                    display: none;
+                }
+
+            }
+        }
+            
+    }
     `;
     // const MetaBox = styled.div`
     //     width: 100px;

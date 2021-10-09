@@ -338,8 +338,8 @@ module.exports = {
       }),
     },
     screens: {
-      screen: { min: "374px", max: "779px" },
-      desktop: { min: "780px" },
+      screen: { min: "0px", max: "900px" },
+      desktop: { min: "900px" },
     },
     bottom: {
       28: '28vh'
