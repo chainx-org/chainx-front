@@ -63,5 +63,7 @@
     "Transfer": "转账列表",
     "Events": "事件列表",
     "Accounts": "账户列表",
-    "Extrinsic": "交易列表"
+    "Extrinsic": "交易列表",
+    "Chinese": "中文",
+    "English": "英文"
 }

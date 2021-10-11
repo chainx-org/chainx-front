@@ -72,7 +72,6 @@ function ChangeNet({ name, setNetName }: ChangeNetProps): React.ReactElement
     setTest(false)
   }
   return (
-    <div className="screen:pb-1 px-10 flex pt-8 pb-6" >
       <ChangeNetDiv className={`${name ? 'border-white' : 'border-blue'}`} >
         <div className={`${name ? 'flex flex-row border border-gray-white' : 'flex flex-row border-gray-arrow border'}`} onMouseEnter={onMouseEnterUl}>
           {/*<img src={name ? netB : netW} alt="browser" />*/}
@@ -84,9 +83,6 @@ function ChangeNet({ name, setNetName }: ChangeNetProps): React.ReactElement
           <li className={name ? 'bg-topBar-light' : ''} onClick={() => changeFun(true)}><span>TESTNET</span></li>
         </ul> }
       </ChangeNetDiv>
-
-
-    </div >
   );
 }
 

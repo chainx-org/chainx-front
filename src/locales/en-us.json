@@ -64,5 +64,7 @@
     "status":"status",
     "Events": "Events",
     "Accounts": "Accounts",
-    "Extrinsic": "Extrinsic"
+    "Extrinsic": "Extrinsic",
+    "Chinese": "Chinese",
+    "English": "English"
 }

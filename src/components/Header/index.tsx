@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react'
 import styled from 'styled-components'
 import icon from '../../assets/Group8Copy1.svg'
 import Search from '../Search'
@@ -8,6 +8,7 @@ interface HeaderPop
 }
 export default function Header(showSearch: HeaderPop)
 {
+
     const handleClick = (e: any) =>
     {
         e.persist()
@@ -51,7 +52,6 @@ export default function Header(showSearch: HeaderPop)
                 </NavLink>
             </Wrapper>
             <Search className="NavSearch" />
-
 
         </div>
     )
