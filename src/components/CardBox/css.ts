@@ -37,7 +37,7 @@ export const Container = styled.div`
     height:80%;
     top: 4rem;
     padding: 2rem 2rem;
-    border: 1px solid red;
+    //border: 1px solid red;
     display: grid;
     grid-template-columns:40% 10% 50%;
     grid-column-gap:1rem;
