@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import CardBox from '../../components/CardBox'
 import { useTranslation } from 'react-i18next';
 import blockLeakage from '../../assets/blockLeakage.svg'
-import searchIcon from '../../assets/img_switch.svg'
+import searchIcon from '../../assets/img_switch.png'
 
 
 export default function AccountTransfer() {

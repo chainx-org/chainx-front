@@ -37,13 +37,14 @@ export const Container = styled.div`
     height:80%;
     top: 4rem;
     padding: 2rem 2rem;
-    //border: 1px solid red;
     display: grid;
     grid-template-columns:40% 10% 50%;
     grid-column-gap:1rem;
     grid-row-gap:1rem;
     @media screen and (max-width: 900px) {
       grid-template-columns:100%;
-      grid-template-rows:30% 10% 40%;
+      //&.div:nth-child(2){
+      //  margin:auto !important;
+      //}
     }
   `;

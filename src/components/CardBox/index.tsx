@@ -40,14 +40,23 @@ export default function AccountTransfer({cardBoxTitleicon, cardBoxTitleName, car
                 bordered={true}
               />
             </div>
-            <div className="w-overSpread h-12 bg-topBar-black text-topBar-white mt-12 items-center text-center">查询</div>
+            <div className="w-overSpread h-12 bg-topBar-black text-topBar-white mt-12 items-center text-center"
+                 style={{borderRadius: '4px'}}>
+              <span className="inline-block" style={{lineHeight: '3rem'}}>查询</span>
+            </div>
           </div>
-          <div className="items-center my-auto mx-0 text-center">
+          <div className="items-center my-auto mx-auto text-center">
             <img src={arrowChangeIcon} alt=""/>
           </div>
-          <div className="items-center my-auto mx-0 text-center bg-topBar-gray">
-            <img className="inline-block" src={cardBoxTitleContainer.icon} alt=""/>
-            <div>{cardBoxTitleContainer.result}</div>
+          <div className="items-center my-auto mx-0 text-center bg-topBar-gray h-overSpread" style={{
+            background: '#F9F9F9',
+            borderRadius: '10px',
+            border: '1px solid #DBDBDB'
+          }}>
+            <div>
+              <img className="inline-block" src={cardBoxTitleContainer.icon} alt=""/>
+              <div >{cardBoxTitleContainer.result}</div>
+            </div>
           </div>
         </Container>
       </Wapper>
