@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import arrowChangeIcon from '../../assets/icon_awitch.svg';
 import { Input } from 'antd';
 import { CardTitle, Container, SpliteLine, Wapper } from './css';
+import CopyText from '../../components/copyText'
 
 const {TextArea} = Input;
 
@@ -55,7 +56,9 @@ export default function AccountTransfer({cardBoxTitleicon, cardBoxTitleName, car
           }}>
             <div>
               <img className="inline-block" src={cardBoxTitleContainer.icon} alt=""/>
-              <div >{cardBoxTitleContainer.result}</div>
+              {/*<CopyText text={cardBoxTitleContainer.result}>*/}
+                <div >{cardBoxTitleContainer.result}</div>
+              {/*</CopyText>*/}
             </div>
           </div>
         </Container>
