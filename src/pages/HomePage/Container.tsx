@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components';
 import LatestItem from '../../components/LatestItem';
 import HomeSearch from './HomeSearch'
-import MetaData from './MetaData'
+import MetaData from '../../components/MetaData'
 
 export default function Container()
 {

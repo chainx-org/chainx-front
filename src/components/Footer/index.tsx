@@ -9,10 +9,12 @@ import twitter from '../../assets/twitter.svg';
 import wechat from '../../assets/wechat.svg';
 import wechatImg from '../../assets/wechatImg.png';
 import styled from 'styled-components';
-import { copy } from '../../helper/copy';
+import copy from 'copy-to-clipboard';
 import LangSelect from './langSelect';
 
-
+function copyEmail(text:string){
+    copy(text)
+}
 const {Option} = Select;
 
 function Footer(): React.ReactElement {
@@ -20,6 +22,7 @@ function Footer(): React.ReactElement {
     const ImgContent = styled.div`
         display: flex;
         flex-direction: row;
+        position: relative;
 
         .wechatimg {
             cursor: pointer;
@@ -31,8 +34,8 @@ function Footer(): React.ReactElement {
 
         #idd {
             position: absolute;
-            left: 17rem; //位置和大小自己定义
-            top: 2rem; 
+            left: 15rem; //位置和大小自己定义
+            top: -6rem; 
             width: 100px;
             height:9rem;
             cursor: pointer;//cursor即鼠标悬浮时鼠标样式,pointer为小手
@@ -52,7 +55,7 @@ function Footer(): React.ReactElement {
     return (
         <div className="flex bg-topBar-black mt-29 desktop:px-7 desktop:flex-row desktop:justify-between screen:flex-col screen:items-center">
             <ImgContent>
-                <div id='span' onClick={() => copy('hi@chainx.org')} >
+                <div id='span' onClick={()=>copyEmail('hi@chainx.org')} >
                     <img src={email} alt="" />
                 </div>
                 <a href="https://github.com/chainx-org/sherpax-web" target="_black">

@@ -34,39 +34,6 @@ export default function MetaData()
     }
     
     `;
-    const metaDataList = [{
-        icon: 'first',
-        name: '确认高度',
-        data: '191,121'
-    }, {
-        icon: 'first',
-        name: '确认高度',
-        data: '191,121'
-    }, {
-        icon: 'first',
-        name: '确认高度',
-        data: '191,121'
-    }, {
-        icon: 'first',
-        name: '确认高度',
-        data: '191,121'
-    }, {
-        icon: 'first',
-        name: '确认高度',
-        data: '191,121'
-    }, {
-        icon: 'first',
-        name: '确认高度',
-        data: '191,121'
-    }, {
-        icon: 'first',
-        name: '确认高度',
-        data: '191,121'
-    }, {
-        icon: 'first',
-        name: '确认高度',
-        data: '191,121'
-    }]
 
     const Wrapper = styled.div`
         display: grid;
@@ -77,50 +44,40 @@ export default function MetaData()
         border-radius:6px;
         //position: absolute;
         width: 94%;
-        margin:-3rem 3rem 0rem 3rem;
-        @media screen and (min-width: 1366px) {
+        margin:3rem auto;
+        //@media screen and (min-width: 1366px) {
             & > div:nth-child(4n+4) {
                 .line {
                     display: none;
                 }
 
             }
-        }
+        //}
         @media screen and (min-width: 800px) and (max-width: 1280px){
-            & > div:nth-child(3n+3) {
+            & > div:nth-child(2n+2) {
                 .line {
                     display: none;
                 }
 
             }
-        }
-            
-    }
-    `;
-    // const MetaBox = styled.div`
-    //     width: 100px;
-    //     height: 100px;
-    //     border-left:50px solid #000;
-    //     border-right:50px solid #fff;
-    //     box-sizing: border-box;
-    // `;
+    }`;
 
     return (
         // <MetaBox>
         <Wrapper>
-            {metaDataList?.map((item, i) =>
-            {
-                return (
-                    <CardDiv>
-                        <img src={first} alt="" />
-                        <div className={['flex', 'flex-col', 'justify-start', 'card-item', i < 4 ? 'border-bottom' : ''].join(' ')}>
-                            <span className="name">{item.name}</span>
-                            <span className="date">{item.data}</span>
-                        </div>
-                        <div className={[i + 1 % 4 !== 0 ? 'line' : '', i > 3 ? 'line-top' : ''].join(' ')}></div>
-                    </CardDiv>
-                )
-            })}
+            {/*{metaDataList?.map((item, i) =>*/}
+            {/*{*/}
+            {/*    return (*/}
+            {/*        <CardDiv>*/}
+            {/*            <img src={first} alt="" />*/}
+            {/*            <div className={['flex', 'flex-col', 'justify-start', 'card-item', i < 4 ? 'border-bottom' : ''].join(' ')}>*/}
+            {/*                <span className="name">{item.name}</span>*/}
+            {/*                <span className="date">{item.data}</span>*/}
+            {/*            </div>*/}
+            {/*            <div className={[i + 1 % 4 !== 0 ? 'line' : '', i > 3 ? 'line-top' : ''].join(' ')}></div>*/}
+            {/*        </CardDiv>*/}
+            {/*    )*/}
+            {/*})}*/}
         </Wrapper>
         // </MetaBox>
 
