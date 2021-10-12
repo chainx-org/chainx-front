@@ -4,6 +4,7 @@ import arrowChangeIcon from '../../assets/icon_awitch.svg';
 import { Input } from 'antd';
 import { CardTitle, Container, SpliteLine, Wapper } from './css';
 import CopyText from '../../components/copyText'
+import CardListItem from '../CardListItem';
 
 const {TextArea} = Input;
 
@@ -59,6 +60,7 @@ export default function AccountTransfer({cardBoxTitleicon, cardBoxTitleName, car
               {/*<CopyText text={cardBoxTitleContainer.result}>*/}
                 <div >{cardBoxTitleContainer.result}</div>
               {/*</CopyText>*/}
+              {/*<CardListItem/>*/}
             </div>
           </div>
         </Container>
