@@ -17,15 +17,20 @@ export const ItemContainer = styled.div`
         >span{
           color: rgba(255, 255, 255, 0.85);
         }
+        >div{
+         >div{
+           >span{
+             color: rgba(255, 255, 255, 0.85);
+           }
+         }
+        }
       }
-    }
-     
-  `;
+    }`;
 export const ItemContext = styled.div`
     display: flex;
     flex-direction: column;
     margin: auto 0;
-      >span:nth-child(1){
+      >span{
         display: flex;
         font-size: 16px;
         font-weight: 500;
@@ -33,11 +38,14 @@ export const ItemContext = styled.div`
         line-height: 22px;
         margin-bottom: 8px;
       }
-      >span:nth-child(2){
-        display: flex;
-        font-size: 14px;
-        font-weight: 400;
-        color: rgba(0, 0, 0, 0.65);
-        line-height: 22px;
-      }
-  `;
+      >div{
+        >div {
+          > span {
+            display: flex;
+            font-size: 14px;
+            font-weight: 400;
+            color: rgba(0, 0, 0, 0.65);
+            line-height: 22px;
+          }
+        }
+      }`;
