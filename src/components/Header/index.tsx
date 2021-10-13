@@ -33,7 +33,7 @@ export default function Header(showSearch: HeaderPop) {
                       <span key="2" className="toplinkName">{t('Chain')}</span>
                   </Link>
                   <Link to="/validators">
-                      <span key="3" className="toplinkName">{t('Validators')}</span>
+                      <span key="3" className="toplinkName">{t('Validator')}</span>
                   </Link>
                   <Link to="/crossBlock">
                       <span key="4" className="toplinkName">{t('Cross Block')}</span>

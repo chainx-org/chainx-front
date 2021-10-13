@@ -3,9 +3,11 @@ import styled from 'styled-components';
 import LatestItem from '../../components/LatestItem';
 import HomeSearch from './HomeSearch'
 import MetaData from '../../components/MetaData'
+import { useTranslation } from 'react-i18next';
 
 export default function Container()
 {
+    const {t} = useTranslation()
     const ContainerBox = styled.div`  
         width:100%;
         background:black;
@@ -103,8 +105,8 @@ export default function Container()
                 <MetaData />
                 <div className="bg-gray-bgWhite">
                     <TableWrapper>
-                        <LatestItem title="最新区块" icon="latestblock" ListData={ListData} />
-                        <LatestItem title="最新交易" icon="icon" ListData={ListData1} />
+                        <LatestItem title={t('Latest block')} icon="latestblock" ListData={ListData} />
+                        <LatestItem title={t('Latest transaction')} icon="icon" ListData={ListData1} />
                     </TableWrapper>
                 </div>
             </div>

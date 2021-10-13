@@ -1,6 +1,7 @@
 import React from 'react'
 import { Input, Space } from 'antd';
 import styled from 'styled-components';
+import { useTranslation } from 'react-i18next';
 
 interface SearchProps
 {
@@ -9,6 +10,7 @@ interface SearchProps
 }
 export default function Search({ className }: SearchProps)
 {
+    const {t} = useTranslation()
     const Home_pageSearch = styled.div`
 
     `;
@@ -21,9 +23,9 @@ export default function Search({ className }: SearchProps)
         <>
             {className === 'NavSearch' ?
                 <div className={className} style={{ border: '1px solid rgba(105, 168, 237, 0.21)' }} >
-                    <Search placeholder="input search text" onSearch={onSearch} enterButton />
+                    <Search placeholder={t('Search Address/Extrinsics/Blocks')} onSearch={onSearch} enterButton />
                 </div> :
-                <Search className={'Home_pageSearch'} placeholder="input search text" onSearch={onSearch} enterButton />
+                <Search className={'Home_pageSearch'} placeholder={t('Search Address/Extrinsics/Blocks')} onSearch={onSearch} enterButton />
             }
         </>
 

@@ -20,32 +20,38 @@ const {Option} = Select;
 function Footer(): React.ReactElement {
 
     const ImgContent = styled.div`
-        display: flex;
-        flex-direction: row;
-        position: relative;
+      display: flex;
+      flex-direction: row;
+      position: relative;
 
-        .wechatimg {
-            cursor: pointer;
-        }
-        
-        #wechatHover img{
-        display:none;
-        }
+      > a {
+        display: inline-block;
+      }
 
-        #idd {
-            position: absolute;
-            left: 15rem; //位置和大小自己定义
-            top: -6rem; 
-            width: 100px;
-            height:9rem;
-            cursor: pointer;//cursor即鼠标悬浮时鼠标样式,pointer为小手
-           }
-        #idd img{
-           display:none;
-        }
-        #idd:hover img{
-           display:block;
-           }
+      .weChatImg {
+        cursor: pointer;
+      }
+
+      #wechatHover img {
+        display: none;
+      }
+
+      #idd {
+        position: absolute;
+        left: 15rem; //位置和大小自己定义
+        top: -6rem;
+        width: 100px;
+        height: 9rem;
+        cursor: pointer; //cursor即鼠标悬浮时鼠标样式,pointer为小手
+      }
+
+      #idd img {
+        display: none;
+      }
+
+      #idd:hover img {
+        display: block;
+      }
     `;
 
     function handleChange(value:string) {
@@ -53,40 +59,46 @@ function Footer(): React.ReactElement {
     }
 
     return (
-        <div className="flex bg-topBar-black mt-29 desktop:px-7 desktop:flex-row desktop:justify-between screen:flex-col screen:items-center">
-            <ImgContent>
-                <div id='span' onClick={()=>copyEmail('hi@chainx.org')} >
-                    <img src={email} alt="" />
-                </div>
-                <a href="https://github.com/chainx-org/sherpax-web" target="_black">
-                    <img src={github} alt="" />
-                </a>
-                <a href="https://chainx-org.medium.com/" target="_black">
-                    <img src={medium} alt="" />
-                </a>
-                <a href="https://t.me/chainx_org" target="_black">
-                    <img src={telegram} alt=""  />
-                </a>
-                <a href="https://twitter.com/chainx_org" target="_black">
-                    <img src={twitter} alt="" />
-                </a>
-                <div className="wechatimg">
-                    <img src={wechat} alt="" />
-                </div>
-                <div id="wechatHover">
-                    <img src={wechatImg} alt=""/>
-                </div>
-                <div id="idd">
-                    <img src={wechatImg}/>
-                </div>
-
-            </ImgContent>
-            <div className={'text-topBar-white mx-0 my-auto'}>All rights reserved © 2019 ChainX</div>
-            <div className="flex flex-row">
-                <LangSelect/>
-                <img src={logo} alt=""/>
+      <div
+        className="flex bg-topBar-black mt-29 desktop:px-7 desktop:flex-row desktop:justify-between screen:flex-col screen:items-center">
+        <div className="flex flex-row">
+          <ImgContent>
+            <div id="span" onClick={() => copyEmail('hi@chainx.org')}>
+              <img src={email} alt=""/>
             </div>
+            <a href="https://github.com/chainx-org/sherpax-web" target="_black">
+              <img src={github} alt=""/>
+            </a>
+            <a href="https://chainx-org.medium.com/" target="_black">
+              <img src={medium} alt=""/>
+            </a>
+            <a href="https://t.me/chainx_org" target="_black">
+              <img src={telegram} alt=""/>
+            </a>
+            <a href="https://twitter.com/chainx_org" target="_black">
+              <img src={twitter} alt=""/>
+            </a>
+            <div className="weChatImg">
+              <img src={wechat} alt=""/>
+            </div>
+            <div id="wechatHover">
+              <img src={wechatImg} alt=""/>
+            </div>
+            <div id="idd">
+              <img src={wechatImg}/>
+            </div>
+
+          </ImgContent>
+          <div className={'text-topBar-white mx-0 my-auto'} style={{opacity: '38%'}}>All rights reserved © 2019
+            ChainX
+          </div>
         </div>
+        <div className="flex flex-row">
+          <LangSelect/>
+          <div style={{width: '32px'}}/>
+          <img src={logo} alt="" style={{display: 'inline-block', height: '24px', margin: 'auto 0'}}/>
+        </div>
+      </div>
     );
 }
 

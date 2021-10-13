@@ -21,7 +21,7 @@ export default function Blocks() {
 
   const tabList: TabInfo[] = [
     {
-      title: t('Block height'),
+      title: t('Blocks'),
       content: <></>,
     },
     {

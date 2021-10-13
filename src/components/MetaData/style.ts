@@ -19,22 +19,42 @@ export const Wrapper = styled.div`
   margin: 3rem auto;
   display: grid;
   grid-template-columns: 25% 25% 25% 25%;
+  >div:nth-child(4n+0)
+  {
+    border-right: none;
+  }
+  >div:nth-child(n+5)
+  {
+    border-bottom: none;
+  }
   @media screen and (max-width: 900px) {
     grid-template-columns: 50% 50%;
-  }
+    >div:nth-child(2n+0)
+    {
+      border-right: none;
+    }
+  //  >div:nth-child()
+  //  {
+  //    border-bottom: none;
+  //  }
+  //}
+  
 `;
 
 export const CardDiv = styled.div`
   height: 87.5px;
   display: flex;
   flex-direction: row;
-  margin:auto 0;
-  >img{
+  margin: 3px 36px 3px 36px;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+  > img {
     display: inline-block;
     width: 32px;
-    height:32px;
-    margin:auto 3px auto 36px;
+    height: 32px;
+    margin: auto 3px auto 0px;
   }
+
   .card-item {
     width: 248px;
     padding-bottom: 21px;
