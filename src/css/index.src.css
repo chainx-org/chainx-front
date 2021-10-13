@@ -7,8 +7,8 @@
   /* @apply text-xs; */
 }
 #main {
-  width: 230px !important;
-  height: 100px !important;
+  width: 100% !important;
+  height: 100% !important;
 }
 
 .Line {
@@ -19,6 +19,10 @@
 }
 .miniGrayFront {
   @apply text-sm text-gray-grayWhite leading-12;
+}
+
+.toplinkName{
+  @apply text-gray-white mr-9.5 cursor-pointer
 }
 
 #triangle {

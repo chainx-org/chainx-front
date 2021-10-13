@@ -21,7 +21,7 @@ function LangSelect(): React.ReactElement {
   };
   const ChangeNetDiv = styled.div`
     position: relative;
-
+    margin: auto 0;
     & > div:nth-child(2) {
       display: flex;
       align-items: center;
@@ -71,6 +71,10 @@ function LangSelect(): React.ReactElement {
         background: none !important;
       }
     }`;
+  const [isShow,setIsShow] = useState(false)
+  const handleClick = ()=>{
+    setIsShow((true))
+  }
   return (
 
       <ChangeNetDiv className='border-white'>
@@ -78,23 +82,26 @@ function LangSelect(): React.ReactElement {
              className={'flex flex-row mx-0 my-auto border-1 rounded-sm bg-topBar-gray opacity-80 ring-select text-topBar-white px-2 py-1'}
              onClick={selectLang}>
         <div className={`${name ? 'flex flex-row border border-gray-white' : 'flex flex-row border-gray-arrow border'}`}
-             onMouseEnter={onMouseEnterUl}>
+             onMouseEnter={onMouseEnterUl} style={{'position':'relative'}}>
           <img src={global} alt=""/>
-          <span className={'mx-2'}>Language</span>
-          <img src={selectDown} alt=""/>
+          <span className={'mx-2'} onClick={handleClick}>Language</span>
+          <img src={selectDown} alt="" style={{maxWidth:'none'}}/>
+          {
+            isShow&&
+            <ul style={{position:'absolute',bottom:'30px'}}>
+              <li>
+                <div onClick={() => i18n.changeLanguage(i18n.language = 'zh')}
+                     className={i18n.language === 'zh' ? 'bg-black-darker' : ''}>English
+                </div>
+              </li>
+              <li>
+                <div onClick={() => i18n.changeLanguage(i18n.language = 'en')}
+                     className={i18n.language === 'en' ? 'bg-black-darker' : ''}>中文
+                </div>
+              </li>
+            </ul>
+          }
         </div>
-        {<ul>
-          <li>
-            <div onClick={() => i18n.changeLanguage(i18n.language = 'zh')}
-                 className={i18n.language === 'zh' ? 'bg-black-darker' : ''}>English
-            </div>
-          </li>
-          <li>
-            <div onClick={() => i18n.changeLanguage(i18n.language = 'en')}
-                 className={i18n.language === 'en' ? 'bg-black-darker' : ''}>中文
-            </div>
-          </li>
-        </ul>}
         </div>
       </ChangeNetDiv>
    );

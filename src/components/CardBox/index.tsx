@@ -4,17 +4,17 @@ import arrowChangeIcon from '../../assets/icon_awitch.svg';
 import { Input } from 'antd';
 import { CardTitle, Container, SpliteLine, Wapper } from './css';
 import CardListItem from '../CardListItem';
-import touxiang from '../../assets/touxiang.svg'
+import Icon from '../../assets/touxiang.svg'
 
 const {TextArea} = Input;
 
 interface CardBoxProps {
-  cardBoxTitleicon: string;
+  cardBoxTitleIcon: string;
   cardBoxTitleName: string;
   cardBoxTitleContainer: any;
 }
 
-export default function AccountTransfer({cardBoxTitleicon, cardBoxTitleName, cardBoxTitleContainer}: CardBoxProps) {
+export default function AccountTransfer({cardBoxTitleIcon, cardBoxTitleName, cardBoxTitleContainer}: CardBoxProps) {
   const {t} = useTranslation();
   const [inputValue, setInputValue] = useState('');
 
@@ -26,7 +26,7 @@ export default function AccountTransfer({cardBoxTitleicon, cardBoxTitleName, car
     <div className="Container">
       <Wapper>
         <CardTitle>
-          <img src={cardBoxTitleicon} alt=""/>
+          <img src={cardBoxTitleIcon} alt=""/>
           <span>{cardBoxTitleName}</span>
         </CardTitle>
         <SpliteLine/>
@@ -58,7 +58,7 @@ export default function AccountTransfer({cardBoxTitleicon, cardBoxTitleName, car
             <div>
               <img className="inline-block" src={cardBoxTitleContainer.icon} alt=""/>
                 <div >{cardBoxTitleContainer.result}</div>
-              <CardListItem itemIcon={touxiang} itemContect={'0x1231212112121212121212121212'} itemTitle={'Public key'}/>
+              <CardListItem itemIcon={Icon} itemContect={'0x1231212112121212121212121212'} itemTitle={'Public key'}/>
             </div>
           </div>
         </Container>

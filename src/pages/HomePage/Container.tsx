@@ -16,11 +16,11 @@ export default function Container()
         display: grid;
         column-gap: 24px;
         row-gap: 32px;
-        padding:2rem 3rem 0rem 3rem;
+        padding:1rem 3rem 1rem 3rem;
         grid-template-columns: repeat(auto-fill, minmax(588px, 1fr));
         @media screen and (max-width: 900px) {
             grid-template-columns: 1fr;
-            padding:5rem 2rem 0rem 2rem;
+            padding:3rem 1rem 2rem 1rem;
 
         }
     `;

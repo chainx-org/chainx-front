@@ -2,10 +2,12 @@ import styled from 'styled-components';
 
 export const MetaDataBox = styled.div`
   width: 100%;
-  height: 300px;
-  /* 渐变 */
+  height: 12rem;
   background: linear-gradient(to bottom, black 0%, black 30%, #f5f5f5 30%, #f5f5f5 100%);
   border: 0px solid #ccc;
+  @media screen and (max-width: 900px) {
+    height: 22rem;
+  }
 `;
 
 export const Wrapper = styled.div`
