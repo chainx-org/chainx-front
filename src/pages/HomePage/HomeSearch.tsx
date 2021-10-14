@@ -5,7 +5,7 @@ import Model_echarts from './charts.jsx';
 import styled from 'styled-components';
 import lightNing from '../../assets/Lightning.svg';
 
-export default function HomeSearch() {
+function homeSearch() {
 
     const TableWrapper = styled.div`
         display: grid;
@@ -70,7 +70,6 @@ export default function HomeSearch() {
                       <span className="miniGrayFront">$ 12,423</span>
                   </div>
               </div>
-               {/*<div className="Linecol" />*/}
               <div className="w-overSpread h-overSpread">
                   <Model_echarts/>
               </div>
@@ -78,3 +77,4 @@ export default function HomeSearch() {
         </TableWrapper>
     )
 }
+export default React.memo(homeSearch);

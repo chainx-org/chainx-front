@@ -1,6 +1,6 @@
 import React from "react";
 import Home from "./pages/HomePage";
-import Block from "./pages/Block";
+import Chain from "./pages/Chain";
 import Validator from './pages/Validator'
 import CrossBlock from './pages/CrossBlock'
 import Dex from './pages/Dex'
@@ -14,7 +14,7 @@ function App()
     <BrowserRouter>
       <Switch>
         <Route path="/" exact component={Home} />
-        <Route path="/chain"  component={Block} />
+        <Route path="/chain"  component={Chain} />
         <Route path="/validators" component={Validator}/>
         <Route path="/crossBlock" component={CrossBlock}/>
         <Route path="/dex" component={Dex}/>

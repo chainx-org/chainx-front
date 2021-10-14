@@ -1,5 +1,6 @@
-import { useCallback, useState, useEffect, useRef } from "react";
+import {useEffect } from "react";
 
+//点击ref以外区域关闭
 export function useOnClickOutside(ref, handler) {
   useEffect(() => {
     const listener = (event) => {
@@ -15,4 +16,14 @@ export function useOnClickOutside(ref, handler) {
       document.removeEventListener("touchstart", listener);
     };
   });
+}
+
+//数字种添加·，·号
+export function reName(num){
+  let str = num.toString()
+  if(/\./.test(str)){
+    return str.replace(/\d(?=(\d{3})+\.)/g, "$&,").replace(/\d{3}(?![,.]|$)/g, "$&,");
+  }else{
+    return str.replace(/\d(?=(\d{3})+$)/g, "$&,");
+  }
 }

@@ -15,7 +15,6 @@ import LangSelect from './langSelect';
 function copyEmail(text:string){
     copy(text)
 }
-const {Option} = Select;
 
 function Footer(): React.ReactElement {
 
@@ -54,10 +53,6 @@ function Footer(): React.ReactElement {
       }
     `;
 
-    function handleChange(value:string) {
-        console.log(`selected ${value}`);
-    }
-
     return (
       <div
         className="flex bg-topBar-black mt-29 desktop:px-7 desktop:flex-row desktop:justify-between screen:flex-col screen:items-center">
@@ -85,7 +80,7 @@ function Footer(): React.ReactElement {
               <img src={wechatImg} alt=""/>
             </div>
             <div id="idd">
-              <img src={wechatImg}/>
+              <img src={wechatImg} alt=""/>
             </div>
 
           </ImgContent>

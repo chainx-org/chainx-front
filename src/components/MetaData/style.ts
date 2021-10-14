@@ -34,11 +34,16 @@ export const Wrapper = styled.div`
 
   @media screen and (max-width: 900px) {
     grid-template-columns: 50% 50%;
+    > div:nth-child(n+7) {
+      .container-div {
+        border-bottom: 0px !important;
+      }
+    }
   }
 
-  > div:nth-child(-n+8) {
+  > div:nth-child(-n+4) {
     .container-div {
-      border-bottom: 0px !important;
+      border-bottom: 1px solid #E9E9E9 !important;
     }
   }
 `;

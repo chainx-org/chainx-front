@@ -1,81 +1,61 @@
-import React from 'react'
-import styled from 'styled-components';
+import React, { useEffect, useRef, useState } from 'react';
 import LatestItem from '../../components/LatestItem';
-import HomeSearch from './HomeSearch'
-import MetaData from '../../components/MetaData'
+import HomeSearch from './HomeSearch';
+import { ContainerBox, TableWrapper } from './style';
+import MetaData from '../../components/MetaData';
 import { useTranslation } from 'react-i18next';
+import { get } from '../../hooks/api';
+import highsure from '../../assets/icon_high_sure.svg';
+import holders from '../../assets/icon_holders.svg';
+import transfer from '../../assets/icon_transfer.svg';
+import node from '../../assets/icon_node.svg';
+import issuance from '../../assets/icon-issuance.svg';
 
-export default function Container()
-{
-    const {t} = useTranslation()
-    const ContainerBox = styled.div`  
-        width:100%;
-        background:black;
-    `;
-
-
-    const TableWrapper = styled.div`
-        display: grid;
-        column-gap: 24px;
-        row-gap: 32px;
-        padding:1rem 3rem 1rem 3rem;
-        grid-template-columns: repeat(auto-fill, minmax(588px, 1fr));
-        @media screen and (max-width: 900px) {
-            grid-template-columns: 1fr;
-            padding:3rem 1rem 2rem 1rem;
-
-        }
-    `;
-    const FloatBox = styled.div`
-        width:100%;
-        z-index:999;
-        position:absolute;
-        margin-top:-50px;
-        @media screen and (max-width: 900px) {
-            margin-top:-30px;
-        }
-    `;
-    const ListData = [{
-        block: 1,
-        identifier: 'xl',
-        number: 1,
-        event: 2,
-        exe: 3,
-        time: 20
+export default function Container() {
+    const {t} = useTranslation();
+    const [timers, setTimers] = useState<Array<NodeJS.Timeout>>([]);
+    const saveCallBack: any = useRef();
+    const [latestBlock, setListData] = useState([{
+        number: '-',
+        nikename: '-',
+        extrinsicsCnt: '-',
+        event: '-',
+        exe: '-',
+        time: '-'
     }, {
-        block: 2,
-        identifier: 'xl',
-        number: 1,
-        event: 2,
-        exe: 3,
-        time: 20
+        number: '-',
+        nikename: '-',
+        extrinsicsCnt: '-',
+        event: '-',
+        exe: '-',
+        time: '-'
     }, {
-        block: 2,
-        identifier: 'xl',
-        number: 1,
-        event: 2,
-        exe: 3,
-        time: 20
+        number: '-',
+        nikename: '-',
+        extrinsicsCnt: '-',
+        event: '-',
+        exe: '-',
+        time: '-'
     }, {
-        block: 2,
-        identifier: 'xl',
-        number: 1,
-        event: 2,
-        exe: 3,
-        time: 20
+        number: '-',
+        nikename: '-',
+        extrinsicsCnt: '-',
+        event: '-',
+        exe: '-',
+        time: '-'
     }, {
-        block: 2,
-        identifier: 'xl',
-        number: 1,
-        event: 2,
-        exe: 3,
-        time: 20
-    }]
-    const ListData1 = [{
-        exe: 1,
-        type: 1,
-        pcxnum: 909090,
-        time: 1212
+        number: '-',
+        nikename: '-',
+        extrinsicsCnt: '-',
+        event: '-',
+        exe: '-',
+        time: '-'
+    }]);
+    const [latestExtrinsic, setLatestExtrinsic] = useState([{
+        exe: '-',
+        type: '-',
+        pcxnum: '-',
+        time: '-',
     }, {
         exe: 2,
         type: 1,
@@ -96,21 +76,125 @@ export default function Container()
         type: 1,
         pcxnum: 909090,
         time: 1212
-    }]
+    }])
+    const [metaData, setMetaData] = useState([{
+        icon: highsure,
+        name: '已确认块高',
+        data: '-'
+    }, {
+        icon: highsure,
+        name: '最新块高',
+        data: '-'
+    }, {
+        icon: holders,
+        name: '交易签名',
+        data: '-'
+    }, {
+        icon: holders,
+        name: '账户信息',
+        data: '-'
+    }, {
+        icon: transfer,
+        name: '转账总数',
+        data: '-'
+    }, {
+        icon: node,
+        name: '验证节点',
+        data: '-'
+    }, {
+        icon: issuance,
+        name: '总供应量',
+        data: '-'
+    }, {
+        icon: issuance,
+        name: '质押率',
+        data: '-'
+    }]);
+    const [firstInit, InitCallBack] = useState(true);
+    //获取metaData数据
+    const getHomeMetaData = async () => {
+        const {latestChainStatus}: any = await get('/latestChainStatus', '');
+        setMetaData([{
+            icon: highsure,
+            name: '已确认块高',
+            data: latestChainStatus.finalized
+        }, {
+            icon: highsure,
+            name: '最新块高',
+            data: latestChainStatus.best
+        }, {
+            icon: holders,
+            name: '交易签名',
+            data: latestChainStatus.extrinsic_count
+        }, {
+            icon: holders,
+            name: '账户信息',
+            data: latestChainStatus.account_count
+        }, {
+            icon: transfer,
+            name: '转账总数',
+            data: latestChainStatus.transfer_count
+        }, {
+            icon: node,
+            name: '验证节点',
+            data: latestChainStatus.validator_count
+        }, {
+            icon: issuance,
+            name: '总供应量',
+            data: '-'
+        }, {
+            icon: issuance,
+            name: '质押率',
+            data: '-'
+        }]);
+    };
+    const getLatestBlockData = async () => {
+        const {latestBlocks}: any = await get('/latestBlock', '');
+        setListData(latestBlocks.splice(5));
+    };
+
+    const getLatestExtrinsic = async () => {
+        const {latestExtrinsics}: any = await get('/latestExtrinsic', '');
+        setLatestExtrinsic(latestExtrinsics.splice(5));
+    };
+
+    const callBack = () => {
+        getHomeMetaData().then(() => console.log('getHomeMetaData success'));
+        getLatestBlockData().then(() => console.log('getLatestBlockData success'));
+        getLatestExtrinsic().then(() => console.log('getLatestExtrinsic success'));
+        InitCallBack(false);
+    };
+    useEffect(() => {
+        saveCallBack.current = callBack;
+        callBack();
+        return () => { };
+    }, []);
+
+    useEffect(() => {
+        const tick = () => {
+            saveCallBack.current();
+        };
+        const timer: NodeJS.Timeout = setInterval(tick, 5000);
+        timers.push(timer);
+        setTimers(timers);
+        console.log(timers);
+        return () => {
+            clearInterval(timer);
+        };
+    }, []);
+
     return (
-        <ContainerBox>
-            <HomeSearch />
-            {/* <FloatBox> */}
-            <div>
-                <MetaData />
-                <div className="bg-gray-bgWhite">
-                    <TableWrapper>
-                        <LatestItem title={t('Latest block')} icon="latestblock" ListData={ListData} />
-                        <LatestItem title={t('Latest transaction')} icon="icon" ListData={ListData1} />
-                    </TableWrapper>
-                </div>
-            </div>
-            {/* </FloatBox> */}
-        </ContainerBox>
-    )
+      <ContainerBox>
+          <HomeSearch/>
+          <div>
+              <MetaData metaData={metaData}/>
+              <div className="bg-gray-bgWhite">
+                  <TableWrapper>
+                      <LatestItem key={1} title={t('Latest block')} icon="latestblock" ListData={latestBlock}/>
+                      <LatestItem key={2} title={t('Latest transaction')} icon="icon" ListData={latestExtrinsic}/>
+                  </TableWrapper>
+              </div>
+          </div>
+      </ContainerBox>
+    );
 }

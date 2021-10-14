@@ -7,8 +7,6 @@ import { useOnClickOutside } from '../../../hooks/hooks';
 
 
 function LangSelect(): React.ReactElement {
-  const {t} = useTranslation();
-
   function selectLang(lang: string) {
     i18n.changeLanguage(i18n.language = lang);
     setIsShow(false);

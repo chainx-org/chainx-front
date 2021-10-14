@@ -1,6 +1,5 @@
 import React from 'react'
-import { Input, Space } from 'antd';
-import styled from 'styled-components';
+import { Input } from 'antd';
 import { useTranslation } from 'react-i18next';
 
 interface SearchProps
@@ -11,9 +10,6 @@ interface SearchProps
 export default function Search({ className }: SearchProps)
 {
     const {t} = useTranslation()
-    const Home_pageSearch = styled.div`
-
-    `;
     const { Search } = Input;
     const onSearch = () =>
     {

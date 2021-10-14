@@ -15,7 +15,7 @@ interface CardBoxProps {
 }
 
 export default function AccountTransfer({cardBoxTitleIcon, cardBoxTitleName, cardBoxTitleContainer}: CardBoxProps) {
-  const {t} = useTranslation();
+  // const {t} = useTranslation();
   const [inputValue, setInputValue] = useState('');
 
   const textInput = (e:any) => {

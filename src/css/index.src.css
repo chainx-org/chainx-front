@@ -205,5 +205,15 @@ html {
   border-color: #2c83eaff;
   background: #2c83eaff;
 }
+.ant-table-container{
+  border-top-left-radius: 0px !important;
+ border-top-right-radius: 0px !important;
+}
+.ant-table.ant-table-bordered > .ant-table-container{
+  border-left: 0px solid #f0f0f0 !important;
+}
+.ant-table-cell{
+  border:0px !important;
+}
 
 @tailwind utilities;
