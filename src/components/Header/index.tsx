@@ -23,7 +23,7 @@ export default function Header(showSearch: HeaderPop) {
     return (
       <div className="flex flex-row justify-between bg-gray-arrow px-12 screen:px-4">
           <Wrapper>
-              <img src={icon} alt=""/>
+              <Link to="/"><img src={icon} alt=""/></Link>
               <NavLink onClick={handleClick}>
                   <span className="pl-2 text-gray-white mr-9.5">EXPLORER</span>
                   <Link to="/">

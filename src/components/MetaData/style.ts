@@ -19,41 +19,56 @@ export const Wrapper = styled.div`
   margin: 3rem auto;
   display: grid;
   grid-template-columns: 25% 25% 25% 25%;
-  >div:nth-child(4n+0)
-  {
-    border-right: none;
+
+  > div:nth-child(-n+4) {
+    .line-div {
+      top: 4px;
+    }
   }
-  >div:nth-child(n+5)
-  {
-    border-bottom: none;
+
+  > div:nth-child(4n+0) {
+    .line-div {
+      display: none;
+    }
   }
+
   @media screen and (max-width: 900px) {
     grid-template-columns: 50% 50%;
-    >div:nth-child(2n+0)
-    {
-      border-right: none;
+  }
+
+  > div:nth-child(-n+8) {
+    .container-div {
+      border-bottom: 0px !important;
     }
-  //  >div:nth-child()
-  //  {
-  //    border-bottom: none;
-  //  }
-  //}
-  
+  }
+`;
+export const RightLine = styled.div`
+  position: relative;
+  height: calc(100% - 4px);
+  border-right: 1px solid #E9E9E9;
 `;
 
-export const CardDiv = styled.div`
-  height: 87.5px;
+export const Container = styled.div`
+  width: 80%;
+  border-bottom: 1px solid #E9E9E9;;
   display: flex;
   flex-direction: row;
-  margin: 3px 36px 3px 36px;
-  border-right: 1px solid black;
-  border-bottom: 1px solid black;
+
   > img {
     display: inline-block;
     width: 32px;
     height: 32px;
     margin: auto 3px auto 0px;
   }
+
+`;
+export const CardDiv = styled.div`
+  height: 87.5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-left: 36px;
+  
 
   .card-item {
     width: 248px;
@@ -80,7 +95,7 @@ export const CardDiv = styled.div`
   }
 
   .line {
-    height: 67px;
+    //height: 67px;
     width: 1px;
     background-color: #000;
     margin-left: 32px;

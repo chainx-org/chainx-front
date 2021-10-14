@@ -1,4 +1,4 @@
-import { CardDiv, MetaDataBox, Wrapper } from './css';
+import { CardDiv, MetaDataBox, Wrapper,Container,RightLine } from './style';
 import React from 'react';
 import highsure from '../../assets/icon_high_sure.svg';
 import holders from '../../assets/icon_holders.svg'
@@ -44,12 +44,16 @@ export default function MetaData() {
     <MetaDataBox>
       <Wrapper>
         {metaDataList.map((item) => {
-          return (<CardDiv>
-            <img src={item.icon} alt=""/>
-            <div className="flex flex-col justify-start my-auto ">
-              <span className="name">{item.name}</span>
-              <span className="date">{item.data}</span>
-            </div>
+          return (
+            <CardDiv>
+              <Container className={'container-div'}>
+                <img src={item.icon} alt=""/>
+                <div className="flex flex-col justify-start my-auto ">
+                  <span className="name">{item.name}</span>
+                  <span className="date">{item.data}</span>
+                </div>
+              </Container>
+              <RightLine className={'line-div'}/>
           </CardDiv>);
         })}
       </Wrapper>
