@@ -215,5 +215,11 @@ html {
 .ant-table-cell{
   border:0px !important;
 }
-
+.ant-pagination-item:focus-visible, .ant-pagination-item:hover{
+  background: #2C83EA;
+  border-radius: 2px;
+}
+.ant-pagination-item a:hover{
+  color:white;
+}
 @tailwind utilities;

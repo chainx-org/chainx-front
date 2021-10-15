@@ -20,7 +20,7 @@
     "Result": "结果",
     "Success": "成功",
     "Fail": "失败",
-    "Status": "状态",
+    "Status": "块状态",
     "Time": "时间",
     "price": "价格",
     "Amount": "数量",
@@ -47,5 +47,12 @@
     "extrinsic": "交易",
     "event": "事件",
     "ago": "之前",
-    "type": "类型"
+    "type": "类型",
+    "Block": "区块",
+    "Extrinsics": "交易",
+    "Block hash": "区块哈希",
+    "Events": "事件",
+    "Account": "账户列表",
+    "Frozen amount": "冻结金额",
+    "Total balance": "总余额"
 }

@@ -1,31 +1,25 @@
 import { useTranslation } from 'react-i18next';
 import React, { useEffect, useState } from 'react';
-import Table from '../../components/Table';
+import TableX from '../../components/Table';
 import { get } from '../../hooks/api';
-
+import { Pagination } from 'antd';
 
 
 export default function Block() {
   const {t} = useTranslation();
   const [blockData,setBlockData] = useState([])
-  const [page,setPage] = useState(0)
+  const [page,setPage] = useState(1)
   const [pageSize,setPageSize] = useState(10)
   const [blockTotal,setBlockTotal] = useState(0)
   const getBlockData = async () => {
-    const res: any = await get(`/blocks?page=${page}page_size=${pageSize}`, ``);
+    const res: any = await get(`/blocks?page=${page-1}&page_size=${pageSize}`, ``);
     setBlockTotal(res.total);
     setBlockData(res.items);
-    debugger
   };
-  useEffect(()=>{
-    getBlockData().then(()=>{
-      console.log('getBlockData success!')
 
-    })
-  },[page,pageSize])
   const chainColumns = [
     {
-      title: t('Block Height'),
+      title: t('Block'),
       dataIndex: 'number',
       key: 'number',
     },
@@ -35,80 +29,55 @@ export default function Block() {
       key: 'address',
     },
     {
-      title: t('Block Time'),
+      title: t('Time'),
       dataIndex: 'blockTime',
       key: 'blockTime',
     },
     {
-      title: t('Block Hash'),
+      title: t('Block hash'),
       dataIndex: 'hash',
       key: 'hash',
-      // render: <div>222</div>,
     },
     {
       title: t('Extrinsics'),
       dataIndex: 'extrinsics',
       key: 'extrinsics',
-      // render: <div>333</div>,
     },
     {
-      title: t('Event'),
+      title: t('Events'),
       dataIndex: 'eventCount',
       key: 'eventCount',
-      // render: <div>333</div>,
     }, {
       title: t('Validator'),
       dataIndex: 'address1',
       key: 'address1',
-      // render: <div>333</div>,
     }
   ];
 
-  const data = [
-    {
-      // key: '1',
-      number: '111',
-      address: 32,
-      blockTime: 'New York No. 1 Lake Park',
-      hash: '111111111111111',
-      extrinsics: '22222222',
-      eventCount: '12',
-      address1: '45454'
-    },
-    {
-      // key: '2',
-      number: '111',
-      address: 32,
-      blockTime: 'New York No. 1 Lake Park',
-      hash: '111111111111111',
-      extrinsics: '22222222',
-      eventCount: '12',
-      address1: '45454'
+  function onChange(page: number, pageSize: any) {
+    setPage(page);
+    setPageSize(pageSize);
+  }
 
-    },
-    {
-      // key: '3',
-      number: '111',
-      address: 32,
-      blockTime: 'New York No. 1 Lake Park',
-      hash: '111111111111111',
-      extrinsics: '22222222',
-      eventCount: '12',
-      address1: '45454'
+  useEffect(() => {
+    getBlockData().then(() => {
+      // console.log('getBlockData success!');
 
-    },
-  ];
-
-  const pagination = {
-    page: page,
-    pageSize: pageSize,
-    total: blockTotal,
-    showSizeChanger: true,
-    showQuickJumper: true,
-  };
+    });
+  }, [page, pageSize]);
   return (
     <div className="px-8 overflow-scroll">
-      <Table columns={chainColumns} dataList={blockData} pagination={pagination}/>
+      <TableX columns={chainColumns} dataList={blockData}
+             Children={
+                 <Pagination
+                   onChange={(page, pageSize) => onChange(page, pageSize)}
+                   pageSize={pageSize}
+                   defaultCurrent={page}
+                   total={blockTotal}
+                   showSizeChanger={true}
+                   showQuickJumper={true}
+                   showTotal={blockTotal => `${t('total')} ${blockTotal} ${t('items')}`}
+                 />}/>
     </div>
   );
 }

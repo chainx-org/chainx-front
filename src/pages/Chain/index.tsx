@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
 import { TabInfo } from '../../components/SwitchTab';
 import Block from './block';
+import Account from './Account';
 
 
 export default function Chian() {
@@ -38,14 +39,14 @@ export default function Chian() {
     },
     {
       title: t('Accounts'),
-      content: <></>,
+      content: <Account/>,
     }
   ];
 
   return (
     <>
       <Header/>
-      <div className="px-24 py-4 bg-gray-bgWhite screen:px-4">
+      <div className="px-24 py-16 bg-gray-bgWhite screen:px-4">
         <Wapper>
           <TableMenuBox tabList={tabList}/>
         </Wapper>

@@ -48,6 +48,13 @@
     "extrinsic": "extrinsic",
     "event": "event",
     "ago":"ago",
-    "type": "type"
+    "type": "type",
+    "Block": "Block",
+    "Extrinsics": "Extrinsics",
+    "Block hash": "Block hash",
+    "Events": "Events",
+    "Account": "Account",
+    "Frozen amount": "Frozen amount",
+    "Total balance": "Total balance"
 }
 
