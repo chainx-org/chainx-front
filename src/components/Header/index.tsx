@@ -14,7 +14,6 @@ export default function Header(showSearch: HeaderPop) {
 
     const handleClick = (e: any) => {
         e.persist();
-        console.log(e);
         if (e._targetInst.key === '1') {
 
         } else if (e._targetInst.key === '2') {

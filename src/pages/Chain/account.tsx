@@ -11,11 +11,12 @@ export default function Account() {
   const [page, setPage] = useState(1);
   const [pageSize, setPageSize] = useState(10);
   const [AccountTotal, setAccountTotal] = useState(0);
+  const [loading, setLoading] = useState(true);
   const getAccountData = async () => {
     const res: any = await get(`/accounts?page=${page - 1}&page_size=${pageSize}`, ``);
     setAccountTotal(res.total);
     setAccountData(res.items);
-    // debugger
+    setLoading(false)
   };
 
   const AccountColumns = [
@@ -38,8 +39,8 @@ export default function Account() {
           <div>{record.data.feeFrozen}</div>
         );
       },
-      defaultSortOrder: 'descend',
-      sorter: (a: any, b: any) => a.FrozenAmount - b.FrozenAmount
+      // defaultSortOrder: 'descend',
+      sorter: (a: any, b: any) => a.data.feeFrozen - b.data.feeFrozen
     },
     {
       title: t('Total balance'),
@@ -50,35 +51,35 @@ export default function Account() {
           <div>{record.data.free}</div>
         );
       },
-      defaultSortOrder: 'descend',
-      sorter: (a: any, b: any) => a.TotalBalance - b.TotalBalance
+      // defaultSortOrder: 'descend',
+      sorter: (a: any, b: any) => {
+        return a.data.free - b.data.free
+      }
     }
   ];
 
   function onChange(page: number, pageSize: any) {
     setPage(page);
     setPageSize(pageSize);
+    setLoading(true)
   }
 
   useEffect(() => {
-    getAccountData().then(() => {
-      console.log('getAccountData success!');
-
-    });
+    getAccountData().then();
   }, [page, pageSize]);
+  const pagination = {
+    pageSize: pageSize,
+    current: page,
+    defaultCurrent: page,
+    total: AccountTotal,
+    showSizeChanger: true,
+    showQuickJumper: true,
+    onChange: (page: number, pageSize: number) => onChange(page, pageSize),
+    showTotal: (AccountTotal: number) => `${t('total')} ${AccountTotal} ${t('items')}`
+  };
   return (
     <div className="px-8 overflow-scroll">
-      <TableX columns={AccountColumns} dataList={AccountData}
-              Children={
-                <Pagination
-                  onChange={(page, pageSize) => onChange(page, pageSize)}
-                  pageSize={pageSize}
-                  defaultCurrent={page}
-                  total={AccountTotal}
-                  showSizeChanger={true}
-                  showQuickJumper={true}
-                  showTotal={blockTotal => `${t('total')} ${blockTotal} ${t('items')}`}
-                />}/>
+      <TableX columns={AccountColumns} dataList={AccountData} pagination={pagination} rowKey={'_id'} loading={loading}/>
     </div>
   );
 }

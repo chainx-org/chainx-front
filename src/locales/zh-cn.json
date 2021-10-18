@@ -54,5 +54,8 @@
     "Events": "事件",
     "Account": "账户列表",
     "Frozen amount": "冻结金额",
-    "Total balance": "总余额"
+    "Total balance": "总余额",
+    "Extrinsic ID": "交易ID",
+    "Extrinsic Hash": "交易哈希",
+    "copy success": "复制成功"
 }

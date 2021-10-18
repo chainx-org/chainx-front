@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import copy from 'copy-to-clipboard';
 import Icon from '../../assets/copy.svg';
+import { message } from 'antd';
+import { useTranslation } from 'react-i18next';
 
 const Wrapper = styled.div`
   display: flex;
@@ -10,12 +12,17 @@ const Wrapper = styled.div`
     margin-right: 8px;
   }
 `;
+interface CopyTextProps{
+  children?:any,
+  text:string
+}
 
 // @ts-ignore
-export default function CopyText({children, text}) {
+export default function CopyText({children, text}:CopyTextProps) {
+  const {t} = useTranslation()
   const onCopy = () => {
     if (text && copy(text)) {
-      console.log(text);
+      message.success(t('copy success'))
     }
   };
 

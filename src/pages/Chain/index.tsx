@@ -6,8 +6,8 @@ import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
 import { TabInfo } from '../../components/SwitchTab';
 import Block from './block';
-import Account from './Account';
-
+import Account from './account';
+import Extrinsic from './extrinsic';
 
 export default function Chian() {
   const {t} = useTranslation();
@@ -27,7 +27,7 @@ export default function Chian() {
     },
     {
       title: t('Extrinsic'),
-      content: <></>,
+      content: <Extrinsic/>,
     },
     {
       title: t('Transfer'),
@@ -46,7 +46,7 @@ export default function Chian() {
   return (
     <>
       <Header/>
-      <div className="px-24 py-16 bg-gray-bgWhite screen:px-4">
+      <div className="px-24 pt-8 pb-16 bg-gray-bgWhite screen:px-4">
         <Wapper>
           <TableMenuBox tabList={tabList}/>
         </Wapper>

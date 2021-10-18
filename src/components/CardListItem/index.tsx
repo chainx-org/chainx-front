@@ -1,19 +1,19 @@
 import React from 'react';
 import {ItemContainer,ItemContext} from './css'
 import CopyText from '../../components/copyText'
-interface CaedListItem {
+interface CardListItem {
   itemTitle:string,
   itemIcon:string,
-  itemContect:string
+  itemContent:string
 }
-export default  function CardListItem({itemTitle,itemIcon,itemContect}:CaedListItem){
+export default  function CardListItem({itemTitle,itemIcon,itemContent}:CardListItem){
   return (
     <ItemContainer>
       <img src={itemIcon} alt=""/>
       <ItemContext>
         <span>{itemTitle}</span>
-        <CopyText text={itemContect}>
-        <span>{itemContect}</span>
+        <CopyText text={itemContent}>
+        <span>{itemContent}</span>
         </CopyText>
       </ItemContext>
   </ItemContainer>);

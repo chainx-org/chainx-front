@@ -222,4 +222,16 @@ html {
 .ant-pagination-item a:hover{
   color:white;
 }
+.ant-popover-content{
+  border: 1px solid;
+  border-radius:4px ;
+}
+.ant-popover-arrow-content{
+  border: 1px solid;
+}
+.ant-popover-inner-content{
+  padding: 5px 8px;
+  background: #FFFAFAFA;
+  color: #422D01;
+}
 @tailwind utilities;

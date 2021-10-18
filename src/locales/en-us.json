@@ -47,7 +47,7 @@
     "include": "include",
     "extrinsic": "extrinsic",
     "event": "event",
-    "ago":"ago",
+    "ago": "ago",
     "type": "type",
     "Block": "Block",
     "Extrinsics": "Extrinsics",
@@ -55,6 +55,9 @@
     "Events": "Events",
     "Account": "Account",
     "Frozen amount": "Frozen amount",
-    "Total balance": "Total balance"
+    "Total balance": "Total balance",
+    "Extrinsic ID": "Extrinsic ID",
+    "Extrinsic Hash": "Extrinsic Hash",
+    "copy success": "copy success"
 }
 

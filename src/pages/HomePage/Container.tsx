@@ -159,9 +159,9 @@ export default function Container() {
     };
 
     const callBack = () => {
-        getHomeMetaData().then(() => console.log('getHomeMetaData success'));
-        getLatestBlockData().then(() => console.log('getLatestBlockData success'));
-        getLatestExtrinsic().then(() => console.log('getLatestExtrinsic success'));
+        getHomeMetaData().then();
+        getLatestBlockData().then();
+        getLatestExtrinsic().then();
         InitCallBack(false);
     };
     useEffect(() => {
@@ -177,7 +177,6 @@ export default function Container() {
         const timer: NodeJS.Timeout = setInterval(tick, 5000);
         timers.push(timer);
         setTimers(timers);
-        console.log(timers);
         return () => {
             clearInterval(timer);
         };

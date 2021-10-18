@@ -11,13 +11,17 @@ import wechatImg from '../../assets/wechatImg.png';
 import styled from 'styled-components';
 import copy from 'copy-to-clipboard';
 import LangSelect from './langSelect';
+import { message, Space } from 'antd';
+import { useTranslation } from 'react-i18next';
 
-function copyEmail(text:string){
-    copy(text)
-}
 
 function Footer(): React.ReactElement {
 
+  const {t} = useTranslation()
+  function copyEmail(text:string){
+    copy(text)
+    message.success(t('copy success'))
+  }
     const ImgContent = styled.div`
       display: flex;
       flex-direction: row;
