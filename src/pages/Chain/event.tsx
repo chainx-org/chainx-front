@@ -2,74 +2,63 @@ import { useTranslation } from 'react-i18next';
 import React, { useEffect, useState } from 'react';
 import TableX from '../../components/Table';
 import { get } from '../../hooks/api';
-import successIcon from '../../assets/icon_success.svg';
-import failIcon from '../../assets/icon_failure.svg';
 import { LinkX, ShorterLink } from '../../components/LinkX';
 import TimeStatus from '../../components/TimeStatus';
+import waitIcon from '../../assets/icon_waiting.svg';
 import Operation from '../../components/Operation';
 
-export default function Extrinsic() {
+
+export default function Event() {
   const {t} = useTranslation();
-  const [extrinsicData, setExtrinsicData] = useState([]);
+  const [eventData, setEventData] = useState([]);
   const [page, setPage] = useState(1);
   const [pageSize, setPageSize] = useState(10);
-  const [extrinsicTotal, setExtrinsicTotal] = useState(0);
+  const [eventTotal, setEventTotal] = useState(0);
   const [loading, setLoading] = useState(true);
-  const getExtrinsicData = async () => {
-    const res: any = await get(`/extrinsics?page=${page - 1}&page_size=${pageSize}`, ``);
-    setExtrinsicTotal(res.total);
-    setExtrinsicData(res.items);
+  const getEventData = async () => {
+    const res: any = await get(`/events?page=${page - 1}&page_size=${pageSize}`, ``);
+    setEventTotal(res.total);
+    setEventData(res.items);
     setLoading(false);
   };
 
   const chainColumns = [
     {
       title: t('Extrinsic ID'),
-      dataIndex: 'extrinsicId',
-      key: 'extrinsicId',
+      dataIndex: 'Extrinsic ID',
+      key: 'Extrinsic ID',
       render: (text: any, record: any) => {
         return (
-          <LinkX linkUrl={'/block'} content={(record.indexer.blockHeight)+'-'+(record.indexer.index)}/>
+          <LinkX linkUrl={'/event'} content={record.indexer.blockHeight+'-'+record.sort}/>
         );
       }
     },
     {
       title: t('Block'),
-      dataIndex: 'block',
-      key: 'block',
+      dataIndex: 'Block',
+      key: 'Block',
       render: (text: any, record: any) => {
         return (
-          <LinkX linkUrl={'/block'} content={(record.indexer.blockHeight)}/>
+          <LinkX linkUrl={'/event'} content={record.indexer.blockHeight}/>
         );
       }
     },
     {
       title: t('Extrinsic Hash'),
-      dataIndex: 'extrinsicHash',
-      key: 'extrinsicHash',
+      dataIndex: 'Extrinsic Hash',
+      key: 'Extrinsic Hash',
       render: (text: any, record: any) => {
         return (
-          <ShorterLink linkUrl={'/block'} content={record.indexer.blockHash}/>
-        );
+          <ShorterLink linkUrl={'/event'} content={record.indexer.blockHash}/>);
       }
     },
     {
       title: t('Time'),
-      dataIndex: 'time',
-      key: 'time',
+      dataIndex: 'Time',
+      key: 'Time',
       render: (text: any, record: any) => {
         return (
           <TimeStatus content={record.indexer.blockTime}/>);
-      }
-    },
-    {
-      title: t('Result'),
-      dataIndex: 'result',
-      key: 'result',
-      render: (text: any, record: any) => {
-        return (
-          <div>{record.isSuccess === true ? <img src={successIcon} alt=""/> : <img src={failIcon} alt=""/>}</div>
-        );
       }
     },
     {
@@ -78,7 +67,7 @@ export default function Extrinsic() {
       key: 'Operation',
       render: (text: any, record: any) => {
         return (
-          <Operation content={record.section+'-'+record.name}/>
+          <Operation content={record.section+'-'+record.method}/>
         );
       }
     }
@@ -91,23 +80,23 @@ export default function Extrinsic() {
   }
 
   useEffect(() => {
-    getExtrinsicData().then(() => {
-
-    });
+    getEventData();
   }, [page, pageSize]);
+
   const pagination = {
     pageSize: pageSize,
     current: page,
     defaultCurrent: page,
-    total: extrinsicTotal,
+    total: eventTotal,
     showSizeChanger: true,
     showQuickJumper: true,
     onChange: (page: number, pageSize: number) => onChange(page, pageSize),
-    showTotal: (extrinsicTotal: number) => `${t('total')} ${extrinsicTotal} ${t('items')}`
+    showTotal: (eventTotal: number) => `${t('total')} ${eventTotal} ${t('items')}`
   };
+
   return (
     <div className="px-8 overflow-scroll">
-      <TableX columns={chainColumns} dataList={extrinsicData} pagination={pagination} loading={loading}/>
+      <TableX columns={chainColumns} dataList={eventData} pagination={pagination} loading={loading}/>
     </div>
   );
 }

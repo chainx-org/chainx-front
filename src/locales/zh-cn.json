@@ -51,7 +51,7 @@
     "Block": "区块",
     "Extrinsics": "交易",
     "Block hash": "区块哈希",
-    "Events": "事件",
+    "Event": "事件列表",
     "Account": "账户列表",
     "Frozen amount": "冻结金额",
     "Total balance": "总余额",

@@ -1,27 +1,27 @@
 import { useTranslation } from 'react-i18next';
-import React, { useState,useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import TableX from '../../components/Table';
 import { get } from '../../hooks/api';
 import addressIcon from '../../assets/address_icon.svg';
 import { LinkX } from '../../components/LinkX';
 
-export default function Account() {
+export default function Transfer() {
   const {t} = useTranslation();
-  const [AccountData, setAccountData] = useState([]);
+  const [extrinsicData, setExtrinsicData] = useState([]);
   const [page, setPage] = useState(1);
   const [pageSize, setPageSize] = useState(10);
-  const [AccountTotal, setAccountTotal] = useState(0);
+  const [extrinsicTotal, setExtrinsicTotal] = useState(0);
   const [loading, setLoading] = useState(true);
-  const getAccountData = async () => {
-    const res: any = await get(`/accounts?page=${page - 1}&page_size=${pageSize}`, ``);
-    setAccountTotal(res.total);
-    setAccountData(res.items);
+  const getExtrinsicData = async () => {
+    const res: any = await get(`/extrinsics?page=${page - 1}&page_size=${pageSize}`, ``);
+    setExtrinsicTotal(res.total);
+    setExtrinsicData(res.items);
     setLoading(false)
   };
 
-  const AccountColumns = [
+  const extrinsicColumns = [
     {
-      title: t('Account'),
+      title: t('extrinsic'),
       dataIndex: 'address',
       key: 'address',
       render: (text: any, record: any) => {
@@ -34,7 +34,7 @@ export default function Account() {
       }
     },
     {
-      title: t('Frozen amount'),
+      title: t('Frozen amount')+'(PCX)',
       dataIndex: 'FrozenAmount',
       key: 'FrozenAmount',
       render: (text: any, record: any) => {
@@ -42,11 +42,10 @@ export default function Account() {
           <div>{record.data.feeFrozen}</div>
         );
       },
-      // defaultSortOrder: 'descend',
       sorter: (a: any, b: any) => a.data.feeFrozen - b.data.feeFrozen
     },
     {
-      title: t('Total balance'),
+      title: t('Total balance')+'(PCX)',
       dataIndex: 'TotalBalance',
       key: 'TotalBalance',
       render: (text: any, record: any) => {
@@ -54,7 +53,6 @@ export default function Account() {
           <div>{record.data.free}</div>
         );
       },
-      // defaultSortOrder: 'descend',
       sorter: (a: any, b: any) => {
         return a.data.free - b.data.free
       }
@@ -68,21 +66,21 @@ export default function Account() {
   }
 
   useEffect(() => {
-    getAccountData().then();
+    getExtrinsicData().then();
   }, [page, pageSize]);
   const pagination = {
     pageSize: pageSize,
     current: page,
     defaultCurrent: page,
-    total: AccountTotal,
+    total: extrinsicTotal,
     showSizeChanger: true,
     showQuickJumper: true,
     onChange: (page: number, pageSize: number) => onChange(page, pageSize),
-    showTotal: (AccountTotal: number) => `${t('total')} ${AccountTotal} ${t('items')}`
+    showTotal: (extrinsicTotal: number) => `${t('total')} ${extrinsicTotal} ${t('items')}`
   };
   return (
     <div className="px-8 overflow-scroll">
-      <TableX columns={AccountColumns} dataList={AccountData} pagination={pagination} rowKey={'_id'} loading={loading}/>
+      <TableX columns={extrinsicColumns} dataList={extrinsicData} pagination={pagination} rowKey={'_id'} loading={loading}/>
     </div>
   );
 }

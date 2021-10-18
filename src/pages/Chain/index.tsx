@@ -8,6 +8,9 @@ import { TabInfo } from '../../components/SwitchTab';
 import Block from './block';
 import Account from './account';
 import Extrinsic from './extrinsic';
+import Transfer from './transfer';
+import Event from './event';
+
 
 export default function Chian() {
   const {t} = useTranslation();
@@ -31,11 +34,11 @@ export default function Chian() {
     },
     {
       title: t('Transfer'),
-      content: <></>,
+      content: <Transfer/>,
     },
     {
-      title: t('Events'),
-      content: <></>,
+      title: t('Event'),
+      content: <Event/>,
     },
     {
       title: t('Accounts'),
@@ -52,7 +55,6 @@ export default function Chian() {
         </Wapper>
       </div>
       <Footer/>
-
     </>
   );
 }
