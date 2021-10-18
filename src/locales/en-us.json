@@ -58,6 +58,20 @@
     "Total balance": "Total balance",
     "Extrinsic ID": "Extrinsic ID",
     "Extrinsic Hash": "Extrinsic Hash",
-    "copy success": "copy success"
+    "copy success": "copy success",
+    "Validators": "Validators",
+    "StandBy Node": "StandBy Node",
+    "Bitcoin Trustees": "Bitcoin Trustees",
+    "Validator Slashed": "Validator Slashed",
+    "Recent Slashed List": "Recent Slashed List",
+    "Range": "Range",
+    "Self Bonded": "Self Bonded",
+    "Total Nominations(PCX)": "Total Nominations(PCX)",
+    "Reward Pot Balance(PCX)": "Reward Pot Balance(PCX)",
+    "Latest Mining": "Latest Mining",
+    "NikeName": "NikeName",
+    "Address": "Address",
+    "Slash Count": "Slash Count",
+    "Slash Amount": "Slash Amount"
 }
 

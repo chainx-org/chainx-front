@@ -57,5 +57,20 @@
     "Total balance": "总余额",
     "Extrinsic ID": "交易ID",
     "Extrinsic Hash": "交易哈希",
-    "copy success": "复制成功"
+    "copy success": "复制成功",
+    "Validators": "验证节点",
+    "StandBy Node": "同步节点",
+    "Bitcoin Trustees": "信托节点",
+    "Validator Slashed": "节点惩罚",
+    "Recent Slashed List": "最近惩罚列表",
+    "Range": "排名",
+    "Self Bonded": "自抵押数(PCX)",
+    "Total Nominations(PCX)": "总得票数(PCX)",
+    "Reward Pot Balance(PCX)": "奖池金额(PCX)",
+    "Latest Mining": "最新出块",
+    "NikeName": "名称",
+    "Address": "地址",
+    "Slash Count": "惩罚次数",
+    "Slash Amount": "惩罚金额"
+
 }

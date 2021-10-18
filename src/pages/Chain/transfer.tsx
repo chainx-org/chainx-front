@@ -80,7 +80,7 @@ export default function Transfer() {
   };
   return (
     <div className="px-8 overflow-scroll">
-      <TableX columns={extrinsicColumns} dataList={extrinsicData} pagination={pagination} rowKey={'_id'} loading={loading}/>
+      <TableX columns={extrinsicColumns} dataList={extrinsicData} pagination={pagination} loading={loading}/>
     </div>
   );
 }

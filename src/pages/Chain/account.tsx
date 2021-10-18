@@ -82,7 +82,7 @@ export default function Account() {
   };
   return (
     <div className="px-8 overflow-scroll">
-      <TableX columns={AccountColumns} dataList={AccountData} pagination={pagination} rowKey={'_id'} loading={loading}/>
+      <TableX columns={AccountColumns} dataList={AccountData} pagination={pagination}  loading={loading}/>
     </div>
   );
 }
