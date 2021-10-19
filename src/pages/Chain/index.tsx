@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import TableMenuBox from '../../components/TableMenuBox';
@@ -8,13 +8,29 @@ import { TabInfo } from '../../components/SwitchTab';
 import Block from './block';
 import Account from './account';
 import Extrinsic from './extrinsic';
-import Transfer from './transfer';
 import Event from './event';
 
 
 export default function Chian() {
   const {t} = useTranslation();
-
+  const currentRoute = window.location.pathname.slice(7, window.location.pathname.length);
+  const [currentTab,setCurrentTab]  = useState('')
+  const chooseTab = (currentRoute:string)=>{
+    switch (currentRoute) {
+      case 'extrinsic':
+        setCurrentTab(t('Extrinsic'))
+        break;
+      case 'event':
+        setCurrentTab(t('Event'))
+        break;
+      case 'account':
+        setCurrentTab(t('Accounts'))
+        break;
+      default:
+        setCurrentTab(t('Blocks'))
+    }
+  }
+  useEffect(()=>{chooseTab(currentRoute)},[])
   const Wapper = styled.div`
     min-height: 688px;
     background: #FFFFFF;
@@ -32,10 +48,10 @@ export default function Chian() {
       title: t('Extrinsic'),
       content: <Extrinsic/>,
     },
-    {
-      title: t('Transfer'),
-      content: <Transfer/>,
-    },
+    // {
+    //   title: t('Transfer'),
+    //   content: <Transfer/>,
+    // },
     {
       title: t('Event'),
       content: <Event/>,
@@ -45,13 +61,12 @@ export default function Chian() {
       content: <Account/>,
     }
   ];
-
   return (
     <>
       <Header/>
       <div className="px-24 pt-8 pb-16 bg-gray-bgWhite screen:px-4">
         <Wapper>
-          <TableMenuBox tabList={tabList}/>
+          <TableMenuBox tabList={tabList} currentTab={currentTab}/>
         </Wapper>
       </div>
       <Footer/>

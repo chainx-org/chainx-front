@@ -72,6 +72,15 @@
     "NikeName": "NikeName",
     "Address": "Address",
     "Slash Count": "Slash Count",
-    "Slash Amount": "Slash Amount"
+    "Slash Amount": "Slash Amount",
+    "Transform Address/Public Key": "Transform Address/Public Key",
+    "Block Time": "Block Time",
+    "Sender": "Sender",
+    "Fee": "Fee",
+    "Node": "Node",
+    "Arguments": "Arguments",
+    "Cross Bridge":"Cross Bridge"
+
+
 }
 

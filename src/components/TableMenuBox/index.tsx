@@ -1,12 +1,12 @@
 import React from 'react';
 import SwitchTab, { TabInfo }  from '../../components/SwitchTab';
 interface SwitchTabProps {
-  tabList:TabInfo[]
+  tabList:TabInfo[],
+  currentTab?:any,
 }
-export default function TableMenuBox({tabList}:SwitchTabProps) {
-
+export default function TableMenuBox({tabList,currentTab}:SwitchTabProps) {
   return (
     <>
-      <SwitchTab size="lg" tabList={tabList}/>
+      <SwitchTab size="lg" tabList={tabList} currentTab={currentTab} />
     </>);
 }

@@ -8,7 +8,11 @@ import { LinkX, ShorterLink } from '../../components/LinkX';
 import TimeStatus from '../../components/TimeStatus';
 import Operation from '../../components/Operation';
 
-export default function Extrinsic() {
+interface ExtrinsicProps {
+  block?: number | string,
+}
+
+export default function Extrinsic({block}: ExtrinsicProps) {
   const {t} = useTranslation();
   const [extrinsicData, setExtrinsicData] = useState([]);
   const [page, setPage] = useState(1);
@@ -16,7 +20,12 @@ export default function Extrinsic() {
   const [extrinsicTotal, setExtrinsicTotal] = useState(0);
   const [loading, setLoading] = useState(true);
   const getExtrinsicData = async () => {
-    const res: any = await get(`/extrinsics?page=${page - 1}&page_size=${pageSize}`, ``);
+    let res: any
+    if (block) {
+      res= await get(`/extrinsics?block=${block}&page=${page - 1}&page_size=${pageSize}`, ``);
+    } else {
+      res = await get(`/extrinsics?page=${page - 1}&page_size=${pageSize}`, ``);
+    }
     setExtrinsicTotal(res.total);
     setExtrinsicData(res.items);
     setLoading(false);
@@ -29,7 +38,7 @@ export default function Extrinsic() {
       key: 'extrinsicId',
       render: (text: any, record: any) => {
         return (
-          <LinkX linkUrl={'/block'} content={(record.indexer.blockHeight)+'-'+(record.indexer.index)}/>
+          <LinkX linkUrl={`/extrinsicsDetails/${record.indexer.blockHash}`} content={(record.indexer.blockHeight)+'-'+(record.indexer.index)}/>
         );
       }
     },
@@ -49,7 +58,7 @@ export default function Extrinsic() {
       key: 'extrinsicHash',
       render: (text: any, record: any) => {
         return (
-          <ShorterLink linkUrl={'/block'} content={record.indexer.blockHash}/>
+          <ShorterLink linkUrl={`/extrinsicsDetails/${record.hash}`} content={record.hash}/>
         );
       }
     },

@@ -23,7 +23,8 @@ module.exports = {
         grayWhite: "#FFFFFFA6",
         bgWhite: "#F5F5F5FF",
         border: '#E8E8E8',
-        hover:'#E7F1FF'
+        hover:'#E7F1FF',
+
       },
       blue: {
         light: "#4572DE",
@@ -43,7 +44,8 @@ module.exports = {
         blue: "#040B38",
         light: "#F2F5F9",
         gray:"#0A000000",
-        white:'#fff'
+        white:'#fff',
+        blueLight:'#61B7FF'
       },
       textColor: {
         gray: " #504862;",

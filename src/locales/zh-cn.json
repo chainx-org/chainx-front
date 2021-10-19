@@ -71,6 +71,13 @@
     "NikeName": "名称",
     "Address": "地址",
     "Slash Count": "惩罚次数",
-    "Slash Amount": "惩罚金额"
+    "Slash Amount": "惩罚金额",
+    "Transform Address/Public Key": "SS58账号转换",
+    "Block Time": "出块时间",
+    "Sender": "发送账户",
+    "Fee": "手续费",
+    "Node": "节点",
+    "Arguments ": "参数",
+    "Cross Bridge":"跨链转接桥"
 
 }

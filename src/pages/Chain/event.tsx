@@ -4,11 +4,14 @@ import TableX from '../../components/Table';
 import { get } from '../../hooks/api';
 import { LinkX, ShorterLink } from '../../components/LinkX';
 import TimeStatus from '../../components/TimeStatus';
-import waitIcon from '../../assets/icon_waiting.svg';
 import Operation from '../../components/Operation';
 
+interface EventProps {
+  block?: number | string,
+  extrinsics?: string
+}
 
-export default function Event() {
+export default function Event({block, extrinsics}: EventProps) {
   const {t} = useTranslation();
   const [eventData, setEventData] = useState([]);
   const [page, setPage] = useState(1);
@@ -16,7 +19,16 @@ export default function Event() {
   const [eventTotal, setEventTotal] = useState(0);
   const [loading, setLoading] = useState(true);
   const getEventData = async () => {
-    const res: any = await get(`/events?page=${page - 1}&page_size=${pageSize}`, ``);
+    let res: any;
+    if (block) {
+      res = await get(`/blockEvents?block=${block}&page=${page - 1}&page_size=${pageSize}`, ``);
+    } else {
+      if (extrinsics) {
+        res = await get(`/extrinsicEvents?extrinsic_hash=${extrinsics}&page=${page - 1}&page_size=${pageSize}`, ``);
+      } else {
+        res = await get(`/events?page=${page - 1}&page_size=${pageSize}`, ``);
+      }
+    }
     setEventTotal(res.total);
     setEventData(res.items);
     setLoading(false);

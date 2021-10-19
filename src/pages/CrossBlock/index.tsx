@@ -108,7 +108,7 @@ export default function CrossBlock() {
       <Header/>
       <div className="px-24 py-4 bg-gray-bgWhite ">
         <Wapper>
-          <TableMenuBox tabList={tabList}/>
+          <TableMenuBox tabList={tabList} key={''}/>
           <div className="px-8">
             <Table columns={columns} dataList={data} pagination={pagination}/>
           </div>

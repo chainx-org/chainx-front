@@ -11,7 +11,7 @@ const {TextArea} = Input;
 interface CardBoxProps {
   cardBoxTitleIcon: string;
   cardBoxTitleName: string;
-  cardBoxTitleContainer: any;
+  cardBoxTitleContainer?: any;
 }
 
 export default function AccountTransfer({cardBoxTitleIcon, cardBoxTitleName, cardBoxTitleContainer}: CardBoxProps) {
@@ -58,7 +58,7 @@ export default function AccountTransfer({cardBoxTitleIcon, cardBoxTitleName, car
             <div>
               <img className="inline-block" src={cardBoxTitleContainer.icon} alt=""/>
                 <div >{cardBoxTitleContainer.result}</div>
-              <CardListItem itemIcon={Icon} itemContent={'0x1231212112121212121212121212'} itemTitle={'Public key'}/>
+              {/*<CardListItem itemIcon={Icon} itemContent={'0x1231212112121212121212121212'} itemTitle={'Public key'}/>*/}
             </div>
           </div>
         </Container>

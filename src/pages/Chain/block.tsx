@@ -28,7 +28,7 @@ export default function Block() {
       key: 'number',
       render: (text: any, record: any) => {
         return (
-          <LinkX linkUrl={'/block'} content={record.header.number}/>
+          <LinkX linkUrl={`/blockDetails/${record.header.number}`} content={record.header.number}/>
         );
       }
     },
