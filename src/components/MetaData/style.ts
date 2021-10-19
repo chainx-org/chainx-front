@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const MetaDataBox = styled.div`
   width: 100%;
   height: 12rem;
+  padding:0rem 6rem;
   background: linear-gradient(to bottom, black 0%, black 30%, #f5f5f5 30%, #f5f5f5 100%);
   border: 0px solid #ccc;
   @media screen and (max-width: 900px) {
@@ -15,7 +16,7 @@ export const Wrapper = styled.div`
   box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.04);
   border: 1px solid #E9E9E9;
   border-radius: 6px;
-  width: 94%;
+  width: 100%;
   margin: 3rem auto;
   display: grid;
   grid-template-columns: 25% 25% 25% 25%;

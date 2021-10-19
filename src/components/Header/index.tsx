@@ -37,9 +37,6 @@ export default function Header(showSearch: HeaderPop) {
                   <Link to="/crossBlock">
                       <span key="4" className="toplinkName">{t('Cross Bridge')}</span>
                   </Link>
-                  {/*<Link to="/dex">*/}
-                  {/*    <span key="5" className="toplinkName">{t('Dex')}</span>*/}
-                  {/*</Link>*/}
                   <Link to="/tools">
                       <span key="6" className="toplinkName">{t('Tools')}</span>
                   </Link>

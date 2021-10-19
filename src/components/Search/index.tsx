@@ -18,7 +18,7 @@ export default function Search({ className }: SearchProps)
     return (
         <>
             {className === 'NavSearch' ?
-                <div className={className} style={{ border: '1px solid rgba(105, 168, 237, 0.21)' }} >
+                <div className={className} style={{ border: '1px solid rgba(105, 168, 237, 0.21' }} >
                     <Search placeholder={t('Search Address/Extrinsics/Blocks')} onSearch={onSearch} enterButton />
                 </div> :
                 <Search className={'Home_pageSearch'} placeholder={t('Search Address/Extrinsics/Blocks')} onSearch={onSearch} enterButton />

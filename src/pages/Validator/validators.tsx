@@ -31,7 +31,7 @@ export default function Validator() {
       render: (text: any, record: any) => {
         return (
           <>
-            <LinkX linkUrl={'/validator'} content={record.referralId}/>
+            {record.referralId}
             {record.isTrust === true ? '信托' : ''}
           </>);
       }
@@ -42,7 +42,7 @@ export default function Validator() {
       key: 'Address',
       render: (text: any, record: any) => {
         return (
-          <LinkX linkUrl={'/validator'} content={record.account}/>);
+        <LinkX linkUrl={`/addressDetails/${record.account}`} content={record.account}/>);
       }
     },
     {

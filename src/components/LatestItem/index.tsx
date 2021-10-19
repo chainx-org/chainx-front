@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import iconImg from '../../assets/icon.png';
 import { useTranslation } from 'react-i18next';
+import { LinkX } from '../../components/LinkX';
 
 interface LatestItemPop {
   title: string,
@@ -49,10 +50,10 @@ export default function LatestItem({ title, icon, ListData}: LatestItemPop) {
             </div>
             <div className="flex flex-col justify-start ml-4 w-overSpread">
               <div className=" flex flex-row justify-between">
-                <span>{item.number}</span>
-                <div>
-                  <span>{t('Validator')}</span>
-                  <span>{item.nikename}</span>
+                <LinkX linkUrl={`/blockDetails/${item.number}`} content={item.number}/>
+                <div className='flex flex-row'>
+                  <div className='inline-block mr-1'>{t('Validator')}</div>
+                  <LinkX linkUrl={`/addressDetails/${item.address}`} content={item.nikename}/>
                 </div>
               </div>
               <div className="flex flex-row justify-between">

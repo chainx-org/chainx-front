@@ -11,7 +11,7 @@ function homeSearch() {
         display: grid;
         grid-template-columns: 50% 50%;
         place-content: space-around space-evenly;
-        padding: 3rem 3rem 2rem 3rem;
+        padding: 3rem 6rem 2rem 6rem;
         position: relative;
         @media screen and (max-width: 900px) {
             grid-template-columns: 100%;
@@ -40,7 +40,7 @@ function homeSearch() {
 
     return (
       <TableWrapper>
-          <img src={lightNing} alt="" style={{position: 'absolute'}}/>
+          <img src={lightNing} alt="" style={{position: 'absolute',left:'7rem'}}/>
           <div className="grid grid-rows-2">
               <div className="h-13 text-4xl PingFangSC-Medium, PingFang SC text-textColor-white">ChainX Blockchain
                   Explorer
