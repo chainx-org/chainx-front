@@ -4,10 +4,10 @@ import TableX from '../../components/Table';
 import { get } from '../../hooks/api';
 import { LinkX, ShorterLink } from '../../components/LinkX';
 import TimeStatus from '../../components/TimeStatus';
-import waitIcon from '../../assets/icon_waiting.svg';
+import swapEndian from '../../helper/swapEndian';
 
 
-export default function Block() {
+export default function BitcoinBlock() {
   const {t} = useTranslation();
   const [blockData, setBlockData] = useState([]);
   const [page, setPage] = useState(1);
@@ -15,7 +15,7 @@ export default function Block() {
   const [blockTotal, setBlockTotal] = useState(0);
   const [loading, setLoading] = useState(true);
   const getBlockData = async () => {
-    const res: any = await get(`/blocks?page=${page - 1}&page_size=${pageSize}`, ``);
+    const res: any = await get(`/crossblocks/bitcoin/blocks?page=${page - 1}&page_size=${pageSize}`, ``);
     setBlockTotal(res.total);
     setBlockData(res.items);
     setLoading(false);
@@ -23,64 +23,54 @@ export default function Block() {
 
   const chainColumns = [
     {
-      title: t('Block'),
-      dataIndex: 'number',
-      key: 'number',
+      title: t('Bitcoin Height'),
+      dataIndex: 'bitcoinHeight',
+      key: 'bitcoinHeight',
       render: (text: any, record: any) => {
         return (
-          <LinkX linkUrl={`/blockDetails/${record.header.number}`} content={record.header.number}/>
+          <LinkX linkUrl={`https://live.blockcypher.com/btc/block/${record.btcHeight}/`}
+                 content={record.btcHeight}/>
         );
       }
     },
     {
-      title: t('Status'),
-      dataIndex: 'address',
-      key: 'address',
+      title: t('Bitcoin Block Hash'),
+      dataIndex: 'bitcoinBlockHash',
+      key: 'bitcoinBlockHash',
       render: (text: any, record: any) => {
         return (
-          <img src={waitIcon} alt=""/>
+        <a style={{display: 'inline-block', color: '#3C88C6'}}
+           href={`https://live.blockcypher.com/btc/block/${swapEndian(record.btcHash.slice(2))}/`}
+           target="_Blank">{swapEndian(record.btcHash)}</a>
         );
       }
     },
     {
-      title: t('Time'),
-      dataIndex: 'blockTime',
-      key: 'blockTime',
+      title: t('ChainX Relay TX Hash'),
+      dataIndex: 'chainXRelayTXHash',
+      key: 'chainXRelayTXHash',
       render: (text: any, record: any) => {
         return (
-          <TimeStatus content={record.blockTime}/>);
+          <ShorterLink linkUrl={`/extrinsicsDetails/${record.chainxExtrinsicHash}`}
+                       content={record.chainxExtrinsicHash}/>);
       }
     },
     {
-      title: t('Block hash'),
-      dataIndex: 'hash',
-      key: 'hash',
+      title: t('ChainX Relayer'),
+      dataIndex: 'chainXRelayer',
+      key: 'chainXRelayer',
       render: (text: any, record: any) => {
         return (
-          <ShorterLink linkUrl={`/blockDetails/${record.hash}`} content={record.hash}/>);
+          <ShorterLink linkUrl={`/addressDetails/${record.signer}`} content={record.signer}/>);
       }
     },
     {
-      title: t('Extrinsics'),
-      dataIndex: 'extrinsics',
-      key: 'extrinsics',
+      title: t('ChainX Relay Time'),
+      dataIndex: 'chainXRelayTime',
+      key: 'chainXRelayTime',
       render: (text: any, record: any) => {
         return (
-          <div>{record.extrinsics.length}</div>
-        );
-      }
-    },
-    {
-      title: t('Events'),
-      dataIndex: 'eventCount',
-      key: 'eventCount',
-    }, {
-      title: t('Validator'),
-      dataIndex: 'Validator',
-      key: 'Validator',
-      render: (text: any, record: any) => {
-        return (
-          <LinkX linkUrl={`/addressDetails/${record.author}`} content={record.referralId}/>);
+          <TimeStatus content={record.chainxTime}/>);
       }
     }
   ];
@@ -108,7 +98,7 @@ export default function Block() {
 
   return (
     <div className="px-8 overflow-scroll">
-      <TableX columns={chainColumns} dataList={blockData} pagination={pagination} loading={loading} />
+      <TableX columns={chainColumns} dataList={blockData} pagination={pagination} loading={loading}/>
     </div>
   );
 }

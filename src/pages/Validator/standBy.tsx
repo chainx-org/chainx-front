@@ -26,7 +26,7 @@ export default function StandBy() {
       render: (text: any, record: any) => {
         return (
           <>
-            <LinkX linkUrl={'/unsettled'} content={record.referralId}/>
+            <LinkX linkUrl={`/addressDetails/${record.account}`} content={record.referralId}/>
             {record.isValidating === true ? '信托' : ''}
           </>);
       }
@@ -37,7 +37,7 @@ export default function StandBy() {
       key: 'Address',
       render: (text: any, record: any) => {
         return (
-          <LinkX linkUrl={'/unsettled'} content={record.account}/>);
+          <ShorterLink linkUrl={`/addressDetails/${record.account}`} content={record.account}/>);
       }
     },
     {
@@ -83,7 +83,8 @@ export default function StandBy() {
       key: 'Mining',
       render: (text: any, record: any) => {
         return (
-          <LinkX linkUrl={'/unsettled'} content={record.lastTotalVoteWeightUpdate}/>
+        <LinkX linkUrl={`/blockDetails/${record.lastTotalVoteWeightUpdate}`}
+               content={record.lastTotalVoteWeightUpdate}/>
         );
       }
     }

@@ -58,8 +58,8 @@ export default function LatestItem({ title, icon, ListData}: LatestItemPop) {
               </div>
               <div className="flex flex-row justify-between">
                 <div>
-                  <span>{t('include')}{item.number}</span>
-                  <span>{t('extrinsic')}{item.event}</span>
+                  <div className='inline-block mr-1'>{t('include')}{item.number}</div>
+                  <div className='inline-block mr-1'>{t('extrinsic')}{item.event}</div>
                   <span>{t('event')}{item.exe}</span>
                 </div>
                 <div>

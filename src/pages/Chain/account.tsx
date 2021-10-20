@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import React, { useState,useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import TableX from '../../components/Table';
 import { get } from '../../hooks/api';
 import addressIcon from '../../assets/address_icon.svg';
@@ -28,7 +28,7 @@ export default function Account() {
         return (
           <div className="flex flex-row items-center">
             <img src={addressIcon} alt="" style={{marginRight: '0.25rem'}}/>
-            <LinkX linkUrl={'/block'} content={record.address}/>
+            <LinkX linkUrl={`/addressDetails/${record.address}`} content={record.address}/>
           </div>
         );
       }

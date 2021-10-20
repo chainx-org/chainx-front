@@ -4,10 +4,10 @@ import TableX from '../../components/Table';
 import { get } from '../../hooks/api';
 import { LinkX, ShorterLink } from '../../components/LinkX';
 import TimeStatus from '../../components/TimeStatus';
-import waitIcon from '../../assets/icon_waiting.svg';
+import swapEndian from '../../helper/swapEndian';
 
 
-export default function Block() {
+export default function Deposit() {
   const {t} = useTranslation();
   const [blockData, setBlockData] = useState([]);
   const [page, setPage] = useState(1);
@@ -15,7 +15,7 @@ export default function Block() {
   const [blockTotal, setBlockTotal] = useState(0);
   const [loading, setLoading] = useState(true);
   const getBlockData = async () => {
-    const res: any = await get(`/blocks?page=${page - 1}&page_size=${pageSize}`, ``);
+    const res: any = await get(`/crossblocks/bitcoin/deposits?page=${page - 1}&page_size=${pageSize}`, ``);
     setBlockTotal(res.total);
     setBlockData(res.items);
     setLoading(false);
@@ -23,64 +23,60 @@ export default function Block() {
 
   const chainColumns = [
     {
-      title: t('Block'),
-      dataIndex: 'number',
-      key: 'number',
+      title: t('Bitcoin Transaction Hash'),
+      dataIndex: 'bitcoinTransactionHash',
+      key: 'bitcoinTransactionHash',
       render: (text: any, record: any) => {
         return (
-          <LinkX linkUrl={`/blockDetails/${record.header.number}`} content={record.header.number}/>
+          <LinkX linkUrl={`https://live.blockcypher.com/btc/tx/${swapEndian(record.data[0])}`}
+                 content={record.data[0]}/>
         );
       }
     },
     {
-      title: t('Status'),
-      dataIndex: 'address',
-      key: 'address',
+      title: t('ChainX Transaction Hash'),
+      dataIndex: 'chainXTransactionHash',
+      key: 'chainXTransactionHash',
       render: (text: any, record: any) => {
         return (
-          <img src={waitIcon} alt=""/>
-        );
+          <ShorterLink linkUrl={`/extrinsicsDetails/${record.extrinsicHash}`}
+                       content={record.extrinsicHash}/>);
       }
     },
     {
-      title: t('Time'),
-      dataIndex: 'blockTime',
-      key: 'blockTime',
+      title: t('ChainX Deposit Address'),
+      dataIndex: 'chainXDepositAddress',
+      key: 'chainXDepositAddress',
       render: (text: any, record: any) => {
         return (
-          <TimeStatus content={record.blockTime}/>);
+          <ShorterLink linkUrl={`/addressDetails/${record.data[1]}`}
+                       content={record.data[1]}/>);
       }
     },
     {
-      title: t('Block hash'),
-      dataIndex: 'hash',
-      key: 'hash',
+      title: t('Deposit Time'),
+      dataIndex: 'depositTime',
+      key: 'depositTime',
       render: (text: any, record: any) => {
         return (
-          <ShorterLink linkUrl={`/blockDetails/${record.hash}`} content={record.hash}/>);
+          <TimeStatus content={record.indexer.blockTime}/>);
       }
     },
     {
-      title: t('Extrinsics'),
-      dataIndex: 'extrinsics',
-      key: 'extrinsics',
+      title: t('Asset'),
+      dataIndex: 'Asset',
+      key: 'Asset',
       render: (text: any, record: any) => {
         return (
-          <div>{record.extrinsics.length}</div>
-        );
+          <div>{'BTC'}</div>);
       }
-    },
-    {
-      title: t('Events'),
-      dataIndex: 'eventCount',
-      key: 'eventCount',
-    }, {
-      title: t('Validator'),
-      dataIndex: 'Validator',
-      key: 'Validator',
+    },{
+      title: t('Balance'),
+      dataIndex: 'Balance',
+      key: 'Balance',
       render: (text: any, record: any) => {
         return (
-          <LinkX linkUrl={`/addressDetails/${record.author}`} content={record.referralId}/>);
+          <div>{record.data[2]/100000000}</div>);
       }
     }
   ];
@@ -108,7 +104,7 @@ export default function Block() {
 
   return (
     <div className="px-8 overflow-scroll">
-      <TableX columns={chainColumns} dataList={blockData} pagination={pagination} loading={loading} />
+      <TableX columns={chainColumns} dataList={blockData} pagination={pagination} loading={loading}/>
     </div>
   );
 }

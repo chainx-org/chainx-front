@@ -23,6 +23,7 @@ export default function BlockDetails() {
   const [loading, setLoading] = useState(true);
   const [blockDetails, setBlockDetails] = useState<any>();
   const block = window.location.pathname.slice(14, window.location.pathname.length);
+  const isBlockNumber = (typeof (block) === 'number')
   const [nowBlock,setNowBlock] = useState(block)
   const getData = async () => {
     const res: any = await get(`/blocks/${nowBlock}`, ``);
@@ -100,7 +101,7 @@ export default function BlockDetails() {
     <>
       <Header/>
       <div className="px-24 pt-8 bg-gray-arrow screen:px-4">
-        <DetailTitle routeTitle={'Block Height'} content={Number(nowBlock)} isBlock={true} setNowBlock={setNowBlock} routePath={routerPath}/>
+        <DetailTitle routeTitle={'Block Height'} content={nowBlock} isBlock={isBlockNumber} setNowBlock={setNowBlock} routePath={routerPath}/>
       </div>
       <List list={list} loading={loading}/>
       <div className="px-24 pb-16 bg-gray-bgWhite screen:px-4">

@@ -41,7 +41,8 @@ export default function Event({block, extrinsics}: EventProps) {
       key: 'Extrinsic ID',
       render: (text: any, record: any) => {
         return (
-          <LinkX linkUrl={'/event'} content={record.indexer.blockHeight+'-'+record.sort}/>
+          <LinkX linkUrl={`/extrinsicsDetails/${record.extrinsicHash}`}
+                 content={record.indexer.blockHeight + '-' + record.sort}/>
         );
       }
     },
@@ -51,7 +52,7 @@ export default function Event({block, extrinsics}: EventProps) {
       key: 'Block',
       render: (text: any, record: any) => {
         return (
-          <LinkX linkUrl={'/event'} content={record.indexer.blockHeight}/>
+          <LinkX linkUrl={`/blockDetails/${record.indexer.blockHeight}`} content={record.indexer.blockHeight}/>
         );
       }
     },
@@ -61,7 +62,7 @@ export default function Event({block, extrinsics}: EventProps) {
       key: 'Extrinsic Hash',
       render: (text: any, record: any) => {
         return (
-          <ShorterLink linkUrl={'/event'} content={record.indexer.blockHash}/>);
+          <ShorterLink linkUrl={`/extrinsicsDetails/${record.extrinsicHash}`} content={record.extrinsicHash}/>);
       }
     },
     {

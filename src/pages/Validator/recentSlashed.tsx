@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import React, { useEffect, useState } from 'react';
 import TableX from '../../components/Table';
 import { get } from '../../hooks/api';
-import { LinkX } from '../../components/LinkX';
+import { LinkX, ShorterLink } from '../../components/LinkX';
 import TimeStatus from '../../components/TimeStatus';
 
 
@@ -26,9 +26,8 @@ export default function RecentSlashed() {
       key: 'Block',
       render: (text: any, record: any) => {
         return (
-          <>
-            <LinkX linkUrl={'/recentSlashed'} content={record.indexer.blockHeight}/>
-          </>);
+          <LinkX linkUrl={`/blockDetails/${record.indexer.blockHeight}`} content={record.indexer.blockHeight}/>
+        );
       }
     },
     {
@@ -46,7 +45,7 @@ export default function RecentSlashed() {
       render: (text: any, record: any) => {
         return (
           <>
-            <LinkX linkUrl={'/missed'} content={record.referralId}/>
+            <LinkX linkUrl={`/addressDetails/${record.data[0]}`} content={record.referralId}/>
             {record.isValidating === true ? '信托' : ''}
           </>);
       }
@@ -56,7 +55,7 @@ export default function RecentSlashed() {
       key: 'Address',
       render: (text: any, record: any) => {
         return (
-          <LinkX linkUrl={'/missed'} content={record.data[0]}/>);
+          <ShorterLink linkUrl={`/addressDetails/${record.data[0]}`} content={record.data[0]}/>);
       }
     }, {
       title: t('Slash Amount'),
@@ -64,7 +63,7 @@ export default function RecentSlashed() {
       key: 'Slash Amount',
       render: (text: any, record: any) => {
         return (
-          <LinkX linkUrl={'/missed'} content={record.data[1]}/>);
+          <div>{record.data[1]}</div>);
       },
       sorter: (a: any, b: any) => {
         return a.data[1] - b.data[1]

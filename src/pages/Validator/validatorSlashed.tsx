@@ -26,7 +26,8 @@ export default function ValidatorSlashed() {
       render: (text: any, record: any) => {
         return (
           <>
-            <LinkX linkUrl={'/missed'} content={record.referralId}/>
+
+            <LinkX linkUrl={`/addressDetails/${record.account}`} content={record.referralId}/>);
             {record.isValidating === true ? '信托' : ''}
           </>);
       }
@@ -37,7 +38,7 @@ export default function ValidatorSlashed() {
       key: 'Address',
       render: (text: any, record: any) => {
         return (
-          <LinkX linkUrl={'/missed'} content={record.account}/>);
+          <ShorterLink linkUrl={`/addressDetails/${record.account}`} content={record.account}/>);
       }
     },
     {
@@ -46,7 +47,7 @@ export default function ValidatorSlashed() {
       key: 'Count',
       render: (text: any, record: any) => {
         return (
-          <LinkX linkUrl={'/missed'} content={record.missed}/>);
+          <div>{record.missed}</div>);
       }
     }
   ];

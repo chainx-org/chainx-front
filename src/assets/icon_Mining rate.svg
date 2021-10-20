@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>icon_Mining rate</title>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="005-01验证节点" transform="translate(-970.000000, -84.000000)">
+            <g id="编组-22" transform="translate(938.000000, 72.000000)">
+                <g id="icon_Mining-rate" transform="translate(32.000000, 12.000000)">
+                    <rect id="矩形" stroke="#979797" fill="#D8D8D8" opacity="0" x="0.5" y="0.5" width="23" height="23"></rect>
+                    <g id="编组-7" transform="translate(2.000000, 0.673935)">
+                        <path d="M7.16791085,1.90790079 C3.11851746,3.12401253 0.168224754,6.88039408 0.168224754,11.3258534 C0.168224754,16.7559432 4.57018231,21.1579008 10.0002721,21.1579008 C14.3101325,21.1579008 17.9723116,18.3848474 19.2999023,14.5256478" id="路径" stroke="#080810" stroke-linecap="round" stroke-linejoin="round"></path>
+                        <path d="M8,2.32606506 C14.0751322,2.32606506 19,7.25093282 19,13.3260651 C19,13.5358441 18.9941277,13.7442515 18.9825386,13.951132 L8,13.9508121 Z" id="形状结合" fill="#FFE403"></path>
+                        <path d="M10.5,0.837760166 C13.2005627,0.964364537 15.6343367,2.11115941 17.4246212,3.90144386 C19.3247475,5.80157013 20.5,8.42657013 20.5,11.3260651 L20.5,11.3260651 L11,11.4508121 Z" id="形状结合" stroke="#080810"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

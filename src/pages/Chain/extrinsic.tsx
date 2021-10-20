@@ -38,7 +38,7 @@ export default function Extrinsic({block}: ExtrinsicProps) {
       key: 'extrinsicId',
       render: (text: any, record: any) => {
         return (
-          <LinkX linkUrl={`/extrinsicsDetails/${record.indexer.blockHash}`} content={(record.indexer.blockHeight)+'-'+(record.indexer.index)}/>
+          <LinkX linkUrl={`/extrinsicsDetails/${record.hash}`} content={(record.indexer.blockHeight)+'-'+(record.indexer.index)}/>
         );
       }
     },
@@ -48,7 +48,7 @@ export default function Extrinsic({block}: ExtrinsicProps) {
       key: 'block',
       render: (text: any, record: any) => {
         return (
-          <LinkX linkUrl={'/block'} content={(record.indexer.blockHeight)}/>
+          <LinkX linkUrl={`/blockDetails/${record.indexer.blockHeight}`} content={(record.indexer.blockHeight)}/>
         );
       }
     },

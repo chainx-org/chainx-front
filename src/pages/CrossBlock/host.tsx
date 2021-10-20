@@ -2,12 +2,11 @@ import { useTranslation } from 'react-i18next';
 import React, { useEffect, useState } from 'react';
 import TableX from '../../components/Table';
 import { get } from '../../hooks/api';
-import { LinkX, ShorterLink } from '../../components/LinkX';
+import { ShorterLink } from '../../components/LinkX';
 import TimeStatus from '../../components/TimeStatus';
-import waitIcon from '../../assets/icon_waiting.svg';
 
 
-export default function Block() {
+export default function Host() {
   const {t} = useTranslation();
   const [blockData, setBlockData] = useState([]);
   const [page, setPage] = useState(1);
@@ -15,7 +14,7 @@ export default function Block() {
   const [blockTotal, setBlockTotal] = useState(0);
   const [loading, setLoading] = useState(true);
   const getBlockData = async () => {
-    const res: any = await get(`/blocks?page=${page - 1}&page_size=${pageSize}`, ``);
+    const res: any = await get(`/crossblocks/bitcoin/trustees?page=${page - 1}&page_size=${pageSize}`, ``);
     setBlockTotal(res.total);
     setBlockData(res.items);
     setLoading(false);
@@ -23,64 +22,43 @@ export default function Block() {
 
   const chainColumns = [
     {
-      title: t('Block'),
-      dataIndex: 'number',
-      key: 'number',
+      title: t('Multi Signer Threshold'),
+      dataIndex: 'Threshold',
+      key: 'Threshold',
       render: (text: any, record: any) => {
         return (
-          <LinkX linkUrl={`/blockDetails/${record.header.number}`} content={record.header.number}/>
+          <div>
+            {record.threshold}
+          </div>
         );
       }
     },
     {
-      title: t('Status'),
-      dataIndex: 'address',
-      key: 'address',
+      title: t('Trustee'),
+      dataIndex: 'Trustee',
+      key: 'Trustee',
       render: (text: any, record: any) => {
         return (
-          <img src={waitIcon} alt=""/>
-        );
+          <ShorterLink linkUrl={`/extrinsicsDetails/${record.address}`}
+                       content={record.address}/>);
       }
     },
     {
-      title: t('Time'),
-      dataIndex: 'blockTime',
-      key: 'blockTime',
+      title: t('Hot Public Key'),
+      dataIndex: 'hotKey',
+      key: 'hotKey',
       render: (text: any, record: any) => {
         return (
-          <TimeStatus content={record.blockTime}/>);
+         <div>{record.hotPubkey}</div>);
       }
     },
     {
-      title: t('Block hash'),
-      dataIndex: 'hash',
-      key: 'hash',
+      title: t('Cold Public Key'),
+      dataIndex: 'coldKey',
+      key: 'coldKey',
       render: (text: any, record: any) => {
         return (
-          <ShorterLink linkUrl={`/blockDetails/${record.hash}`} content={record.hash}/>);
-      }
-    },
-    {
-      title: t('Extrinsics'),
-      dataIndex: 'extrinsics',
-      key: 'extrinsics',
-      render: (text: any, record: any) => {
-        return (
-          <div>{record.extrinsics.length}</div>
-        );
-      }
-    },
-    {
-      title: t('Events'),
-      dataIndex: 'eventCount',
-      key: 'eventCount',
-    }, {
-      title: t('Validator'),
-      dataIndex: 'Validator',
-      key: 'Validator',
-      render: (text: any, record: any) => {
-        return (
-          <LinkX linkUrl={`/addressDetails/${record.author}`} content={record.referralId}/>);
+          <TimeStatus content={record.coldPubkey}/>);
       }
     }
   ];
@@ -108,7 +86,7 @@ export default function Block() {
 
   return (
     <div className="px-8 overflow-scroll">
-      <TableX columns={chainColumns} dataList={blockData} pagination={pagination} loading={loading} />
+      <TableX columns={chainColumns} dataList={blockData} pagination={pagination} loading={loading}/>
     </div>
   );
 }

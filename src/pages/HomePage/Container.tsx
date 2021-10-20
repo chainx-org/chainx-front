@@ -114,7 +114,7 @@ export default function Container() {
     //获取metaData数据
     const getHomeMetaData = async () => {
         const {latestChainStatus}: any = await get('/latestChainStatus', '');
-        setMetaData([{
+        setMetaData([...[{
             icon: highsure,
             name: '已确认块高',
             data: latestChainStatus.finalized
@@ -146,16 +146,16 @@ export default function Container() {
             icon: issuance,
             name: '质押率',
             data: '-'
-        }]);
+        }]]);
     };
     const getLatestBlockData = async () => {
         const {latestBlocks}: any = await get('/latestBlock', '');
-        setListData(latestBlocks.splice(5));
+        setListData([...latestBlocks]);
     };
 
     const getLatestExtrinsic = async () => {
         const {latestExtrinsics}: any = await get('/latestExtrinsic', '');
-        setLatestExtrinsic(latestExtrinsics.splice(5));
+        setLatestExtrinsic([...latestExtrinsics]);
     };
 
     const callBack = () => {

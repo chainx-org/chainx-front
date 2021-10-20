@@ -42,7 +42,7 @@ export default function Validator() {
       key: 'Address',
       render: (text: any, record: any) => {
         return (
-        <LinkX linkUrl={`/addressDetails/${record.account}`} content={record.account}/>);
+          <ShorterLink linkUrl={`/addressDetails/${record.account}`} content={record.account}/>);
       }
     },
     {
@@ -88,7 +88,8 @@ export default function Validator() {
       key: 'Mining',
       render: (text: any, record: any) => {
         return (
-          <LinkX linkUrl={'/validator'} content={record.lastTotalVoteWeightUpdate}/>
+          <LinkX linkUrl={`/blockDetails/${record.lastTotalVoteWeightUpdate}`}
+                 content={record.lastTotalVoteWeightUpdate}/>
         );
       }
     }

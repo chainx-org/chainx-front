@@ -26,7 +26,7 @@ export default function Trustees() {
       render: (text: any, record: any) => {
         return (
           <>
-            <LinkX linkUrl={'/trustees'} content={record.referralId}/>
+            <LinkX linkUrl={`/addressDetails/${record.account}`} content={record.referralId}/>
             {record.isValidating === true ? '信托' : ''}
           </>);
       }
@@ -37,7 +37,7 @@ export default function Trustees() {
       key: 'Address',
       render: (text: any, record: any) => {
         return (
-          <LinkX linkUrl={'/trustees'} content={record.account}/>);
+          <ShorterLink linkUrl={`/addressDetails/${record.account}`} content={record.account}/>);
       }
     },
     {
