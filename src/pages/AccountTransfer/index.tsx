@@ -19,6 +19,9 @@ export default function AccountTransfer() {
   //   border: 1px solid #E9E9E9;
   //   @
   // `;
+  const changeAddress = (value:string)=>{
+    // setInputValue(value)
+  }
 
   const BoxContainer = {
     title:t('Enter the address of block leakage for query'),
@@ -32,7 +35,7 @@ export default function AccountTransfer() {
   return (
     <>
       <Header/>
-        <CardBox cardBoxTitleIcon={blockLeakage} cardBoxTitleName={t('Query block leakage')} cardBoxTitleContainer={BoxContainer}/>
+        <CardBox cardBoxTitleIcon={blockLeakage} cardBoxTitleName={t('Query block leakage')} cardBoxTitleContainer={BoxContainer} inputValueFun={changeAddress} selectAddress={changeAddress}/>
       <Footer/>
 
     </>

@@ -38,7 +38,12 @@ export default function Header(showSearch: HeaderPop) {
                       <span key="4" className="toplinkName">{t('Cross Bridge')}</span>
                   </Link>
                   <Link to="/tools">
-                      <span key="6" className="toplinkName">{t('Tools')}</span>
+                      <span key="6" className="topLinkTool">{t('Tools')}</span>
+                      <ul className="toolList">
+                          <li><Link to='/AccountTransfer'>SS58账号转换</Link></li>
+                          <li>查询漏块</li>
+                          <li>搜索事件/交易</li>
+                      </ul>
                   </Link>
               </NavLink>
           </Wrapper>

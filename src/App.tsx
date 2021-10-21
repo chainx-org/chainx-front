@@ -1,4 +1,5 @@
 import React from "react";
+import PolkaApi from './hooks/polka'
 import Home from "./pages/HomePage";
 import Chain from "./pages/Chain";
 import Validator from './pages/Validator'
@@ -15,6 +16,7 @@ import addressDetails from './pages/AddressDetails'
 function App()
 {
   return (
+    <PolkaApi url="wss://testnet-2.chainx.org/ws">
     <BrowserRouter>
       <Switch>
         <Route path="/" exact component={Home} />
@@ -30,6 +32,7 @@ function App()
         <Route path="/addressDetails" component={addressDetails}/>
       </Switch>
     </BrowserRouter>
+    </PolkaApi>
   );
 };
 

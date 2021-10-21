@@ -18,7 +18,9 @@ export default function SearchPage() {
   //   border: 1px solid #E9E9E9;
   //   @
   // `;
-
+  const changeAddress = (value:string)=>{
+    // setInputValue(value)
+  }
   const BoxContainer = {
     title: t('Enter the address of block leakage for query'),
     container: t('Please enter the block leakage address'),
@@ -32,7 +34,7 @@ export default function SearchPage() {
     <>
       <Header/>
       <CardBox cardBoxTitleIcon={blockLeakage} cardBoxTitleName={t('Query block leakage')}
-               cardBoxTitleContainer={BoxContainer}/>
+               cardBoxTitleContainer={BoxContainer} inputValueFun={changeAddress} selectAddress={changeAddress}/>
       <Footer/>
 
     </>
