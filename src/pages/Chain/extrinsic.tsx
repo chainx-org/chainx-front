@@ -38,7 +38,7 @@ export default function Extrinsic({block}: ExtrinsicProps) {
       key: 'extrinsicId',
       render: (text: any, record: any) => {
         return (
-          <LinkX linkUrl={`/extrinsicsDetails/${record.hash}`} content={(record.indexer.blockHeight)+'-'+(record.indexer.index)}/>
+          <LinkX linkUrl={`/extrinsicsDetails/${record.hash}`} state={record} content={(record.indexer.blockHeight)+'-'+(record.indexer.index)}/>
         );
       }
     },

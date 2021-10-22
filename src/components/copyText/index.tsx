@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next';
 
 const Wrapper = styled.div`
   display: flex;
-
+  //justify-content: space-between;
   > :first-child {
     margin-right: 8px;
   }

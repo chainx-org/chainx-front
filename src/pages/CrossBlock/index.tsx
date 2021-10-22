@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import TableMenuBox from '../../components/TableMenuBox';
@@ -14,6 +14,7 @@ import Deposit from './deposit'
 import Withdraw from './withdraw';
 import Host from './host';
 import Claim from './claim';
+import { get } from '../../hooks/api';
 
 
 export default function CrossBlock() {
@@ -67,26 +68,32 @@ export default function CrossBlock() {
       content: <Claim/>,
     }
   ];
-
-  const [metaData, setMetaData] = useState([{
-    name: t('Total Balance'),
-    data: '-'
-  }, {
-    name: t('Total Weight'),
-    data: '-'
-  }, {
-    name: t('Reward Pot Last Update Height(PCX)'),
-    data: '-'
-  }, {
-    name: t('Mining Power(PCX)'),
-    data: '-'
-  }, {
-    name: t('Equivalent Nominations(PCX)'),
-    data: '-'
-  }, {
-    name: t('Reward Pot Balance(PCX)'),
-    data: '-'
-  }]);
+  const [mingApiData,setMingApiData] = useState<any>([])
+  const getData = async () => {
+    const {items}: any = await get(`/crossblocks/deposit_mine?page=0&page_size=20`, ``);
+    setMingApiData([{
+      name: t('Total Balance'),
+      data: (items[0]?.balance?.Usable)/1000000
+    }, {
+      name: t('Total Weight'),
+      data: items[0]?.lastTotalMiningWeight/1000000
+    }, {
+      name: t('Reward Pot Last Update Height(PCX)'),
+      data: items[0]?.rewardPot
+    }, {
+      name: t('Mining Power(PCX)'),
+      data: items[0]?.miningPower
+    }, {
+      name: t('Equivalent Nominations(PCX)'),
+      data: '-'
+    }, {
+      name: t('Reward Pot Balance(PCX)'),
+      data: items[0]?.rewardPotBalance
+    }]);
+  };
+  useEffect(() => {
+    getData();
+  }, []);
   return (
     <>
       <Header/>
@@ -99,16 +106,16 @@ export default function CrossBlock() {
               </CardTitle>
               <div className="flex flex-row w-overSpread justify-between px-8 py-4">
                 <div className="flex flex-col">
-                  <span>资产类型</span>
+                  <span>{t('Asset Type')}</span>
                   <span>111111</span>
                 </div>
                 <div className="flex flex-col">
-                  <span>奖池地址(PCX)</span>
+                  <span>{t('Reward Pot Address(PCX)')}</span>
                   <span>5RgUvw4....MSNqb</span>
                 </div>
               </div>
               <WrapperBridge>
-                {metaData.map((item: any) => {
+                {mingApiData?.map((item: any) => {
                   return (<CardDiv>
                     <Container className={'container-div'}>
                       <div className="flex flex-col justify-start my-auto ">
@@ -131,7 +138,7 @@ export default function CrossBlock() {
         <Wapper>
           <CardTitle>
             <img src={mining} alt=""/>
-            <span>{'Bitcoin 转接桥'}</span>
+            <span>{t('Bitcoin Bridge')}</span>
           </CardTitle>
           <TableMenuBox tabList={tabList} key={''}/>
         </Wapper>

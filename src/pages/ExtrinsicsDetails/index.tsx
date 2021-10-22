@@ -1,16 +1,21 @@
 import React, { useEffect, useState } from 'react';
-import List from '../../components/List';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
+import moment from 'moment';
 import { get } from '../../hooks/api';
+import styled from 'styled-components';
+import Event from '../Chain/event';
+import List from '../../components/List';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import TableMenuBox from '../../components/TableMenuBox';
-import styled from 'styled-components';
 import { TabInfo } from '../../components/SwitchTab';
-import Event from '../Chain/event';
 import DetailTitle from '../../components/DetailTitle';
-import { Link } from 'react-router-dom';
 import Jsonformat from '../../components/Jsonformat';
+import { LinkX, LinkXWithPop } from '../../components/LinkX';
+import Operation from '../../components/Operation';
+import CopyText from '../../components/copyText';
+import successIcon from '../../assets/icon_success.svg';
 
 export default function ExtrinsicsDetails() {
   const Wapper = styled.div`
@@ -30,40 +35,51 @@ export default function ExtrinsicsDetails() {
     setLoading(false);
   };
   useEffect(() => {
-    getData();
+    if (window.history.state && window.history.state?.state) {
+      setExtrinsicsDetails(window.history.state.state);
+      console.log('window', window.history.state.state);
+      setLoading(false);
+    } else {
+      getData();
+    }
   }, []);
   const list = [
     {
       title: t('Block'),
       content: (
-        <div className="text-black-dark">{extrinsicsDetails?.indexer?.blockHeight}</div>
+        <LinkX linkUrl={`/blockDetails/${extrinsicsDetails?.indexer?.blockHeight}`}
+               content={
+                 <div className="flex flex-row items-center">
+                   <img src={successIcon} alt=""/>
+                   <span className="inline-block mr-1">{extrinsicsDetails?.indexer?.blockHeight}</span>
+                 </div>
+               }/>
       ),
     },
     {
       title: t('Block Time'),
       content: (
-        <div className="text-black-dark">
-          {extrinsicsDetails?.indexer?.blockTime}
+        <div className="text-gray-arrow font-semibold">
+          {moment(Number(extrinsicsDetails?.indexer?.blockTime)).format('YYYY-MM-DD HH:mm:ss')}
         </div>)
+
     },
     {
       title: t('Extrinsic Hash'),
       content: (
-        <div className="text-blue-light cursor-pointer">
-          {extrinsicsDetails?.hash}
-        </div>
+        <LinkXWithPop linkUrl={'/'} content={extrinsicsDetails?.hash}/>
       )
     },
     {
       title: t('Operation'),
       content: (
-        <div className="text-black-dark">{extrinsicsDetails?.section + '-' + extrinsicsDetails?.name}</div>
+        <Operation content={extrinsicsDetails?.section + '-' + extrinsicsDetails?.name} more={false}/>
       ),
     },
     {
       title: t('Sender'),
       content: (
-        <div className="text-black-dark">
+        <div className="text-gray-arrow font-semibold">
           {extrinsicsDetails?.extrinsicsRoot}
         </div>
       ),
@@ -71,25 +87,25 @@ export default function ExtrinsicsDetails() {
     {
       title: t('Fee'),
       content:
-        <div className="text-black-dark">
+        <div className="text-gray-arrow font-semibold">
           {extrinsicsDetails?.blockTime}
         </div>,
     }, {
       title: t('Node'),
-      content: <div className="text-black-dark">
+      content: <div className="text-gray-arrow font-semibold">
       </div>,
     }, {
       title: t('Result'),
-      content: <div className="text-black-dark">
+      content: <div className="text-gray-arrow font-semibold">
         {extrinsicsDetails?.isSuccess}
       </div>,
     }, {
-      title: t('参数'),
+      title: t('Arguments'),
       content:
-        <Jsonformat json={extrinsicsDetails?.args}/>
+        <CopyText children={<Jsonformat json={extrinsicsDetails?.args}/>} text={JSON.stringify(extrinsicsDetails?.args)}/>
     }, {
-      title: t('签名'),
-      content: <div className="text-black-dark">
+      title: t('Signature'),
+      content: <div className="text-gray-arrow font-semibold">
         {extrinsicsDetails?.data}
       </div>,
     }
@@ -111,7 +127,7 @@ export default function ExtrinsicsDetails() {
     <>
       <Header/>
       <div className="px-24 pt-8 bg-gray-arrow screen:px-4">
-        <DetailTitle routeTitle={'Block Height'}
+        <DetailTitle routeTitle={t('Extrinsics')}
                      content={extrinsicsDetails?.indexer?.blockHeight + '-' + extrinsicsDetails?.indexer?.index}
                      isBlock={false} setNowBlock={extrinsics} routePath={routerPath}/>
       </div>

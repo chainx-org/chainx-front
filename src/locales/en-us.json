@@ -109,8 +109,14 @@
     "Trustee": "Trustee",
     "Hot Public Key": "Hot Public Key",
     "Cold Public Key": "Cold Public Key",
-    "Bitcoin Source Address": "Bitcoin Source Address"
-
+    "Bitcoin Source Address": "Bitcoin Source Address",
+    "Block Height": "Block Height",
+    "Block Hash": "Block Hash",
+    "Extrinsics Root": "Extrinsics Root",
+    "Reward Pot Address(PCX)": "Reward Pot Address(PCX)",
+    "Asset Type": "Asset Type",
+    "Bitcoin Bridge": "Bitcoin Bridge",
+    "Signature": "Signature"
 
 }
 

@@ -24,7 +24,6 @@ module.exports = {
         bgWhite: "#F5F5F5FF",
         border: '#E8E8E8',
         hover:'#E7F1FF',
-
       },
       blue: {
         light: "#4572DE",

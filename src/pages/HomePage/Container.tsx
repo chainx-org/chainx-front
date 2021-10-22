@@ -111,6 +111,7 @@ export default function Container() {
         data: '-'
     }]);
     const [firstInit, InitCallBack] = useState(true);
+
     //获取metaData数据
     const getHomeMetaData = async () => {
         const {latestChainStatus}: any = await get('/latestChainStatus', '');
@@ -145,25 +146,25 @@ export default function Container() {
         }, {
             icon: issuance,
             name: '质押率',
-            data: '-'
+            data: ((latestChainStatus.totalValidatorBonded + latestChainStatus.totalNominationSum) /
+              latestChainStatus.pcx_issuance*100).toFixed(2)+'%'
         }]]);
     };
     const getLatestBlockData = async () => {
         const {latestBlocks}: any = await get('/latestBlock', '');
         setListData([...latestBlocks]);
     };
-
     const getLatestExtrinsic = async () => {
         const {latestExtrinsics}: any = await get('/latestExtrinsic', '');
         setLatestExtrinsic([...latestExtrinsics]);
     };
-
     const callBack = () => {
         getHomeMetaData().then();
         getLatestBlockData().then();
         getLatestExtrinsic().then();
         InitCallBack(false);
     };
+
     useEffect(() => {
         saveCallBack.current = callBack;
         callBack();

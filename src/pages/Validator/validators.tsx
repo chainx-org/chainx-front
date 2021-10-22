@@ -15,15 +15,29 @@ export default function Validator() {
   const getValidatorData = async () => {
     const res: any = await get(`/validators?page=${page - 1}&page_size=${pageSize}`, ``);
     setValidatorTotal(res.total);
+    res.newitems.map((item:any,index:number)=>{
+      item.id = index+1
+    })
     setValidatorData(res.newitems);
     setLoading(false);
   };
   const chainColumns = [
     {
       title: t('Range'),
-      dataIndex: 'Range',
-      key: 'Range',
+      dataIndex: 'id',
+      key: 'id',
+      render:(text:number)=>{
+        return <div style={{width:'32px',height:'32px',borderRadius: '50%', background:'#2C83EA',position:'relative'}}>
+          <span style={{display:'inline-block',position:'absolute', top: '4px',
+            left: '12px',color:'white'}}>{text}</span>
+        </div>
+      }
     },
+    // {
+    //   title: t('Range'),
+    //   dataIndex: 'Range',
+    //   key: 'Range',
+    // },
     {
       title: t('NikeName'),
       dataIndex: 'NikeName',

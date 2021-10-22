@@ -6,23 +6,48 @@ export const Wrapper = styled.div`
   align-items: center;
   justify-content: flex-end;
 
-  .topLinkTool {
-    --text-opacity: 1;
-    color: #fff;
-    color: rgba(255, 255, 255, var(--text-opacity));
-    margin-right: 2.374rem;
-    cursor: pointer;
-  }
+  .topLink {
+    .topLinkTool {
+      --text-opacity: 1;
+      color: #fff;
+      color: rgba(255, 255, 255, var(--text-opacity));
+      margin-right: 2.374rem;
+      cursor: pointer;
+    }
 
-  .toolList {
-    display: none;
-  }
-
-  :hover {
     .toolList {
-      display: block;
-      position: relative;
-      z-index: 999;
+      display: none;
+    }
+
+    :hover {
+      .toolList {
+        display: block;
+        position: relative;
+        z-index: 999;
+      }
+    }   
+    & > ul {
+      background: #FFFFFF;
+      box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.15);
+      border-radius: 4px;
+      width: 100%;
+      height: 5.5rem;
+
+      & > li {
+        height: 2.5rem;
+        width: 8rem;
+        display: flex;
+        justify-content: center;
+        & > div {
+          line-height: 2.5rem;
+          padding-left:1rem;
+          text-align: start;
+        }
+
+        :hover {
+          background: rgba(22, 119, 255, 0.1);
+        }
+      }
     }
   }
 `;

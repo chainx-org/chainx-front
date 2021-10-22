@@ -42,7 +42,7 @@ function ApiProvider({ children, url }: Props): React.ReactElement<Props> {
   };
 
   useEffect(() => {
-    apiInit();
+    // apiInit();
   }, []);
 
   return (

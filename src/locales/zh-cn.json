@@ -108,5 +108,13 @@
     "Trustee": "信托",
     "Hot Public Key": "热公钥",
     "Cold Public Key": "冷公钥",
-    "Bitcoin Source Address": "Bitcoin来源地址"
+    "Bitcoin Source Address": "Bitcoin来源地址",
+    "Block Height": "块高",
+    "Block Hash": "块哈希",
+    "Extrinsics Root": "交易根",
+    "Reward Pot Address(PCX)": "奖池地址(PCX)",
+    "Asset Type": "资产类型",
+    "Bitcoin Bridge": "Bitcoin 转接桥",
+    "Signature": "签名"
+
 }

@@ -37,11 +37,11 @@ export default function Header(showSearch: HeaderPop) {
                   <Link to="/crossBlock">
                       <span key="4" className="toplinkName">{t('Cross Bridge')}</span>
                   </Link>
-                  <Link to="/tools">
+                  <Link to="/tools" className="topLink">
                       <span key="6" className="topLinkTool">{t('Tools')}</span>
                       <ul className="toolList">
-                          <li><Link to='/AccountTransfer'>SS58账号转换</Link></li>
-                          <li>查询漏块</li>
+                          <li><Link to='/ss58'>SS58账号转换</Link></li>
+                          {/*<li><Link to='/ss58'>查询漏块</Link></li>*/}
                           <li>搜索事件/交易</li>
                       </ul>
                   </Link>
