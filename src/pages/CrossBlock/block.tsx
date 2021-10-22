@@ -3,7 +3,7 @@ import React from 'react';
 import { LinkX, ShorterLink } from '../../components/LinkX';
 import TimeStatus from '../../components/TimeStatus';
 import swapEndian from '../../helper/swapEndian';
-import ChainxTable from '../../hooks/table';
+import ChainxTable from '../../components/Table/table';
 
 
 export default function BitcoinBlock() {
@@ -39,7 +39,7 @@ export default function BitcoinBlock() {
       key: 'chainXRelayTXHash',
       render: (text: any, record: any) => {
         return (
-          <ShorterLink linkUrl={`/extrinsicsDetails/${record.chainxExtrinsicHash}`}
+          <ShorterLink linkUrl={`/extrinsicDetails/${record.chainxExtrinsicHash}`}
                        content={record.chainxExtrinsicHash}/>);
       }
     },

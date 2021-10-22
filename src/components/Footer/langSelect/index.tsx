@@ -3,7 +3,7 @@ import global from '../../../assets/language.svg';
 import selectDown from '../../../assets/icon-pulldown.svg';
 import { ChangeNetDiv } from './style';
 import { useTranslation } from 'react-i18next';
-import { useOnClickOutside } from '../../../hooks/hooks';
+import { useOnClickOutside } from '../../../helper/hooks';
 
 
 function LangSelect(): React.ReactElement {

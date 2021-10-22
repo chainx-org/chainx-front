@@ -11,7 +11,7 @@ import { TabInfo } from '../../components/SwitchTab';
 export default function Tools() {
   const {t} = useTranslation();
 
-  const Wapper = styled.div`
+  const Wrapper = styled.div`
     min-height: 688px;
     background: #FFFFFF;
     box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.04);
@@ -24,9 +24,9 @@ export default function Tools() {
     <>
       <Header/>
       <div className="px-24 py-4 bg-gray-bgWhite ">
-        <Wapper>
+        <Wrapper>
 
-        </Wapper>
+        </Wrapper>
       </div>
       <Footer/>
 

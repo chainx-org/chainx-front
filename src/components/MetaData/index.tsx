@@ -1,6 +1,6 @@
 import { CardDiv, MetaDataBox, Wrapper,Container,RightLine } from './style';
 import React from 'react';
-import { reName } from '../../hooks/hooks';
+import { reName } from '../../helper/hooks';
 class OrderItem {
   'icon': any;
   'name': string;

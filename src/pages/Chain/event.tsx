@@ -1,17 +1,17 @@
 import { useTranslation } from 'react-i18next';
 import React, { useEffect, useState } from 'react';
 import TableX from '../../components/Table';
-import { get } from '../../hooks/api';
+import { get } from '../../hooks/useApi';
 import { LinkX, ShorterLink } from '../../components/LinkX';
 import TimeStatus from '../../components/TimeStatus';
 import Operation from '../../components/Operation';
 
 interface EventProps {
   block?: number | string,
-  extrinsics?: string
+  extrinsic?: string
 }
 
-export default function Event({block, extrinsics}: EventProps) {
+export default function Event({block, extrinsic}: EventProps) {
   const {t} = useTranslation();
   const [eventData, setEventData] = useState([]);
   const [page, setPage] = useState(1);
@@ -23,8 +23,8 @@ export default function Event({block, extrinsics}: EventProps) {
     if (block) {
       res = await get(`/blockEvents?block=${block}&page=${page - 1}&page_size=${pageSize}`, ``);
     } else {
-      if (extrinsics) {
-        res = await get(`/extrinsicEvents?extrinsic_hash=${extrinsics}&page=${page - 1}&page_size=${pageSize}`, ``);
+      if (extrinsic) {
+        res = await get(`/extrinsicEvents?extrinsic_hash=${extrinsic}&page=${page - 1}&page_size=${pageSize}`, ``);
       } else {
         res = await get(`/events?page=${page - 1}&page_size=${pageSize}`, ``);
       }
@@ -41,7 +41,7 @@ export default function Event({block, extrinsics}: EventProps) {
       key: 'Extrinsic ID',
       render: (text: any, record: any) => {
         return (
-          <LinkX linkUrl={`/extrinsicsDetails/${record.extrinsicHash}`}
+          <LinkX linkUrl={`/extrinsicDetails/${record.extrinsicHash}`}
                  content={record.indexer.blockHeight + '-' + record.sort}/>
         );
       }
@@ -62,7 +62,7 @@ export default function Event({block, extrinsics}: EventProps) {
       key: 'Extrinsic Hash',
       render: (text: any, record: any) => {
         return (
-          <ShorterLink linkUrl={`/extrinsicsDetails/${record.extrinsicHash}`} content={record.extrinsicHash}/>);
+          <ShorterLink linkUrl={`/extrinsicDetails/${record.extrinsicHash}`} content={record.extrinsicHash}/>);
       }
     },
     {

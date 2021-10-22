@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import arrowChangeIcon from '../../assets/icon_awitch.svg';
 import CardListItem from '../../components/CardListItem';
 import { Input } from 'antd';
-import { CardTitle, Container, SpliteLine, Wapper } from './css';
+import { CardTitle, Container, SpliteLine, Wrapper } from './css';
 import Icon from '../../assets/address_icon.svg';
 
 const {TextArea} = Input;
@@ -39,7 +39,7 @@ export default function CardBox({
   };
   return (
     <div className="Container">
-      <Wapper>
+      <Wrapper>
         <CardTitle>
           <img src={cardBoxTitleIcon} alt=""/>
           <span>{cardBoxTitleName}</span>
@@ -84,7 +84,7 @@ export default function CardBox({
             </> : ''}
           </div>
         </Container>
-      </Wapper>
+      </Wrapper>
     </div>
   );
 }

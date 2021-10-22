@@ -1,4 +1,4 @@
-import { get } from '../hooks/api'
+import { get } from '../hooks/useApi'
 
 export default function api(a, window) {
 

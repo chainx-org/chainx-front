@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import React from 'react';
 import { ShorterLink } from '../../components/LinkX';
 import TimeStatus from '../../components/TimeStatus';
-import ChainxTable from '../../hooks/table';
+import ChainxTable from '../../components/Table/table';
 
 
 export default function Host() {
@@ -27,7 +27,7 @@ export default function Host() {
       key: 'Trustee',
       render: (text: any, record: any) => {
         return (
-          <ShorterLink linkUrl={`/extrinsicsDetails/${record.address}`}
+          <ShorterLink linkUrl={`/extrinsicDetails/${record.address}`}
                        content={record.address}/>);
       }
     },

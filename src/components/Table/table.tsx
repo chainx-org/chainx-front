@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import TableX from '../components/Table';
-import { get } from '../hooks/api';
+import TableX from './index';
+import { get } from '../../hooks/useApi';
 
 interface chainxTableProps {
   Columns: any,

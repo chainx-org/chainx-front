@@ -3,7 +3,7 @@ import React from 'react';
 import { LinkX, ShorterLink } from '../../components/LinkX';
 import TimeStatus from '../../components/TimeStatus';
 import swapEndian from '../../helper/swapEndian';
-import ChainxTable from '../../hooks/table';
+import ChainxTable from '../../components/Table/table';
 
 
 export default function Deposit() {
@@ -26,7 +26,7 @@ export default function Deposit() {
       key: 'chainXTransactionHash',
       render: (text: any, record: any) => {
         return (
-          <ShorterLink linkUrl={`/extrinsicsDetails/${record.extrinsicHash}`}
+          <ShorterLink linkUrl={`/extrinsicDetails/${record.extrinsicHash}`}
                        content={record.extrinsicHash}/>);
       }
     },

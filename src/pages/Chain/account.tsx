@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import React from 'react';
 import addressIcon from '../../assets/address_icon.svg';
 import { LinkX } from '../../components/LinkX';
-import ChainxTable from '../../hooks/table';
+import ChainxTable from '../../components/Table/table';
 
 export default function Account() {
   const {t} = useTranslation();

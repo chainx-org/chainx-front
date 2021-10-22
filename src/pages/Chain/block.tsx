@@ -3,7 +3,7 @@ import React from 'react';
 import { LinkX, ShorterLink } from '../../components/LinkX';
 import TimeStatus from '../../components/TimeStatus';
 import waitIcon from '../../assets/icon_waiting.svg';
-import ChainxTable from '../../hooks/table';
+import ChainTable from '../../components/Table/table';
 
 
 export default function Block() {
@@ -48,9 +48,9 @@ export default function Block() {
       }
     },
     {
-      title: t('Extrinsics'),
-      dataIndex: 'extrinsics',
-      key: 'extrinsics',
+      title: t('Extrinsic'),
+      dataIndex: 'extrinsic',
+      key: 'extrinsic',
       render: (text: any, record: any) => {
         return (
           <div>{record.extrinsics.length}</div>
@@ -73,6 +73,6 @@ export default function Block() {
   ];
 
   return (
-    <ChainxTable Columns={chainColumns} urlControl={'/blocks?'} result={'items'} keyNum={1}/>
+    <ChainTable Columns={chainColumns} urlControl={'/blocks?'} result={'items'} keyNum={1}/>
   );
 }

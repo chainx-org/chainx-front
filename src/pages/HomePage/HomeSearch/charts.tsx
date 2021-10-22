@@ -8,12 +8,12 @@ import 'echarts/lib/chart/pie';
 import { useEffect, useState } from 'react';
 import React from 'react';
 
-const  Model_echarts = (props) => {
-    let [main , setMain] = useState('')
+const  Model_echarts = (props:any) => {
+    let [main , setMain] = useState<any>('')
     const option = {
         xAxis: {
             type: 'category',
-            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+            data: ['Mon', 'Tue', 'Wed'],
             boundaryGap: false,
         },
         yAxis: {
@@ -27,7 +27,7 @@ const  Model_echarts = (props) => {
         
         },
         series: [{
-            data: [820, 932, 901, 934, 1290, 1330, 1320],
+            data: [932, 901, 1290, 1330, 1320],
             type: 'line',
             smooth: true,
             lineStyle: {
@@ -40,16 +40,16 @@ const  Model_echarts = (props) => {
         ]
     };
     useEffect(()=>{
-        var node = document.getElementById('main')
+        let node = document.getElementById('main')
         setMain(node)
     } , [])
     // 基于准备好的dom，初始化echarts实例
     if(main !== ""){
-        var myChart = echarts.init(main);
+        let myChart = echarts.init(main);
         myChart.resize()
         myChart.setOption(option);
         window.addEventListener("resize", function() {
-            var myChart = echarts.init(main);
+            let myChart = echarts.init(main);
             myChart.resize()
             myChart.setOption(option);
         });

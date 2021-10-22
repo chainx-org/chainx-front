@@ -15,7 +15,7 @@ import RecentSlashed from './recentSlashed'
 export default function Validator() {
   const {t} = useTranslation();
 
-  const Wapper = styled.div`
+  const Wrapper = styled.div`
     min-height: 688px;
     background: #FFFFFF;
     box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.04);
@@ -50,9 +50,9 @@ export default function Validator() {
     <>
       <Header/>
       <div className="px-24 py-4 bg-gray-bgWhite ">
-        <Wapper>
+        <Wrapper>
           <TableMenuBox tabList={tabList} key={''}/>
-        </Wapper>
+        </Wrapper>
       </div>
       <Footer/>
 

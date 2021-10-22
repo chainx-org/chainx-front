@@ -1,9 +1,9 @@
 import React from 'react';
-import Search from '../../components/Search';
-import icon from '../../assets/icon.png';
-import Model_echarts from './charts.jsx';
+import Search from '../../../components/Search';
+import icon from '../../../assets/icon.png';
+import Model_echarts from './charts';
 import styled from 'styled-components';
-import lightNing from '../../assets/Lightning.svg';
+import lightNing from '../../../assets/Lightning.svg';
 
 function homeSearch() {
 

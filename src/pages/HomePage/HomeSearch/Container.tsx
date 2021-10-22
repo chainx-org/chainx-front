@@ -1,15 +1,15 @@
 import React, { useEffect, useRef, useState } from 'react';
-import LatestItem from '../../components/LatestItem';
+import LatestItem from '../../../components/LatestItem';
 import HomeSearch from './HomeSearch';
-import { ContainerBox, TableWrapper } from './style';
-import MetaData from '../../components/MetaData';
+import { ContainerBox, TableWrapper } from '../style';
+import MetaData from '../../../components/MetaData';
 import { useTranslation } from 'react-i18next';
-import { get } from '../../hooks/api';
-import highsure from '../../assets/icon_high_sure.svg';
-import holders from '../../assets/icon_holders.svg';
-import transfer from '../../assets/icon_transfer.svg';
-import node from '../../assets/icon_node.svg';
-import issuance from '../../assets/icon-issuance.svg';
+import { get } from '../../../hooks/useApi';
+import highsure from '../../../assets/icon_high_sure.svg';
+import holders from '../../../assets/icon_holders.svg';
+import transfer from '../../../assets/icon_transfer.svg';
+import node from '../../../assets/icon_node.svg';
+import issuance from '../../../assets/icon-issuance.svg';
 
 export default function Container() {
     const {t} = useTranslation();

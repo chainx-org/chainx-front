@@ -8,19 +8,19 @@ import { TabInfo } from '../../components/SwitchTab';
 import { CardTitle, SpliteLine } from '../../components/CardBox/css';
 import mining from '../../assets/icon_mining.svg';
 import { CardDiv, Container, RightLine, WrapperBridge } from './style';
-import { reName } from '../../hooks/hooks';
+import { reName } from '../../helper/hooks';
 import BitcoinBlock from './block';
 import Deposit from './deposit'
 import Withdraw from './withdraw';
 import Host from './host';
 import Claim from './claim';
-import { get } from '../../hooks/api';
+import { get } from '../../hooks/useApi';
 
 
 export default function CrossBlock() {
   const {t} = useTranslation();
 
-  const Wapper = styled.div`
+  const Wrapper = styled.div`
     background: #FFFFFF;
     box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.04);
     border-radius: 10px;
@@ -97,9 +97,9 @@ export default function CrossBlock() {
   return (
     <>
       <Header/>
-      <Wapper className="px-24 py-4 bg-gray-bgWhite ">
+      <Wrapper className="px-24 py-4 bg-gray-bgWhite ">
           <BridgeWrapper>
-            <Wapper>
+            <Wrapper>
               <CardTitle>
                 <img src={mining} alt=""/>
                 <span>{'跨链挖矿'}</span>
@@ -127,22 +127,22 @@ export default function CrossBlock() {
                   </CardDiv>);
                 })}
               </WrapperBridge>
-            </Wapper>
-            <Wapper>
+            </Wrapper>
+            <Wrapper>
               <CardTitle>
                 <img src={mining} alt=""/>
                 <span>{'挖矿收益比率'}</span>
               </CardTitle>
-            </Wapper>
+            </Wrapper>
           </BridgeWrapper>
-        <Wapper>
+        <Wrapper>
           <CardTitle>
             <img src={mining} alt=""/>
             <span>{t('Bitcoin Bridge')}</span>
           </CardTitle>
           <TableMenuBox tabList={tabList} key={''}/>
-        </Wapper>
-      </Wapper>
+        </Wrapper>
+      </Wrapper>
       <Footer/>
     </>
   );

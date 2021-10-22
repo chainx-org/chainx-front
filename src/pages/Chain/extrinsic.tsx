@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import React, { useEffect, useState } from 'react';
 import TableX from '../../components/Table';
-import { get } from '../../hooks/api';
+import { get } from '../../hooks/useApi';
 import successIcon from '../../assets/icon_success.svg';
 import failIcon from '../../assets/icon_failure.svg';
 import { LinkX, ShorterLink } from '../../components/LinkX';
@@ -38,7 +38,7 @@ export default function Extrinsic({block}: ExtrinsicProps) {
       key: 'extrinsicId',
       render: (text: any, record: any) => {
         return (
-          <LinkX linkUrl={`/extrinsicsDetails/${record.hash}`} state={record} content={(record.indexer.blockHeight)+'-'+(record.indexer.index)}/>
+          <LinkX linkUrl={`/extrinsicDetails/${record.hash}`} state={record} content={(record.indexer.blockHeight)+'-'+(record.indexer.index)}/>
         );
       }
     },
@@ -58,7 +58,7 @@ export default function Extrinsic({block}: ExtrinsicProps) {
       key: 'extrinsicHash',
       render: (text: any, record: any) => {
         return (
-          <ShorterLink linkUrl={`/extrinsicsDetails/${record.hash}`} content={record.hash}/>
+          <ShorterLink linkUrl={`/extrinsicDetails/${record.hash}`} content={record.hash}/>
         );
       }
     },

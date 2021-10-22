@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import React from 'react';
 import swapEndian from '../../helper/swapEndian';
-import ChainxTable from '../../hooks/table';
+import ChainxTable from '../../components/Table/table';
 
 
 export default function Claim() {

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import List from '../../components/List';
 import { useTranslation } from 'react-i18next';
-import { get } from '../../hooks/api';
+import { get } from '../../hooks/useApi';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import TableMenuBox from '../../components/TableMenuBox';
@@ -13,7 +13,7 @@ import DetailTitle from '../../components/DetailTitle';
 import {Link} from 'react-router-dom'
 
 export default function AddressDetails() {
-  const Wapper = styled.div`
+  const Wrapper = styled.div`
     background: #FFFFFF;
     box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.04);
     border-radius: 10px;
@@ -106,9 +106,9 @@ export default function AddressDetails() {
       </div>
       <List list={list} loading={loading}/>
       <div className="px-24 pb-16 bg-gray-bgWhite screen:px-4">
-        <Wapper>
+        <Wrapper>
           <TableMenuBox tabList={tabList}/>
-        </Wapper>
+        </Wrapper>
       </div>
       <Footer/>
     </>);
