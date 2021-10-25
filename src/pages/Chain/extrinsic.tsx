@@ -9,6 +9,8 @@ import TimeStatus from '../../components/TimeStatus';
 import Operation from '../../components/Operation';
 import JsonApi from '../../components/Jsonformat';
 import moreIcon from '../../assets/icon_more.svg';
+import pulldownIcon from '../../assets/icon_pulldown_list.svg'
+import styled from 'styled-components';
 
 interface ExtrinsicProps {
   block?: number | string,
@@ -21,10 +23,11 @@ export default function Extrinsic({block}: ExtrinsicProps) {
   const [pageSize, setPageSize] = useState(10);
   const [extrinsicTotal, setExtrinsicTotal] = useState(0);
   const [loading, setLoading] = useState(true);
+
   const getExtrinsicData = async () => {
-    let res: any
+    let res: any;
     if (block) {
-      res= await get(`/extrinsics?block=${block}&page=${page - 1}&page_size=${pageSize}`, ``);
+      res = await get(`/extrinsics?block=${block}&page=${page - 1}&page_size=${pageSize}`, ``);
     } else {
       res = await get(`/extrinsics?page=${page - 1}&page_size=${pageSize}`, ``);
     }
@@ -89,6 +92,7 @@ export default function Extrinsic({block}: ExtrinsicProps) {
       dataIndex: 'Operation',
       key: 'Operation',
       align:'right',
+      width:'15rem',
       render: (text: any, record: any) => {
         return (
           <Operation content={record.section+'-'+record.name}/>
@@ -113,7 +117,7 @@ export default function Extrinsic({block}: ExtrinsicProps) {
       <>
         {expanded
           ?
-          <img src={failIcon} alt="" style={{cursor: 'pointer', width: '2.5rem', maxWidth: 'none'}}
+          <img src={pulldownIcon} alt="" style={{cursor: 'pointer', width: '2.5rem', maxWidth: 'none'}}
                onClick={e => onExpand(record, e)}/>
           :
           <img src={moreIcon} alt="" style={{cursor: 'pointer', width: '2.5rem', maxWidth: 'none'}}
@@ -124,7 +128,7 @@ export default function Extrinsic({block}: ExtrinsicProps) {
   };
 const expandedRowRender =(record:any)=>{
     return (
-      <JsonApi json={record?.args}/>
+        <JsonApi json={record?.args}/>
     );
   };
   const rowExpandable = (record: any) => {

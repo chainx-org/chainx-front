@@ -47,7 +47,7 @@ export function ShorterLink({linkUrl, content, state}: LinkProps) {
   return (<Popover content={popWithCopy}><Link to={{
     pathname: linkUrl,
     state: state
-  }}><LinkSpan>{value.substring(0, 5).concat('...').concat(value.substring(value.length - 5))}</LinkSpan></Link></Popover>);
+  }}><LinkSpan>{value?.substring(0, 5).concat('...').concat(value?.substring(value.length - 5))}</LinkSpan></Link></Popover>);
 }
 
 export function Shorter({linkUrl, content, state}: LinkProps) {
@@ -63,7 +63,7 @@ export function Shorter({linkUrl, content, state}: LinkProps) {
         pathname: linkUrl,
         state: state
       }}>
-        <LinkSpan>{value.substring(0, 5).concat('...').concat(value.substring(value.length - 5))}</LinkSpan>
+        <LinkSpan>{value?.substring(0, 5).concat('...').concat(value?.substring(value.length - 5))}</LinkSpan>
       </Link>
     // </Popover>
 );

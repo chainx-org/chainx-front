@@ -79,6 +79,8 @@ export default function Event({block, extrinsic}: EventProps) {
       title: t('Operation'),
       dataIndex: 'Operation',
       key: 'Operation',
+      align:'right',
+      width:'15rem',
       render: (text: any, record: any) => {
         return (
           <Operation content={record.section+'-'+record.method}/>

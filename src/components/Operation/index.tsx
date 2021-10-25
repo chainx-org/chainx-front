@@ -16,7 +16,7 @@ const ContentBox = styled.div`
 export default function Operation({content,more}:OperationProps) {
 
   return (
-    <div className="flex flex-row justify-between">
+    <div className="flex flex-row justify-end">
       <ContentBox>{content}</ContentBox>
       {/*{!more && <img src={moreIcon} alt="" style={{cursor: 'pointer'}}/>}*/}
     </div>);

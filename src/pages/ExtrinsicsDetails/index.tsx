@@ -78,6 +78,8 @@ export default function ExtrinsicDetails() {
     },
     {
       title: t('Operation'),
+      align:'right',
+      width:'15rem',
       content: (
         <Operation content={extrinsicDetails?.section + '-' + extrinsicDetails?.name} more={false}/>
       ),

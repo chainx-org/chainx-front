@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="48px" height="26px" viewBox="0 0 48 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>icon_pulldown_list</title>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="003-01交易详情" transform="translate(-1232.000000, -1199.000000)">
+            <g id="编组-3" transform="translate(96.000000, 946.000000)">
+                <g id="icon_pulldown_list" transform="translate(1136.000000, 253.000000)">
+                    <rect id="Rectangle-271-Copy-10" stroke="#E8E8E8" fill="#FFFFFF" x="0.5" y="0.5" width="47" height="25" rx="4"></rect>
+                    <g id="编组-13" transform="translate(24.000000, 13.000000) rotate(-270.000000) translate(-24.000000, -13.000000) translate(18.000000, 7.000000)">
+                        <rect id="矩形" stroke="#979797" fill="#D8D8D8" opacity="0" x="0.5" y="0.5" width="11" height="11"></rect>
+                        <polyline id="路径" stroke="#060606" stroke-linecap="round" stroke-linejoin="round" transform="translate(4.438812, 6.000000) rotate(-315.000000) translate(-4.438812, -6.000000) " points="1.43881226 3 7.43881226 3 7.43881226 9"></polyline>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

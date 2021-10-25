@@ -1,15 +1,21 @@
 import React from 'react'
+import styled from 'styled-components';
 
 // @ts-ignore
 export default function jsonformat({ json }) {
-
+  const JsonContainer = styled.div`
+    background: #F9F9F9;
+    border-radius: 10px;
+    padding:2px 4px;
+    border: 1px solid #DBDBDB;
+  `;
   const filterStyle = (value:any)=>{
     if(typeof value==='string'){
-      return {color:'red'}
+      return {color:'#F55D8F'}
     }else if(typeof value==='number'){
-      return {color:'yellow'}
+      return {color:'#5CD0A7'}
     }else if(value===null){
-      return {color:'purple'}
+      return {color:'blue'}
     }
   }
   const filterInner = (value:any)=>{
@@ -50,16 +56,16 @@ export default function jsonformat({ json }) {
     <pre
       style={{
         textAlign: 'left',
-        backgroundColor: 'unset',
+        backgroundColor: 'white',
         padding: 0,
         color: '#959595'
       }}
     >
       {/*{JSON.stringify(json, null, 2)}*/}
-      <div>
+      <JsonContainer>
       {
         filterJson(json, 1)
-      }</div>
+      }</JsonContainer>
     </pre>
   )
 }
