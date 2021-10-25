@@ -44,7 +44,7 @@ export default function Block() {
       key: 'hash',
       render: (text: any, record: any) => {
         return (
-          <ShorterLink linkUrl={`/blockDetails/${record.hash}`} content={record.hash}/>);
+          <ShorterLink linkUrl={`/blockDetails/${record.hash}`} state={record} content={record.hash}/>);
       }
     },
     {
@@ -67,7 +67,7 @@ export default function Block() {
       key: 'Validator',
       render: (text: any, record: any) => {
         return (
-          <LinkX linkUrl={`/addressDetails/${record.author}`} content={record.referralId}/>);
+          <LinkX linkUrl={`/nodeDetails/${record.author}`} state={record} content={record.referralId}/>);
       }
     }
   ];

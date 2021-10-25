@@ -5,16 +5,17 @@ import TableMenuBox from '../../components/TableMenuBox';
 import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
 import { TabInfo } from '../../components/SwitchTab';
-import { CardTitle, SpliteLine } from '../../components/CardBox/css';
+import { CardTitle } from '../../components/CardBox/style';
 import mining from '../../assets/icon_mining.svg';
 import { CardDiv, Container, RightLine, WrapperBridge } from './style';
 import { reName } from '../../helper/hooks';
 import BitcoinBlock from './block';
-import Deposit from './deposit'
+import Deposit from './deposit';
 import Withdraw from './withdraw';
 import Host from './host';
 import Claim from './claim';
 import { get } from '../../hooks/useApi';
+import MyEchart from './myEcharts'
 
 
 export default function CrossBlock() {
@@ -49,7 +50,7 @@ export default function CrossBlock() {
   const tabList: TabInfo[] = [
     {
       title: t('Block'),
-      content:<BitcoinBlock/>,
+      content: <BitcoinBlock/>,
     },
     {
       title: t('Deposit Deals'),
@@ -68,15 +69,15 @@ export default function CrossBlock() {
       content: <Claim/>,
     }
   ];
-  const [mingApiData,setMingApiData] = useState<any>([])
+  const [mingApiData, setMingApiData] = useState<any>([]);
   const getData = async () => {
     const {items}: any = await get(`/crossblocks/deposit_mine?page=0&page_size=20`, ``);
     setMingApiData([{
       name: t('Total Balance'),
-      data: (items[0]?.balance?.Usable)/1000000
+      data: (items[0]?.balance?.Usable) / 1000000
     }, {
       name: t('Total Weight'),
-      data: items[0]?.lastTotalMiningWeight/1000000
+      data: items[0]?.lastTotalMiningWeight / 1000000
     }, {
       name: t('Reward Pot Last Update Height(PCX)'),
       data: items[0]?.rewardPot
@@ -97,26 +98,27 @@ export default function CrossBlock() {
   return (
     <>
       <Header/>
-      <Wrapper className="px-24 py-4 bg-gray-bgWhite ">
-          <BridgeWrapper>
-            <Wrapper>
-              <CardTitle>
-                <img src={mining} alt=""/>
-                <span>{'跨链挖矿'}</span>
-              </CardTitle>
-              <div className="flex flex-row w-overSpread justify-between px-8 py-4">
-                <div className="flex flex-col">
-                  <span>{t('Asset Type')}</span>
-                  <span>111111</span>
-                </div>
-                <div className="flex flex-col">
-                  <span>{t('Reward Pot Address(PCX)')}</span>
-                  <span>5RgUvw4....MSNqb</span>
-                </div>
+      <Wrapper className="px-24 py-4 bg-gray-bgWhite  screen:px-4">
+        <BridgeWrapper>
+          <Wrapper>
+            <CardTitle>
+              <img src={mining} alt=""/>
+              <span>{'跨链挖矿'}</span>
+            </CardTitle>
+            <div className="flex flex-row w-overSpread justify-between px-8 py-4">
+              <div className="flex flex-col">
+                <span>{t('Asset Type')}</span>
+                <span>111111</span>
               </div>
-              <WrapperBridge>
-                {mingApiData?.map((item: any) => {
-                  return (<CardDiv>
+              <div className="flex flex-col">
+                <span>{t('Reward Pot Address(PCX)')}</span>
+                <span>5RgUvw4....MSNqb</span>
+              </div>
+            </div>
+            <WrapperBridge>
+              {mingApiData?.map((item: any, index: any) => {
+                return (
+                  <CardDiv key={index}>
                     <Container className={'container-div'}>
                       <div className="flex flex-col justify-start my-auto ">
                         <span className="name">{item.name}</span>
@@ -125,16 +127,17 @@ export default function CrossBlock() {
                     </Container>
                     <RightLine className={'line-div'}/>
                   </CardDiv>);
-                })}
-              </WrapperBridge>
-            </Wrapper>
-            <Wrapper>
-              <CardTitle>
-                <img src={mining} alt=""/>
-                <span>{'挖矿收益比率'}</span>
-              </CardTitle>
-            </Wrapper>
-          </BridgeWrapper>
+              })}
+            </WrapperBridge>
+          </Wrapper>
+          <Wrapper>
+            <CardTitle>
+              <img src={mining} alt=""/>
+              <span>{'挖矿收益比率'}</span>
+            </CardTitle>
+            <MyEchart />
+          </Wrapper>
+        </BridgeWrapper>
         <Wrapper>
           <CardTitle>
             <img src={mining} alt=""/>

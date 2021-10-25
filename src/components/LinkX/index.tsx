@@ -38,7 +38,7 @@ export function LinkXWithPopAndIcon({linkUrl, content, img, state}: LinkProps) {
 
 // //格式化样式，缩短hash
 export function ShorterLink({linkUrl, content, state}: LinkProps) {
-  let value = content.toString();
+  let value = content?.toString();
   const popWithCopy = (
     <div>
       <CopyText children={value} text={value}/>
@@ -51,16 +51,22 @@ export function ShorterLink({linkUrl, content, state}: LinkProps) {
 }
 
 export function Shorter({linkUrl, content, state}: LinkProps) {
-  let value = content.toString();
+  let value = content?.toString();
   const popWithCopy = (
     <div>
       <CopyText children={value} text={value}/>
     </div>
   );
-  return (<Popover content={popWithCopy}><Link to={{
-    pathname: linkUrl,
-    state: state
-  }}><LinkSpan>{value.substring(0, 5).concat('...').concat(value.substring(value.length - 5))}</LinkSpan></Link></Popover>);
+  return (
+    // <Popover content={popWithCopy}>
+      <Link to={{
+        pathname: linkUrl,
+        state: state
+      }}>
+        <LinkSpan>{value.substring(0, 5).concat('...').concat(value.substring(value.length - 5))}</LinkSpan>
+      </Link>
+    // </Popover>
+);
 }
 
 

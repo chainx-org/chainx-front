@@ -2,7 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import iconImg from '../../assets/icon.png';
 import { useTranslation } from 'react-i18next';
-import { LinkX } from '../../components/LinkX';
+import { LinkX, Shorter, ShorterLink } from '../../components/LinkX';
+import Operation from '../Operation';
 
 interface LatestItemPop {
   title: string,
@@ -10,7 +11,7 @@ interface LatestItemPop {
   ListData: Array<any>,
 }
 
-export default function LatestItem({ title, icon, ListData}: LatestItemPop) {
+export default function LatestItem({title, icon, ListData}: LatestItemPop) {
   const {t} = useTranslation();
   const LatestItem = styled.div`
     display: flex;
@@ -30,8 +31,8 @@ export default function LatestItem({ title, icon, ListData}: LatestItemPop) {
   `;
 
   function linkToChain() {
-    title === t('Latest block')? window.location.href = window.location.origin + '/chain' :
-      window.location.href = window.location.origin + '/chain';
+    title === t('Latest block') ? window.location.href = window.location.origin + '/chain' :
+      window.location.href = window.location.origin + '/chain/extrinsic';
   }
 
   return (
@@ -43,23 +44,23 @@ export default function LatestItem({ title, icon, ListData}: LatestItemPop) {
         </div>
       </div>
       {title === t('Latest block') ?
-        ListData?.map((item) => {
-          return (<div className="flex flex-row justify-start px-4 py-4">
+        ListData?.map((item, index) => {
+          return (<div className="flex flex-row justify-start px-4 py-4" key={index}>
             <div className="latestDiv">
               <span>BX</span>
             </div>
             <div className="flex flex-col justify-start ml-4 w-overSpread">
               <div className=" flex flex-row justify-between">
                 <LinkX linkUrl={`/blockDetails/${item.number}`} content={item.number}/>
-                <div className='flex flex-row'>
-                  <div className='inline-block mr-1'>{t('Validator')}</div>
-                  <LinkX linkUrl={`/addressDetails/${item.address}`} content={item.nikename}/>
+                <div className="flex flex-row">
+                  <div className="inline-block mr-1">{t('Validator')}</div>
+                  <LinkX linkUrl={`/nodeDetails/${item.address}`} content={item.nikename}/>
                 </div>
               </div>
               <div className="flex flex-row justify-between">
                 <div>
-                  <div className='inline-block mr-1'>{t('include')}{item.number}</div>
-                  <div className='inline-block mr-1'>{t('extrinsic')}{item.event}</div>
+                  <div className="inline-block mr-1">{t('include')}{item.number}</div>
+                  <div className="inline-block mr-1">{t('extrinsic')}{item.event}</div>
                   <span>{t('event')}{item.exe}</span>
                 </div>
                 <div>
@@ -69,30 +70,31 @@ export default function LatestItem({ title, icon, ListData}: LatestItemPop) {
             </div>
           </div>);
         })
-        : ListData?.map((item) => {
-          return (<div className="flex flex-row justify-start px-4 py-4">
+        : ListData?.map((item, index) => {
+          return (<div className="flex flex-row justify-start px-4 py-4" key={index}>
             <div className="latestDiv">
               <span>TX</span>
             </div>
-                        <div className="flex flex-col justify-start ml-4 w-overSpread">
-                            <div className="flex flex-row justify-between">
-                                <span>{item.exe}</span>
-                                <div className="flex flex-row">
-                                    <span>{item.pcxnum}</span>
-                                    <img src={iconImg} alt="" style={{ width: '12px', height: '12px' }} />
-                                </div>
-                            </div>
-                            <div className="flex flex-row justify-between">
-                                <div>
-                                    <span>{t('type')}{item.type}</span>
-                                </div>
-                                <div>
-                                    <span>{item.time} {t('Seconds')} {t('ago')}</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>)
-                })}
-        </LatestItem>
-    )
+            <div className="flex flex-col justify-start ml-4 w-overSpread">
+              <div className="flex flex-row justify-between">
+                <ShorterLink linkUrl={`/extrinsicDetails/${item.hash}`} content={item.hash}/>
+                <div className="flex flex-row">
+                  <Operation content={item.name+'-'+item.section} more={true}/>
+                  {/*<img src={iconImg} alt="" style={{width: '12px', height: '12px'}}/>*/}
+                </div>
+              </div>
+              <div className="flex flex-row justify-between">
+                <div>
+                  <span>{item.section}</span>
+                  <span>{t('type')}{item.type}</span>
+                </div>
+                <div>
+                  <Shorter linkUrl={`/nodeDetails/${item.signer}`} content={item.signer}/>
+                </div>
+              </div>
+            </div>
+          </div>);
+        })}
+    </LatestItem>
+  );
 }

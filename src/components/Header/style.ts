@@ -40,8 +40,8 @@ export const Wrapper = styled.div`
         justify-content: center;
         & > div {
           line-height: 2.5rem;
-          padding-left:1rem;
           text-align: start;
+          color:#666666;
         }
 
         :hover {

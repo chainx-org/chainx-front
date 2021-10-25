@@ -43,10 +43,10 @@ function LangSelect(): React.ReactElement {
         <ul style={{position: 'absolute', bottom: '30px'}}>
           <li>
 
-            <div onClick={() => selectLang('zh')} className={i18n.language==='zh'?'bg-gray-hover':''}>English</div>
+            <div onClick={() => selectLang('zh')}>English</div>
           </li>
           <li>
-            <div onClick={() => selectLang('en')} className={i18n.language==='zh'?'':'bg-gray-hover'}>中文</div>
+            <div onClick={() => selectLang('en')}>中文</div>
           </li>
         </ul>
       }

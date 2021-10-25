@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import arrowChangeIcon from '../../assets/icon_awitch.svg';
 import CardListItem from '../../components/CardListItem';
 import { Input } from 'antd';
-import { CardTitle, Container, SpliteLine, Wrapper } from './css';
+import { CardTitle, Container, SpliteLine, Wrapper } from './style';
 import Icon from '../../assets/address_icon.svg';
 
 const {TextArea} = Input;
@@ -66,7 +66,7 @@ export default function CardBox({
           <div className="items-center my-auto mx-auto text-center">
             <img src={arrowChangeIcon} alt=""/>
           </div>
-          <div className="items-center my-auto mx-0 text-center bg-topBar-gray h-overSpread" style={{
+          <div className="items-center my-auto mx-0 text-center bg-topBar-gray h-overSpread flex justify-center items-center" style={{
             background: '#F9F9F9',
             borderRadius: '10px',
             border: '1px solid #DBDBDB'
@@ -78,10 +78,10 @@ export default function CardBox({
                 );
               })}
             </div>
-            {!correctValue ? <>
-              <img className="inline-block" src={cardBoxTitleContainer.icon} alt=""/>
+            {!correctValue ? <div className='flex flex-col'>
+              <img className="inline-block w-12" src={cardBoxTitleContainer.icon} alt=""/>
               <div>{cardBoxTitleContainer.result}</div>
-            </> : ''}
+            </div> : ''}
           </div>
         </Container>
       </Wrapper>

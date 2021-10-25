@@ -13,6 +13,7 @@ import TableMenuBox from '../../components/TableMenuBox';
 import { TabInfo } from '../../components/SwitchTab';
 import DetailTitle from '../../components/DetailTitle';
 import { LinkXWithPop, LinkXWithPopAndIcon } from '../../components/LinkX';
+import NoData from '../../components/NoData';
 import successIcon from '../../assets/icon_success.svg';
 
 
@@ -25,14 +26,20 @@ export default function BlockDetails() {
   `;
   const {t} = useTranslation();
   const [loading, setLoading] = useState(true);
+  const [noData, setNoData] = useState(false);
   const [blockDetails, setBlockDetails] = useState<any>();
   const block = window.location.pathname.slice(14, window.location.pathname.length);
   const isBlockNumber = (typeof (block) === 'number');
   const [nowBlock, setNowBlock] = useState(block);
   const getData = async () => {
     const res: any = await get(`/blocks/${nowBlock}`, ``);
-    setBlockDetails(res);
-    setLoading(false);
+    if (res) {
+      setBlockDetails(res);
+      setLoading(false);
+    } else {
+      setNoData(true);
+    }
+
   };
   useEffect(() => {
     if (window.history.state && window.history.state?.state) {
@@ -40,7 +47,11 @@ export default function BlockDetails() {
       console.log('window', window.history.state.state);
       setLoading(false);
     } else {
-      getData();
+      getData().then(
+      ).catch(() => {
+        console.log('find error');
+        setNoData(true);
+      });
     }
   }, []);
 
@@ -80,7 +91,8 @@ export default function BlockDetails() {
     {
       title: t('Parent Hash'),
       content: (
-        <LinkXWithPop linkUrl={`/blockDetails/${blockDetails?.header?.parentHash}`} content={blockDetails?.header?.parentHash}/>
+        <LinkXWithPop linkUrl={`/blockDetails/${blockDetails?.header?.parentHash}`}
+                      content={blockDetails?.header?.parentHash}/>
       ),
     },
     {
@@ -118,26 +130,31 @@ export default function BlockDetails() {
       content: <Event block={block}/>,
     }
   ];
-  const routerPath =()=>{
-    return (<div className='flex flex-row cursor-pointer text-gray-white'>
+  const routerPath = () => {
+    return (<div className="flex flex-row cursor-pointer text-gray-white">
       <Link to={'/'}>首页/</Link>
       <Link to={'/chain'}>区块链/ </Link>
       <Link to={`./blockDetail/${block}`}>区块详情</Link>
-    </div>)
-  }
+    </div>);
+  };
   return (
     <>
       <Header/>
-      <div className="px-24 pt-8 bg-gray-arrow screen:px-4">
-        <DetailTitle routeTitle={t('Block Height')} content={nowBlock} isBlock={isBlockNumber} setNowBlock={setNowBlock}
-                     routePath={routerPath}/>
-      </div>
-      <List list={list} loading={loading}/>
-      <div className="px-24 pb-16 bg-gray-bgWhite screen:px-4">
-        <Wrapper>
-          <TableMenuBox tabList={tabList}/>
-        </Wrapper>
-      </div>
+      {noData ?
+        <NoData/> :
+        <>
+          <div className="px-24 pt-8 bg-gray-arrow screen:px-4">
+            <DetailTitle routeTitle={t('Block Height')} content={nowBlock} isBlock={isBlockNumber}
+                         setNowBlock={setNowBlock}
+                         routePath={routerPath}/>
+          </div>
+          <List list={list} loading={loading}/>
+          <div className="px-24 pb-16 bg-gray-bgWhite screen:px-4">
+            <Wrapper>
+              <TableMenuBox tabList={tabList}/>
+            </Wrapper>
+          </div>
+        </>}
       <Footer/>
     </>);
 }

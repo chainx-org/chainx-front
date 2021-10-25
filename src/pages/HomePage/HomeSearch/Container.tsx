@@ -5,7 +5,7 @@ import { ContainerBox, TableWrapper } from '../style';
 import MetaData from '../../../components/MetaData';
 import { useTranslation } from 'react-i18next';
 import { get } from '../../../hooks/useApi';
-import highsure from '../../../assets/icon_high_sure.svg';
+import highSure from '../../../assets/icon_high_sure.svg';
 import holders from '../../../assets/icon_holders.svg';
 import transfer from '../../../assets/icon_transfer.svg';
 import node from '../../../assets/icon_node.svg';
@@ -17,36 +17,36 @@ export default function Container() {
     const saveCallBack: any = useRef();
     const [latestBlock, setListData] = useState([{
         number: '-',
-        nikename: '-',
-        extrinsicsCnt: '-',
+        nikeName: '-',
+        extrinsic: '-',
         event: '-',
         exe: '-',
         time: '-'
     }, {
         number: '-',
-        nikename: '-',
-        extrinsicsCnt: '-',
+        nikeName: '-',
+        extrinsic: '-',
         event: '-',
         exe: '-',
         time: '-'
     }, {
         number: '-',
-        nikename: '-',
-        extrinsicsCnt: '-',
+        nikeName: '-',
+        extrinsic: '-',
         event: '-',
         exe: '-',
         time: '-'
     }, {
         number: '-',
-        nikename: '-',
-        extrinsicsCnt: '-',
+        nikeName: '-',
+        extrinsic: '-',
         event: '-',
         exe: '-',
         time: '-'
     }, {
         number: '-',
-        nikename: '-',
-        extrinsicsCnt: '-',
+        nikeName: '-',
+        extrinsic: '-',
         event: '-',
         exe: '-',
         time: '-'
@@ -54,35 +54,35 @@ export default function Container() {
     const [latestExtrinsic, setLatestExtrinsic] = useState([{
         exe: '-',
         type: '-',
-        pcxnum: '-',
+        pcxNum: '-',
         time: '-',
     }, {
         exe: 2,
         type: 1,
-        pcxnum: 909090,
+        pcxNum: 909090,
         time: 1212
     }, {
         exe: 3,
         type: 1,
-        pcxnum: 909090,
+        pcxNum: 909090,
         time: 1212
     }, {
         exe: 4,
         type: 1,
-        pcxnum: 909090,
+        pcxNum: 909090,
         time: 1212
     }, {
         exe: 5,
         type: 1,
-        pcxnum: 909090,
+        pcxNum: 909090,
         time: 1212
     }])
     const [metaData, setMetaData] = useState([{
-        icon: highsure,
+        icon: highSure,
         name: '已确认块高',
         data: '-'
     }, {
-        icon: highsure,
+        icon: highSure,
         name: '最新块高',
         data: '-'
     }, {
@@ -116,11 +116,11 @@ export default function Container() {
     const getHomeMetaData = async () => {
         const {latestChainStatus}: any = await get('/latestChainStatus', '');
         setMetaData([...[{
-            icon: highsure,
+            icon: highSure,
             name: '已确认块高',
             data: latestChainStatus.finalized
         }, {
-            icon: highsure,
+            icon: highSure,
             name: '最新块高',
             data: latestChainStatus.best
         }, {
@@ -190,8 +190,8 @@ export default function Container() {
               <MetaData metaData={metaData}/>
               <div className="bg-gray-bgWhite">
                   <TableWrapper>
-                      <LatestItem key={1} title={t('Latest block')} icon="latestblock" ListData={latestBlock}/>
-                      <LatestItem key={2} title={t('Latest transaction')} icon="icon" ListData={latestExtrinsic}/>
+                      <LatestItem key={1} title={t('Latest block')} icon="latestblock" ListData={latestBlock.slice(5)}/>
+                      <LatestItem key={2} title={t('Latest transaction')} icon="icon" ListData={latestExtrinsic.slice(5)}/>
                   </TableWrapper>
               </div>
           </div>

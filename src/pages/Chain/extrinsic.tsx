@@ -7,6 +7,8 @@ import failIcon from '../../assets/icon_failure.svg';
 import { LinkX, ShorterLink } from '../../components/LinkX';
 import TimeStatus from '../../components/TimeStatus';
 import Operation from '../../components/Operation';
+import JsonApi from '../../components/Jsonformat';
+import moreIcon from '../../assets/icon_more.svg';
 
 interface ExtrinsicProps {
   block?: number | string,
@@ -48,7 +50,8 @@ export default function Extrinsic({block}: ExtrinsicProps) {
       key: 'block',
       render: (text: any, record: any) => {
         return (
-          <LinkX linkUrl={`/blockDetails/${record.indexer.blockHeight}`} content={(record.indexer.blockHeight)}/>
+          <LinkX linkUrl={`/blockDetails/${record.indexer.blockHeight}`} state={record}
+                 content={(record.indexer.blockHeight)}/>
         );
       }
     },
@@ -58,7 +61,7 @@ export default function Extrinsic({block}: ExtrinsicProps) {
       key: 'extrinsicHash',
       render: (text: any, record: any) => {
         return (
-          <ShorterLink linkUrl={`/extrinsicDetails/${record.hash}`} content={record.hash}/>
+          <ShorterLink linkUrl={`/extrinsicDetails/${record.hash}`} state={record} content={record.hash}/>
         );
       }
     },
@@ -85,6 +88,7 @@ export default function Extrinsic({block}: ExtrinsicProps) {
       title: t('Operation'),
       dataIndex: 'Operation',
       key: 'Operation',
+      align:'right',
       render: (text: any, record: any) => {
         return (
           <Operation content={record.section+'-'+record.name}/>
@@ -104,6 +108,28 @@ export default function Extrinsic({block}: ExtrinsicProps) {
 
     });
   }, [page, pageSize]);
+  const expandIcon = (expanded: any, onExpand: any, record: any) => {
+    return (
+      <>
+        {expanded
+          ?
+          <img src={failIcon} alt="" style={{cursor: 'pointer', width: '2.5rem', maxWidth: 'none'}}
+               onClick={e => onExpand(record, e)}/>
+          :
+          <img src={moreIcon} alt="" style={{cursor: 'pointer', width: '2.5rem', maxWidth: 'none'}}
+               onClick={e => onExpand(record, e)}/>
+        }
+      </>
+    );
+  };
+const expandedRowRender =(record:any)=>{
+    return (
+      <JsonApi json={record?.args}/>
+    );
+  };
+  const rowExpandable = (record: any) => {
+    return true;
+  };
   const pagination = {
     pageSize: pageSize,
     current: page,
@@ -112,11 +138,20 @@ export default function Extrinsic({block}: ExtrinsicProps) {
     showSizeChanger: true,
     showQuickJumper: true,
     onChange: (page: number, pageSize: number) => onChange(page, pageSize),
-    showTotal: (extrinsicTotal: number) => `${t('total')} ${extrinsicTotal} ${t('items')}`
+    showTotal: (extrinsicTotal: number) => `${t('total')} ${extrinsicTotal} ${t('items')}`,
+
   };
   return (
     <div className="px-8 overflow-scroll">
-      <TableX columns={chainColumns} dataList={extrinsicData} pagination={pagination} loading={loading}/>
+      <TableX
+        columns={chainColumns}
+        dataList={extrinsicData}
+        pagination={pagination}
+        loading={loading}
+        expandIcon={({expanded, onExpand, record}: any) => expandIcon(expanded, onExpand, record)}
+        expandedRowRender={expandedRowRender}
+        rowExpandable={rowExpandable}
+      />
     </div>
   );
 }

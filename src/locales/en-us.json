@@ -116,7 +116,15 @@
     "Reward Pot Address(PCX)": "Reward Pot Address(PCX)",
     "Asset Type": "Asset Type",
     "Bitcoin Bridge": "Bitcoin Bridge",
-    "Signature": "Signature"
+    "Signature": "Signature",
+    "Jackpot Address": "Jackpot Address",
+    "Authored Blocks": "Authored Blocks",
+    "Missed Blocks":"Missed Blocks",
+    "Vote Weight Last Update": "Vote Weight Last Update",
+    "Authored Address": "Authored Address",
+    "Voted list": "Voted list",
+    "Missed": "Missed",
+    "Parent Hash": "Parent Hash"
 
 }
 

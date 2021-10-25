@@ -24,13 +24,13 @@ export default function Chain() {
         setCurrentTab(t('Event'));
         break;
       case 'account':
-        setCurrentTab(t('Accounts'))
+        setCurrentTab(t('Accounts'));
         break;
       default:
-        setCurrentTab(t('Blocks'))
+        setCurrentTab(t('Blocks'));
     }
-  }
-  useEffect(()=>{chooseTab(currentRoute)},[])
+  };
+  useEffect(() => {chooseTab(currentRoute);}, []);
   const Wrapper = styled.div`
     min-height: 688px;
     background: #FFFFFF;

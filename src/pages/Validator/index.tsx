@@ -49,7 +49,7 @@ export default function Validator() {
   return (
     <>
       <Header/>
-      <div className="px-24 py-4 bg-gray-bgWhite ">
+      <div className="px-24 py-4 bg-gray-bgWhite  screen:px-4">
         <Wrapper>
           <TableMenuBox tabList={tabList} key={''}/>
         </Wrapper>

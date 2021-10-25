@@ -1,91 +1,91 @@
 import { useTranslation } from 'react-i18next';
 import React, { useEffect, useState } from 'react';
-import TableX from '../../components/Table';
-import { get } from '../../hooks/useApi';
 import { LinkX, ShorterLink } from '../../components/LinkX';
 import TimeStatus from '../../components/TimeStatus';
+import waitIcon from '../../assets/icon_waiting.svg';
+import { get } from '../../hooks/useApi';
 import Operation from '../../components/Operation';
+import TableX from '../../components/Table';
 
-interface EventProps {
-  block?: number | string,
-  extrinsic?: string
-}
 
-export default function Event({block, extrinsic}: EventProps) {
+function VotedList() {
   const {t} = useTranslation();
   const [eventData, setEventData] = useState([]);
   const [page, setPage] = useState(1);
   const [pageSize, setPageSize] = useState(10);
   const [eventTotal, setEventTotal] = useState(0);
   const [loading, setLoading] = useState(true);
+  const address = window.location.pathname.slice(13, window.location.pathname.length);
+  debugger
   const getEventData = async () => {
-    let res: any;
-    if (block) {
-      res = await get(`/blockEvents?block=${block}&page=${page - 1}&page_size=${pageSize}`, ``);
-    } else {
-      if (extrinsic) {
-        res = await get(`/extrinsicEvents?extrinsic_hash=${extrinsic}&page=${page - 1}&page_size=${pageSize}`, ``);
-      } else {
-        res = await get(`/events?page=${page - 1}&page_size=${pageSize}`, ``);
-      }
-    }
+    let res: any = await get(`/validatorvotes/${address}?page=${page - 1}&page_size=${pageSize}`, ``);
     setEventTotal(res.total);
     setEventData(res.items);
+    console.log(res.items[0][1])
+    debugger
     setLoading(false);
   };
-
   const chainColumns = [
     {
-      title: t('Extrinsic ID'),
-      dataIndex: 'Extrinsic ID',
-      key: 'Extrinsic ID',
+      title: t('Nominator'),
+      dataIndex: 'number',
+      key: 'number',
       render: (text: any, record: any) => {
         return (
-          <LinkX linkUrl={`/extrinsicDetails/${record.extrinsicHash}`} state={record}
-                 content={record.indexer.blockHeight + '-' + record.sort}/>
+          <LinkX linkUrl={`/blockDetails/${record[0]}`} state={record[0]} content={record[0]}/>
         );
       }
     },
     {
-      title: t('Block'),
-      dataIndex: 'Block',
-      key: 'Block',
+      title: t('Vote Count'),
+      dataIndex: 'address',
+      key: 'address',
       render: (text: any, record: any) => {
         return (
-          <LinkX linkUrl={`/blockDetails/${record.indexer.blockHeight}`}  state={record} content={record.indexer.blockHeight}/>
+          <div>{record[1].data[1]}</div>
         );
       }
     },
     {
-      title: t('Extrinsic Hash'),
-      dataIndex: 'Extrinsic Hash',
-      key: 'Extrinsic Hash',
+      title: t('Vote Count'),
+      dataIndex: 'address',
+      key: 'address',
       render: (text: any, record: any) => {
         return (
-          <ShorterLink linkUrl={`/extrinsicDetails/${record.extrinsicHash}`} state={record} content={record.extrinsicHash}/>
+          <div>{record[1].phase.value}</div>
         );
       }
     },
     {
-      title: t('Time'),
-      dataIndex: 'Time',
-      key: 'Time',
+      title: t('Vote Time'),
+      dataIndex: 'blockTime',
+      key: 'blockTime',
       render: (text: any, record: any) => {
         return (
-          <TimeStatus content={record.indexer.blockTime}/>);
+          <TimeStatus content={record[1].indexer.blockTime}/>);
       }
     },
     {
-      title: t('Operation'),
-      dataIndex: 'Operation',
-      key: 'Operation',
+      title: t('Last Vote Weight Update'),
+      dataIndex: 'hash',
+      key: 'hash',
       render: (text: any, record: any) => {
         return (
-          <Operation content={record.section+'-'+record.method}/>
+          <LinkX linkUrl={`/blockDetails/${record[1].indexer.blockHeight}`} state={record[1]} content={record[1].indexer.blockHeight}/>);
+      }
+    },
+    {
+      title: t('Bonded(PCX)'),
+      dataIndex: 'extrinsic',
+      key: 'extrinsic',
+      render: (text: any, record: any) => {
+        return (
+          <div>{record[1].data[3]/10000000}</div>
         );
       }
     }
   ];
+
 
   function onChange(page: number, pageSize: any) {
     setPage(page);
@@ -94,8 +94,9 @@ export default function Event({block, extrinsic}: EventProps) {
   }
 
   useEffect(() => {
+    debugger
     getEventData();
-  }, [page, pageSize]);
+  }, []);
 
   const pagination = {
     pageSize: pageSize,
@@ -114,3 +115,5 @@ export default function Event({block, extrinsic}: EventProps) {
     </div>
   );
 }
+export default React.memo(VotedList);
+

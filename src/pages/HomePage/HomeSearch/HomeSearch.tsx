@@ -8,33 +8,37 @@ import lightNing from '../../../assets/Lightning.svg';
 function homeSearch() {
 
     const TableWrapper = styled.div`
-        display: grid;
-        grid-template-columns: 50% 50%;
-        place-content: space-around space-evenly;
-        padding: 3rem 6rem 2rem 6rem;
-        position: relative;
-        @media screen and (max-width: 900px) {
-            grid-template-columns: 100%;
-            padding: 1rem;
-            > div {
-                > div {
-                    font-size: 1.5rem !important;
-                }
+      display: grid;
+      grid-template-columns: 60% 40%;
+      place-content: space-around space-evenly;
+      padding: 3rem 6rem 2rem 6rem;
+      position: relative;
+      @media screen and (max-width: 900px) {
+        grid-template-columns: 100%;
+        padding: 1rem;
+        > div {
+          > div {
+            font-size: 1.5rem !important;
+          }
             }
         }
     `;
 
     const EchartBox = styled.div`
-        //grid grid-cols-2 border-gray-borderGray bg-gray-backgroundGray rounded-lg
-        display: grid;
-        grid-template-columns:1fr 1fr;
-        box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.04);
-        border-radius: 8px;
-        border: 1px solid rgba(105, 168, 237, 0.21);
-        @media screen and (max-width: 900px) {
-            grid-template-columns:1fr;
-            grid-template-rows: 10rem 10rem;
-        }
+      //grid grid-cols-2 border-gray-borderGray bg-gray-backgroundGray rounded-lg
+      display: grid;
+      grid-template-columns:1fr 1fr;
+      box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.04);
+      border-radius: 8px;
+      border: 1px solid rgba(105, 168, 237, 0.21);
+      background: #111519!important;
+      opacity: 1;
+      position:relative;
+      z-index:1;
+      @media screen and (max-width: 900px) {
+        grid-template-columns:1fr;
+        grid-template-rows: 10rem 10rem;
+      }
     `;
 
 
@@ -61,11 +65,11 @@ function homeSearch() {
                         </div>
                     </div>
                     <div className="Line" />
-                    <div className="flex flex-row justify-between pt-1">
+                    <div className="flex flex-row justify-between py-2">
                         <span className="miniGrayFront">发行总量</span>
                         <span className="miniGrayFront">$ 6,731,598,423</span>
                     </div>
-                  <div className="flex flex-row justify-between pb-1">
+                  <div className="flex flex-row justify-between pt-2">
                       <span className="miniGrayFront">24小时交易量</span>
                       <span className="miniGrayFront">$ 12,423</span>
                   </div>

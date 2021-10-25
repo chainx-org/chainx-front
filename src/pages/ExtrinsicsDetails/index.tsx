@@ -16,6 +16,7 @@ import { LinkX, LinkXWithPop } from '../../components/LinkX';
 import Operation from '../../components/Operation';
 import CopyText from '../../components/copyText';
 import successIcon from '../../assets/icon_success.svg';
+import NoData from '../../components/NoData';
 
 export default function ExtrinsicDetails() {
   const Wrapper = styled.div`
@@ -26,13 +27,18 @@ export default function ExtrinsicDetails() {
   `;
   const {t} = useTranslation();
   const [loading, setLoading] = useState(true);
+  const [noData, setNoData] = useState(false);
   const [extrinsicDetails, setExtrinsicDetails] = useState<any>();
   const extrinsic = window.location.pathname.slice(19, window.location.pathname.length);
   const [nowExtrinsic, setNowExtrinsics] = useState(extrinsic);
   const getData = async () => {
     const res: any = await get(`/extrinsics/${nowExtrinsic}`, ``);
-    setExtrinsicDetails(res);
-    setLoading(false);
+    if (res) {
+      setExtrinsicDetails(res);
+      setLoading(false);
+    } else {
+      setNoData(true);
+    }
   };
   useEffect(() => {
     if (window.history.state && window.history.state?.state) {
@@ -126,17 +132,22 @@ export default function ExtrinsicDetails() {
   return (
     <>
       <Header/>
-      <div className="px-24 pt-8 bg-gray-arrow screen:px-4">
-        <DetailTitle routeTitle={t('Extrinsics')}
-                     content={extrinsicDetails?.indexer?.blockHeight + '-' + extrinsicDetails?.indexer?.index}
-                     isBlock={false} setNowBlock={extrinsic} routePath={routerPath}/>
-      </div>
-      <List list={list} loading={loading}/>
-      <div className="px-24 pb-16 bg-gray-bgWhite screen:px-4">
-        <Wrapper>
-          <TableMenuBox tabList={tabList} key={''}/>
-        </Wrapper>
-      </div>
+      {noData ?
+        <NoData/> :
+        <>
+          <div className="px-24 pt-8 bg-gray-arrow screen:px-4">
+            <DetailTitle routeTitle={t('Extrinsics')}
+                         content={extrinsicDetails?.indexer?.blockHeight + '-' + extrinsicDetails?.indexer?.index}
+                         isBlock={false} setNowBlock={extrinsic} routePath={routerPath}/>
+          </div>
+          <List list={list} loading={loading}/>
+          <div className="px-24 pb-16 bg-gray-bgWhite screen:px-4">
+            <Wrapper>
+              <TableMenuBox tabList={tabList} key={''}/>
+            </Wrapper>
+          </div>
+        </>}
+
       <Footer/>
     </>);
 }

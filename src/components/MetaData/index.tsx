@@ -16,9 +16,9 @@ export default function MetaData({metaData}:metaDataProps) {
   return (
     <MetaDataBox>
       <Wrapper>
-        {metaData.map((item:any) => {
+        {metaData.map((item:any,index) => {
           return (
-            <CardDiv>
+            <CardDiv key={index}>
               <Container className={'container-div'}>
                 <img src={item.icon} alt=""/>
                 <div className="flex flex-col justify-start my-auto ">

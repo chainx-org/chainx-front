@@ -18,7 +18,7 @@
   @apply h-overSpread w-0.25 bg-gray-border;
 }
 .miniGrayFront {
-  @apply text-sm text-gray-grayWhite leading-12;
+  @apply text-sm text-gray-grayWhite;
 }
 
 .toplinkName{
@@ -152,7 +152,7 @@ html {
 }
 
 .Home_pageSearch {
-  width: 66%;
+  width: 70%;
 }
 
 .NavSearch .ant-input {

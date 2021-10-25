@@ -14,14 +14,29 @@ interface TableXProps {
   tableTotal?:number,
   setPage?:any,
   setPageSize?:any,
-  setLoading?:any
+  setLoading?:any,
+  expandedRowRender?:any,
+  rowExpandable?:any,
+  expandIcon?:any
 }
 
-export default function TableX({Children, columns, dataList, pagination,loading,rowKey}: TableXProps) {
+export default function TableX({Children, columns, dataList, pagination,loading,rowKey,expandedRowRender,rowExpandable,expandIcon}: TableXProps) {
 
   return (
     <div className="flex flex-col">
-      <Table columns={columns} dataSource={dataList} pagination={pagination} loading={loading} bordered rowKey={rowKey}/>
+      <Table
+        columns={columns}
+        dataSource={dataList}
+        pagination={pagination}
+        loading={loading}
+        bordered
+        rowKey={rowKey}
+        expandable={{
+          expandIcon:expandIcon,
+          expandedRowRender: expandedRowRender,
+          rowExpandable:rowExpandable,
+        }}
+      />
       <div className="flex justify-end py-4">
         {Children}
       </div>

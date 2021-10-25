@@ -8,6 +8,8 @@ export const MetaDataBox = styled.div`
   border: 0px solid #ccc;
   @media screen and (max-width: 900px) {
     height: 22rem;
+    padding:0rem 1rem;
+
   }
 `;
 
