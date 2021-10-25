@@ -23,9 +23,9 @@ export default function TimeStatus(content: any) {
     let minutes = Math.floor(((second % 86400) % 3600) / 60);
     let seconds = Math.floor(((second % 86400) % 3600) % 60);
     if (days > 0) duration = moment(Number(content.content)).format('YYYY-MM-DD HH:mm:ss');
-    else if (hours > 0) duration = hours + t('Hours') + minutes + t('Minutes');
-    else if (minutes > 0) duration = minutes + t('Minutes') + seconds + t('Seconds');
-    else if (seconds > 0) duration = seconds + t('Seconds');
+    else if (hours > 0) duration = hours + t('Hours') + minutes + t('Minutes')+t('ago');
+    else if (minutes > 0) duration = minutes + t('Minutes') + seconds + t('Seconds')+t('ago');
+    else if (seconds > 0) duration = seconds + t('Seconds')+t('ago');
     return duration;
   }
 

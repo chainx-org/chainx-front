@@ -68,6 +68,25 @@ export const Container = styled.div`
     height: 32px;
     margin: auto 3px auto 0px;
   }
+  
+  //>div{
+  //  .name {
+  //    font-size: 14px;
+  //    font-weight: 400;
+  //    //color: rgba(0, 0, 0, 0.45);
+  //    color: red;
+  //    line-height: 22
+  //  }
+  //
+  //  .date {
+  //    font-size: 18px;
+  //    font-weight: bold;
+  //    color: #333333;
+  //    line-height: 22px;
+  //  }
+  //
+  //}
+  
 
 `;
 export const CardDiv = styled.div`
@@ -85,22 +104,21 @@ export const CardDiv = styled.div`
     &.border-bottom {
       border-bottom: 1px solid #E9E9E9FF;
     }
-
-    .name {
-      font-size: 14px;
-      font-weight: 400;
-      color: rgba(0, 0, 0, 0.45);
-      line-height: 22
-    }
-
-    .date {
-      font-size: 18px;
-      font-weight: bold;
-      color: #333333;
-      line-height: 22px;
-    }
-
   }
+  .name {
+    font-size: 14px;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.45);
+    line-height: 22
+  }
+
+  .date {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333333;
+    line-height: 22px;
+  }
+
 
   .line {
     //height: 67px;

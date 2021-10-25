@@ -21,9 +21,9 @@ export default function MetaData({metaData}:metaDataProps) {
             <CardDiv key={index}>
               <Container className={'container-div'}>
                 <img src={item.icon} alt=""/>
-                <div className="flex flex-col justify-start my-auto ">
-                  <span className="name">{item.name}</span>
-                  <span className="date">{reName(item.data)}</span>
+                <div className="flex flex-col justify-start my-auto ml-4">
+                  <span  style={{fontSize:'14px',color:'rgba(0, 0, 0, 0.45)'}}>{item.name}</span>
+                  <span style={{fontSize:'18px',fontWeight:'bold'}}>{reName(item.data)}</span>
                 </div>
               </Container>
               <RightLine className={'line-div'}/>
