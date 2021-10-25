@@ -4,6 +4,7 @@ import { LinkX, ShorterLink } from '../../components/LinkX';
 import TimeStatus from '../../components/TimeStatus';
 import waitIcon from '../../assets/icon_waiting.svg';
 import ChainTable from '../../components/Table/table';
+import { encodeAddress } from '@polkadot/keyring';
 
 
 export default function Block() {
@@ -19,16 +20,16 @@ export default function Block() {
         );
       }
     },
-    {
-      title: t('Status'),
-      dataIndex: 'address',
-      key: 'address',
-      render: (text: any, record: any) => {
-        return (
-          <img src={waitIcon} alt=""/>
-        );
-      }
-    },
+    // {
+    //   title: t('Status'),
+    //   dataIndex: 'address',
+    //   key: 'address',
+    //   render: (text: any, record: any) => {
+    //     return (
+    //       <img src={waitIcon} alt=""/>
+    //     );
+    //   }
+    // },
     {
       title: t('Time'),
       dataIndex: 'blockTime',
@@ -67,7 +68,7 @@ export default function Block() {
       key: 'Validator',
       render: (text: any, record: any) => {
         return (
-          <LinkX linkUrl={`/nodeDetails/${record.author}`} state={record} content={record.referralId}/>);
+          <LinkX linkUrl={`/nodeDetails/${encodeAddress(record.author)}`} state={record} content={record.referralId}/>);
       }
     }
   ];

@@ -118,12 +118,12 @@ export default function CrossBlock() {
   }, []);
   return (
     <>
-      <Header/>
+      <Header showSearch={true}/>
       <Wrapper className="px-24 py-4 bg-gray-bgWhite screen:px-4">
         <BridgeWrapper>
           <Wrapper>
             <CardTitle>
-              <div className="flex flex-row" style={{padding: '1rem 0rem 1rem 2rem'}}>
+              <div className="flex flex-row" style={{padding: '0.5rem 0rem 0.5rem 1rem'}}>
                 <img src={mining} alt=""/>
                 <span className="ml-4" style={{fontSize: '14px'}}>{t('Deposit Mining')}</span>
               </div>
@@ -156,7 +156,7 @@ export default function CrossBlock() {
           </Wrapper>
           <Wrapper>
             <CardTitle>
-              <div className="flex flex-row" style={{padding: '1rem 0rem 1rem 2rem'}}>
+              <div className="flex flex-row" style={{padding: '0.5rem 0rem 0.5rem 1rem'}}>
                 <img src={mining} alt=""/>
                 <span className="ml-4" style={{fontSize: '14px'}}>{t('Mining Distribution')}</span>
               </div>
@@ -166,7 +166,7 @@ export default function CrossBlock() {
         </BridgeWrapper>
         <Wrapper>
           <CardTitle>
-            <div className="flex flex-row" style={{padding: '1rem 0rem 1rem 2rem'}}>
+            <div className="flex flex-row" style={{padding: '0.5rem 0rem 0.5rem 1rem'}}>
               <img src={mining} alt=""/>
               <span className="ml-4" style={{fontSize: '14px'}}>{t('Bitcoin Bridge')}</span>
             </div>

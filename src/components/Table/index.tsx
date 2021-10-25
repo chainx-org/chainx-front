@@ -17,7 +17,7 @@ interface TableXProps {
   setLoading?:any,
   expandedRowRender?:any,
   rowExpandable?:any,
-  expandIcon?:any
+  expandIcon?:any,
 }
 
 export default function TableX({Children, columns, dataList, pagination,loading,rowKey,expandedRowRender,rowExpandable,expandIcon}: TableXProps) {

@@ -32,6 +32,9 @@ export default function Extrinsic({block}: ExtrinsicProps) {
       res = await get(`/extrinsics?page=${page - 1}&page_size=${pageSize}`, ``);
     }
     setExtrinsicTotal(res.total);
+    res.items.map((item:any,index:number)=>{
+      item[index] = index+1
+    })
     setExtrinsicData(res.items);
     setLoading(false);
   };
@@ -148,11 +151,12 @@ const expandedRowRender =(record:any)=>{
   return (
     <div className="px-8 overflow-scroll">
       <TableX
+        rowKey={(row:any)=>{return row.index}}
         columns={chainColumns}
         dataList={extrinsicData}
         pagination={pagination}
         loading={loading}
-        expandIcon={({expanded, onExpand, record}: any) => expandIcon(expanded, onExpand, record)}
+        // expandIcon={({expanded, onExpand, record}: any) => expandIcon(expanded, onExpand, record)}
         expandedRowRender={expandedRowRender}
         rowExpandable={rowExpandable}
       />

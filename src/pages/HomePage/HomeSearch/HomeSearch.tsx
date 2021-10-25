@@ -1,7 +1,6 @@
 import React from 'react';
 import Search from '../../../components/Search';
 import styled from 'styled-components';
-import lightNing from '../../../assets/Lightning.svg';
 
 function homeSearch() {
 
@@ -12,9 +11,9 @@ function homeSearch() {
       padding: 3rem 6rem 2rem 6rem;
       position: relative;
 
-      .bgImage {
-        overflow: ;
-      }
+      //.bgImage {
+      //  overflow: ;
+      //}
 
       @media screen and (max-width: 900px) {
         grid-template-columns: 100%;
@@ -52,8 +51,8 @@ function homeSearch() {
     return (
       <TableWrapper>
         <div className='w-overSpread h-overSpread absolute items-center mx-auto my-auto'>
-          <img className="bgImage" src={lightNing} alt=""
-               style={{position: 'relative', objectFit: 'cover',margin:'auto auto'}}/>
+          <img className="bgImage" src="https://i.postimg.cc/jds3jh3N/Lightning.png" alt=""
+               style={{position: 'relative', objectFit: 'cover', margin: 'auto auto'}}/>
         </div>
         <div className="grid grid-rows-2">
           <div className="h-13 text-4xl PingFangSC-Medium, PingFang SC text-textColor-white">ChainX Blockchain

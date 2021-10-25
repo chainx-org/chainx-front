@@ -38,7 +38,7 @@ export default function Header({showSearch}: HeaderPop) {
 
     // @ts-ignore
     return (
-      <div className="flex flex-row justify-between bg-gray-arrow px-12 py-3 screen:px-4 screen:py-4">
+      <div className="flex flex-row justify-between bg-gray-arrow px-12 screen:px-4 screen:py-4">
           <Wrapper>
               <Link to="/"><img src={icon} alt=""/></Link>
               <NavLink onClick={handleClick}>

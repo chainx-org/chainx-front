@@ -48,7 +48,7 @@ export default function Validator() {
 
   return (
     <>
-      <Header/>
+      <Header showSearch={true}/>
       <div className="px-24 py-4 bg-gray-bgWhite  screen:px-4">
         <Wrapper>
           <TableMenuBox tabList={tabList} key={''}/>

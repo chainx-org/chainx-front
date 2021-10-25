@@ -133,7 +133,7 @@ export default function ExtrinsicDetails() {
   };
   return (
     <>
-      <Header/>
+      <Header showSearch={true}/>
       {noData ?
         <NoData/> :
         <>

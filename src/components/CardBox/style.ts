@@ -1,17 +1,19 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-    min-height: 688px;
-    background: #FFFFFF;
-    box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.04);
-    border-radius: 10px;
-    border: 1px solid #E9E9E9;
-    position: relative;
-  `;
+  min-height: 688px;
+  background: #FFFFFF;
+  box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.04);
+  border-radius: 10px;
+  border: 1px solid #E9E9E9;
+  position: relative;
+`;
 export const CardTitle = styled.div`
 
   border-bottom: 1px solid #E9E9E9;
-
+  display: flex;
+  flex-direction: row;
+  padding: 12px;
   & > img {
     width: 24px;
     height: 24px;
@@ -21,21 +23,21 @@ export const CardTitle = styled.div`
     display: inline-block;
     margin-left: 1rem;
   }
-  `;
+`;
 export const SpliteLine = styled.div`
-    position: absolute;
-    top: 3rem;
-    width: 100%;
-    height: 1px;
-    background: #E9E9E9;
-  `;
+  position: absolute;
+  top: 3rem;
+  width: 100%;
+  height: 1px;
+  background: #E9E9E9;
+`;
 
 export const Container = styled.div`
-    position: absolute;
-    width:100%;
-    height:80%;
-    top: 4rem;
-    padding: 2rem 2rem;
+  position: absolute;
+  width: 100%;
+  height: 80%;
+  top: 4rem;
+  padding: 2rem 2rem;
   display: grid;
   grid-template-columns:40% 10% 50%;
   grid-column-gap: 1rem;
@@ -46,16 +48,32 @@ export const Container = styled.div`
     //  margin:auto !important;
     //}
   }
-
-  .toolList {
-    display: none;
+  &>div{
+    &>div{
+      &>div{
+        &>span{
+          .MessagePop{
+            display: none;
+          }
+          :hover{
+            .MessagePop{
+              display: block;
+            }
+          }
+        }
+      }
+    }
   }
-
-  :hover {
+  .toolSearch{
     .toolList {
-      display: block;
-      position: relative;
-      z-index: 999;
+      display: none;
+    }
+    :hover {
+      .toolList {
+        display: block;
+        position: relative;
+        z-index: 999;
+      }
     }
   }
 

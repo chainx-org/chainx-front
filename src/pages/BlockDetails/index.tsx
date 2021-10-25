@@ -12,7 +12,7 @@ import Footer from '../../components/Footer';
 import TableMenuBox from '../../components/TableMenuBox';
 import { TabInfo } from '../../components/SwitchTab';
 import DetailTitle from '../../components/DetailTitle';
-import { LinkXWithPop, LinkXWithPopAndIcon } from '../../components/LinkX';
+import { LinkXWithPopAndIcon } from '../../components/LinkX';
 import NoData from '../../components/NoData';
 import successIcon from '../../assets/icon_success.svg';
 
@@ -91,9 +91,8 @@ export default function BlockDetails() {
     {
       title: t('Parent Hash'),
       content: (
-        <LinkXWithPop linkUrl={`/blockDetails/${blockDetails?.header?.parentHash}`}
-                      content={blockDetails?.header?.parentHash}/>
-      ),
+        <a style={{display: 'inline-block', color: '#3C88C6'}}
+           href={`/blockDetails/${blockDetails?.header?.parentHash}`}>{blockDetails?.header?.parentHash}</a>)
     },
     {
       title: t('Extrinsics Root'),
@@ -139,7 +138,7 @@ export default function BlockDetails() {
   };
   return (
     <>
-      <Header/>
+      <Header showSearch={true}/>
       {noData ?
         <NoData/> :
         <>

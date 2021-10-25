@@ -48,10 +48,6 @@ export default function Chain() {
       title: t('Extrinsic'),
       content: <Extrinsic/>,
     },
-    // {
-    //   title: t('Transfer'),
-    //   content: <Transfer/>,
-    // },
     {
       title: t('Event'),
       content: <Event/>,
@@ -63,7 +59,7 @@ export default function Chain() {
   ];
   return (
     <>
-      <Header/>
+      <Header showSearch={true}/>
       <div className="px-24 pt-8 pb-16 bg-gray-bgWhite screen:px-4">
         <Wrapper>
           <TableMenuBox tabList={tabList} currentTab={currentTab}/>

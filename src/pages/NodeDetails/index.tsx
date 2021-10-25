@@ -134,7 +134,7 @@ export default function NodeDetails() {
   };
   return (
     <>
-      <Header/>
+      <Header showSearch={true}/>
       {noData ?
         <NoData/> :
         <>

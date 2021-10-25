@@ -5,6 +5,7 @@ import CardListItem from '../../components/CardListItem';
 import { Input } from 'antd';
 import { CardTitle, Container, SpliteLine, Wrapper } from './style';
 import Icon from '../../assets/address_icon.svg';
+import noDataIcon from '../../assets/noData.svg';
 
 const {TextArea} = Input;
 
@@ -57,7 +58,6 @@ export default function CardBox({
                 bordered={true}
               />
             </div>
-            {correctValue ? <div>{correctValue}</div> : ''}
             <div className="w-overSpread h-12 bg-topBar-black text-topBar-white mt-12 items-center text-center"
                  style={{borderRadius: '4px'}} onClick={searchFun}>
               <span className="inline-block" style={{lineHeight: '3rem'}}>{t('Search')}</span>
@@ -66,22 +66,31 @@ export default function CardBox({
           <div className="items-center my-auto mx-auto text-center">
             <img src={arrowChangeIcon} alt=""/>
           </div>
-          <div className="items-center my-auto mx-0 text-center bg-topBar-gray h-overSpread flex justify-center items-center" style={{
-            background: '#F9F9F9',
-            borderRadius: '10px',
-            border: '1px solid #DBDBDB'
-          }}>
-            <div className="h-12 overflow-scroll">
-              {listValue?.map((item: any) => {
-                return (
-                  <CardListItem itemIcon={Icon} itemContent={item?.value} itemTitle={item?.name}/>
-                );
-              })}
-            </div>
-            {!correctValue ? <div className='flex flex-col'>
-              <img className="inline-block w-12" src={cardBoxTitleContainer.icon} alt=""/>
-              <div>{cardBoxTitleContainer.result}</div>
-            </div> : ''}
+          <div
+            className="items-center my-auto ml-0 text-center mr-6 bg-topBar-gray h-overSpread flex justify-center items-center"
+            style={{
+              background: '#F9F9F9',
+              borderRadius: '10px',
+              border: '1px solid #DBDBDB'
+            }}>
+
+            {listValue.length>0 ? <div className="overflow-scroll w-overSpread h-overSpread">
+                {listValue?.map((item: any) => {
+                  return (
+                    <CardListItem itemIcon={Icon} itemContent={item?.value} itemTitle={item?.name}/>
+                  );
+                })}
+              </div> :
+              <>
+                {!correctValue ? <div className="flex flex-col">
+                    <img className="inline-block w-18 my-0 mx-auto" src={cardBoxTitleContainer.icon} alt=""/>
+                    <div>{t('Enter the address or public key for conversion')}</div>
+                  </div> :
+                  <div className="flex flex-col">
+                    <img className="inline-block w-18 my-0 mx-auto" src={noDataIcon} alt=""/>
+                    <div>{t(`${correctValue}`)}</div>
+                  </div>}
+              </>}
           </div>
         </Container>
       </Wrapper>

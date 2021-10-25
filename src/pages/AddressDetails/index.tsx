@@ -96,7 +96,7 @@ export default function AddressDetails() {
   };
   return (
     <>
-      <Header/>
+      <Header showSearch={true}/>
       {noData ?
         <NoData/> :
         <>
