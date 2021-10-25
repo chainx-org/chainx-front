@@ -49,7 +49,7 @@ export default function NodeDetails() {
     {
       title: t('Nikename'),
       content: (
-        <div className="text-black-dark">{addressDetails?.referralId}-{(addressDetails?.isValidating)?'信托':'-'}</div>
+        <div className="text-black-dark">{addressDetails?.referralId}-{(addressDetails?.isValidating)?'<TrustTag/>':'-'}</div>
       ),
     },
     {

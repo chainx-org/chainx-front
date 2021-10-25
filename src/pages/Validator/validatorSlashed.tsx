@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import TableX from '../../components/Table';
 import { get } from '../../hooks/useApi';
 import { LinkX, ShorterLink } from '../../components/LinkX';
+import TrustTag from '../../components/TrustTag';
 
 
 export default function ValidatorSlashed() {
@@ -25,11 +26,10 @@ export default function ValidatorSlashed() {
       key: 'NikeName',
       render: (text: any, record: any) => {
         return (
-          <>
-
+          <div className="flex flex-row">
             <LinkX linkUrl={`/addressDetails/${record.account}`} content={record.referralId}/>);
-            {record.isValidating === true ? '信托' : ''}
-          </>);
+            {record.isValidating === true ? <TrustTag/> : ''}
+          </div>);
       }
     },
     {

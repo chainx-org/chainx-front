@@ -15,8 +15,9 @@ export default function Deposit() {
       key: 'bitcoinTransactionHash',
       render: (text: any, record: any) => {
         return (
-          <LinkX linkUrl={`https://live.blockcypher.com/btc/tx/${swapEndian(record.data[0])}`}
-                 content={record.data[0]}/>
+        <a style={{display: 'inline-block', color: '#3C88C6'}}
+           href={`https://live.blockcypher.com/btc/tx/${swapEndian(record.data[0])}`}
+           target="_Blank">{record.data[0]}</a>
         );
       }
     },
