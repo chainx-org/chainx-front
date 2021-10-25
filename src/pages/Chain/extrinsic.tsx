@@ -11,6 +11,7 @@ import JsonApi from '../../components/Jsonformat';
 import moreIcon from '../../assets/icon_more.svg';
 import pulldownIcon from '../../assets/icon_pulldown_list.svg'
 import styled from 'styled-components';
+import ExpandIcon from '../../components/ExpandIcon'
 
 interface ExtrinsicProps {
   block?: number | string,
@@ -33,7 +34,7 @@ export default function Extrinsic({block}: ExtrinsicProps) {
     }
     setExtrinsicTotal(res.total);
     res.items.map((item:any,index:number)=>{
-      item[index] = index+1
+      item['index'] = index+1
     })
     setExtrinsicData(res.items);
     setLoading(false);
@@ -115,20 +116,7 @@ export default function Extrinsic({block}: ExtrinsicProps) {
 
     });
   }, [page, pageSize]);
-  const expandIcon = (expanded: any, onExpand: any, record: any) => {
-    return (
-      <>
-        {expanded
-          ?
-          <img src={pulldownIcon} alt="" style={{cursor: 'pointer', width: '2.5rem', maxWidth: 'none'}}
-               onClick={e => onExpand(record, e)}/>
-          :
-          <img src={moreIcon} alt="" style={{cursor: 'pointer', width: '2.5rem', maxWidth: 'none'}}
-               onClick={e => onExpand(record, e)}/>
-        }
-      </>
-    );
-  };
+
 const expandedRowRender =(record:any)=>{
     return (
         <JsonApi json={record?.args}/>
@@ -156,7 +144,7 @@ const expandedRowRender =(record:any)=>{
         dataList={extrinsicData}
         pagination={pagination}
         loading={loading}
-        // expandIcon={({expanded, onExpand, record}: any) => expandIcon(expanded, onExpand, record)}
+        expandIcon={({expanded, onExpand, record}: any) => ExpandIcon(expanded, onExpand, record)}
         expandedRowRender={expandedRowRender}
         rowExpandable={rowExpandable}
       />

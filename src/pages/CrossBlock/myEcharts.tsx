@@ -24,23 +24,23 @@ const  Model_echarts = (props:any) => {
     },
     series: [
       {
-        name: 'Access From',
+        name: 'Rate',
         type: 'pie',
         radius: ['40%', '70%'],
         avoidLabelOverlap: false,
         label: {
-          show: false,
+          show: true,
           position: 'center'
         },
         emphasis: {
           label: {
             show: true,
-            fontSize: '40',
+            fontSize: '30',
             fontWeight: 'bold'
           }
         },
         labelLine: {
-          show: false
+          show: true
         },
         data: [
           { value: 50.00,name: 'X-BTC' },
