@@ -9,19 +9,18 @@ export const Wrapper = styled.div`
     position: relative;
   `;
 export const CardTitle = styled.div`
-    display: flex;
-    flex-direction: row;
-    padding: 1rem 0rem 1rem 2rem;
 
-    & > img {
-      width: 24px;
-      height: 24px;
-    }
+  border-bottom: 1px solid #E9E9E9;
 
-    & > span {
-      display: inline-block;
-      margin-left: 1rem;
-    }
+  & > img {
+    width: 24px;
+    height: 24px;
+  }
+
+  & > span {
+    display: inline-block;
+    margin-left: 1rem;
+  }
   `;
 export const SpliteLine = styled.div`
     position: absolute;

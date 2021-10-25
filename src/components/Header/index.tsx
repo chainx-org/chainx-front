@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import icon from '../../assets/Group8Copy1.svg';
 import Search from '../Search';
 import { NavLink, Wrapper } from './style';
@@ -7,6 +7,7 @@ import { useTranslation } from 'react-i18next';
 import Faviconnav from '../../components/SideBars';
 import styled from 'styled-components';
 import menuIcon from '../../assets/menu.svg';
+import { useOnClickOutside } from '../../helper/hooks';
 
 interface HeaderPop {
     showSearch?: boolean
@@ -32,9 +33,12 @@ export default function Header({showSearch}: HeaderPop) {
     const toolLink = (value: string) => {
         window.location.href = window.location.origin + `${value}`;
     };
+    const ref = useRef();
+    useOnClickOutside(ref, () => setShowMenu(false));
 
+    // @ts-ignore
     return (
-      <div className="flex flex-row justify-between bg-gray-arrow px-12 screen:px-4">
+      <div className="flex flex-row justify-between bg-gray-arrow px-12 screen:px-4 screen:py-4">
           <Wrapper>
               <Link to="/"><img src={icon} alt=""/></Link>
               <NavLink onClick={handleClick}>
@@ -51,24 +55,27 @@ export default function Header({showSearch}: HeaderPop) {
                   <Link to="/crossBlock">
                       <span key="4" className="toplinkName">{t('Cross Bridge')}</span>
                   </Link>
-                  <Link to="/tools" className="topLink">
+                  <div className="topLink">
                       <span key="6" className="topLinkTool">{t('Tools')}</span>
                       <ul className="toolList">
                           <li>
-                              <div onClick={() => toolLink('/ss58')}>SS58账号转换</div>
+                              <div onClick={() => toolLink('/tools/ss58')}>{t('Transform Address/Public Key')}</div>
                           </li>
-                          {/*<li><Link to='/ss58'>查询漏块</Link></li>*/}
                           <li>
-                              <div onClick={() => toolLink('/SearchTool')}>搜索事件/交易</div>
+                              <div onClick={() => toolLink('/tools/SearchTool')}>{t('Search Events/Extrinsics')}</div>
                           </li>
                       </ul>
-                  </Link>
+                  </div>
               </NavLink>
           </Wrapper>
           {showSearch && <Search className="NavSearch"/>}
           {<SelectList className="selectList">
-              <div onClick={() => setShowMenu(!showMenu)}><img src={menuIcon} alt=""/></div>
-              {showMenu && <Faviconnav isCollapsed={false}/>}
+              <div onClick={() => setShowMenu(!showMenu)}><img src={menuIcon} alt="" style={{height: '1.5rem',
+                  width: '1.5rem'}}/></div>
+              {showMenu &&
+              // @ts-ignore
+              <Faviconnav ref={ref} isCollapsed={false} onClick={() => setShowMenu(!showMenu)} />
+              }
           </SelectList>}
       </div>
     );

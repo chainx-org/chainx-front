@@ -72,7 +72,6 @@
     "Address": "地址",
     "Slash Count": "惩罚次数",
     "Slash Amount": "惩罚金额",
-    "Transform Address/Public Key": "SS58账号转换",
     "Block Time": "出块时间",
     "Sender": "发送账户",
     "Fee": "手续费",
@@ -123,5 +122,9 @@
     "Authored Address": "出块地址",
     "Voted list": "投票列表",
     "Missed": "漏块列表",
-    "Parent Hash": "父哈希"
+    "Parent Hash": "父哈希",
+    "Search Events/Extrinsics": "搜索事件/交易",
+    "Transform Address/Public Key": "转换地址/公钥",
+    "Deposit Mining": "跨链挖矿",
+    "Mining Distribution": "挖矿收益比率"
 }

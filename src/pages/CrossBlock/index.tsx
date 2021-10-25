@@ -15,7 +15,8 @@ import Withdraw from './withdraw';
 import Host from './host';
 import Claim from './claim';
 import { get } from '../../hooks/useApi';
-import MyEchart from './myEcharts'
+import MyEchart from './myEcharts';
+import { ShorterLink } from '../../components/LinkX';
 
 
 export default function CrossBlock() {
@@ -69,7 +70,26 @@ export default function CrossBlock() {
       content: <Claim/>,
     }
   ];
-  const [mingApiData, setMingApiData] = useState<any>([]);
+  const [mingApiData, setMingApiData] = useState<any>([{
+    name: t('Total Balance'),
+    data: '-'
+  }, {
+    name: t('Total Weight'),
+    data: '-'
+  }, {
+    name: t('Reward Pot Last Update Height(PCX)'),
+    data: '-'
+  }, {
+    name: t('Mining Power(PCX)'),
+    data: '-'
+  }, {
+    name: t('Equivalent Nominations(PCX)'),
+    data: '-'
+  }, {
+    name: t('Reward Pot Balance(PCX)'),
+    data: '-'
+  }]);
+  const [rewardPot,setRewardPot] = useState('')
   const getData = async () => {
     const {items}: any = await get(`/crossblocks/deposit_mine?page=0&page_size=20`, ``);
     setMingApiData([{
@@ -80,17 +100,18 @@ export default function CrossBlock() {
       data: items[0]?.lastTotalMiningWeight / 1000000
     }, {
       name: t('Reward Pot Last Update Height(PCX)'),
-      data: items[0]?.rewardPot
+      data: items[0]?.lastTotalMiningWeightUpdate
     }, {
       name: t('Mining Power(PCX)'),
       data: items[0]?.miningPower
     }, {
       name: t('Equivalent Nominations(PCX)'),
-      data: '-'
+      data: items[0]?.equivalent_nominations
     }, {
       name: t('Reward Pot Balance(PCX)'),
       data: items[0]?.rewardPotBalance
     }]);
+    setRewardPot(items[0]?.rewardPot)
   };
   useEffect(() => {
     getData();
@@ -98,21 +119,23 @@ export default function CrossBlock() {
   return (
     <>
       <Header/>
-      <Wrapper className="px-24 py-4 bg-gray-bgWhite  screen:px-4">
+      <Wrapper className="px-24 py-4 bg-gray-bgWhite screen:px-4">
         <BridgeWrapper>
           <Wrapper>
             <CardTitle>
-              <img src={mining} alt=""/>
-              <span>{'跨链挖矿'}</span>
+              <div className="flex flex-row" style={{padding: '1rem 0rem 1rem 2rem'}}>
+                <img src={mining} alt=""/>
+                <span className="ml-4" style={{fontSize: '14px'}}>{t('Deposit Mining')}</span>
+              </div>
             </CardTitle>
             <div className="flex flex-row w-overSpread justify-between px-8 py-4">
               <div className="flex flex-col">
-                <span>{t('Asset Type')}</span>
-                <span>111111</span>
+                <span style={{fontSize: '14px', color: 'rgba(0, 0, 0, 0.45)'}}>{t('Asset Type')}</span>
+                <span style={{fontSize: '18px', fontWeight: 'bold'}}>Interchain BTC(X-BTC)</span>
               </div>
               <div className="flex flex-col">
-                <span>{t('Reward Pot Address(PCX)')}</span>
-                <span>5RgUvw4....MSNqb</span>
+                <span style={{fontSize: '14px', color: 'rgba(0, 0, 0, 0.45)'}}>{t('Reward Pot Address(PCX)')}</span>
+                <span style={{fontSize: '18px', fontWeight: 'bold'}}><ShorterLink linkUrl={`/addressDetails/${rewardPot}`} content={rewardPot}/></span>
               </div>
             </div>
             <WrapperBridge>
@@ -121,27 +144,32 @@ export default function CrossBlock() {
                   <CardDiv key={index}>
                     <Container className={'container-div'}>
                       <div className="flex flex-col justify-start my-auto ">
-                        <span className="name">{item.name}</span>
-                        <span className="date">{reName(item.data)}</span>
+                        <span className="name"
+                              style={{fontSize: '14px', color: 'rgba(0, 0, 0, 0.45)'}}>{item.name}</span>
+                        <span className="date" style={{fontSize: '18px', fontWeight: 'bold'}}>{reName(item.data)}</span>
                       </div>
                     </Container>
-                    <RightLine className={'line-div'}/>
+                    {/*<RightLine className={'line-div'}/>*/}
                   </CardDiv>);
               })}
             </WrapperBridge>
           </Wrapper>
           <Wrapper>
             <CardTitle>
-              <img src={mining} alt=""/>
-              <span>{'挖矿收益比率'}</span>
+              <div className="flex flex-row" style={{padding: '1rem 0rem 1rem 2rem'}}>
+                <img src={mining} alt=""/>
+                <span className="ml-4" style={{fontSize: '14px'}}>{t('Mining Distribution')}</span>
+              </div>
             </CardTitle>
-            <MyEchart />
+            <MyEchart/>
           </Wrapper>
         </BridgeWrapper>
         <Wrapper>
           <CardTitle>
-            <img src={mining} alt=""/>
-            <span>{t('Bitcoin Bridge')}</span>
+            <div className="flex flex-row" style={{padding: '1rem 0rem 1rem 2rem'}}>
+              <img src={mining} alt=""/>
+              <span className="ml-4" style={{fontSize: '14px'}}>{t('Bitcoin Bridge')}</span>
+            </div>
           </CardTitle>
           <TableMenuBox tabList={tabList} key={''}/>
         </Wrapper>

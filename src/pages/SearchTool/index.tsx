@@ -40,7 +40,6 @@ export default function Tools() {
       try {
         setListValue(res);
       }catch (e) {
-        debugger
         setIsCorrectValue('')
       }
     } else {

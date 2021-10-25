@@ -27,9 +27,7 @@ export default function AddressDetails() {
   const [noData, setNoData] = useState(false);
   const [blockDetails, setBlockDetails] = useState<any>();
   const address = window.location.pathname.slice(16, window.location.pathname.length);
-  debugger
   const pubKey = decodeAddress(address) || '';
-  debugger
   const [nowBlock, setNowBlock] = useState(address);
   const getData = async () => {
     const res: any = await get(`/accounts/${address}/assets`, ``);

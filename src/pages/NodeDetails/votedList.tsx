@@ -16,13 +16,10 @@ function VotedList() {
   const [eventTotal, setEventTotal] = useState(0);
   const [loading, setLoading] = useState(true);
   const address = window.location.pathname.slice(13, window.location.pathname.length);
-  debugger
   const getEventData = async () => {
     let res: any = await get(`/validatorvotes/${address}?page=${page - 1}&page_size=${pageSize}`, ``);
     setEventTotal(res.total);
     setEventData(res.items);
-    console.log(res.items[0][1])
-    debugger
     setLoading(false);
   };
   const chainColumns = [
@@ -94,7 +91,6 @@ function VotedList() {
   }
 
   useEffect(() => {
-    debugger
     getEventData();
   }, []);
 

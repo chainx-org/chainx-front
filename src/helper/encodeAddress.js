@@ -8,7 +8,6 @@ const keyring = new Keyring()
 keyring.setSS58Format(44)
 
 export default function _encodeAddress(publicKey) {
-  debugger
   if (!publicKey) return publicKey
   return keyring.encodeAddress(hexAddPrefix(publicKey))
 }

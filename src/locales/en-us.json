@@ -74,6 +74,7 @@
     "Slash Count": "Slash Count",
     "Slash Amount": "Slash Amount",
     "Transform Address/Public Key": "Transform Address/Public Key",
+    "Search Events/Extrinsics": "Search Events/Extrinsics",
     "Block Time": "Block Time",
     "Sender": "Sender",
     "Fee": "Fee",
@@ -124,7 +125,9 @@
     "Authored Address": "Authored Address",
     "Voted list": "Voted list",
     "Missed": "Missed",
-    "Parent Hash": "Parent Hash"
+    "Parent Hash": "Parent Hash",
+    "Deposit Mining": "Deposit Mining",
+    "Mining Distribution": "Mining Distribution"
 
 }
 

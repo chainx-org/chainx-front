@@ -2,13 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import React, { useEffect, useState } from 'react';
-
-// import { useApi, useToggle } from '@polkadot/react-hooks';
-// import { Icon } from '@polkadot/react-components';
-// import linkOut from '@polkadot/apps/NavBar/icons/Link out.svg';
-// import Endpoints from '@polkadot/apps/Endpoints/modals/Network';
-// import getApiUrl from '@polkadot/apps/initSettings';
-// import { useTranslation } from '../../translate';
+import closeIcon  from '../../assets/icon_close.svg';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
@@ -24,7 +18,7 @@ interface Props {
 const Wrapper = styled.div`
   position: absolute;
   top: 0;
-  left: 0;
+  right: 0;
   bottom: 0;
   z-index: 999;
   overflow-y: auto;
@@ -150,8 +144,8 @@ function Sidebars({className = '', onClose, isCollapsed}: Props): React.ReactEle
     {nodeName: t('Chain'), link: '/Chain'},
     {nodeName: t('Cross Block'), link: '/validators'},
     {nodeName: t('Cross Bridge'), link: '/crossBlock'},
-    {nodeName: t('Cross Bridge'), link: '/ss58'},
-    {nodeName: t('Cross Bridge'), link: '/SearchTool'},
+    {nodeName: t('Search Events/Extrinsics'), link: '/ss58'},
+    {nodeName: t('Transform Address/Public Key'), link: '/SearchTool'},
 
   ]);
 
@@ -168,6 +162,7 @@ function Sidebars({className = '', onClose, isCollapsed}: Props): React.ReactEle
       style={{width:'9rem'}}
     >
       <div className="wrappers">
+        <img src={closeIcon} alt="" style={{width:'2rem',height:'2rem',padding:'0.3rem 0.3rem'}} onClick={()=>onClose}/>
         <ul>
           {
             nodeList.map((node: any, index: number) =>
@@ -180,12 +175,6 @@ function Sidebars({className = '', onClose, isCollapsed}: Props): React.ReactEle
             )
           }
         </ul>
-
-        <div className="linkOutBrowser" onClick={onClose}>
-          <a href={url} target="">
-            {t('ChainScan')}
-          </a>
-        </div>
       </div>
     </Wrapper>
   );

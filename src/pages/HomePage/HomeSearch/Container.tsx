@@ -142,7 +142,7 @@ export default function Container() {
         }, {
             icon: issuance,
             name: '总供应量',
-            data: latestChainStatus.pcx_issuance
+            data: latestChainStatus.pcx_issuance/100000000
         }, {
             icon: issuance,
             name: '质押率',

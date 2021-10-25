@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import Catalog  from '@polkadot/apps/NavBar/icons/catalog.svg';
+import Catalog  from '../../assets/icon_close.svg';
 import Sidebars from './index';
 
 const Wrapper = styled.div`

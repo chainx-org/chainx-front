@@ -20,8 +20,12 @@ function homeSearch() {
           > div {
             font-size: 1.5rem !important;
           }
-            }
         }
+
+        .bgImage {
+          display: none;
+        }
+      }
     `;
 
     const EchartBox = styled.div`
@@ -44,13 +48,13 @@ function homeSearch() {
 
     return (
       <TableWrapper>
-          <img src={lightNing} alt="" style={{position: 'absolute',left:'7rem'}}/>
-          <div className="grid grid-rows-2">
-              <div className="h-13 text-4xl PingFangSC-Medium, PingFang SC text-textColor-white">ChainX Blockchain
-                  Explorer
-              </div>
-              <Search className="Home_pageSearch"/>
+        <img className="bgImage" src={lightNing} alt="" style={{position: 'absolute', left: '7rem'}}/>
+        <div className="grid grid-rows-2">
+          <div className="h-13 text-4xl PingFangSC-Medium, PingFang SC text-textColor-white">ChainX Blockchain
+            Explorer
           </div>
+          <Search className="Home_pageSearch"/>
+        </div>
           <EchartBox>
               <div className="flex flex-col justify-start px-6 py-1">
                   <div className="flex flex-row">

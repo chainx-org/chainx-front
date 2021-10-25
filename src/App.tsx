@@ -19,8 +19,8 @@ function App() {
     <PolkaApi url="wss://testnet-2.chainx.org/ws">
       <BrowserRouter>
         <Switch>
-          <Route path="/SS58" exact component={SS58}/>
-          <Route path="/searchTool" exact  component={SearchTool}/>
+          <Route path="/tools/SS58" exact component={SS58}/>
+          <Route path="/tools/searchTool" exact  component={SearchTool}/>
           <Route path="/Search"  component={searchPage}/>
           <Route path="/AccountTransfer"  component={AccountTransfer}/>
           <Route path="/blockDetails"  component={blockDetails}/>
