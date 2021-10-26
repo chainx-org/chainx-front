@@ -20,7 +20,16 @@ export function useOnClickOutside(ref, handler) {
 
 //数字种添加·，·号
 export function reName(num){
-  let str = num.toString()
+  let type = Object.prototype.toString.call(num);
+  let str = ''
+  if(type ==="[object String]"){
+    str = num
+  }else if(type ==="[object Number]"){
+    str = num.toString()
+  }else{
+    str = ''
+  }
+
   if(/\./.test(str)){
     return str.replace(/\d(?=(\d{3})+\.)/g, "$&,").replace(/\d{3}(?![,.]|$)/g, "$&,");
   }else{

@@ -128,5 +128,15 @@
     "Mining Distribution": "挖矿收益比率",
     "Enter the address of block leakage for query": "请输入账户地址或者公钥",
     "Please enter the block leakage address": "输入地址或公钥进行转换",
-    "1. Please first select the type of search: Event or Extrinsic and then enter the keyword.  2. Currently, Event supports Method and section query, extrinsic support Hash,name and section query.  3. If the table is empty, no query result is displayed.  4. Query parameters support case fuzzy matching": "1.请先选择要搜索的类型：event 或者 extrinsic ， 然后在搜索框内输入关键字。 2.目前 event 支持 method 和section 查询 , extrinsic 支持 hash,name,section 查询。 3.如果表格为空，则没有查询结果。4.查询参数支持大小写模糊匹配"
+    "1. Please first select the type of search: Event or Extrinsic and then enter the keyword.  2. Currently, Event supports Method and section query, extrinsic support Hash,name and section query.  3. If the table is empty, no query result is displayed.  4. Query parameters support case fuzzy matching": "1.请先选择要搜索的类型：event 或者 extrinsic ， 然后在搜索框内输入关键字。 2.目前 event 支持 method 和section 查询 , extrinsic 支持 hash,name,section 查询。 3.如果表格为空，则没有查询结果。4.查询参数支持大小写模糊匹配",
+    "Assets": "资产列表",
+    "ChainX Assets": "ChainX 资产",
+    "Usable": "可用余额",
+    "Vote Frozen": "投票冻结",
+    "miscFrozen": "赎回冻结",
+    "Reserved": "交易冻结",
+    "Receiver": "接收人",
+    "Transactions": "交易列表",
+    "Transfers": "转账列表",
+    "PublicKey": "公钥"
 }

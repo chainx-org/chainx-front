@@ -8,10 +8,10 @@ import Event from '../Chain/event';
 import List from '../../components/List';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
+import JsonApi from '../../components/Jsonformat'
 import TableMenuBox from '../../components/TableMenuBox';
 import { TabInfo } from '../../components/SwitchTab';
 import DetailTitle from '../../components/DetailTitle';
-import JsonApi from '../../components/Jsonformat';
 import { LinkX, LinkXWithPop } from '../../components/LinkX';
 import Operation from '../../components/Operation';
 import CopyText from '../../components/copyText';
@@ -29,10 +29,13 @@ export default function ExtrinsicDetails() {
   const [loading, setLoading] = useState(true);
   const [noData, setNoData] = useState(false);
   const [extrinsicDetails, setExtrinsicDetails] = useState<any>();
-  const extrinsic = window.location.pathname.slice(19, window.location.pathname.length);
+  const extrinsic = window.location.pathname.slice(18, window.location.pathname.length);
+  // debugger
   const [nowExtrinsic, setNowExtrinsics] = useState(extrinsic);
   const getData = async () => {
+    // debugger
     const res: any = await get(`/extrinsics/${nowExtrinsic}`, ``);
+    // debugger
     if (res) {
       setExtrinsicDetails(res);
       setLoading(false);
@@ -41,13 +44,16 @@ export default function ExtrinsicDetails() {
     }
   };
   useEffect(() => {
-    if (window.history.state && window.history.state?.state) {
-      setExtrinsicDetails(window.history.state.state);
-      console.log('window', window.history.state.state);
-      setLoading(false);
-    } else {
-      getData();
-    }
+    // debugger
+    // if (window.history.state && window.history.state?.state) {
+    //   console.log(window.history.state?.state)
+    //   setExtrinsicDetails(window.history.state.state);
+    //   console.log('window', window.history.state.state);
+    //   setLoading(false);
+    // } else {
+    //   debugger
+    getData();
+    // }
   }, []);
   const list = [
     {
@@ -60,6 +66,7 @@ export default function ExtrinsicDetails() {
                    <span className="inline-block mr-1">{extrinsicDetails?.indexer?.blockHeight}</span>
                  </div>
                }/>
+        // <></>
       ),
     },
     {
@@ -74,6 +81,8 @@ export default function ExtrinsicDetails() {
       title: t('Extrinsic Hash'),
       content: (
         <LinkXWithPop linkUrl={'/'} content={extrinsicDetails?.hash}/>
+        // <></>
+
       )
     },
     {
@@ -82,6 +91,7 @@ export default function ExtrinsicDetails() {
       width:'15rem',
       content: (
         <Operation content={extrinsicDetails?.section + '-' + extrinsicDetails?.name} more={false}/>
+        // <></>
       ),
     },
     {
@@ -110,7 +120,10 @@ export default function ExtrinsicDetails() {
     }, {
       title: t('Arguments'),
       content:
-        <CopyText children={<JsonApi json={extrinsicDetails?.args}/>} text={JSON.stringify(extrinsicDetails?.args)}/>
+        <CopyText children={
+          <JsonApi json={extrinsicDetails?.args}/>} text={extrinsicDetails?.args}/>
+      // <span>1111</span>
+      // } text={'111'}/>
     }, {
       title: t('Signature'),
       content: <div className="text-gray-arrow font-semibold">
