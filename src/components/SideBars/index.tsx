@@ -11,7 +11,7 @@ import { useTranslation } from 'react-i18next';
 
 interface Props {
   className?: string;
-  onClose?: () => void;
+  onClose: any;
   isCollapsed?: boolean;
 }
 
@@ -162,7 +162,7 @@ function Sidebars({className = '', onClose, isCollapsed}: Props): React.ReactEle
       style={{width:'9rem'}}
     >
       <div className="wrappers">
-        <img src={closeIcon} alt="" style={{width:'2rem',height:'2rem',padding:'0.3rem 0.3rem'}} onClick={()=>onClose}/>
+        <img src={closeIcon} alt="" style={{width:'2rem',height:'2rem',padding:'0.3rem 0.3rem'}} onClick={onClose}/>
         <ul>
           {
             nodeList.map((node: any, index: number) =>

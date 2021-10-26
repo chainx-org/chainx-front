@@ -3,6 +3,7 @@ import { get } from '../hooks/useApi'
 export default function api(a, window) {
 
   const getBlockData = async (value, window) => {
+    debugger
     try {
       const res = await get(`/extrinsics/block?=${value}`, ``)
       if (res) {
@@ -13,34 +14,33 @@ export default function api(a, window) {
           if (res1) {
             window.location.href = `/extrinsics/${value}`
           } else {
-            // window.location.href = `/`
+            window.location.href = `/Nodata`
           }
         } catch (e) {
-          // window.location.href = `/`
+          window.location.href = `/Nodata`
         }
 
       }
     } catch (e) {
-      // window.location.href = `/`
+      window.location.href = `/Nodata`
     }
 
   }
 
-  function search(input, window) {
+  async function search(input, window) {
     if (input === '') {
       return `/`
     } else {
       if (/^[0-9]*$/.test(input)) {
         console.log(window)
-        window.location.href = `/blockDetails/${input}`
+        const res = await get(`/blocks/${input}`, ``)
+        res ? window.location.href = `/blockDetails/${input}`
+          : window.location.href = `/Nodata`
       } else {
         return getBlockData(input, window)
       }
     }
-
-
   }
-
   return search(a, window)
 }
 

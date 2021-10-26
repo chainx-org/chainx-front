@@ -23,8 +23,9 @@ export default function SS58() {
 
   }
   const changeAddress = (value:string)=>{
-    setInputValue(value)
-    if(value){
+    var input = value.trim();
+    setInputValue(input)
+    if(input){
       setIsCorrectValue('')
     }
   }

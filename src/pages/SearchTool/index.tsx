@@ -9,10 +9,6 @@ import leakageIcon from '../../assets/icon_Account switch.svg';
 import { Input } from 'antd';
 import { get } from '../../hooks/useApi';
 import JsonApi from '../../components/Jsonformat';
-import CardListItem from '../../components/CardListItem';
-import publicIcon from '../../assets/icon_key.svg';
-import decodeAddress from '../../helper/decodeAddress';
-import Icon from '../../assets/address_icon.svg';
 import noDataIcon from '../../assets/noData.svg';
 
 
@@ -20,7 +16,7 @@ export default function Tools() {
   const {Search, TextArea} = Input;
   const {t} = useTranslation();
   const [inputValue, setInputValue] = useState('');
-  const [listValue, setListValue] = useState<any>([]);
+  const [listValue, setListValue] = useState<any>('');
   const [page, setPage] = useState(1);
   const [pageSize, setPageSize] = useState(10);
   const [isCorrectValue, setIsCorrectValue] = useState('');
@@ -48,7 +44,6 @@ export default function Tools() {
     }
   }
   const searchFun = () => {
-    debugger
     getData();
   };
 
@@ -112,27 +107,22 @@ export default function Tools() {
                 borderRadius: '10px',
                 border: '1px solid #DBDBDB'
               }}>
-              {listValue?
-                <div className="overflow-scroll w-overSpread h-overSpread" style={{background:'white',borderRadius:'10px'}}>
+              {listValue ?
+                <div className="overflow-scroll w-overSpread h-overSpread"
+                     style={{background: 'white', borderRadius: '10px'}}>
                   {<JsonApi json={listValue}/>}
-                </div> :
-                <>
-                  {/*{!correctValue ? <div className="flex flex-col">*/}
-                  {/*    <img className="inline-block w-18 my-0 mx-auto" src={cardBoxTitleContainer.icon} alt=""/>*/}
-                  {/*    <div>{t('Enter the address or public key for conversion')}</div>*/}
-                  {/*  </div> :*/}
-                  {/*  <div className="flex flex-col">*/}
-                  {/*    <img className="inline-block w-18 my-0 mx-auto" src={noDataIcon} alt=""/>*/}
-                  {/*    <div>{t(`${correctValue}`)}</div>*/}
-                  {/*  </div>}*/}
+                </div> : <>
+                  {!isCorrectValue ?
+                    <div className="flex flex-col">
+                      {/*<img className="inline-block w-18 my-0 mx-auto" src={cardBoxTitleContainer.icon} alt=""/>*/}
+                      <div>{t('Enter the address or public key for conversion')}</div>
+                    </div> :
+                    <div className="flex flex-col">
+                      {/*<img className="inline-block w-18 my-0 mx-auto" src={noDataIcon} alt=""/>*/}
+                      <div>{t(`${isCorrectValue}`)}</div>
+                    </div>
+                  }
                 </>}
-              <div className="h-12 overflow-scroll">
-                {<JsonApi json={listValue}/>}
-              </div>
-              <div className="flex flex-col">
-                <img className="inline-block w-12" src={leakageIcon} alt=""/>
-                <div>{'4444'}</div>
-              </div>
             </div>
           </Container>
         </Wrapper>

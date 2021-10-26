@@ -3,10 +3,7 @@ import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
 import noDataIcon from '../../assets/noData.svg';
 
-export default function NoData() {
-  const {t} = useTranslation();
-
-  const Wrapper = styled.div`
+const Wrapper = styled.div`
     min-height: 688px;
     background: #FFFFFF;
     box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.04);
@@ -16,6 +13,9 @@ export default function NoData() {
     justify-content: center;
     align-items: center;
   `;
+
+export default function NoData() {
+  const {t} = useTranslation();
 
 
   return (

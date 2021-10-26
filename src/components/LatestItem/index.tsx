@@ -10,24 +10,30 @@ interface LatestItemPop {
   icon: string,
   ListData: Array<any>,
 }
-
-export default function LatestItem({title, icon, ListData}: LatestItemPop) {
-  const {t} = useTranslation();
-  const ItemContainer = styled.div`
+const ItemContainer = styled.div`
     display: flex;
     flex-direction: column;
     border: 1px solid #E9E9E9;
     background: #FFFFFF;
     box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.04);
     border-radius: 10px;
+  @media screen and (max-width: 900px) {
+    font-size: 14px;
+    >div{
+      >span{
+        font-size:16px;
+      }
+    }
+  }
   `;
 
-  const LatestItem = styled.div`
+const LatestItemBox = styled.div`
     min-height: 400px;
     display: flex;
     flex-direction: column;
     padding: 16px;
     @media screen and (max-width: 900px) {
+      font-size: 12px !important;
       > div {
         > span {
           font-size: 16px;
@@ -35,6 +41,8 @@ export default function LatestItem({title, icon, ListData}: LatestItemPop) {
       }
     }
   `;
+export default function LatestItem({title, icon, ListData}: LatestItemPop) {
+  const {t} = useTranslation();
 
   function linkToChain() {
     title === t('Latest block') ? window.location.href = window.location.origin + '/chain' :
@@ -49,7 +57,7 @@ export default function LatestItem({title, icon, ListData}: LatestItemPop) {
           <span>{t('See All')}</span>
         </div>
       </div>
-      <LatestItem>
+      <LatestItemBox>
         {title === t('Latest block') ?
           ListData?.map((item, index) => {
             return (
@@ -109,7 +117,7 @@ export default function LatestItem({title, icon, ListData}: LatestItemPop) {
                 </div>
               </div>);
           })}
-      </LatestItem>
+      </LatestItemBox>
     </ItemContainer>
   );
 }

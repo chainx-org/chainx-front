@@ -18,13 +18,14 @@ import { reName } from '../../helper/hooks';
 
 const {hexToU8a, isHex} = require('@polkadot/util');
 
-export default function NodeDetails() {
-  const Wrapper = styled.div`
+const Wrapper = styled.div`
     background: #FFFFFF;
     box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.04);
     border-radius: 10px;
     border: 1px solid #E9E9E9;
   `;
+export default function NodeDetails() {
+
   const {t} = useTranslation();
   const [loading, setLoading] = useState(true);
   const [addressDetails, setAddressDetails] = useState<any>();
