@@ -9,7 +9,7 @@ interface SearchProps
     selectList?: Boolean;
 }
 export default function Search({ className }: SearchProps) {
-  const {t} = useTranslation();
+  const {t}  = useTranslation();
   const {Search} = Input;
   const onSearch = async (value: any) => {
     let result = await api(value,window);
