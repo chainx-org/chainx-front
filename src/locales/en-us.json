@@ -140,6 +140,10 @@
     "Receiver": "Receiver",
     "Transactions": "Transactions",
     "Transfers": "Transfers",
-    "PublicKey": "PublicKey"
+    "PublicKey": "PublicKey",
+    "Please enter Hash / Name to search": "Please enter Hash / Name to search",
+    "selective type": "selective type"
+
+
 }
 

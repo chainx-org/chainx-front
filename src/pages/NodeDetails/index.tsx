@@ -12,9 +12,10 @@ import { Link } from 'react-router-dom';
 import NoData from '../../components/NoData';
 import Missed from './missed';
 import { encodeAddress } from '@polkadot/keyring';
-import decodeAddress from '../../helper/encodeAddress'
+import decodeAddress from '../../helper/encodeAddress';
 import TrustTag from '../../components/TrustTag';
 import { reName } from '../../helper/hooks';
+
 const {hexToU8a, isHex} = require('@polkadot/util');
 
 export default function NodeDetails() {
@@ -33,18 +34,19 @@ export default function NodeDetails() {
 
   const getData = async (node:string) => {
     const {items}: any = await get(`/validators/all`, ``);
-   const result =  items.filter((item: any, index: number) => {
-     if(item.account === node){
-       console.log(item)
-       return item
-     }
+    console.log(items,'111')
+    const result =  items.filter((item: any, index: number) => {
+      if(item.account === node){
+        console.log(item)
+        return item
+      }
     });
-    if(result.length>0){
+    if (result.length > 0) {
       setAddressDetails(result[0]);
       setLoading(false);
-    }else{
+    } else {
       setLoading(true);
-      setNoData(true)
+      setNoData(true);
     }
   };
 

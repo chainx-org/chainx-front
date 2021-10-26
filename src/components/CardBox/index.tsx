@@ -6,6 +6,8 @@ import { Input } from 'antd';
 import { CardTitle, Container, SpliteLine, Wrapper } from './style';
 import Icon from '../../assets/address_icon.svg';
 import noDataIcon from '../../assets/noData.svg';
+import publicIcon from '../../assets/icon_key.svg';
+import decodeAddress from '../../helper/decodeAddress';
 
 const {TextArea} = Input;
 
@@ -59,7 +61,7 @@ export default function CardBox({
               />
             </div>
             <div className="w-overSpread h-12 bg-topBar-black text-topBar-white mt-12 items-center text-center"
-                 style={{borderRadius: '4px'}} onClick={searchFun}>
+                 style={{borderRadius: '4px',cursor:'pointer'}} onClick={searchFun}>
               <span className="inline-block" style={{lineHeight: '3rem'}}>{t('Search')}</span>
             </div>
           </div>
@@ -71,10 +73,14 @@ export default function CardBox({
             style={{
               background: '#F9F9F9',
               borderRadius: '10px',
-              border: '1px solid #DBDBDB'
+              border: '1px solid #DBDBDB',
+              maxHeight:'34rem'
             }}>
 
-            {listValue.length>0 ? <div className="overflow-scroll w-overSpread h-overSpread">
+            {listValue.length > 0 ?
+              <div className="overflow-scroll w-overSpread h-overSpread" style={{background:'white',borderRadius:'10px'}}>
+                <CardListItem itemIcon={publicIcon} itemContent={decodeAddress(inputValue) || ''}
+                              itemTitle={'Public Key'}/>
                 {listValue?.map((item: any) => {
                   return (
                     <CardListItem itemIcon={Icon} itemContent={item?.value} itemTitle={item?.name}/>

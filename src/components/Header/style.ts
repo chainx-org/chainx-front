@@ -35,7 +35,7 @@ export const Wrapper = styled.div`
 
       & > li {
         height: 2.5rem;
-        width: 8rem;
+        width: 15rem;
         display: flex;
         justify-content: center;
         & > div {

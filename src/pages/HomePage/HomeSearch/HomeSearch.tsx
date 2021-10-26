@@ -10,11 +10,6 @@ function homeSearch() {
       place-content: space-around space-evenly;
       padding: 3rem 6rem 2rem 6rem;
       position: relative;
-
-      //.bgImage {
-      //  overflow: ;
-      //}
-
       @media screen and (max-width: 900px) {
         grid-template-columns: 100%;
         padding: 1rem;

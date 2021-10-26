@@ -6,10 +6,14 @@ import { CardTitle, Container, SpliteLine, Wrapper } from '../../components/Card
 import arrowChangeIcon from '../../assets/icon_awitch.svg';
 import leakageIcon from '../../assets/icon_Account switch.svg';
 
-import { Button, Input } from 'antd';
+import { Input } from 'antd';
 import { get } from '../../hooks/useApi';
 import JsonApi from '../../components/Jsonformat';
-import { CaretDownOutlined} from '@ant-design/icons';
+import CardListItem from '../../components/CardListItem';
+import publicIcon from '../../assets/icon_key.svg';
+import decodeAddress from '../../helper/decodeAddress';
+import Icon from '../../assets/address_icon.svg';
+import noDataIcon from '../../assets/noData.svg';
 
 
 export default function Tools() {
@@ -28,15 +32,15 @@ export default function Tools() {
   };
   const getData = async () => {
     if (nowSearch === 'Event') {
-      let res: any = await get(`/search/${inputValue}?page=${page}&page_size=${pageSize}`, ``);
       try {
+        let res: any = await get(`/search/${inputValue}?page=${page}&page_size=${pageSize}`, ``);
         setListValue(res);
       }catch (e) {
         setIsCorrectValue('')
       }
     } else {
-      let res: any = await get(`/searchExtrinsic/${inputValue}?page=${page}&page_size=${pageSize}`, ``);
       try {
+        let res: any = await get(`/searchExtrinsic/${inputValue}?page=${page}&page_size=${pageSize}`, ``);
         setListValue(res);
       }catch (e) {
         setIsCorrectValue('')
@@ -44,6 +48,7 @@ export default function Tools() {
     }
   }
   const searchFun = () => {
+    debugger
     getData();
   };
 
@@ -54,34 +59,38 @@ export default function Tools() {
         <Wrapper>
           <CardTitle>
             <img src={leakageIcon} alt=""/>
-            <span>{t('搜索事件/交易')}</span>
+            <span>{t('Search Events/Extrinsics')}</span>
           </CardTitle>
           <SpliteLine/>
           <Container>
             <div className="items-center my-auto mx-0 text-start">
               <div className="flex flex-col mb-12">
                 <div className="flex flex-row">
-                  <span className="inline-block mr-1">{'选择类型'}</span>
+                  <span className="inline-block mr-1">{t('selective type')}</span>
                   <span className="inline-block">{'?'}</span>
-                  <div className='MessagePop'>23233</div>
                 </div>
-                <Search className='toolSearch' placeholder={nowSearch} enterButton/>
-                <ul className="toolList">
-                  <li>
-                    <div onClick={() => {setNowSearch('Event');}}>{t('Event')}</div>
-                  </li>
-                  <li>
-                    <div onClick={() => {setNowSearch('exe');}}>{t('exe')}</div>
-                  </li>
-                </ul>
+                <div className="toolSearch">
+                  <div className="showSelect"><span>{nowSearch}</span></div>
+                  <div className="selectBtn">
+                    <ul className="toolList">
+                      <li>
+                        <div onClick={() => {setNowSearch('Event');}}>{t('Event')}</div>
+                      </li>
+                      <li>
+                        <div onClick={() => {setNowSearch('exe');}}>{t('exe')}</div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
               </div>
               <div className="flex flex-col mb-12">
-                  <span className="inline-block mr-1">{'请输入哈希/名称/进行查询'}</span>
+                <span className="inline-block mr-1">{t('Please enter Hash / Name to search')}</span>
                 <div className="border">
                   <TextArea
                     value={inputValue}
                     onChange={textInput}
-                    placeholder={'333'}
+                    placeholder={t('Please enter Hash / Name to search')}
                     autoSize={{minRows: 6, maxRows: 10}}
                     bordered={true}
                   />
@@ -89,7 +98,7 @@ export default function Tools() {
               </div>
 
               <div className="w-overSpread h-12 bg-topBar-black text-topBar-white mt-12 items-center text-center"
-                   style={{borderRadius: '4px'}} onClick={searchFun}>
+                   style={{borderRadius: '4px',cursor:'pointer'}} onClick={searchFun}>
                 <span className="inline-block" style={{lineHeight: '3rem'}}>{t('Search')}</span>
               </div>
             </div>
@@ -103,6 +112,20 @@ export default function Tools() {
                 borderRadius: '10px',
                 border: '1px solid #DBDBDB'
               }}>
+              {listValue?
+                <div className="overflow-scroll w-overSpread h-overSpread" style={{background:'white',borderRadius:'10px'}}>
+                  {<JsonApi json={listValue}/>}
+                </div> :
+                <>
+                  {/*{!correctValue ? <div className="flex flex-col">*/}
+                  {/*    <img className="inline-block w-18 my-0 mx-auto" src={cardBoxTitleContainer.icon} alt=""/>*/}
+                  {/*    <div>{t('Enter the address or public key for conversion')}</div>*/}
+                  {/*  </div> :*/}
+                  {/*  <div className="flex flex-col">*/}
+                  {/*    <img className="inline-block w-18 my-0 mx-auto" src={noDataIcon} alt=""/>*/}
+                  {/*    <div>{t(`${correctValue}`)}</div>*/}
+                  {/*  </div>}*/}
+                </>}
               <div className="h-12 overflow-scroll">
                 {<JsonApi json={listValue}/>}
               </div>
