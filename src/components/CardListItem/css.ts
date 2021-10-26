@@ -1,16 +1,27 @@
 import styled from 'styled-components';
 
 export const ItemContainer = styled.div`
-    width: 100%;
-    background: white;
-    color: black;
-    display:flex;
-    flex-direction:row;
-    justify-content:start;
-    >img{
-      margin:20px 7px 20px 32px;
-    }
-    :hover{
+  :nth-child(1) {
+    border-radius: 10px 10px 0px 0px;
+  }
+
+  :nth-last-child(1) {
+    border-radius: 0px 0px 10px 10px;
+
+  }
+
+  width: 100%;
+  background: white;
+  color: black;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+
+  > img {
+    margin: 20px 7px 20px 32px;
+  }
+
+  :hover {
       background: #2C83EA;
       cursor: pointer;
       >div{

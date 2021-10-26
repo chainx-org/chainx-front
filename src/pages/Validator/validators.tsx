@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import TableX from '../../components/Table';
 import { get } from '../../hooks/useApi';
 import { LinkX, ShorterLink } from '../../components/LinkX';
+import TrustTag from '../../components/TrustTag';
 
 
 export default function Validator() {
@@ -44,10 +45,10 @@ export default function Validator() {
       key: 'NikeName',
       render: (text: any, record: any) => {
         return (
-          <>
+          <div className="flex flex-row">
             {record.referralId}
-            {record.isTrust === true ? '信托' : ''}
-          </>);
+            {record.isTrust === true ? <TrustTag/> : ''}
+          </div>);
       }
     },
     {

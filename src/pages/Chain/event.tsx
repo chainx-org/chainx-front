@@ -5,6 +5,8 @@ import { get } from '../../hooks/useApi';
 import { LinkX, ShorterLink } from '../../components/LinkX';
 import TimeStatus from '../../components/TimeStatus';
 import Operation from '../../components/Operation';
+import JsonApi from '../../components/Jsonformat';
+import ExpandIcon from '../../components/ExpandIcon';
 
 interface EventProps {
   block?: number | string,
@@ -29,6 +31,9 @@ export default function Event({block, extrinsic}: EventProps) {
         res = await get(`/events?page=${page - 1}&page_size=${pageSize}`, ``);
       }
     }
+    res.items.map((item: any, index: number) => {
+      item['index'] = index + 1;
+    });
     setEventTotal(res.total);
     setEventData(res.items);
     setLoading(false);
@@ -98,7 +103,14 @@ export default function Event({block, extrinsic}: EventProps) {
   useEffect(() => {
     getEventData();
   }, [page, pageSize]);
-
+  const expandedRowRender = (record: any) => {
+    return (
+      <JsonApi json={record?.meta}/>
+    );
+  };
+  const rowExpandable = (record: any) => {
+    return true;
+  };
   const pagination = {
     pageSize: pageSize,
     current: page,
@@ -112,7 +124,11 @@ export default function Event({block, extrinsic}: EventProps) {
 
   return (
     <div className="px-8 overflow-scroll">
-      <TableX columns={chainColumns} dataList={eventData} pagination={pagination} loading={loading}/>
+      <TableX rowKey={(row: any) => {return row.index;}}
+              columns={chainColumns} dataList={eventData} pagination={pagination} loading={loading}
+              expandIcon={({expanded, onExpand, record}: any) => ExpandIcon(expanded, onExpand, record)}
+              expandedRowRender={expandedRowRender}
+              rowExpandable={rowExpandable}/>
     </div>
   );
 }

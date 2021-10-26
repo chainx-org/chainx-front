@@ -15,35 +15,37 @@ const  Model_echarts = (props:any) => {
       trigger: 'item'
     },
     legend: {
-      top: '5%',
-      left: 'center'
+      bottom: '1%',
+      left: 'center',
+      icon: "circle",   //  这个字段控制形状  类型包括 circle，rect ，roundRect，triangle，diamond，pin，arrow，none
+      itemWidth: 10,  // 设置宽度
+      itemHeight: 10, // 设置高度
+      itemGap: 40 // 设置间距
     },
     series: [
       {
-        name: 'Access From',
+        name: 'Rate',
         type: 'pie',
         radius: ['40%', '70%'],
         avoidLabelOverlap: false,
         label: {
-          show: false,
+          show: true,
           position: 'center'
         },
         emphasis: {
           label: {
             show: true,
-            fontSize: '40',
+            fontSize: '30',
             fontWeight: 'bold'
           }
         },
         labelLine: {
-          show: false
+          show: true
         },
         data: [
-          { value: 1048, name: 'Search Engine' },
-          { value: 735, name: 'Direct' },
-          { value: 580, name: 'Email' },
-          { value: 484, name: 'Union Ads' },
-          { value: 300, name: 'Video Ads' }
+          { value: 50.00,name: 'X-BTC' },
+          { value: 2.00, name: 'PCX' },
+          { value: 42.87, name: 'TR' },
         ]
       }
     ]

@@ -2,20 +2,18 @@ import React, { useState } from 'react';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import { useTranslation } from 'react-i18next';
-import searchIcon from '../../assets/img_switch.png';
 import { CardTitle, Container, SpliteLine, Wrapper } from '../../components/CardBox/style';
 import arrowChangeIcon from '../../assets/icon_awitch.svg';
-import CardListItem from '../../components/CardListItem';
-import Icon from '../../assets/address_icon.svg';
 import leakageIcon from '../../assets/icon_Account switch.svg';
 
-import { Input } from 'antd';
+import { Button, Input } from 'antd';
 import { get } from '../../hooks/useApi';
 import JsonApi from '../../components/Jsonformat';
+import { CaretDownOutlined} from '@ant-design/icons';
 
 
 export default function Tools() {
-  const {TextArea} = Input;
+  const {Search, TextArea} = Input;
   const {t} = useTranslation();
   const [inputValue, setInputValue] = useState('');
   const [listValue, setListValue] = useState<any>([]);
@@ -24,12 +22,6 @@ export default function Tools() {
   const [isCorrectValue, setIsCorrectValue] = useState('');
   const [nowSearch,setNowSearch] = useState('Event')
 
-  const changeAddress = (value: string) => {
-    setInputValue(value);
-    if (value) {
-      setIsCorrectValue('');
-    }
-  };
   const textInput = (e: any) => {
     const value = e.target.value;
     setInputValue(value);
@@ -54,11 +46,10 @@ export default function Tools() {
   const searchFun = () => {
     getData();
   };
-  const {Search} = Input;
 
   return (
     <>
-      <Header/>
+      <Header showSearch={true}/>
       <div className="Container">
         <Wrapper>
           <CardTitle>
@@ -72,14 +63,15 @@ export default function Tools() {
                 <div className="flex flex-row">
                   <span className="inline-block mr-1">{'选择类型'}</span>
                   <span className="inline-block">{'?'}</span>
+                  <div className='MessagePop'>23233</div>
                 </div>
-                <Search placeholder={nowSearch} enterButton/>
+                <Search className='toolSearch' placeholder={nowSearch} enterButton/>
                 <ul className="toolList">
                   <li>
-                    <div onClick={()=>{setNowSearch('Event')}}>{t('Event')}</div>
+                    <div onClick={() => {setNowSearch('Event');}}>{t('Event')}</div>
                   </li>
                   <li>
-                    <div onClick={()=>{setNowSearch('exe')}}>{t('exe')}</div>
+                    <div onClick={() => {setNowSearch('exe');}}>{t('exe')}</div>
                   </li>
                 </ul>
               </div>
@@ -105,7 +97,7 @@ export default function Tools() {
               <img src={arrowChangeIcon} alt=""/>
             </div>
             <div
-              className="items-center my-auto mx-0 text-center bg-topBar-gray h-overSpread flex justify-center items-center"
+              className="items-center my-auto ml-0 text-center mr-6 bg-topBar-gray h-overSpread flex justify-center items-center"
               style={{
                 background: '#F9F9F9',
                 borderRadius: '10px',

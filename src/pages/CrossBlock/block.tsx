@@ -16,8 +16,9 @@ export default function BitcoinBlock() {
       key: 'bitcoinHeight',
       render: (text: any, record: any) => {
         return (
-          <LinkX linkUrl={`https://live.blockcypher.com/btc/block/${record.btcHeight}/`}
-                 content={record.btcHeight}/>
+        <a style={{display: 'inline-block', color: '#3C88C6'}}
+           href={`https://live.blockcypher.com/btc/block/${record.btcHeight}/`}
+           target="_Blank">{record.btcHeight}</a>
         );
       }
     },

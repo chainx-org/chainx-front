@@ -28,12 +28,18 @@ export default function jsonformat({ json }) {
     }
   }
   const filterJson = (query:any,deep:number)=>{
+    if(query===null||query===undefined){
+      return (
+        <div></div>
+      )
+    }
+
     const keys = Object.keys(query)
     return (
       <div style={{marginLeft:(deep-1)*60+'px'}}>
         <span>{`{`}</span>
         {
-          keys.map((key:string)=>{
+          Object.keys(query).map((key:string)=>{
             if(Object.prototype.toString.call(query[key])==='[object Object]'){
               return filterJson(query[key],deep+1)
             }else{

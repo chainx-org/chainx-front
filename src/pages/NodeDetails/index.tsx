@@ -7,13 +7,15 @@ import Footer from '../../components/Footer';
 import TableMenuBox from '../../components/TableMenuBox';
 import styled from 'styled-components';
 import { TabInfo } from '../../components/SwitchTab';
-import Extrinsic from '../Chain/extrinsic';
-import Event from '../Chain/event';
 import DetailTitle from '../../components/DetailTitle';
 import { Link } from 'react-router-dom';
 import NoData from '../../components/NoData';
-import VotedList from './votedList';
 import Missed from './missed';
+import { encodeAddress } from '@polkadot/keyring';
+import decodeAddress from '../../helper/encodeAddress'
+import TrustTag from '../../components/TrustTag';
+import { reName } from '../../helper/hooks';
+const {hexToU8a, isHex} = require('@polkadot/util');
 
 export default function NodeDetails() {
   const Wrapper = styled.div`
@@ -29,41 +31,66 @@ export default function NodeDetails() {
   const [nowAddress, setNowAddress] = useState(node);
   const [noData, setNoData] = useState(false);
 
-  const getData = async () => {
+  const getData = async (node:string) => {
     const {items}: any = await get(`/validators/all`, ``);
-   const item =  items.filter((item: any, index: number) => {
-      return item.account === node
+   const result =  items.filter((item: any, index: number) => {
+     if(item.account === node){
+       console.log(item)
+       return item
+     }
     });
-    if(item.length>0){
-      setAddressDetails(item[0]);
+    if(result.length>0){
+      setAddressDetails(result[0]);
       setLoading(false);
     }else{
       setLoading(true);
       setNoData(true)
     }
   };
+
+  const initNode = ()=>{
+    if (node.includes('0x')) {
+      let recordResult = encodeAddress(
+        isHex(node)
+          ? hexToU8a(node)
+          : decodeAddress(node)
+      );
+      getData(recordResult);
+    } else {
+      try {
+        return getData(node);
+      } catch (error) {
+        setNoData(true)
+        return false;
+      }
+    }
+  }
+
   useEffect(() => {
-    getData();
+    initNode()
   }, []);
   const list = [
     {
-      title: t('Nikename'),
+      title: t('NikeName'),
       content: (
-        <div className="text-black-dark">{addressDetails?.referralId}-{(addressDetails?.isValidating)?'信托':'-'}</div>
+        <div className="text-black-dark">
+          <div className='flex flex-row'>
+            <span>{addressDetails?.referralId}</span>{(addressDetails?.isValidating)?<TrustTag/>:'-'}</div>
+        </div>
       ),
     },
     {
       title: t('Account'),
       content: (
         <div className="text-black-dark">
-          {addressDetails?.account}
+          {reName(addressDetails?.account)}
         </div>)
     },
     {
       title: t('Authored Address'),
       content: (
         <div className="text-blue-light cursor-pointer"
-             onClick={() => <div>{addressDetails?.header?.number}</div>}/>
+             onClick={() => <div>{reName(addressDetails?.header?.number)}</div>}/>
       )
     },
     {
@@ -83,7 +110,7 @@ export default function NodeDetails() {
       title: t('Self Bonded'),
       content: (
         <div className="text-black-dark">
-          {addressDetails?.selfBonded}
+          {reName(addressDetails?.selfBonded)}
         </div>
       ),
     },
@@ -99,7 +126,7 @@ export default function NodeDetails() {
       title: t('Authored Blocks'),
       content:
         <div className="text-black-dark">
-          {addressDetails?.totalNomination}
+          {reName(addressDetails?.totalNomination)}
         </div>,
     }, {
       title: t('Vote Weight Last Update'),
@@ -109,16 +136,11 @@ export default function NodeDetails() {
     }, {
       title: t('Total Weight'),
       content: <div className="text-black-dark">
-        {addressDetails?.lastTotalVoteWeight}
+        {reName(addressDetails?.lastTotalVoteWeight)}
       </div>,
     }
   ];
   const tabList: TabInfo[] = [
-    {
-      title: t('Voted List'),
-      content:<></>
-      // content: <VotedList/>,
-    },
     {
       title: t('Missed'),
       // content:<></>
@@ -134,12 +156,12 @@ export default function NodeDetails() {
   };
   return (
     <>
-      <Header/>
+      <Header showSearch={true}/>
       {noData ?
         <NoData/> :
         <>
           <div className="px-24 pt-8 bg-gray-arrow screen:px-4">
-            <DetailTitle routeTitle={t('Validator')} content={Number(nowAddress)} isBlock={false}
+            <DetailTitle routeTitle={t('Validator')} content={node} isBlock={false}
                          routePath={routerPath}/>
           </div>
           <List list={list} loading={loading}/>

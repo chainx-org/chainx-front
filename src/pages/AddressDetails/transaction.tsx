@@ -8,16 +8,13 @@ import { LinkX, ShorterLink } from '../../components/LinkX';
 import TimeStatus from '../../components/TimeStatus';
 import Operation from '../../components/Operation';
 import JsonApi from '../../components/Jsonformat';
-import moreIcon from '../../assets/icon_more.svg';
-import pulldownIcon from '../../assets/icon_pulldown_list.svg'
-import styled from 'styled-components';
 import ExpandIcon from '../../components/ExpandIcon'
 
 interface ExtrinsicProps {
-  block?: number | string,
+  account?: number | string,
 }
 
-export default function Extrinsic({block}: ExtrinsicProps) {
+export default function Transaction({account}: ExtrinsicProps) {
   const {t} = useTranslation();
   const [extrinsicData, setExtrinsicData] = useState([]);
   const [page, setPage] = useState(1);
@@ -26,12 +23,7 @@ export default function Extrinsic({block}: ExtrinsicProps) {
   const [loading, setLoading] = useState(true);
 
   const getExtrinsicData = async () => {
-    let res: any;
-    if (block) {
-      res = await get(`/extrinsics?block=${block}&page=${page - 1}&page_size=${pageSize}`, ``);
-    } else {
-      res = await get(`/extrinsics?page=${page - 1}&page_size=${pageSize}`, ``);
-    }
+    let res: any= await get(`/accounts/${account}/extrinsics?page=${page - 1}&page_size=${pageSize}`, ``);
     setExtrinsicTotal(res.total);
     res.items.map((item:any,index:number)=>{
       item['index'] = index+1
@@ -117,9 +109,9 @@ export default function Extrinsic({block}: ExtrinsicProps) {
     });
   }, [page, pageSize]);
 
-const expandedRowRender =(record:any)=>{
+  const expandedRowRender =(record:any)=>{
     return (
-        <JsonApi json={record?.args}/>
+      <JsonApi json={record?.args}/>
     );
   };
   const rowExpandable = (record: any) => {

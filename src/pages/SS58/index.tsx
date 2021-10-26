@@ -14,11 +14,12 @@ export default function SS58() {
   const [inputValue, setInputValue] = useState('');
   const [listValue, setListValue] = useState<any>([]);
   const [isCorrectValue,setIsCorrectValue] = useState('')
+  const [searchNoData,setSearchNoData] = useState(false)
   const BoxContainer = {
     title: t('Enter the address of block leakage for query'),
-    container: t('Please enter the block leakage address'),
+    container: t('Enter the address or public key for conversion'),
     icon: searchIcon,
-    result: t('Enter the address or public key for conversion')
+    result: 'Enter the address or public key for conversion'
 
   }
   const changeAddress = (value:string)=>{
@@ -53,10 +54,10 @@ export default function SS58() {
       {name: 'Robonomics (Prefix: 32)', id: 32, value: ''},
       {name: 'Substrate (Prefix: 42)', id: 42, value: ''}
     ];
-    const getAddressList = () => {
+    const getAddressList = (value:string) => {
       typeList.reduce((acc, cur) => {
         if (typeList.length) {
-          cur.value = encodeAddress(inputValue, cur.id);
+          cur.value = encodeAddress(value, cur.id);
           // @ts-ignore
           acc.push(cur);
         }
@@ -64,20 +65,20 @@ export default function SS58() {
         return acc;
       }, []);
       setListValue(typeList);
+      return true;
     };
     if (inputValue.includes('0x')) {
-      getAddressList();
+      let recordResult = encodeAddress(
+        isHex(inputValue)
+          ? hexToU8a(inputValue)
+          : decodeAddress(inputValue)
+      );
+      getAddressList(recordResult);
     } else {
       try {
-        encodeAddress(
-          isHex(inputValue)
-            ? hexToU8a(inputValue)
-            : decodeAddress(inputValue)
-        );
-        getAddressList();
-        return true;
+        return getAddressList(inputValue);
       } catch (error) {
-        setIsCorrectValue(t('Transformation failed. Address or public key not found'))
+        setIsCorrectValue('Transformation failed. Address or public key not found')
         return false;
       }
     }
@@ -85,7 +86,7 @@ export default function SS58() {
 
   return (
     <>
-      <Header/>
+      <Header showSearch={true}/>
       <CardBox cardBoxTitleIcon={blockLeakage} cardBoxTitleName={t('Transform Address/Public Key')}
                cardBoxTitleContainer={BoxContainer} inputValue={inputValue} listValue={listValue}
                selectAddress={selectAddress} inputValueFun={changeAddress} correctValue={isCorrectValue}/>

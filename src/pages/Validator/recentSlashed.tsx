@@ -4,6 +4,7 @@ import TableX from '../../components/Table';
 import { get } from '../../hooks/useApi';
 import { LinkX, ShorterLink } from '../../components/LinkX';
 import TimeStatus from '../../components/TimeStatus';
+import TrustTag from '../../components/TrustTag';
 
 
 export default function RecentSlashed() {
@@ -44,10 +45,10 @@ export default function RecentSlashed() {
       key: 'NikeName',
       render: (text: any, record: any) => {
         return (
-          <>
+          <div className="flex flex-row">
             <LinkX linkUrl={`/addressDetails/${record.data[0]}`} content={record.referralId}/>
-            {record.isValidating === true ? '信托' : ''}
-          </>);
+            {record.isValidating === true ? <TrustTag/> : ''}
+          </div>);
       }
     }, {
       title: t('Address'),

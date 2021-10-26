@@ -2,22 +2,17 @@ import { useTranslation } from 'react-i18next';
 import React, { useEffect, useState } from 'react';
 import TableX from '../../components/Table';
 import { get } from '../../hooks/useApi';
-import successIcon from '../../assets/icon_success.svg';
-import failIcon from '../../assets/icon_failure.svg';
 import { LinkX, ShorterLink } from '../../components/LinkX';
 import TimeStatus from '../../components/TimeStatus';
 import Operation from '../../components/Operation';
 import JsonApi from '../../components/Jsonformat';
-import moreIcon from '../../assets/icon_more.svg';
-import pulldownIcon from '../../assets/icon_pulldown_list.svg'
-import styled from 'styled-components';
-import ExpandIcon from '../../components/ExpandIcon'
+import ExpandIcon from '../../components/ExpandIcon';
 
 interface ExtrinsicProps {
-  block?: number | string,
+  account?: number | string,
 }
 
-export default function Extrinsic({block}: ExtrinsicProps) {
+export default function Transfers({account}: ExtrinsicProps) {
   const {t} = useTranslation();
   const [extrinsicData, setExtrinsicData] = useState([]);
   const [page, setPage] = useState(1);
@@ -26,16 +21,11 @@ export default function Extrinsic({block}: ExtrinsicProps) {
   const [loading, setLoading] = useState(true);
 
   const getExtrinsicData = async () => {
-    let res: any;
-    if (block) {
-      res = await get(`/extrinsics?block=${block}&page=${page - 1}&page_size=${pageSize}`, ``);
-    } else {
-      res = await get(`/extrinsics?page=${page - 1}&page_size=${pageSize}`, ``);
-    }
+    let res: any = await get(`/accounts/${account}/transfers?page=${page - 1}&page_size=${pageSize}`, ``);
     setExtrinsicTotal(res.total);
-    res.items.map((item:any,index:number)=>{
-      item['index'] = index+1
-    })
+    res.items.map((item: any, index: number) => {
+      item['index'] = index + 1;
+    });
     setExtrinsicData(res.items);
     setLoading(false);
   };
@@ -47,18 +37,8 @@ export default function Extrinsic({block}: ExtrinsicProps) {
       key: 'extrinsicId',
       render: (text: any, record: any) => {
         return (
-          <LinkX linkUrl={`/extrinsicDetails/${record.hash}`} state={record} content={(record.indexer.blockHeight)+'-'+(record.indexer.index)}/>
-        );
-      }
-    },
-    {
-      title: t('Block'),
-      dataIndex: 'block',
-      key: 'block',
-      render: (text: any, record: any) => {
-        return (
-          <LinkX linkUrl={`/blockDetails/${record.indexer.blockHeight}`} state={record}
-                 content={(record.indexer.blockHeight)}/>
+          <LinkX linkUrl={`/extrinsicDetails/${record.hash}`} state={record}
+                 content={(record.indexer.blockHeight) + '-' + (record.sort)}/>
         );
       }
     },
@@ -68,7 +48,8 @@ export default function Extrinsic({block}: ExtrinsicProps) {
       key: 'extrinsicHash',
       render: (text: any, record: any) => {
         return (
-          <ShorterLink linkUrl={`/extrinsicDetails/${record.hash}`} state={record} content={record.hash}/>
+          <ShorterLink linkUrl={`/extrinsicDetails/${record.extrinsicHash}`} state={record}
+                       content={record.extrinsicHash}/>
         );
       }
     },
@@ -82,12 +63,42 @@ export default function Extrinsic({block}: ExtrinsicProps) {
       }
     },
     {
-      title: t('Result'),
-      dataIndex: 'result',
-      key: 'result',
+      title: t('Sender'),
+      dataIndex: 'extrinsicHash',
+      key: 'extrinsicHash',
       render: (text: any, record: any) => {
         return (
-          <div>{record.isSuccess === true ? <img src={successIcon} alt=""/> : <img src={failIcon} alt=""/>}</div>
+          <ShorterLink linkUrl={`/extrinsicDetails/${record.data[0]}`} state={record} content={record.data[0]}/>
+        );
+      }
+    },
+    {
+      title: t('Receiver'),
+      dataIndex: 'extrinsicHash',
+      key: 'extrinsicHash',
+      render: (text: any, record: any) => {
+        return (
+          <ShorterLink linkUrl={`/extrinsicDetails/${record.data[1]}`} state={record} content={record.data[1]}/>
+        );
+      }
+    },
+    // {
+    //   title: t('Result'),
+    //   dataIndex: 'result',
+    //   key: 'result',
+    //   render: (text: any, record: any) => {
+    //     return (
+    //       <div>{record.isSuccess === true ? <img src={successIcon} alt=""/> : <img src={failIcon} alt=""/>}</div>
+    //     );
+    //   }
+    // },
+    {
+      title: t('Balance'),
+      dataIndex: 'Balance',
+      key: 'Balance',
+      render: (text: any, record: any) => {
+        return (
+          <div>{record.data[2] / 10000000}</div>
         );
       }
     },
@@ -95,14 +106,15 @@ export default function Extrinsic({block}: ExtrinsicProps) {
       title: t('Operation'),
       dataIndex: 'Operation',
       key: 'Operation',
-      align:'right',
-      width:'15rem',
+      align: 'right',
+      width: '15rem',
       render: (text: any, record: any) => {
         return (
-          <Operation content={record.section+'-'+record.name}/>
+          <Operation content={record.section + '-' + record.name}/>
         );
       }
     }
+
   ];
 
   function onChange(page: number, pageSize: any) {
@@ -117,14 +129,15 @@ export default function Extrinsic({block}: ExtrinsicProps) {
     });
   }, [page, pageSize]);
 
-const expandedRowRender =(record:any)=>{
+  const expandedRowRender = (record: any) => {
     return (
-        <JsonApi json={record?.args}/>
+      <JsonApi json={record?.meta}/>
     );
   };
-  const rowExpandable = (record: any) => {
+const rowExpandable = (record: any) => {
     return true;
-  };
+  }
+  ;
   const pagination = {
     pageSize: pageSize,
     current: page,
@@ -139,7 +152,7 @@ const expandedRowRender =(record:any)=>{
   return (
     <div className="px-8 overflow-scroll">
       <TableX
-        rowKey={(row:any)=>{return row.index}}
+        rowKey={(row: any) => {return row.index;}}
         columns={chainColumns}
         dataList={extrinsicData}
         pagination={pagination}
