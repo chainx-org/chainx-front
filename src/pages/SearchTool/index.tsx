@@ -71,10 +71,10 @@ export default function Tools() {
                     <img src={pulldown} alt="" style={{width:'24px',height:'24px',display:'inline-block',margin:'auto 0'}}/>
                     <ul className="toolList">
                       <li>
-                        <div onClick={() => {setNowSearch('Event');}}>{t('Event')}</div>
+                        <div onClick={() => {setNowSearch('Event');}}>{t('Search Event')}</div>
                       </li>
                       <li>
-                        <div onClick={() => {setNowSearch('exe');}}>{t('exe')}</div>
+                        <div onClick={() => {setNowSearch('Extrinsic');}}>{t('Search Extrinsic')}</div>
                       </li>
                     </ul>
                   </div>
@@ -117,7 +117,7 @@ export default function Tools() {
                   {!isCorrectValue ?
                     <div className="flex flex-col">
                       {/*<img className="inline-block w-18 my-0 mx-auto" src={cardBoxTitleContainer.icon} alt=""/>*/}
-                      <div>{t('Enter the address or public key for conversion')}</div>
+                      <div>{t('Enter the Event or Extrinsic for conversion')}</div>
                     </div> :
                     <div className="flex flex-col">
                       {/*<img className="inline-block w-18 my-0 mx-auto" src={noDataIcon} alt=""/>*/}

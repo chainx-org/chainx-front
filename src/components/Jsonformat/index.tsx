@@ -7,7 +7,7 @@ const JsonContainer = styled.div`
     border: 1px solid #DBDBDB;
   `;
 // @ts-ignore
-export default function jsonformat({ json }) {
+export default function Jsonformat({ json }) {
   const filterStyle = (value:any)=>{
     if(typeof value==='string'){
       return {color:'#F55D8F'}

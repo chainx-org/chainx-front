@@ -142,8 +142,14 @@
     "Transfers": "Transfers",
     "PublicKey": "PublicKey",
     "Please enter Hash / Name to search": "Please enter Hash / Name to search",
-    "selective type": "selective type"
-
-
+    "selective type": "selective type",
+    "ExtrinsicDetails": "ExtrinsicDetails",
+    "BlockDetails": "BlockDetails",
+    "NodeDetails": "NodeDetails",
+    "AccountDetails": "AccountDetails",
+    "Search Event": "Search Event",
+    "Search Extrinsic": "Search Extrinsic",
+    "Enter the address or public key for conversion": "Enter the address or public key for conversion",
+    "Enter the Event or Extrinsic for conversion": "Enter the Event or Extrinsic for conversion"
 }
 

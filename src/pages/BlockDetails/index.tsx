@@ -131,9 +131,9 @@ export default function BlockDetails() {
   ];
   const routerPath = () => {
     return (<div className="flex flex-row cursor-pointer text-gray-white">
-      <Link to={'/'}>首页/</Link>
-      <Link to={'/chain'}>区块链/ </Link>
-      <Link to={`./blockDetail/${block}`}>区块详情</Link>
+      <Link to={'/'} style={{color:'rgba(255, 255, 255, 0.65)'}}>{t('Home')}/</Link>
+      <Link to={'/chain'} style={{color:'rgba(255, 255, 255, 0.65)'}}>{t('Chain')}/ </Link>
+      <Link to={`./${block}`}>{t('BlockDetails')}</Link>
     </div>);
   };
   return (
