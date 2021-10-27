@@ -59,6 +59,7 @@ function Footer(): React.ReactElement {
 
     return (
       <div
+        style={{position:'fixed',bottom:'0px',width:'100%'}}
         className="flex bg-topBar-black mt-29 desktop:px-7 desktop:flex-row desktop:justify-between screen:flex-col screen:items-center">
         <div className="flex flex-row">
           <ImgContent>

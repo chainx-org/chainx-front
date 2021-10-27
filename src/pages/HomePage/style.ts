@@ -10,7 +10,7 @@ export const TableWrapper = styled.div`
   display: grid;
   column-gap: 24px;
   row-gap: 32px;
-  padding: 1rem 6rem 1rem 6rem;
+  padding: 1rem 6rem 5rem 6rem;
   grid-template-columns: repeat(2, 1fr);
   //grid-template-columns: ();
   @media screen and (max-width: 900px) {

@@ -93,20 +93,20 @@ export default function NodeDetails() {
       title: t('Authored Address'),
       content: (
         <div className="text-blue-light cursor-pointer"
-             onClick={() => <div>{reName(addressDetails?.header?.number)}</div>}/>
+             onClick={() => <div>{(addressDetails?.header?.number)?reName(addressDetails?.header?.number):'-'}</div>}/>
       )
     },
     {
       title: t('Jackpot Address'),
       content: (
-        <div className="text-black-dark">{addressDetails?.hash}</div>
+        <div className="text-black-dark">{addressDetails?.rewardPotAccount}</div>
       ),
     },
     {
       title: t('Missed Blocks'),
       content: (
         <div className="text-black-dark">
-          {addressDetails?.extrinsicsRoot}
+          {(addressDetails?.extrinsicsRoot)?(addressDetails?.extrinsicsRoot):'-'}
         </div>
       ),
     },{

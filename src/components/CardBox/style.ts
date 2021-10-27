@@ -33,10 +33,10 @@ export const SpliteLine = styled.div`
 `;
 
 export const Container = styled.div`
-  position: absolute;
+  position: relative;
   width: 100%;
   min-height: 34rem;
-  top: 4rem;
+  //top: 4rem;
   padding: 2rem 2rem;
   display: grid;
   grid-template-columns:40% 5% 55%;
@@ -92,7 +92,16 @@ export const Container = styled.div`
       background: #2C83EA;
       border-radius: 0px 4px 4px 0px;
       border: 1px solid #DBDBDB;
+      display: flex;
+      position: relative;
+      //flex-direction: column;
+      justify-content: center;
       //background-image: url("../../");
+      >img{
+        display: inline-block;
+        position: absolute;
+        top:11px;
+      }
       .toolList {
         display: none;
       }
