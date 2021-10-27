@@ -34,8 +34,8 @@
     "typescript": "^4.4.4"
   },
   "scripts": {
-    "start": "yarn run build:css && react-scripts start",
-    "build": "yarn run build:css && react-scripts build",
+    "start": "yarn run build:css && react-app-rewired start",
+    "build": "yarn run build:css && react-app-rewired build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "build:css": "postcss src/css/index.src.css -o src/css/index.css",
@@ -43,7 +43,6 @@
     "dev": "concurrently \"yarn watch:css --silent\" \"yarn start --silent\"",
     "generate:defs": "ts-node --skip-project node_modules/.bin/polkadot-types-from-defs --package x-bridge-v2/interfaces --input ./src/interfaces",
     "generate:meta": "ts-node --skip-project node_modules/.bin/polkadot-types-from-chain --package . --endpoint wss://xbridge.spiderx.pro/ws --output ./src/interfaces --strict"
-
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -65,18 +64,23 @@
     "@commitlint/config-conventional": "^12.1.4",
     "@fullhuman/postcss-purgecss": "2.2.0",
     "@tailwindcss/custom-forms": "0.2.1",
+    "@types/customize-cra": "^1.0.2",
     "@types/react-router-dom": "^5.1.7",
     "@types/styled-components": "^5.1.11",
     "autoprefixer": "9.8.0",
     "commitizen": "^4.2.4",
     "concurrently": "^6.2.1",
     "cssnano": "4.1.10",
+    "customize-cra": "^1.0.0",
     "cz-customizable": "^6.3.0",
     "husky": "^5.2.0",
     "k8s-deploy-cli": "^0.1.0",
     "postcss": "^8.3.6",
     "postcss-cli": "^8.3.1",
-    "tailwindcss": "1.4.6"
+    "progress-bar-webpack-plugin": "^2.1.0",
+    "react-app-rewired": "^2.1.8",
+    "tailwindcss": "1.4.6",
+    "uglifyjs-webpack-plugin": "^2.2.0"
   },
   "husky": {
     "hooks": {
