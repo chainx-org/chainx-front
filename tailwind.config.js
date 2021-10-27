@@ -37,6 +37,7 @@ module.exports = {
       white: {
         light: "#ffffff",
         dark: "#fbfafc",
+        darker:"#F9F9F9"
       },
       topBar: {
         black: "#000000",
@@ -128,16 +129,22 @@ module.exports = {
       },
     }),
     extend: {
+      opacity: {
+        '15': '0.15',
+        '38': '0.38',
+        '35': '0.35',
+        '65': '0.65',
+      },
       boxShadow: {
         ...boxShadow,
-        outline: "0 0 0 3px rgba(239, 121, 48, 0.5)",
-        card: "0px 1px 6px 0px rgba(0, 0, 0, 0.05)",
-        sm: "0px 2px 16px 0px rgba(0, 0, 0, 0.12);",
+        outline: '0 0 0 3px rgba(239, 121, 48, 0.5)',
+        card: '0px 1px 6px 0px rgba(0, 0, 0, 0.05)',
+        sm: '0px 2px 16px 0px rgba(0, 0, 0, 0.12);',
       },
       gridTemplateColumns: {
         // Simple 16 column grid
-        listItem: "1.5fr 8.5fr",
-        card: "2fr 1fr",
+        listItem: '1.5fr 8.5fr',
+        card: '2fr 1fr',
       },
       margin: {
         auto: "auto",

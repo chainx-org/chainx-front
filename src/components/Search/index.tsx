@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Input } from 'antd';
 import { useTranslation } from 'react-i18next';
 import api from '../../helper/api';
@@ -12,18 +12,20 @@ export default function Search({ className }: SearchProps) {
   const {t} = useTranslation();
   const {Search} = Input;
   const onSearch = async (value: any) => {
-    let result = await api(value,window);
-    // console.log(result)
+    setLoading(true);
+    await api(value, window);
   };
+  const [loading, setLoading] = useState(false);
   return (
     <>
       {className === 'NavSearch' ?
 
         <div className={className} style={{border: '1px solid rgba(105, 168, 237, 0.21'}}>
-          <Search placeholder={t('Search Address/Extrinsics/Blocks')} onSearch={onSearch} enterButton/>
+          <Search placeholder={t('Search Address/Extrinsics/Blocks')} onSearch={onSearch} disabled={loading}
+                  loading={loading} enterButton/>
         </div> :
         <Search className={'Home_pageSearch'} placeholder={t('Search Address/Extrinsics/Blocks')} onSearch={onSearch}
-                enterButton/>
+                enterButton disabled={loading} loading={loading}/>
       }
     </>
 

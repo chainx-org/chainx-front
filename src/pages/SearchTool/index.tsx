@@ -4,13 +4,13 @@ import Footer from '../../components/Footer';
 import { useTranslation } from 'react-i18next';
 import { CardTitle, Container, SpliteLine, Wrapper } from '../../components/CardBox/style';
 import arrowChangeIcon from '../../assets/icon_awitch.svg';
-import leakageIcon from '../../assets/icon_Account switch.svg';
-import pulldown from '../../assets/icon-pulldown.svg'
-import { Input } from 'antd';
+import leakageIcon from '../../assets/icon_search event.svg';
+import pulldown from '../../assets/icon-pulldown.svg';
+import { Button, Input } from 'antd';
 import { get } from '../../hooks/useApi';
 import JsonApi from '../../components/Jsonformat';
 import noDataIcon from '../../assets/noData.svg';
-import Loading from '../../components/Loading';
+import Icon from '../../assets/img_switch.png';
 
 
 export default function Tools() {
@@ -21,30 +21,37 @@ export default function Tools() {
   const [page, setPage] = useState(1);
   const [pageSize, setPageSize] = useState(10);
   const [isCorrectValue, setIsCorrectValue] = useState('');
-  const [nowSearch,setNowSearch] = useState('Event')
-
+  const [nowSearch, setNowSearch] = useState('Event');
+  const [loading, setLoading] = useState(false);
   const textInput = (e: any) => {
     const value = e.target.value;
+    setLoading(false)
     setInputValue(value);
+    setListValue('')
   };
   const getData = async () => {
     if (nowSearch === 'Event') {
       try {
         let res: any = await get(`/search/${inputValue}?page=${page}&page_size=${pageSize}`, ``);
         setListValue(res);
+        setLoading(false);
       }catch (e) {
-        setIsCorrectValue('')
+        setIsCorrectValue('');
+        setLoading(false);
       }
     } else {
       try {
         let res: any = await get(`/searchExtrinsic/${inputValue}?page=${page}&page_size=${pageSize}`, ``);
         setListValue(res);
+        setLoading(false);
       }catch (e) {
-        setIsCorrectValue('')
+        setIsCorrectValue('');
+        setLoading(false);
       }
     }
   }
   const searchFun = () => {
+    setLoading(true);
     getData();
   };
 
@@ -93,19 +100,17 @@ export default function Tools() {
                   />
                 </div>
               </div>
-
-              <div className="w-overSpread h-12 bg-topBar-black text-topBar-white mt-12 items-center text-center"
-                   style={{borderRadius: '4px',cursor:'pointer'}} onClick={searchFun}>
-                <span className="inline-block" style={{lineHeight: '3rem'}}>{t('Search')}</span>
-              </div>
+              <Button block style={{background: 'black', borderRadius: '4px', cursor: 'pointer'}}
+                      className="toolsBtn w-overSpread h-12 bg-topBar-black text-topBar-white mt-12 items-center text-center"
+                      onClick={searchFun} disabled={loading} loading={loading}>{!loading &&
+              <span className="inline-block mx-auto my-auto">{t('Search')}</span>}</Button>
             </div>
             <div className="items-center my-auto mx-auto text-center">
-              <img src={arrowChangeIcon} alt=""/>
+              <img className='arrowChange' src={arrowChangeIcon} alt=""/>
             </div>
             <div
-              className="items-center my-auto ml-0 text-center mr-6 bg-topBar-gray h-overSpread flex justify-center items-center"
+              className="bg-white-darker border bor items-center my-auto ml-0 text-center mr-6 bg-topBar-gray h-overSpread flex justify-center items-center"
               style={{
-                background: '#F9F9F9',
                 borderRadius: '10px',
                 border: '1px solid #DBDBDB'
               }}>
@@ -114,16 +119,17 @@ export default function Tools() {
                      style={{background: 'white', borderRadius: '10px'}}>
                   {<JsonApi json={listValue}/>}
                 </div> : <>
-                  {!isCorrectValue ?
-                    <div className="flex flex-col">
-                      {/*<img className="inline-block w-18 my-0 mx-auto" src={cardBoxTitleContainer.icon} alt=""/>*/}
-                      <div>{t('Enter the Event or Extrinsic for conversion')}</div>
-                    </div> :
-                    <div className="flex flex-col">
-                      {/*<img className="inline-block w-18 my-0 mx-auto" src={noDataIcon} alt=""/>*/}
-                      <div>{t(`${isCorrectValue}`)}</div>
-                    </div>
-                  }
+                  {loading ?
+                    <img src="https://scan.chainx.org/static/media/loading.80f33db6.png" alt=""/> : <>{!isCorrectValue ?
+                      <div className="flex flex-col">
+                        <img className="inline-block w-18 my-0 mx-auto" src={Icon} alt=""/>
+                        <div>{t('Enter the Event or Extrinsic for conversion')}</div>
+                      </div> :
+                      <div className="flex flex-col">
+                        <img className="inline-block w-18 my-0 mx-auto" src={noDataIcon} alt=""/>
+                        <div>{t(`${isCorrectValue}`)}</div>
+                      </div>
+                    }</>}
                 </>}
             </div>
           </Container>

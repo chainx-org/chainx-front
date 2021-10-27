@@ -31,12 +31,9 @@ export default function ExtrinsicDetails() {
   const [noData, setNoData] = useState(false);
   const [extrinsicDetails, setExtrinsicDetails] = useState<any>();
   const extrinsic = window.location.pathname.slice(18, window.location.pathname.length);
-  // debugger
   const [nowExtrinsic, setNowExtrinsics] = useState(extrinsic);
   const getData = async () => {
-    // debugger
     const res: any = await get(`/extrinsics/${nowExtrinsic}`, ``);
-    // debugger
     if (res) {
       setExtrinsicDetails(res);
       setLoading(false);
@@ -45,16 +42,14 @@ export default function ExtrinsicDetails() {
     }
   };
   useEffect(() => {
-    // debugger
-    // if (window.history.state && window.history.state?.state) {
-    //   console.log(window.history.state?.state)
-    //   setExtrinsicDetails(window.history.state.state);
-    //   console.log('window', window.history.state.state);
-    //   setLoading(false);
-    // } else {
-    //   debugger
+    if (window.history.state && window.history.state?.state) {
+      console.log(window.history.state?.state)
+      setExtrinsicDetails(window.history.state.state);
+      console.log('window', window.history.state.state);
+      setLoading(false);
+    } else {
     getData();
-    // }
+    }
   }, []);
   const list = [
     {

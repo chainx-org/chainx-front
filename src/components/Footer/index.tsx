@@ -19,11 +19,11 @@ const ImgContent = styled.div`
         cursor: pointer;
       }
 
-      #wechatHover img {
+      .wechatHover img {
         display: none;
       }
 
-      #idd {
+      .wechatHoverImg {
         position: absolute;
         left: 15rem; //位置和大小自己定义
         top: -6rem;
@@ -32,11 +32,11 @@ const ImgContent = styled.div`
         cursor: pointer; //cursor即鼠标悬浮时鼠标样式,pointer为小手
       }
 
-      #idd img {
+      .wechatHoverImg img {
         display: none;
       }
 
-      #idd:hover img {
+      .wechatHoverImg:hover img {
         display: block;
       }
     `;
@@ -73,15 +73,15 @@ function Footer(): React.ReactElement {
             <div className="weChatImg" >
               <img src='https://i.postimg.cc/B6d1gH9x/wechat-2x.png' alt="" style={{width:'3rem'}}/>
             </div>
-            <div id="wechatHover">
+            <div className="wechatHover">
               <img src={wechatImg} alt=""/>
             </div>
-            <div id="idd">
+            <div className="wechatHoverImg">
               <img src={wechatImg} alt=""/>
             </div>
 
           </ImgContent>
-          <div className={'text-topBar-white mx-0 my-auto'} style={{opacity: '38%'}}>All rights reserved © 2019
+          <div className={'text-topBar-white mx-0 my-auto bg-opacity-38'}>All rights reserved © 2019
             ChainX
           </div>
         </div>
