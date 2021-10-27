@@ -36,7 +36,6 @@ function Faviconnav() {
 
     const [isCollapsed, setCollapsed] = useState(false);
     function testqwedsa() {
-      debugger
         setCollapsed(!isCollapsed)
     }
 
