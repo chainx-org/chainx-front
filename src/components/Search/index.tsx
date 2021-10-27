@@ -13,7 +13,7 @@ export default function Search({ className }: SearchProps) {
   const {Search} = Input;
   const onSearch = async (value: any) => {
     let result = await api(value,window);
-    console.log(result)
+    // console.log(result)
   };
   return (
     <>

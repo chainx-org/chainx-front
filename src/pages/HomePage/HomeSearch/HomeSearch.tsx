@@ -1,20 +1,14 @@
 import React from 'react';
 import Search from '../../../components/Search';
 import styled from 'styled-components';
+import bgImg from '../../../assets/Lightning@2x.webp'
 
-function homeSearch() {
-
-    const TableWrapper = styled.div`
+const TableWrapper = styled.div`
       display: grid;
       grid-template-columns: 60% 40%;
       place-content: space-around space-evenly;
       padding: 3rem 6rem 2rem 6rem;
       position: relative;
-
-      //.bgImage {
-      //  overflow: ;
-      //}
-
       @media screen and (max-width: 900px) {
         grid-template-columns: 100%;
         padding: 1rem;
@@ -30,7 +24,7 @@ function homeSearch() {
       }
     `;
 
-    const EchartBox = styled.div`
+const EchartBox = styled.div`
       //grid grid-cols-2 border-gray-borderGray bg-gray-backgroundGray rounded-lg
       display: grid;
       grid-template-columns:1fr 1fr;
@@ -47,14 +41,14 @@ function homeSearch() {
       }
     `;
 
+function homeSearch() {
 
     return (
       <TableWrapper>
         <div className='w-overSpread h-overSpread absolute items-center mx-auto my-auto'>
-          <img className="bgImage" src="https://i.postimg.cc/jds3jh3N/Lightning.png" alt=""
-               style={{position: 'relative', objectFit: 'cover', margin: 'auto auto'}}/>
+          <img src={bgImg} alt="" style={{position: 'relative', objectFit: 'cover', margin: 'auto auto',maxWidth:'none',width:'60%'}}/>
         </div>
-        <div className="grid grid-rows-2">
+        <div className="grid grid-rows-2 relative" style={{zIndex:2}}>
           <div className="h-13 text-4xl PingFangSC-Medium, PingFang SC text-textColor-white">ChainX Blockchain
             Explorer
           </div>

@@ -10,14 +10,6 @@ import searchIcon from '../../assets/img_switch.png';
 export default function SearchPage() {
   const {t} = useTranslation();
 
-  // const Wrapper = styled.div`
-  //   min-height: 688px;
-  //   background: #FFFFFF;
-  //   box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.04);
-  //   border-radius: 10px;
-  //   border: 1px solid #E9E9E9;
-  //   @
-  // `;
   const changeAddress = (value:string)=>{
     // setInputValue(value)
   }

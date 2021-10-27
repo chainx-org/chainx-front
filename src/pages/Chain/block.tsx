@@ -4,8 +4,7 @@ import { LinkX, ShorterLink } from '../../components/LinkX';
 import TimeStatus from '../../components/TimeStatus';
 import waitIcon from '../../assets/icon_waiting.svg';
 import ChainTable from '../../components/Table/table';
-import { encodeAddress } from '@polkadot/keyring';
-
+import _encodeAddress from '../../helper/encodeAddress';
 
 export default function Block() {
   const {t} = useTranslation();
@@ -68,7 +67,7 @@ export default function Block() {
       key: 'Validator',
       render: (text: any, record: any) => {
         return (
-          <LinkX linkUrl={`/nodeDetails/${encodeAddress(record.author)}`} state={record} content={record.referralId}/>);
+          <LinkX linkUrl={`/nodeDetails/${_encodeAddress(record?.author)}`} state={record} content={record.referralId}/>);
       }
     }
   ];

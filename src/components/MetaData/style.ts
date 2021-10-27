@@ -6,6 +6,8 @@ export const MetaDataBox = styled.div`
   padding:0rem 6rem;
   background: linear-gradient(to bottom, black 0%, black 30%, #f5f5f5 30%, #f5f5f5 100%);
   border: 0px solid #ccc;
+  position: relative;
+  z-index: 1;
   @media screen and (max-width: 900px) {
     height: 22rem;
     padding:0rem 1rem;
@@ -68,7 +70,43 @@ export const Container = styled.div`
     height: 32px;
     margin: auto 3px auto 0px;
   }
-  
+
+  > div {
+    > span {
+      :nth-child(1) {
+        font-size: 14px;
+        color: rgba(0, 0, 0, 0.45);
+      }
+
+      :nth-child(2) {
+        font-size: 18px;
+        font-weight: bold;
+      }
+    }
+  }
+
+  @media screen and (max-width: 900px) {
+    > img {
+      display: inline-block;
+      width: 24px;
+      height: 24px;
+      margin: auto 3px auto 0px;
+    }
+    > div {
+      > span {
+        :nth-child(1) {
+          font-size: 12px;
+        }
+
+        :nth-child(2) {
+          font-size: 12px;
+          font-weight: 500;
+        }
+      }
+
+    }
+  }
+
   //>div{
   //  .name {
   //    font-size: 14px;

@@ -12,18 +12,20 @@ import { Link } from 'react-router-dom';
 import NoData from '../../components/NoData';
 import Missed from './missed';
 import { encodeAddress } from '@polkadot/keyring';
-import decodeAddress from '../../helper/encodeAddress'
+import decodeAddress from '../../helper/encodeAddress';
 import TrustTag from '../../components/TrustTag';
 import { reName } from '../../helper/hooks';
+
 const {hexToU8a, isHex} = require('@polkadot/util');
 
-export default function NodeDetails() {
-  const Wrapper = styled.div`
+const Wrapper = styled.div`
     background: #FFFFFF;
     box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.04);
     border-radius: 10px;
     border: 1px solid #E9E9E9;
   `;
+export default function NodeDetails() {
+
   const {t} = useTranslation();
   const [loading, setLoading] = useState(true);
   const [addressDetails, setAddressDetails] = useState<any>();
@@ -33,18 +35,19 @@ export default function NodeDetails() {
 
   const getData = async (node:string) => {
     const {items}: any = await get(`/validators/all`, ``);
-   const result =  items.filter((item: any, index: number) => {
-     if(item.account === node){
-       console.log(item)
-       return item
-     }
+    console.log(items,'111')
+    const result =  items.filter((item: any, index: number) => {
+      if(item.account === node){
+        console.log(item)
+        return item
+      }
     });
-    if(result.length>0){
+    if (result.length > 0) {
       setAddressDetails(result[0]);
       setLoading(false);
-    }else{
+    } else {
       setLoading(true);
-      setNoData(true)
+      setNoData(true);
     }
   };
 
@@ -90,20 +93,20 @@ export default function NodeDetails() {
       title: t('Authored Address'),
       content: (
         <div className="text-blue-light cursor-pointer"
-             onClick={() => <div>{reName(addressDetails?.header?.number)}</div>}/>
+             onClick={() => <div>{(addressDetails?.header?.number)?reName(addressDetails?.header?.number):'-'}</div>}/>
       )
     },
     {
       title: t('Jackpot Address'),
       content: (
-        <div className="text-black-dark">{addressDetails?.hash}</div>
+        <div className="text-black-dark">{addressDetails?.rewardPotAccount}</div>
       ),
     },
     {
       title: t('Missed Blocks'),
       content: (
         <div className="text-black-dark">
-          {addressDetails?.extrinsicsRoot}
+          {(addressDetails?.extrinsicsRoot)?(addressDetails?.extrinsicsRoot):'-'}
         </div>
       ),
     },{

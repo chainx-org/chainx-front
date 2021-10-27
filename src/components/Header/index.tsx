@@ -13,16 +13,17 @@ interface HeaderPop {
     showSearch?: boolean
 }
 
+const SelectList = styled.div`
+    display: none;
+    @media screen and (max-width: 900px) {
+        display: block;
+
+    }
+`;
 export default function Header({showSearch}: HeaderPop) {
     const {t} = useTranslation();
     const [showMenu, setShowMenu] = useState(false);
-    const SelectList = styled.div`
-        display: none;
-        @media screen and (max-width: 900px) {
-            display: block;
 
-        }
-    `;
     const handleClick = (e: any) => {
         e.persist();
         if (e._targetInst.key === '1') {
@@ -55,7 +56,7 @@ export default function Header({showSearch}: HeaderPop) {
                   <Link to="/crossBlock">
                       <span key="4" className="toplinkName">{t('Cross Bridge')}</span>
                   </Link>
-                  <div className="topLink">
+                  <div className="topLink" style={{cursor: 'pointer'}}>
                       <span key="6" className="topLinkTool">{t('Tools')}</span>
                       <ul className="toolList">
                           <li>
@@ -69,12 +70,13 @@ export default function Header({showSearch}: HeaderPop) {
               </NavLink>
           </Wrapper>
           {showSearch && <Search className="NavSearch"/>}
-          {<SelectList className="selectList">
-              <div onClick={() => setShowMenu(!showMenu)}><img src={menuIcon} alt="" style={{height: '1.5rem',
-                  width: '1.5rem'}}/></div>
+          {<SelectList className="selectList" style={{margin: 'auto 0'}}>
+              <div  onClick={() => setShowMenu(!showMenu)}><img src={menuIcon} alt="" style={{
+                  height: '1.5rem',
+                  width: '1.5rem'
+              }}/></div>
               {showMenu &&
-              // @ts-ignore
-              <Faviconnav ref={ref} isCollapsed={false} onClick={() => setShowMenu(!showMenu)} />
+              <Faviconnav  isCollapsed={showMenu} onClose={()=>setShowMenu(!showMenu)} />
               }
           </SelectList>}
       </div>

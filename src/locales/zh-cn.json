@@ -138,5 +138,7 @@
     "Receiver": "接收人",
     "Transactions": "交易列表",
     "Transfers": "转账列表",
-    "PublicKey": "公钥"
+    "PublicKey": "公钥",
+    "Please enter Hash / Name to search": "请输入哈希/名称/进行查询",
+    "selective type": "选择类型"
 }

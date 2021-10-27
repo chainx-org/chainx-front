@@ -4,6 +4,7 @@ import { useState } from "react";
 const ChangeNetDiv = styled.div`
   position:relative;
   height:100px;
+  cursor: pointer;
   &>div{
     display: flex;
     align-items: center;
