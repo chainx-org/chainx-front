@@ -18,13 +18,14 @@ import { reName } from '../../helper/hooks';
 
 const {hexToU8a, isHex} = require('@polkadot/util');
 
-export default function NodeDetails() {
-  const Wrapper = styled.div`
+const Wrapper = styled.div`
     background: #FFFFFF;
     box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.04);
     border-radius: 10px;
     border: 1px solid #E9E9E9;
   `;
+export default function NodeDetails() {
+
   const {t} = useTranslation();
   const [loading, setLoading] = useState(true);
   const [addressDetails, setAddressDetails] = useState<any>();
@@ -92,20 +93,20 @@ export default function NodeDetails() {
       title: t('Authored Address'),
       content: (
         <div className="text-blue-light cursor-pointer"
-             onClick={() => <div>{reName(addressDetails?.header?.number)}</div>}/>
+             onClick={() => <div>{(addressDetails?.header?.number)?reName(addressDetails?.header?.number):'-'}</div>}/>
       )
     },
     {
       title: t('Jackpot Address'),
       content: (
-        <div className="text-black-dark">{addressDetails?.hash}</div>
+        <div className="text-black-dark">{addressDetails?.rewardPotAccount}</div>
       ),
     },
     {
       title: t('Missed Blocks'),
       content: (
         <div className="text-black-dark">
-          {addressDetails?.extrinsicsRoot}
+          {(addressDetails?.extrinsicsRoot)?(addressDetails?.extrinsicsRoot):'-'}
         </div>
       ),
     },{
@@ -151,9 +152,9 @@ export default function NodeDetails() {
   ];
   const routerPath = () => {
     return (<div className="flex flex-row cursor-pointer text-gray-white">
-      <Link to={'/'}>首页/</Link>
-      <Link to={'/validators'}>验证节点/ </Link>
-      <Link to={`./${node}`}>节点详情</Link>
+      <Link to={'/'} style={{color:'rgba(255, 255, 255, 0.65)'}}>{t('Home')}/</Link>
+      <Link to={'/validators'} style={{color:'rgba(255, 255, 255, 0.65)'}}>{t('Chain')}/ </Link>
+      <Link to={`./${node}`}>{t('NodeDetails')}</Link>
     </div>);
   };
   return (

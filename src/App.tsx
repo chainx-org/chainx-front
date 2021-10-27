@@ -13,6 +13,7 @@ import blockDetails from './pages/BlockDetails';
 import extrinsicDetails from './pages/ExtrinsicsDetails';
 import addressDetails from './pages/AddressDetails';
 import NodeDetails from './pages/NodeDetails';
+import NoDataPage from './pages/NoData';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
           <Route path="/crossBlock" component={CrossBlock}/>
           <Route path="/validators" component={Validator}/>
           <Route path="/chain" component={Chain}/>
+          <Route path="/Nodata" component={NoDataPage}/>
           <Route path="/" component={Home}/>
         </Switch>
     </BrowserRouter>

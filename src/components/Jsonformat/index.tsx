@@ -1,14 +1,13 @@
 import React from 'react'
 import styled from 'styled-components';
-
-// @ts-ignore
-export default function jsonformat({ json }) {
-  const JsonContainer = styled.div`
+const JsonContainer = styled.div`
     background: #F9F9F9;
     border-radius: 10px;
     padding:2px 4px;
     border: 1px solid #DBDBDB;
   `;
+// @ts-ignore
+export default function Jsonformat({ json }) {
   const filterStyle = (value:any)=>{
     if(typeof value==='string'){
       return {color:'#F55D8F'}

@@ -19,17 +19,14 @@ import MyEchart from './myEcharts';
 import { ShorterLink } from '../../components/LinkX';
 
 
-export default function CrossBlock() {
-  const {t} = useTranslation();
-
-  const Wrapper = styled.div`
+const Wrapper = styled.div`
     background: #FFFFFF;
     box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.04);
     border-radius: 10px;
     border: 1px solid #E9E9E9;
   `;
 
-  const BridgeWrapper = styled.div`
+const BridgeWrapper = styled.div`
     display: grid;
     grid-template-columns: 59% 39%;
     grid-gap: 1rem;
@@ -47,6 +44,9 @@ export default function CrossBlock() {
       }
     }
   `;
+export default function CrossBlock() {
+  const {t} = useTranslation();
+
 
   const tabList: TabInfo[] = [
     {

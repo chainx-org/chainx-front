@@ -26,7 +26,7 @@ function LangSelect(): React.ReactElement {
 
   return (
     // @ts-ignore
-    <ChangeNetDiv ref={ref} className="border-white">
+    <ChangeNetDiv ref={ref} className="border-white" style={{cursor:'pointer'}}>
       <div style={{border: '1px solid rgba(233, 233, 233, 0.18)'}}
            className={'flex flex-row mx-0 my-auto border-1 rounded-sm bg-topBar-gray opacity-80 ring-select text-topBar-white px-2 py-1'}
       >
@@ -40,7 +40,7 @@ function LangSelect(): React.ReactElement {
       </div>
       {
         isShow &&
-        <ul style={{position: 'absolute', bottom: '30px'}}>
+        <ul style={{position: 'absolute', bottom: '30px',cursor:'pointer'}}>
           <li>
 
             <div onClick={() => selectLang('zh')}>English</div>

@@ -33,10 +33,10 @@ export const SpliteLine = styled.div`
 `;
 
 export const Container = styled.div`
-  position: absolute;
+  position: relative;
   width: 100%;
   min-height: 34rem;
-  top: 4rem;
+  //top: 4rem;
   padding: 2rem 2rem;
   display: grid;
   grid-template-columns:40% 5% 55%;
@@ -44,6 +44,7 @@ export const Container = styled.div`
   grid-row-gap: 1rem;
   @media screen and (max-width: 900px) {
     grid-template-columns:100%;
+    grid-template-rows: 1fr 0.1fr 1fr;
     //&.div:nth-child(2){
     //  margin:auto !important;
     //}
@@ -91,7 +92,16 @@ export const Container = styled.div`
       background: #2C83EA;
       border-radius: 0px 4px 4px 0px;
       border: 1px solid #DBDBDB;
+      display: flex;
+      position: relative;
+      //flex-direction: column;
+      justify-content: center;
       //background-image: url("../../");
+      >img{
+        display: inline-block;
+        position: absolute;
+        top:11px;
+      }
       .toolList {
         display: none;
       }
@@ -110,7 +120,7 @@ export const Container = styled.div`
         box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.15);
         border-radius: 4px;
         width: 8rem;
-        height: 5.5rem;
+        height: 5rem;
         margin-top: 48px;
 
         & > li {
@@ -138,7 +148,7 @@ export const Container = styled.div`
     box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.15);
     border-radius: 4px;
     width: 100%;
-    height: 5.5rem;
+    height: 5rem;
 
     & > li {
       height: 2.5rem;

@@ -19,12 +19,13 @@ export default function SS58() {
     title: t('Enter the address of block leakage for query'),
     container: t('Enter the address or public key for conversion'),
     icon: searchIcon,
-    result: 'Enter the address or public key for conversion'
+    result: t('Enter the address or public key for conversion')
 
   }
   const changeAddress = (value:string)=>{
-    setInputValue(value)
-    if(value){
+    var input = value.trim();
+    setInputValue(input)
+    if(input){
       setIsCorrectValue('')
     }
   }

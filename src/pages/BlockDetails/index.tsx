@@ -16,14 +16,14 @@ import { LinkXWithPopAndIcon } from '../../components/LinkX';
 import NoData from '../../components/NoData';
 import successIcon from '../../assets/icon_success.svg';
 
-
-export default function BlockDetails() {
-  const Wrapper = styled.div`
+const Wrapper = styled.div`
     background: #FFFFFF;
     box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.04);
     border-radius: 10px;
     border: 1px solid #E9E9E9;
   `;
+export default function BlockDetails() {
+
   const {t} = useTranslation();
   const [loading, setLoading] = useState(true);
   const [noData, setNoData] = useState(false);
@@ -131,9 +131,9 @@ export default function BlockDetails() {
   ];
   const routerPath = () => {
     return (<div className="flex flex-row cursor-pointer text-gray-white">
-      <Link to={'/'}>首页/</Link>
-      <Link to={'/chain'}>区块链/ </Link>
-      <Link to={`./blockDetail/${block}`}>区块详情</Link>
+      <Link to={'/'} style={{color:'rgba(255, 255, 255, 0.65)'}}>{t('Home')}/</Link>
+      <Link to={'/chain'} style={{color:'rgba(255, 255, 255, 0.65)'}}>{t('Chain')}/ </Link>
+      <Link to={`./${block}`}>{t('BlockDetails')}</Link>
     </div>);
   };
   return (

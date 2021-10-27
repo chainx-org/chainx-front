@@ -18,13 +18,14 @@ import CopyText from '../../components/copyText';
 import successIcon from '../../assets/icon_success.svg';
 import NoData from '../../components/NoData';
 
-export default function ExtrinsicDetails() {
-  const Wrapper = styled.div`
+const Wrapper = styled.div`
     background: #FFFFFF;
     box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.04);
     border-radius: 10px;
     border: 1px solid #E9E9E9;
   `;
+export default function ExtrinsicDetails() {
+
   const {t} = useTranslation();
   const [loading, setLoading] = useState(true);
   const [noData, setNoData] = useState(false);
@@ -80,7 +81,10 @@ export default function ExtrinsicDetails() {
     {
       title: t('Extrinsic Hash'),
       content: (
-        <LinkXWithPop linkUrl={'/'} content={extrinsicDetails?.hash}/>
+        <div className="text-gray-arrow font-semibold">
+          {(extrinsicDetails?.hash)?(extrinsicDetails?.hash):'-'}
+        </div>
+        // <LinkXWithPop linkUrl={'/'} content={extrinsicDetails?.hash}/>
         // <></>
 
       )
@@ -90,7 +94,7 @@ export default function ExtrinsicDetails() {
       align:'right',
       width:'15rem',
       content: (
-        <Operation content={extrinsicDetails?.section + '-' + extrinsicDetails?.name} more={false}/>
+        <Operation content={extrinsicDetails?.section + '-' + extrinsicDetails?.name} more={false} left={true}/>
         // <></>
       ),
     },
@@ -98,9 +102,11 @@ export default function ExtrinsicDetails() {
       title: t('Sender'),
       content: (
         <div className="text-gray-arrow font-semibold">
-          {extrinsicDetails?.extrinsicsRoot}
+          {(extrinsicDetails?.singer)?(extrinsicDetails?.singer):'-'}
         </div>
-      ),
+    // <LinkXWithPop linkUrl={'/'} content={extrinsicDetails?.singer}/>
+
+),
     },
     {
       title: t('Fee'),
@@ -121,9 +127,8 @@ export default function ExtrinsicDetails() {
       title: t('Arguments'),
       content:
         <CopyText children={
-          <JsonApi json={extrinsicDetails?.args}/>} text={extrinsicDetails?.args}/>
-      // <span>1111</span>
-      // } text={'111'}/>
+          <JsonApi json={extrinsicDetails?.args}/>}
+                  text={extrinsicDetails?.args}/>
     }, {
       title: t('Signature'),
       content: <div className="text-gray-arrow font-semibold">
@@ -139,9 +144,9 @@ export default function ExtrinsicDetails() {
   ];
   const routerPath = () => {
     return (<div className="flex flex-row cursor-pointer text-gray-white">
-      <Link to={'/'}>首页/</Link>
-      <Link to={'/chain/extrinsic'}>交易列表/ </Link>
-      <Link to={`./${extrinsic}`}>交易详情</Link>
+      <Link to={'/'} style={{color:'rgba(255, 255, 255, 0.65)'}}>{t('Home')}/</Link>
+      <Link to={'/chain/extrinsic'} style={{color:'rgba(255, 255, 255, 0.65)'}}>{t('Extrinsic')}/ </Link>
+      <Link to={`./${extrinsic}`}>{t('ExtrinsicDetails')}</Link>
     </div>);
   };
   return (
