@@ -1,32 +1,16 @@
 import React from 'react';
-import { Select } from 'antd';
 import logo from '../../assets/Group8white.svg';
-import email from '../../assets/email.svg';
-import github from '../../assets/github.svg';
-import medium from '../../assets/medium.svg';
-import telegram from '../../assets/telegram.svg';
-import twitter from '../../assets/twitter.svg';
-import wechat from '../../assets/wechat.svg';
 import wechatImg from '../../assets/wechatImg.png';
 import styled from 'styled-components';
 import copy from 'copy-to-clipboard';
 import LangSelect from './langSelect';
-import { message, Space } from 'antd';
+import { message } from 'antd';
 import { useTranslation } from 'react-i18next';
 
-
-function Footer(): React.ReactElement {
-
-  const {t} = useTranslation()
-  function copyEmail(text:string){
-    copy(text)
-    message.success(t('copy success'))
-  }
-    const ImgContent = styled.div`
+const ImgContent = styled.div`
       display: flex;
       flex-direction: row;
       position: relative;
-
       > a {
         display: inline-block;
       }
@@ -57,29 +41,37 @@ function Footer(): React.ReactElement {
       }
     `;
 
+function Footer(): React.ReactElement {
+
+  const {t} = useTranslation()
+  function copyEmail(text:string){
+    copy(text)
+    message.success(t('copy success'))
+  }
+
     return (
       <div
-        style={{position:'fixed',bottom:'0px',width:'100%'}}
-        className="flex bg-topBar-black mt-29 desktop:px-7 desktop:flex-row desktop:justify-between screen:flex-col screen:items-center">
+        style={{bottom:'0px'}}
+        className="w-overSpread fixed bottom-0 flex bg-topBar-black mt-29 desktop:px-7 desktop:flex-row desktop:justify-between screen:flex-col screen:items-center">
         <div className="flex flex-row">
           <ImgContent>
-            <div id="span" onClick={() => copyEmail('hi@chainx.org')}>
-              <img src={email} alt=""/>
-            </div>
+            <a onClick={() => copyEmail('hi@chainx.org')}>
+              <img src='https://i.postimg.cc/1XwVYXsb/2x.png' alt="" style={{width:'3rem'}}/>
+            </a>
             <a href="https://github.com/chainx-org/sherpax-web" target="_black">
-              <img src={github} alt=""/>
+              <img src='https://i.postimg.cc/26qZhTJk/wechat-2x-1.png' alt="" style={{width:'3rem'}}/>
             </a>
             <a href="https://chainx-org.medium.com/" target="_black">
-              <img src={medium} alt=""/>
+              <img src='https://i.postimg.cc/fRKmNVmN/medium-1-2x.png' alt="" style={{width:'3rem'}}/>
             </a>
             <a href="https://t.me/chainx_org" target="_black">
-              <img src={telegram} alt=""/>
+              <img src='https://i.postimg.cc/jjSNdR4J/telegram-2x.png' alt="" style={{width:'3rem'}}/>
             </a>
-            <a href="https://twitter.com/chainx_org" target="_black">
-              <img src={twitter} alt=""/>
+            <a href="https://twitter.com/chainx_org" target="_black" >
+              <img src='https://i.postimg.cc/5tKzXDsK/twitter-2x.png' alt="" style={{width:'3rem'}}/>
             </a>
-            <div className="weChatImg">
-              <img src={wechat} alt=""/>
+            <div className="weChatImg" >
+              <img src='https://i.postimg.cc/B6d1gH9x/wechat-2x.png' alt="" style={{width:'3rem'}}/>
             </div>
             <div id="wechatHover">
               <img src={wechatImg} alt=""/>
@@ -95,13 +87,12 @@ function Footer(): React.ReactElement {
         </div>
         <div className="flex flex-row">
           <LangSelect/>
-          <div style={{width: '32px'}}/>
-          <img src={logo} alt="" style={{display: 'inline-block', height: '24px', margin: 'auto 0'}}/>
+          <img src={logo} alt="" className='inline-block h-6 my-auto ml-8'/>
         </div>
       </div>
     );
 }
 
-export default Footer
+export default React.memo(Footer)
 
 
