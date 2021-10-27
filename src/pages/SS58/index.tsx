@@ -19,42 +19,47 @@ export default function SS58() {
     title: t('Enter the address of block leakage for query'),
     container: t('Enter the address or public key for conversion'),
     icon: searchIcon,
-    result: 'Enter the address or public key for conversion'
+    result: t('Enter the address or public key for conversion')
 
   }
+  let typeList = [
+    {name: 'Chainx (Prefix: 44)', id: 44, value: ''},
+    {name: 'Polkadot (Prefix: 0)', id: 0, value: ''},
+    {name: 'Kusama (Prefix: 2)', id: 2, value: ''},
+    {name: 'Darwinia (Prefix: 18', id: 18, value: ''},
+    {name: 'Crab (Prefix: 42)', id: 42, value: ''},
+    {name: 'Westend (Prefix: 42)', id: 42, value: ''},
+    {name: 'Edgeware (Prefix: 7)', id: 7, value: ''},
+    {name: 'Centrifuge (Prefix: 36)', id: 36, value: ''},
+    {name: 'Mandala (Prefix: 42)', id: 42, value: ''},
+    {name: 'Phala (Prefix: 42)', id: 42, value: ''},
+    {name: 'Bifrost (Prefix: 6)', id: 6, value: ''},
+    {name: 'Plasm (Prefix: 5)', id: 5, value: ''},
+    {name: 'Stafi (Prefix: 20)', id: 20, value: ''},
+    {name: 'Kulupu (Prefix: 16)', id: 16, value: ''},
+    {name: 'Crust (Prefix: 42)', id: 42, value: ''},
+    {name: 'Laminar (Prefix: 42)', id: 42, value: ''},
+    {name: 'Karura (Prefix: 8)', id: 8, value: ''},
+    {name: 'Reynolds (Prefix: 9)', id: 9, value: ''},
+    {name: 'Acala (Prefix: 10)', id: 10, value: ''},
+    {name: 'Polymath (Prefix: 12)', id: 12, value: ''},
+    {name: 'Robonomics (Prefix: 32)', id: 32, value: ''},
+    {name: 'Substrate (Prefix: 42)', id: 42, value: ''}
+  ];
+  const [loading,setLoading] = useState(false)
   const changeAddress = (value:string)=>{
+    setListValue('')
     var input = value.trim();
     setInputValue(input)
     if(input){
       setIsCorrectValue('')
+      setLoading(false)
     }
   }
 
   const selectAddress = () => {
-    let typeList = [
-      {name: 'Chainx (Prefix: 44)', id: 44, value: ''},
-      {name: 'Polkadot (Prefix: 0)', id: 0, value: ''},
-      {name: 'Kusama (Prefix: 2)', id: 2, value: ''},
-      {name: 'Darwinia (Prefix: 18', id: 18, value: ''},
-      {name: 'Crab (Prefix: 42)', id: 42, value: ''},
-      {name: 'Westend (Prefix: 42)', id: 42, value: ''},
-      {name: 'Edgeware (Prefix: 7)', id: 7, value: ''},
-      {name: 'Centrifuge (Prefix: 36)', id: 36, value: ''},
-      {name: 'Mandala (Prefix: 42)', id: 42, value: ''},
-      {name: 'Phala (Prefix: 42)', id: 42, value: ''},
-      {name: 'Bifrost (Prefix: 6)', id: 6, value: ''},
-      {name: 'Plasm (Prefix: 5)', id: 5, value: ''},
-      {name: 'Stafi (Prefix: 20)', id: 20, value: ''},
-      {name: 'Kulupu (Prefix: 16)', id: 16, value: ''},
-      {name: 'Crust (Prefix: 42)', id: 42, value: ''},
-      {name: 'Laminar (Prefix: 42)', id: 42, value: ''},
-      {name: 'Karura (Prefix: 8)', id: 8, value: ''},
-      {name: 'Reynolds (Prefix: 9)', id: 9, value: ''},
-      {name: 'Acala (Prefix: 10)', id: 10, value: ''},
-      {name: 'Polymath (Prefix: 12)', id: 12, value: ''},
-      {name: 'Robonomics (Prefix: 32)', id: 32, value: ''},
-      {name: 'Substrate (Prefix: 42)', id: 42, value: ''}
-    ];
+    setLoading(true)
+
     const getAddressList = (value:string) => {
       typeList.reduce((acc, cur) => {
         if (typeList.length) {
@@ -66,6 +71,7 @@ export default function SS58() {
         return acc;
       }, []);
       setListValue(typeList);
+      setLoading(false)
       return true;
     };
     if (inputValue.includes('0x')) {
@@ -79,6 +85,7 @@ export default function SS58() {
       try {
         return getAddressList(inputValue);
       } catch (error) {
+        setLoading(false)
         setIsCorrectValue('Transformation failed. Address or public key not found')
         return false;
       }
@@ -90,7 +97,7 @@ export default function SS58() {
       <Header showSearch={true}/>
       <CardBox cardBoxTitleIcon={blockLeakage} cardBoxTitleName={t('Transform Address/Public Key')}
                cardBoxTitleContainer={BoxContainer} inputValue={inputValue} listValue={listValue}
-               selectAddress={selectAddress} inputValueFun={changeAddress} correctValue={isCorrectValue}/>
+               selectAddress={selectAddress} inputValueFun={changeAddress} correctValue={isCorrectValue} loading={loading}/>
       <Footer/>
 
     </>

@@ -17,7 +17,8 @@ import Claim from './claim';
 import { get } from '../../hooks/useApi';
 import MyEchart from './myEcharts';
 import { ShorterLink } from '../../components/LinkX';
-
+import distributionIcon from '../../assets/icon_Mining_rate.svg'
+import bridgeIcon from '../../assets/icon_bridge.svg'
 
 const Wrapper = styled.div`
     background: #FFFFFF;
@@ -123,7 +124,7 @@ export default function CrossBlock() {
         <BridgeWrapper>
           <Wrapper>
             <CardTitle>
-              <div className="flex flex-row" style={{padding: '0.5rem 0rem 0.5rem 1rem'}}>
+              <div className="flex flex-row" >
                 <img src={mining} alt=""/>
                 <span className="ml-4" style={{fontSize: '14px'}}>{t('Deposit Mining')}</span>
               </div>
@@ -156,8 +157,8 @@ export default function CrossBlock() {
           </Wrapper>
           <Wrapper>
             <CardTitle>
-              <div className="flex flex-row" style={{padding: '0.5rem 0rem 0.5rem 1rem'}}>
-                <img src={mining} alt=""/>
+              <div className="flex flex-row" >
+                <img src={distributionIcon} alt=""/>
                 <span className="ml-4" style={{fontSize: '14px'}}>{t('Mining Distribution')}</span>
               </div>
             </CardTitle>
@@ -166,8 +167,8 @@ export default function CrossBlock() {
         </BridgeWrapper>
         <Wrapper>
           <CardTitle>
-            <div className="flex flex-row" style={{padding: '0.5rem 0rem 0.5rem 1rem'}}>
-              <img src={mining} alt=""/>
+            <div className="flex flex-row" >
+              <img src={bridgeIcon} alt=""/>
               <span className="ml-4" style={{fontSize: '14px'}}>{t('Bitcoin Bridge')}</span>
             </div>
           </CardTitle>

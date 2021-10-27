@@ -13,7 +13,7 @@ export const CardTitle = styled.div`
   border-bottom: 1px solid #E9E9E9;
   display: flex;
   flex-direction: row;
-  padding: 12px;
+  padding: 12px 32px;
   & > img {
     width: 24px;
     height: 24px;
@@ -45,6 +45,9 @@ export const Container = styled.div`
   @media screen and (max-width: 900px) {
     grid-template-columns:100%;
     grid-template-rows: 1fr 0.1fr 1fr;
+    .arrowChange{
+      transform: rotate(90deg);
+    }
     //&.div:nth-child(2){
     //  margin:auto !important;
     //}
@@ -65,6 +68,13 @@ export const Container = styled.div`
           }
         }
       }
+    }
+  }
+  .toolsBtn{
+    color:white !important;
+    border: none;
+    :hover{
+      color: red;
     }
   }
 

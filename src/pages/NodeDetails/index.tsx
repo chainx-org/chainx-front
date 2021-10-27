@@ -152,9 +152,9 @@ export default function NodeDetails() {
   ];
   const routerPath = () => {
     return (<div className="flex flex-row cursor-pointer text-gray-white">
-      <Link to={'/'}>首页/</Link>
-      <Link to={'/validators'}>验证节点/ </Link>
-      <Link to={`./${node}`}>节点详情</Link>
+      <Link to={'/'} style={{color:'rgba(255, 255, 255, 0.65)'}}>{t('Home')}/</Link>
+      <Link to={'/validators'} style={{color:'rgba(255, 255, 255, 0.65)'}}>{t('Chain')}/ </Link>
+      <Link to={`./${node}`}>{t('NodeDetails')}</Link>
     </div>);
   };
   return (

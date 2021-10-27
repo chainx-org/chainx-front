@@ -28,9 +28,8 @@ export default function Validator() {
       dataIndex: 'id',
       key: 'id',
       render:(text:number)=>{
-        return <div style={{width:'32px',height:'32px',borderRadius: '50%', background:'#2C83EA',position:'relative'}}>
-          <span style={{display:'inline-block',position:'absolute', top: '4px',
-            left: '12px',color:'white'}}>{text}</span>
+        return <div style={{width:'32px',height:'32px',display:'flex',justifyContent:'center', borderRadius: '50%', background:'#2C83EA',position:'relative'}}>
+          <span style={{display:'inline-block',position:'relative',color:'white',margin:'auto 0'}}>{text}</span>
         </div>
       }
     },

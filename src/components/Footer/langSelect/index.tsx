@@ -12,11 +12,7 @@ function LangSelect(): React.ReactElement {
     setIsShow(false);
   }
   const {i18n} = useTranslation();
-  const [name, setName] = useState(false);
-  const [test, setTest] = useState(false);
-  const onMouseEnterUl = () => {
-    setTest(false);
-  };
+
   const [isShow, setIsShow] = useState(false);
   const handleClick = () => {
     setIsShow((true));
@@ -26,12 +22,11 @@ function LangSelect(): React.ReactElement {
 
   return (
     // @ts-ignore
-    <ChangeNetDiv ref={ref} className="border-white" style={{cursor:'pointer'}}>
+    <ChangeNetDiv ref={ref} className="border-white pointer">
       <div style={{border: '1px solid rgba(233, 233, 233, 0.18)'}}
            className={'flex flex-row mx-0 my-auto border-1 rounded-sm bg-topBar-gray opacity-80 ring-select text-topBar-white px-2 py-1'}
       >
-        <div className={`${name ? 'flex flex-row border border-gray-white' : 'flex flex-row border-gray-arrow border'}`}
-             onMouseEnter={onMouseEnterUl} style={{'position': 'relative'}}>
+        <div className='flex flex-row relative'>
           <img src={global} alt=""/>
           <span className={'mx-2'} onClick={handleClick}>Language</span>
           <img src={selectDown} alt="" style={{maxWidth: 'none'}}/>
@@ -40,7 +35,7 @@ function LangSelect(): React.ReactElement {
       </div>
       {
         isShow &&
-        <ul style={{position: 'absolute', bottom: '30px',cursor:'pointer'}}>
+        <ul className='absolute pointer' style={{bottom: '30px'}}>
           <li>
 
             <div onClick={() => selectLang('zh')}>English</div>

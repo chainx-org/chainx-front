@@ -75,7 +75,7 @@
     "Sender": "发送账户",
     "Fee": "手续费",
     "Node": "节点",
-    "Arguments ": "参数",
+    "Arguments": "参数",
     "Cross Bridge": "跨链转接桥",
     "Total Balance": "全链总余额",
     "Total Weight": "历史总票龄",
@@ -140,5 +140,14 @@
     "Transfers": "转账列表",
     "PublicKey": "公钥",
     "Please enter Hash / Name to search": "请输入哈希/名称/进行查询",
-    "selective type": "选择类型"
+    "selective type": "选择类型",
+    "ExtrinsicDetails": "交易详情",
+    "BlockDetails": "区块详情",
+    "NodeDetails": "节点详情",
+    "AccountDetails": "账户详情",
+    "Search Event": "搜索事件",
+    "Search Extrinsic": "搜索交易",
+    "Enter the address or public key for conversion": "输入地址或者公钥转换",
+    "Enter the Event or Extrinsic for conversion": "输入事件或者交易转换"
+
 }
