@@ -37,10 +37,11 @@ export const Wrapper = styled.div`
         height: 2.5rem;
         width: 15rem;
         display: flex;
-        justify-content: center;
+        justify-content: start;
+        padding-left:1rem;
         & > div {
           line-height: 2.5rem;
-          text-align: start;
+          //text-align: start;
           color:#666666;
         }
 

@@ -12,15 +12,17 @@ export default function Search({ className }: SearchProps) {
   const {t}  = useTranslation();
   const {Search} = Input;
   const onSearch = async (value: any) => {
-    setLoading(true);
-    await api(value, window);
+    if(value){
+      setLoading(true);
+      await api(value, window);
+    }
   };
   const [loading, setLoading] = useState(false);
   return (
     <>
       {className === 'NavSearch' ?
 
-        <div className={className} style={{border: '1px solid rgba(105, 168, 237, 0.21'}}>
+        <div className={className}>
           <Search placeholder={t('Search Address/Extrinsics/Blocks')} onSearch={onSearch} disabled={loading}
                   loading={loading} enterButton/>
         </div> :
