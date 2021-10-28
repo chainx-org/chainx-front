@@ -10,22 +10,23 @@ interface LatestItemPop {
   icon: string,
   ListData: Array<any>,
 }
+
 const ItemContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    border: 1px solid #E9E9E9;
-    background: #FFFFFF;
-    box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.04);
-    border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #E9E9E9;
+  background: #FFFFFF;
+  box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.04);
+  border-radius: 10px;
   @media screen and (max-width: 900px) {
     font-size: 14px;
-    >div{
-      >span{
-        font-size:16px;
+    > div {
+      > span {
+        font-size: 16px;
       }
     }
   }
-  `;
+`;
 
 const LatestItemBox = styled.div`
   min-height: 400px;
@@ -70,18 +71,18 @@ export default function LatestItem({title, icon, ListData}: LatestItemPop) {
                   </div>
                   <div className="flex flex-col justify-start ml-4 w-overSpread">
                     <div className=" flex flex-row justify-between text-homeText-gray text-homeText-gray">
-                      <LinkX linkUrl={`/blockDetails/${item.number}`} content={item.number}/>
+                      <LinkX linkUrl={`/blockDetails/${item.number}`} content={item.number} style={{fontSize:'16px'}}/>
                       <div className="flex flex-row">
                         <div className="inline-block mr-1">{t('Validator')}</div>
-                        <LinkX linkUrl={`/nodeDetails/${item.address}`} content={item.nikename}/>
+                        <LinkX linkUrl={`/nodeDetails/${item.address}`} content={item.nikename} style={{fontSize:'16px'}}/>
                       </div>
                     </div>
                     <div className="flex flex-row justify-between text-homeText-gray">
                       <div>
-                        <div className="inline-block mr-1">{t('include')}{item.number ? item.number : 0}</div>
+                        <div className="inline-block mr-1">{t('include')}</div>
                         <div
-                          className="inline-block mr-1">{t('extrinsic')}{item.extrinsicsCnt ? item.extrinsicsCnt : 0}</div>
-                        <span>{t('event')}{item?.event ? item?.event : 0}</span>
+                          className="inline-block mr-1">{item.extrinsicsCnt ? item.extrinsicsCnt : 0}{t('extrinsic')}</div>
+                        <span>{item?.event ? item?.event : 0}{t('event')}{item?.event ? item?.event : 0}</span>
                       </div>
                       <div>
                         <TimeStatus content={item.timestamp}/>
@@ -100,8 +101,8 @@ export default function LatestItem({title, icon, ListData}: LatestItemPop) {
                     <span>TX</span>
                   </div>
                   <div className="flex flex-col justify-start ml-4 w-overSpread">
-                    <div className="flex flex-row justify-between text-homeText-gray">
-                      <ShorterLink linkUrl={`/extrinsicDetails/${item.hash}`} content={item.hash}/>
+                    <div className="flex flex-row justify-between text-homeText-gray text-homeText-gray">
+                      <ShorterLink linkUrl={`/extrinsicDetails/${item.hash}`} content={item.hash} style={{fontSize:'16px'}}/>
                       <div className="flex flex-row">
                         <Operation mini={true} content={item.name + '-' + item.section} more={true}/>
                         {/*<img src={iconImg} alt="" style={{width: '12px', height: '12px'}}/>*/}
@@ -113,7 +114,7 @@ export default function LatestItem({title, icon, ListData}: LatestItemPop) {
                         <span>{t('type')}{item.type}</span>
                       </div>
                       <div>
-                        <Shorter linkUrl={`/addressDetails/${item.signer}`} content={item.signer}/>
+                        <Shorter linkUrl={`/addressDetails/${item.signer}`} content={item.signer} style={{fontSize:'16px'}}/>
                       </div>
                     </div>
                   </div>
@@ -123,4 +124,5 @@ export default function LatestItem({title, icon, ListData}: LatestItemPop) {
       </LatestItemBox>
     </ItemContainer>
   );
+
 }

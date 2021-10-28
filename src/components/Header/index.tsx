@@ -20,6 +20,13 @@ const SelectList = styled.div`
 
     }
 `;
+
+const HeardLine = styled.div`
+    height: 1.5rem;
+    border-right: 1px solid #E9E9E9;
+    margin: auto 0;
+    margin-left: 12px;;
+`;
 export default function Header({showSearch}: HeaderPop) {
     const {t} = useTranslation();
     const [showMenu, setShowMenu] = useState(false);
@@ -42,8 +49,12 @@ export default function Header({showSearch}: HeaderPop) {
       <div className="flex flex-row justify-between bg-gray-arrow px-12 screen:px-4 screen:py-4">
           <Wrapper>
               <Link to="/"><img src={icon} alt=""/></Link>
+              <HeardLine></HeardLine>
+              <span className="pl-3 text-gray-white mr-9.5" style={{
+                  letterSpacing: '1px', fontWeight: 'bold',
+                  lineHeight: '19px'
+              }}>EXPLORER</span>
               <NavLink onClick={handleClick}>
-                  <span className="pl-2 text-gray-white mr-9.5">EXPLORER</span>
                   <Link to="/">
                       <span key="1" className="toplinkName">{t('Home')}</span>
                   </Link>

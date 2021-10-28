@@ -23,7 +23,7 @@ const TableWrapper = styled.div`
         }
       }
   .Home_pageSearch {
-    width: 80%;
+    width: 70%;
     @media screen and (max-width: 900px) {
       width: 100%;
     }

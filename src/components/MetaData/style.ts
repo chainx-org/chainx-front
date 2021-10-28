@@ -27,13 +27,18 @@ export const Wrapper = styled.div`
 
   > div:nth-child(-n+4) {
     .line-div {
-      top: 4px;
+      top: 20px;
     }
   }
 
   > div:nth-child(4n+0) {
     .line-div {
       display: none;
+    }
+  }
+  > div:nth-child(n+4) {
+    .container-div {
+      border-bottom: 0px !important;
     }
   }
 
@@ -54,7 +59,7 @@ export const Wrapper = styled.div`
 `;
 export const RightLine = styled.div`
   position: relative;
-  height: calc(100% - 4px);
+  height: calc(100% - 20px);
   border-right: 1px solid #E9E9E9;
 `;
 
