@@ -14,14 +14,9 @@ import { TabInfo } from '../../components/SwitchTab';
 import DetailTitle from '../../components/DetailTitle';
 import { LinkXWithPopAndIcon } from '../../components/LinkX';
 import NoData from '../../components/NoData';
-import successIcon from '../../assets/icon_success.svg';
+import { ListBgColor, WrapperDetails, WrapperList } from '../../css/Wrapper';
 
-const Wrapper = styled.div`
-    background: #FFFFFF;
-    box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.04);
-    border-radius: 10px;
-    border: 1px solid #E9E9E9;
-  `;
+
 export default function BlockDetails() {
 
   const {t} = useTranslation();
@@ -152,9 +147,10 @@ export default function BlockDetails() {
   return (
     <>
       <Header showSearch={true}/>
+      <ListBgColor style={{height:'9rem',top:'48px'}}/>
       {noData ?
         <NoData/> :
-        <>
+        <WrapperList>
           <div className="px-24 pt-8 bg-gray-arrow screen:px-4">
             <DetailTitle routeTitle={t('Block Height')} content={nowBlock} isBlock={isBlockNumber}
                          setNowBlock={setNowBlock}
@@ -162,11 +158,11 @@ export default function BlockDetails() {
           </div>
           <List list={list} loading={loading}/>
           <div className="px-24 pb-4 bg-gray-bgWhite screen:px-4">
-            <Wrapper>
+            <WrapperDetails>
               <TableMenuBox tabList={tabList} currentTab={currentTab} setCurrentTab={setCurrentTab} tag={tag}/>
-            </Wrapper>
+            </WrapperDetails>
           </div>
-        </>}
+        </WrapperList>}
       <Footer/>
     </>);
 }

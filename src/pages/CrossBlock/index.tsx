@@ -19,13 +19,7 @@ import MyEchart from './myEcharts';
 import { ShorterLink } from '../../components/LinkX';
 import distributionIcon from '../../assets/icon_Mining_rate.svg'
 import bridgeIcon from '../../assets/icon_bridge.svg'
-
-const Wrapper = styled.div`
-    background: #FFFFFF;
-    box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.04);
-    border-radius: 10px;
-    border: 1px solid #E9E9E9;
-  `;
+import {Wrapper} from '../../css/Wrapper'
 
 const BridgeWrapper = styled.div`
     display: grid;

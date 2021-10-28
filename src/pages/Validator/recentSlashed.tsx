@@ -64,6 +64,8 @@ export default function RecentSlashed() {
       key: 'Slash Amount',
       render: (text: any, record: any) => {
         return (
+
+
           <div>{record.data[1]}</div>);
       },
       sorter: (a: any, b: any) => {

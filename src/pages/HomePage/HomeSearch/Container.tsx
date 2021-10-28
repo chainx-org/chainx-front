@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import LatestItem from '../../../components/LatestItem';
 import HomeSearch from './HomeSearch';
-import { ContainerBox, TableWrapper } from '../style';
+import { BgColor, ContainerBox, TableWrapper } from '../style';
 import MetaData from '../../../components/MetaData';
 import { useTranslation } from 'react-i18next';
 import { get } from '../../../hooks/useApi';
@@ -155,8 +155,9 @@ export default function Container() {
         setListData([...latestBlocks]);
     };
     const getLatestExtrinsic = async () => {
-        const {latestExtrinsics}: any = await get('/latestExtrinsic', '');
-        setLatestExtrinsic([...latestExtrinsics]);
+        const res: any = await get(`/extrinsics?page=${1}&page_size=${5}`, ``);
+        console.log(res.items[0]);
+        setLatestExtrinsic(res.items);
     };
     const callBack = () => {
         getHomeMetaData().then();
@@ -184,17 +185,22 @@ export default function Container() {
     }, []);
 
     return (
-      <ContainerBox>
-          <HomeSearch/>
-          <div>
-              <MetaData metaData={metaData}/>
-              <div className="bg-gray-bgWhite">
-                  <TableWrapper>
-                      <LatestItem key={1} title={t('Latest block')} icon="latestblock" ListData={latestBlock.slice(5)}/>
-                      <LatestItem key={2} title={t('Latest transaction')} icon="icon" ListData={latestExtrinsic.slice(5)}/>
-                  </TableWrapper>
+      <>
+          <ContainerBox>
+              <HomeSearch/>
+              <div>
+                  <MetaData metaData={metaData}/>
+                  <div className="bg-gray-bgWhite">
+                      <TableWrapper>
+                          <LatestItem key={1} title={t('Latest block')} icon="latestblock"
+                                      ListData={latestBlock.slice(5)}/>
+                          <LatestItem key={2} title={t('Latest transaction')} icon="icon" ListData={latestExtrinsic}/>
+                      </TableWrapper>
+                  </div>
               </div>
-          </div>
-      </ContainerBox>
+          </ContainerBox>
+          <BgColor/>
+      </>
+
     );
 }

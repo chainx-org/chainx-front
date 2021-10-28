@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import React, { useEffect, useState } from 'react';
 import TableX from '../../components/Table';
 import { get } from '../../hooks/useApi';
-import { LinkX, ShorterLink } from '../../components/LinkX';
+import { LinkX, Normal, ShorterLink } from '../../components/LinkX';
 import TrustTag from '../../components/TrustTag';
 
 
@@ -26,7 +26,7 @@ export default function Trustees() {
       key: 'NikeName',
       render: (text: any, record: any) => {
         return (
-          <div className='flex flex-row'>
+          <div className="flex flex-row">
             <LinkX linkUrl={`/addressDetails/${record.account}`} content={record.referralId}/>
             {record.isValidating === true ? <TrustTag/> : ''}
           </div>);
@@ -47,11 +47,10 @@ export default function Trustees() {
       key: 'Self Bonded',
       render: (text: any, record: any) => {
         return (
-          <div>{record.selfBonded}</div>
-        );
+          <Normal state={(record.selfBonded) ? (record.selfBonded) : '-'}/>);
       },
       sorter: (a: any, b: any) => {
-        return a.selfBonded - b.selfBonded
+        return a.selfBonded - b.selfBonded;
       }
     },
     {
@@ -60,10 +59,10 @@ export default function Trustees() {
       key: 'Nominations',
       render: (text: any, record: any) => {
         return (
-          <div>{record.totalNomination}</div>);
+          <Normal state={(record.totalNomination) ? (record.totalNomination) : '-'}/>);
       },
       sorter: (a: any, b: any) => {
-        return a.totalNomination - b.totalNomination
+        return a.totalNomination - b.totalNomination;
       }
     },
     {
@@ -72,10 +71,10 @@ export default function Trustees() {
       key: 'Balance',
       render: (text: any, record: any) => {
         return (
-          <div>{record.rewardPotBalance}</div>);
+          <Normal state={(record.rewardPotBalance) ? (record.rewardPotBalance) : '-'}/>);
       },
       sorter: (a: any, b: any) => {
-        return a.rewardPotBalance - b.rewardPotBalance
+        return a.rewardPotBalance - b.rewardPotBalance;
       }
     }
   ];
@@ -87,7 +86,7 @@ export default function Trustees() {
   }
 
   useEffect(() => {
-    getTrusteesData().then()
+    getTrusteesData().then();
   }, [page, pageSize]);
 
   const pagination = {
@@ -97,7 +96,7 @@ export default function Trustees() {
     total: trusteesTotal,
     showSizeChanger: true,
     showQuickJumper: true,
-    hideOnSinglePage:true,
+    hideOnSinglePage: true,
     onChange: (page: number, pageSize: number) => onChange(page, pageSize),
     showTotal: (trusteesTotal: number) => `${t('total')} ${trusteesTotal} ${t('items')}`
   };

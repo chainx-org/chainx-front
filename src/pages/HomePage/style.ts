@@ -3,6 +3,10 @@ import styled from 'styled-components';
 export const ContainerBox = styled.div`
   width: 100%;
   background: black;
+  @media screen and (min-width: 1600px) {
+    width: 1500px;
+    margin:0 auto;
+  }
 `;
 
 
@@ -18,6 +22,15 @@ export const TableWrapper = styled.div`
     padding: 3rem 1rem 2rem 1rem;
 
   }
+`;
+
+export const BgColor = styled.div`
+  height: 20.6rem;
+  position: fixed;
+  background-color: black;
+  width: 100%;
+  z-index: 0;
+  top:48px;
 `;
 
 export const FloatBox = styled.div`

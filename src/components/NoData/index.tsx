@@ -23,7 +23,7 @@ export default function NoData() {
       <Wrapper>
         <div className="flex flex-col ">
           <img src={noDataIcon} alt="" className='inline-block w-12 mx-auto '/>
-          <span className='inline-block w-28 mx-auto text-center mx-auto'>{t('No Data')}</span>
+          <span className='inline-block w-28 mx-auto text-center mx-auto mt-4'>{t('No Data')}</span>
         </div>
       </Wrapper>
     </div>

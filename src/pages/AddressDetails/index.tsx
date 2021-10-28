@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import Event from '../Chain/event';
 import { get } from '../../hooks/useApi';
 import List from '../../components/List';
 import Header from '../../components/Header';
@@ -17,13 +16,9 @@ import { Popover } from 'antd';
 import Assets from './assets';
 import Transaction from './transaction';
 import Transfers from './transfers';
+import { ListBgColor, WrapperDetails, WrapperList } from '../../css/Wrapper';
+import { BgColor } from '../HomePage/style';
 
-const Wrapper = styled.div`
-    background: #FFFFFF;
-    box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.04);
-    border-radius: 10px;
-    border: 1px solid #E9E9E9;
-  `;
 export default function AddressDetails() {
 
   const {t} = useTranslation();
@@ -124,9 +119,10 @@ export default function AddressDetails() {
   return (
     <>
       <Header showSearch={true}/>
+      <ListBgColor/>
       {noData ?
         <NoData/> :
-        <>
+        <WrapperList>
           <div className="px-24 pt-8 bg-gray-arrow screen:px-4">
             <DetailTitle routeTitle={t('Address')} content={nowBlock}
                          setNowBlock={setNowBlock}
@@ -134,11 +130,12 @@ export default function AddressDetails() {
           </div>
           <List list={list} loading={loading}/>
           <div className="px-24 pb-4 bg-gray-bgWhite screen:px-4">
-            <Wrapper>
-              <TableMenuBox tabList={tabList} currentTab={currentTab} setCurrentTab={setCurrentTab} tag={tag} />
-            </Wrapper>
+            <WrapperDetails>
+              <TableMenuBox tabList={tabList} currentTab={currentTab} setCurrentTab={setCurrentTab} tag={tag}/>
+            </WrapperDetails>
           </div>
-        </>}
+        </WrapperList>
+      }
       <Footer/>
     </>);
 }

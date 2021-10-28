@@ -7,6 +7,10 @@ export const Wrapper = styled.div`
   border-radius: 10px;
   border: 1px solid #E9E9E9;
   position: relative;
+  @media screen and (min-width: 1600px) {
+    width: 1500px;
+    margin: 0 auto;
+  }
 `;
 export const CardTitle = styled.div`
 

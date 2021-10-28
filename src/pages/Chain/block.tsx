@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import React from 'react';
-import { LinkX, ShorterLink } from '../../components/LinkX';
+import { LinkX, Normal, ShorterLink } from '../../components/LinkX';
 import TimeStatus from '../../components/TimeStatus';
 import waitIcon from '../../assets/icon_waiting.svg';
 import ChainTable from '../../components/Table/table';
@@ -53,7 +53,7 @@ export default function Block() {
       key: 'extrinsic',
       render: (text: any, record: any) => {
         return (
-          <div>{record.extrinsics.length}</div>
+          <Normal state={record?.extrinsics.length}/>
         );
       }
     },

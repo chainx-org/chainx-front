@@ -13,17 +13,27 @@ const LinkSpan = styled.div`
 `;
 
 interface LinkProps {
-  linkUrl: string,
-  content: any,
+  linkUrl?: string,
+  content?: any,
   children?: any,
   img?: any,
   state?: any,
-  style?:any
+  style?: any
 }
 
+const NormalSpan = styled.div`
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.65);
+`;
+
 //简短的link ,样式，点击跳转方法
-export function LinkX({linkUrl, content, state,style}: LinkProps) {
+export function LinkX({linkUrl, content, state, style}: LinkProps) {
   return (<Link to={{pathname: linkUrl, state: state}}><LinkSpan style={style}>{content}</LinkSpan></Link>);
+}
+
+export function Normal({state}: LinkProps) {
+  return (<NormalSpan>{state}</NormalSpan>
+  );
 }
 
 
@@ -43,14 +53,17 @@ export function ShorterLink({linkUrl, content, state,style}: LinkProps) {
   let value = content?.toString();
   const popWithCopy = (
     <div>
-      <CopyText children={value} text={value}/>
+      {/*<CopyText children={value} text={value}/>*/}
+      {value}
     </div>
   );
-  return (<Popover content={popWithCopy} style={style}>
+  return (
+    <Popover content={popWithCopy} style={style}>
     <Link to={{
-    pathname: linkUrl,
-    state: state
-  }}><LinkSpan style={style}>{value?.substring(0, 5).concat('...').concat(value?.substring(value.length - 5))}</LinkSpan></Link></Popover>);
+      pathname: linkUrl,
+      state: state
+    }}><LinkSpan
+      style={style}>{value?.substring(0, 7).concat('...').concat(value?.substring(value.length - 5))}</LinkSpan></Link></Popover>);
 }
 
 export function Shorter({linkUrl, content, state}: LinkProps) {
@@ -66,7 +79,7 @@ export function Shorter({linkUrl, content, state}: LinkProps) {
         pathname: linkUrl,
         state: state
       }}>
-        <LinkSpan>{value?.substring(0, 5).concat('...').concat(value?.substring(value.length - 5))}</LinkSpan>
+        <LinkSpan>{value?.substring(0, 7).concat('...').concat(value?.substring(value.length - 5))}</LinkSpan>
       </Link>
     // </Popover>
 );

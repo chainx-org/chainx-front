@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import React from 'react';
-import { LinkX, ShorterLink } from '../../components/LinkX';
+import { Normal, ShorterLink } from '../../components/LinkX';
 import TimeStatus from '../../components/TimeStatus';
 import swapEndian from '../../helper/swapEndian';
 import ChainxTable from '../../components/Table/table';
@@ -56,7 +56,7 @@ export default function Deposit() {
       key: 'Asset',
       render: (text: any, record: any) => {
         return (
-          <div>{'BTC'}</div>);
+          <Normal state={'BTC'}/>);
       }
     },{
       title: t('Balance'),
@@ -64,7 +64,7 @@ export default function Deposit() {
       key: 'Balance',
       render: (text: any, record: any) => {
         return (
-          <div>{record.data[2]/100000000}</div>);
+          <Normal state={record.data[2] / 100000000}/>);
       }
     }
   ];

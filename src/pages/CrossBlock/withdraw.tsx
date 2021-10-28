@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import React from 'react';
-import { ShorterLink } from '../../components/LinkX';
+import { Normal, ShorterLink } from '../../components/LinkX';
 import TimeStatus from '../../components/TimeStatus';
 import ChainxTable from '../../components/Table/table';
 
@@ -15,8 +15,7 @@ export default function Withdraw() {
       key: 'Withdrawal ID ',
       render: (text: any, record: any) => {
         return (
-          <div>{record.data[0]}</div>
-        );
+          <Normal state={record.data[0]}/>);
       }
     },
     {
@@ -68,8 +67,7 @@ export default function Withdraw() {
       key: 'Asset',
       render: (text: any, record: any) => {
         return (
-          <div>{'BTC'}</div>
-        );
+          <Normal state={'BTC'}/>);
       }
     },
     {
@@ -78,7 +76,7 @@ export default function Withdraw() {
       key: 'Balance',
       render: (text: any, record: any) => {
         return (
-          <div>{record.data[1].balance / 100000000}</div>);
+          <Normal state={record.data[1].balance / 100000000}/>);
       }
     },
     {
@@ -87,7 +85,7 @@ export default function Withdraw() {
       key: 'State',
       render: (text: any, record: any) => {
         return (
-          <div>{record.withdrawalState}</div>);
+          <Normal state={record.withdrawalState}/>);
       }
     }
 ];
