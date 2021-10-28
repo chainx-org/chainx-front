@@ -81,16 +81,16 @@ export default function BlockDetails() {
           {(blockDetails?.blockTime) ? moment(Number(blockDetails?.blockTime)).format('YYYY-MM-DD HH:mm:ss') + '(+UTC)' : '-'}
         </div>)
     },
-    {
-      title: t('Status'),
-      content: (
-        <div>
-          {blockDetails?.isSuccess === true ?
-            <div className="flex flex-row items-center"><img src={successIcon} alt=""/><span
-              className="inline-block">{t('Success')}</span></div> : '-'}
-        </div>
-      )
-    },
+    // {
+    //   title: t('Status'),
+    //   content: (
+    //     <div>
+    //       {(blockDetails?.isSuccess) ?
+    //         <div className="flex flex-row items-center"><img src={successIcon} alt=""/><span
+    //           className="inline-block">{t('Success')}</span></div> : '-'}
+    //     </div>
+    //   )
+    // },
     {
       title: t('Block Hash'),
       content: (
@@ -113,22 +113,22 @@ export default function BlockDetails() {
         </div>
       ),
     },
-    {
-      title: t('Block Time'),
-      content:
-        <div className="text-gray-arrow font-semibold">
-          {/*{moment(Number(blockDetails?.blockTime)).format('YYYY-MM-DD HH:mm:ss')}*/}
-          -
-        </div>,
-    }, {
-      title: t('Validator'),
-      content:
-        <div className="text-gray-arrow font-semibold">
-          {(blockDetails?.address) ?
-            <LinkXWithPopAndIcon content={blockDetails?.address} linkUrl={`/addressDetails/${blockDetails?.address}`}
-                                 img={successIcon}/> : '-'}
-        </div>
-    }
+    // {
+    //   title: t('Block Time'),
+    //   content:
+    //     <div className="text-gray-arrow font-semibold">
+    //       {/*{moment(Number(blockDetails?.blockTime)).format('YYYY-MM-DD HH:mm:ss')}*/}
+    //       -
+    //     </div>,
+    // }, {
+    //   title: t('Validator'),
+    //   content:
+    //     <div className="text-gray-arrow font-semibold">
+    //       {(blockDetails?.address) ?
+    //         <LinkXWithPopAndIcon content={blockDetails?.address} linkUrl={`/addressDetails/${blockDetails?.address}`}
+    //                              img={successIcon}/> : '-'}
+    //     </div>
+    // }
   ];
   const tabList: TabInfo[] = [
     {

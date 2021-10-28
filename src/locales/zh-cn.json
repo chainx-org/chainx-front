@@ -148,6 +148,7 @@
     "Search Event": "搜索事件",
     "Search Extrinsic": "搜索交易",
     "Enter the address or public key for conversion": "输入地址或者公钥转换",
-    "Enter the Event or Extrinsic for conversion": "输入事件或者交易转换"
+    "Enter the Event or Extrinsic for conversion": "输入事件或者交易转换",
+    "Total Nominations": "总得票数"
 
 }

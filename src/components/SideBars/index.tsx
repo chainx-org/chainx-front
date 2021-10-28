@@ -144,8 +144,8 @@ function Sidebars({className = '', onClose, isCollapsed}: Props): React.ReactEle
     {nodeName: t('Chain'), link: '/Chain'},
     {nodeName: t('Cross Block'), link: '/validators'},
     {nodeName: t('Cross Bridge'), link: '/crossBlock'},
-    {nodeName: t('Search Events/Extrinsics'), link: '/tools/SS58'},
-    {nodeName: t('Transform Address/Public Key'), link: '/tools/searchTool'},
+    // {nodeName: t('Search Events/Extrinsics'), link: '/tools/SS58'},
+    {nodeName: t('Transform Address/Public Key'), link: '/tools/SS58'},
 
   ]);
 

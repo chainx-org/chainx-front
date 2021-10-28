@@ -5,8 +5,7 @@ import 'echarts/lib/component/tooltip';
 import 'echarts/lib/component/title';
 import 'echarts/lib/component/legend';
 import 'echarts/lib/chart/pie';
-import { useEffect, useState } from 'react';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 const  Model_echarts = (props:any) => {
   let [main , setMain] = useState<any>('')
@@ -27,28 +26,40 @@ const  Model_echarts = (props:any) => {
         name: 'Rate',
         type: 'pie',
         radius: ['40%', '70%'],
-        avoidLabelOverlap: false,
-        label: {
-          show: true,
-          position: 'center'
-        },
-        emphasis: {
-          label: {
-            show: true,
-            fontSize: '30',
-            fontWeight: 'bold'
-          }
-        },
-        labelLine: {
-          show: true
-        },
         data: [
-          { value: 50.00,name: 'X-BTC' },
-          { value: 2.00, name: 'PCX' },
-          { value: 42.87, name: 'TR' },
+          {value: 50.00, name: 'X-BTC'},
+          {value: 2.00, name: 'PCX'},
+          {value: 42.87, name: 'TR'},
         ]
       }
     ]
+    // series: [
+    //   {
+    //     name: 'Rate',
+    //     type: 'pie',
+    //     radius: ['40%', '70%'],
+    //     avoidLabelOverlap: false,
+    //     label: {
+    //       show: true,
+    //       position: 'center'
+    //     },
+    //     emphasis: {
+    //       label: {
+    //         show: true,
+    //         fontSize: '30',
+    //         fontWeight: 'bold'
+    //       }
+    //     },
+    //     labelLine: {
+    //       show: true
+    //     },
+    //     data: [
+    //       { value: 50.00,name: 'X-BTC' },
+    //       { value: 2.00, name: 'PCX' },
+    //       { value: 42.87, name: 'TR' },
+    //     ]
+    //   }
+    // ]
   };
   useEffect(()=>{
     let node = document.getElementById('main')
