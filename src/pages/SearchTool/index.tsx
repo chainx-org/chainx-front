@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import { useTranslation } from 'react-i18next';
@@ -36,7 +36,7 @@ export default function Tools() {
         setListValue(res);
         setLoading(false);
       }catch (e) {
-        setIsCorrectValue('');
+        setIsCorrectValue('No Data');
         setLoading(false);
       }
     } else {
@@ -44,8 +44,8 @@ export default function Tools() {
         let res: any = await get(`/searchExtrinsic/${inputValue}?page=${page}&page_size=${pageSize}`, ``);
         setListValue(res);
         setLoading(false);
-      }catch (e) {
-        setIsCorrectValue('');
+      } catch (e) {
+        setIsCorrectValue('No Data');
         setLoading(false);
       }
     }
@@ -54,6 +54,11 @@ export default function Tools() {
     setLoading(true);
     getData();
   };
+
+  useEffect(() => {
+    setListValue('');
+    setInputValue('');
+  }, [nowSearch]);
 
   return (
     <>

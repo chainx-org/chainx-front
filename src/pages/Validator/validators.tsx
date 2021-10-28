@@ -12,14 +12,16 @@ export default function Validator() {
   const [page, setPage] = useState(1);
   const [pageSize, setPageSize] = useState(10);
   const [validatorTotal, setValidatorTotal] = useState(0);
+  const [frontList,setFrontList] = useState([])
   const [loading, setLoading] = useState(true);
   const getValidatorData = async () => {
-    const res: any = await get(`/validators?page=${page - 1}&page_size=${pageSize}`, ``);
+    const res: any = await get(`/validators?page=${0}&page_size=${20}`, ``);
     setValidatorTotal(res.total);
     res.newitems.map((item:any,index:number)=>{
       item.id = index+1
     })
-    setValidatorData(res.newitems);
+    setValidatorData(res.newitems)
+    setFrontList((res.newitems).slice(0,pageSize));
     setLoading(false);
   };
   const chainColumns = [
@@ -33,11 +35,6 @@ export default function Validator() {
         </div>
       }
     },
-    // {
-    //   title: t('Range'),
-    //   dataIndex: 'Range',
-    //   key: 'Range',
-    // },
     {
       title: t('NikeName'),
       dataIndex: 'NikeName',
@@ -116,7 +113,13 @@ export default function Validator() {
   }
 
   useEffect(() => {
-    getValidatorData().then()
+    if(page === 1){
+      getValidatorData().then()
+    }else{
+      //后端没有提供分页接口，前端进行分页操作。
+      setFrontList((validatorData).slice((page-1)*pageSize,pageSize+((page-1)*pageSize)));
+      setLoading(false);
+    }
   }, [page, pageSize]);
 
   const pagination = {
@@ -132,7 +135,7 @@ export default function Validator() {
 
   return (
     <div className="px-8 overflow-scroll">
-      <TableX columns={chainColumns} dataList={validatorData} pagination={pagination} loading={loading}/>
+      <TableX columns={chainColumns} dataList={frontList} pagination={pagination} loading={loading}/>
     </div>
   );
 }
