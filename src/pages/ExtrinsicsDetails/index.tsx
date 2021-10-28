@@ -31,6 +31,8 @@ export default function ExtrinsicDetails() {
   const [noData, setNoData] = useState(false);
   const [extrinsicDetails, setExtrinsicDetails] = useState<any>();
   const extrinsic = window.location.pathname.slice(18, window.location.pathname.length);
+  const tag = 'extrinsicsDetails'
+  const [currentTab, setCurrentTab] = useState('event');
   const [nowExtrinsic, setNowExtrinsics] = useState(extrinsic);
   const getData = async () => {
     const res: any = await get(`/extrinsics/${nowExtrinsic}`, ``);
@@ -51,6 +53,16 @@ export default function ExtrinsicDetails() {
     getData();
     }
   }, []);
+  useEffect(()=>{
+    
+    const activeTab = sessionStorage.getItem(tag)
+    if(activeTab){
+      setCurrentTab(activeTab)
+    }else{
+      setCurrentTab('event')
+    }
+
+  },[])
   const list = [
     {
       title: t('Block'),
@@ -135,6 +147,7 @@ export default function ExtrinsicDetails() {
     {
       title: t('Event'),
       content: <Event extrinsic={extrinsic}/>,
+      name:'event'
     }
   ];
   const routerPath = () => {
@@ -158,7 +171,7 @@ export default function ExtrinsicDetails() {
           <List list={list} loading={loading}/>
           <div className="px-24 pb-16 bg-gray-bgWhite screen:px-4">
             <Wrapper>
-              <TableMenuBox tabList={tabList} key={''}/>
+              <TableMenuBox tabList={tabList} currentTab={currentTab} setCurrentTab={setCurrentTab} tag={tag}/>
             </Wrapper>
           </div>
         </>}

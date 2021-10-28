@@ -48,27 +48,36 @@ const BridgeWrapper = styled.div`
 export default function CrossBlock() {
   const {t} = useTranslation();
 
-
+  const tag = 'crossBlock'
+  const [currentTab, setCurrentTab] = useState('crossBlock');
   const tabList: TabInfo[] = [
     {
       title: t('Block'),
       content: <BitcoinBlock/>,
+      name:'crossBlock'
     },
     {
       title: t('Deposit Deals'),
       content: <Deposit/>,
+      name:'deals'
+
     },
     {
       title: t('Withdraw'),
       content: <Withdraw/>,
+      name:'withdraw'
+
     },
     {
       title: t('Host'),
       content: <Host/>,
+      name:'host'
+
     },
     {
       title: t('Claim'),
       content: <Claim/>,
+      name:'claim'
     }
   ];
   const [mingApiData, setMingApiData] = useState<any>([{
@@ -117,6 +126,16 @@ export default function CrossBlock() {
   useEffect(() => {
     getData();
   }, []);
+  useEffect(()=>{
+    
+    const activeTab = sessionStorage.getItem(tag)
+    if(activeTab){
+      setCurrentTab(activeTab)
+    }else{
+      setCurrentTab('assets')
+    }
+
+  },[])
   return (
     <>
       <Header showSearch={true}/>
@@ -172,7 +191,7 @@ export default function CrossBlock() {
               <span className="ml-4" style={{fontSize: '14px'}}>{t('Bitcoin Bridge')}</span>
             </div>
           </CardTitle>
-          <TableMenuBox tabList={tabList} key={''}/>
+          <TableMenuBox tabList={tabList}  currentTab={currentTab} setCurrentTab={setCurrentTab} tag={tag}/>
         </Wrapper>
       </Wrapper>
       <Footer/>

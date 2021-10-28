@@ -32,7 +32,8 @@ export default function NodeDetails() {
   const node = window.location.pathname.slice(13, window.location.pathname.length);
   const [nowAddress, setNowAddress] = useState(node);
   const [noData, setNoData] = useState(false);
-
+  const tag = 'nodeTetails'
+  const [currentTab, setCurrentTab] = useState('missed');
   const getData = async (node:string) => {
     const {items}: any = await get(`/validators/all`, ``);
     console.log(items,'111')
@@ -72,6 +73,16 @@ export default function NodeDetails() {
   useEffect(() => {
     initNode()
   }, []);
+  useEffect(()=>{
+    
+    const activeTab = sessionStorage.getItem(tag)
+    if(activeTab){
+      setCurrentTab(activeTab)
+    }else{
+      setCurrentTab('missed')
+    }
+
+  },[])
   const list = [
     {
       title: t('NikeName'),
@@ -148,6 +159,7 @@ export default function NodeDetails() {
       title: t('Missed'),
       // content:<></>
       content: <Missed/>,
+      name:'missed'
     }
   ];
   const routerPath = () => {
@@ -170,7 +182,7 @@ export default function NodeDetails() {
           <List list={list} loading={loading}/>
           <div className="px-24 pb-16 bg-gray-bgWhite screen:px-4">
             <Wrapper>
-              <TableMenuBox tabList={tabList}/>
+              <TableMenuBox tabList={tabList} currentTab={currentTab} setCurrentTab={setCurrentTab} tag={tag} />
             </Wrapper>
           </div>
         </>}

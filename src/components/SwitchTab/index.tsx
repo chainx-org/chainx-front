@@ -17,24 +17,34 @@ interface SwitchTabsProps {
   className?: string;
   size: 'lg' | 'medium' | 'sm';
   currentTab?: string;
-
+  setCurrentTab?:any;
+  tag:string
 }
 
 function SwitchTab({
                      children,
                      currentTab,
+                     setCurrentTab,
+                     tag,
                      tabList,
                      size,
                      className = '',
                    }: SwitchTabsProps): React.ReactElement<SwitchTabsProps> {
   const {t} = useTranslation();
+  function changeTab(key:any){
+    
+    setCurrentTab(key)
+    sessionStorage.setItem(tag,key)
+  }
   return (
     <Tabs
       defaultActiveKey={currentTab}
+      activeKey={currentTab}
       className={`${className} ui--switchTabs-${size ? size : ''} `}
+      onChange={changeTab}
      >
       {tabList.map((tab) => (
-        <TabPane tab={tab.title} key={tab.title}>
+        <TabPane tab={tab.title} key={tab.name}>
           {tab.content}
         </TabPane>
       ))}

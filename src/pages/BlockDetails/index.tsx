@@ -31,6 +31,8 @@ export default function BlockDetails() {
   const block = window.location.pathname.slice(14, window.location.pathname.length);
   const isBlockNumber = (typeof (block) === 'number');
   const [nowBlock, setNowBlock] = useState(block);
+  const tag = 'blockDetails'
+  const [currentTab, setCurrentTab] = useState('extrinsic');
   const getData = async () => {
     const res: any = await get(`/blocks/${nowBlock}`, ``);
     if (res) {
@@ -54,7 +56,16 @@ export default function BlockDetails() {
       });
     }
   }, []);
+  useEffect(()=>{
+    
+    const activeTab = sessionStorage.getItem(tag)
+    if(activeTab){
+      setCurrentTab(activeTab)
+    }else{
+      setCurrentTab('extrinsic')
+    }
 
+  },[])
   const list = [
     {
       title: t('Block Height'),
@@ -123,10 +134,12 @@ export default function BlockDetails() {
     {
       title: t('Extrinsic'),
       content: <Extrinsic block={block}/>,
+      name:'extrinsic'
     },
     {
       title: t('Event'),
       content: <Event block={block}/>,
+      name:'event'
     }
   ];
   const routerPath = () => {
@@ -150,7 +163,7 @@ export default function BlockDetails() {
           <List list={list} loading={loading}/>
           <div className="px-24 pb-16 bg-gray-bgWhite screen:px-4">
             <Wrapper>
-              <TableMenuBox tabList={tabList}/>
+              <TableMenuBox tabList={tabList} currentTab={currentTab} setCurrentTab={setCurrentTab} tag={tag}/>
             </Wrapper>
           </div>
         </>}
