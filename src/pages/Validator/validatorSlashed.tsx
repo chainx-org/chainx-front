@@ -69,6 +69,7 @@ export default function ValidatorSlashed() {
     total: missedTotal,
     showSizeChanger: true,
     showQuickJumper: true,
+    hideOnSinglePage:true,
     onChange: (page: number, pageSize: number) => onChange(page, pageSize),
     showTotal: (missedTotal: number) => `${t('total')} ${missedTotal} ${t('items')}`
   };

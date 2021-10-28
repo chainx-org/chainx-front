@@ -47,6 +47,7 @@ export default function ChainxTable({Columns, urlControl, result, keyNum}: chain
     total: dataTotal,
     showSizeChanger: true,
     showQuickJumper: true,
+    hideOnSinglePage:true,
     onChange: (page: number, pageSize: number) => onChange(page, pageSize),
     showTotal: (dataTotal: number) => `${t('total')} ${dataTotal} ${t('items')}`
   };

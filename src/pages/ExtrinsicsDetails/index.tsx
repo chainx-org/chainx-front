@@ -171,7 +171,7 @@ export default function ExtrinsicDetails() {
                          isBlock={false} setNowBlock={extrinsic} routePath={routerPath}/>
           </div>
           <List list={list} loading={loading}/>
-          <div className="px-24 pb-16 bg-gray-bgWhite screen:px-4">
+          <div className="px-24 pb-4 bg-gray-bgWhite screen:px-4">
             <Wrapper>
               <TableMenuBox tabList={tabList} currentTab={currentTab} setCurrentTab={setCurrentTab} tag={tag}/>
             </Wrapper>

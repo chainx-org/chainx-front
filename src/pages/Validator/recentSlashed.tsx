@@ -90,6 +90,7 @@ export default function RecentSlashed() {
     total: recentSlashedTotal,
     showSizeChanger: true,
     showQuickJumper: true,
+    hideOnSinglePage:true,
     onChange: (page: number, pageSize: number) => onChange(page, pageSize),
     showTotal: (recentSlashedTotal: number) => `${t('total')} ${recentSlashedTotal} ${t('items')}`
   };

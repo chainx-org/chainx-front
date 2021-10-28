@@ -111,14 +111,15 @@ html {
   padding: 0 20px;
 }
 .ui--switchTabs-lg .ant-tabs-tab {
-  font-size: 16px;
+  font-size: 14px;
   color: #bfbfbf;
 }
 .ant-tabs-tab:hover {
   color: #bfbfbf;
 }
 .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
-  color: #272233;
+  color: #080810;
+  font-size: 14px;
 }
 
 .ant-input:focus {

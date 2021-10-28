@@ -129,6 +129,7 @@ export default function Validator() {
     total: validatorTotal,
     showSizeChanger: true,
     showQuickJumper: true,
+    hideOnSinglePage:true,
     onChange: (page: number, pageSize: number) => onChange(page, pageSize),
     showTotal: (validatorTotal: number) => `${t('total')} ${validatorTotal} ${t('items')}`
   };

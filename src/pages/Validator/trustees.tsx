@@ -97,6 +97,7 @@ export default function Trustees() {
     total: trusteesTotal,
     showSizeChanger: true,
     showQuickJumper: true,
+    hideOnSinglePage:true,
     onChange: (page: number, pageSize: number) => onChange(page, pageSize),
     showTotal: (trusteesTotal: number) => `${t('total')} ${trusteesTotal} ${t('items')}`
   };
