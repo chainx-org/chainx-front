@@ -28,19 +28,20 @@ const ItemContainer = styled.div`
   `;
 
 const LatestItemBox = styled.div`
-    min-height: 400px;
-    display: flex;
-    flex-direction: column;
-    padding: 16px;
-    @media screen and (max-width: 900px) {
-      font-size: 12px !important;
-      > div {
-        > span {
-          font-size: 16px;
-        }
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  @media screen and (max-width: 900px) {
+    font-size: 12px !important;
+    width: 21.5rem;
+    > div {
+      > span {
+        font-size: 16px;
       }
     }
-  `;
+  }
+`;
 export default function LatestItem({title, icon, ListData}: LatestItemPop) {
   const {t} = useTranslation();
 
@@ -51,7 +52,8 @@ export default function LatestItem({title, icon, ListData}: LatestItemPop) {
 
   return (
     <ItemContainer>
-      <div className="flex flex-row justify-between" style={{borderBottom: '1px solid #E9E9E9', padding: '1rem'}}>
+      <div className="flex flex-row justify-between text-homeText-gray"
+           style={{borderBottom: '1px solid #E9E9E9', padding: '1rem'}}>
         <span className="text-gray-backgroundGray text-xl font-medium">{title}</span>
         <div id="homePageBtn" onClick={() => linkToChain()}>
           <span>{t('See All')}</span>
@@ -67,18 +69,19 @@ export default function LatestItem({title, icon, ListData}: LatestItemPop) {
                     <span>BX</span>
                   </div>
                   <div className="flex flex-col justify-start ml-4 w-overSpread">
-                    <div className=" flex flex-row justify-between">
+                    <div className=" flex flex-row justify-between text-homeText-gray text-homeText-gray">
                       <LinkX linkUrl={`/blockDetails/${item.number}`} content={item.number}/>
                       <div className="flex flex-row">
                         <div className="inline-block mr-1">{t('Validator')}</div>
                         <LinkX linkUrl={`/nodeDetails/${item.address}`} content={item.nikename}/>
                       </div>
                     </div>
-                    <div className="flex flex-row justify-between">
+                    <div className="flex flex-row justify-between text-homeText-gray">
                       <div>
-                        <div className="inline-block mr-1">{t('include')}{item.number?item.number:0}</div>
-                        <div className="inline-block mr-1">{t('extrinsic')}{item.extrinsicsCnt?item.extrinsicsCnt:0}</div>
-                        <span>{t('event')}{item?.event?item?.event:0}</span>
+                        <div className="inline-block mr-1">{t('include')}{item.number ? item.number : 0}</div>
+                        <div
+                          className="inline-block mr-1">{t('extrinsic')}{item.extrinsicsCnt ? item.extrinsicsCnt : 0}</div>
+                        <span>{t('event')}{item?.event ? item?.event : 0}</span>
                       </div>
                       <div>
                         <TimeStatus content={item.timestamp}/>
@@ -97,20 +100,20 @@ export default function LatestItem({title, icon, ListData}: LatestItemPop) {
                     <span>TX</span>
                   </div>
                   <div className="flex flex-col justify-start ml-4 w-overSpread">
-                    <div className="flex flex-row justify-between">
+                    <div className="flex flex-row justify-between text-homeText-gray">
                       <ShorterLink linkUrl={`/extrinsicDetails/${item.hash}`} content={item.hash}/>
                       <div className="flex flex-row">
                         <Operation mini={true} content={item.name + '-' + item.section} more={true}/>
                         {/*<img src={iconImg} alt="" style={{width: '12px', height: '12px'}}/>*/}
                       </div>
                     </div>
-                    <div className="flex flex-row justify-between">
+                    <div className="flex flex-row justify-between text-homeText-gray">
                       <div>
                         <span>{item.section}</span>
                         <span>{t('type')}{item.type}</span>
                       </div>
                       <div>
-                        <Shorter linkUrl={`/nodeDetails/${item.signer}`} content={item.signer}/>
+                        <Shorter linkUrl={`/addressDetails/${item.signer}`} content={item.signer}/>
                       </div>
                     </div>
                   </div>

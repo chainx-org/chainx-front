@@ -52,8 +52,8 @@ function Footer(): React.ReactElement {
     return (
       <div
         style={{bottom:'0px'}}
-        className="w-overSpread fixed bottom-0 flex bg-topBar-black mt-29 desktop:px-7 desktop:flex-row desktop:justify-between screen:flex-col screen:items-center">
-        <div className="flex flex-row">
+        className="w-overSpread bottom-0 flex bg-topBar-black mt-29 desktop:px-7 desktop:fixed desktop:flex-row desktop:justify-between screen:flex-col screen:items-center">
+        <div className="flex flex-row screen:flex-col">
           <ImgContent>
             <a onClick={() => copyEmail('hi@chainx.org')}>
               <img src='https://i.postimg.cc/1XwVYXsb/2x.png' alt="" style={{width:'3rem'}}/>
@@ -81,13 +81,13 @@ function Footer(): React.ReactElement {
             </div>
 
           </ImgContent>
-          <div className={'text-topBar-white mx-0 my-auto bg-opacity-38'}>All rights reserved © 2019
+          <div className={'text-topBar-white mx-0 my-auto bg-opacity-38'} style={{textAlign:'center'}}>All rights reserved © 2019
             ChainX
           </div>
         </div>
-        <div className="flex flex-row">
+        <div className="flex flex-row screen:flex-col">
           <LangSelect/>
-          <img src={logo} alt="" className='inline-block h-6 my-auto ml-8'/>
+          <img src={logo} alt="" className='inline-block h-6 my-auto ml-8 screen:ml-0'/>
         </div>
       </div>
     );

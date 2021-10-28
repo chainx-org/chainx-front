@@ -1,5 +1,6 @@
-import React from 'react'
+import React from 'react';
 import styled from 'styled-components';
+
 const JsonContainer = styled.div`
     background: #F9F9F9;
     border-radius: 10px;
@@ -8,6 +9,7 @@ const JsonContainer = styled.div`
   `;
 // @ts-ignore
 export default function Jsonformat({ json }) {
+  debugger
   const filterStyle = (value:any)=>{
     if(typeof value==='string'){
       return {color:'#F55D8F'}
@@ -32,6 +34,7 @@ export default function Jsonformat({ json }) {
         <div></div>
       )
     }
+    console.log(Object.prototype.toString.call(query));
 
     const keys = Object.keys(query)
     return (

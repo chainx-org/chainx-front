@@ -10,6 +10,9 @@ module.exports = {
   },
   theme: {
     colors: {
+      homeText:{
+        gray:'rgba(0, 0, 0, 0.45)'
+      },
       gray: {
         lightest: "#C2C2C2",
         lighter: "#F3F5F9",

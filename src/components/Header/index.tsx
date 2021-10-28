@@ -62,9 +62,9 @@ export default function Header({showSearch}: HeaderPop) {
                           <li>
                               <div onClick={() => toolLink('/tools/ss58')}>{t('Transform Address/Public Key')}</div>
                           </li>
-                          <li>
-                              <div onClick={() => toolLink('/tools/SearchTool')}>{t('Search Events/Extrinsics')}</div>
-                          </li>
+                          {/*<li>*/}
+                          {/*    <div onClick={() => toolLink('/tools/SearchTool')}>{t('Search Events/Extrinsics')}</div>*/}
+                          {/*</li>*/}
                       </ul>
                   </div>
               </NavLink>

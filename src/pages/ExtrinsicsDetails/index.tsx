@@ -115,33 +115,35 @@ export default function ExtrinsicDetails() {
 
 ),
     },
+    // {
+    //   title: t('Fee'),
+    //   content:
+    //     <div className="text-gray-arrow font-semibold">
+    //       {extrinsicDetails?.blockTime}
+    //     </div>,
+    // }, {
+    //   title: t('Node'),
+    //   content: <div className="text-gray-arrow font-semibold">
+    //   </div>,
+    // }, {
+    //   title: t('Result'),
+    //   content: <div className="text-gray-arrow font-semibold">
+    //     {extrinsicDetails?.isSuccess}
+    //   </div>,
+    // },
     {
-      title: t('Fee'),
-      content:
-        <div className="text-gray-arrow font-semibold">
-          {extrinsicDetails?.blockTime}
-        </div>,
-    }, {
-      title: t('Node'),
-      content: <div className="text-gray-arrow font-semibold">
-      </div>,
-    }, {
-      title: t('Result'),
-      content: <div className="text-gray-arrow font-semibold">
-        {extrinsicDetails?.isSuccess}
-      </div>,
-    }, {
       title: t('Arguments'),
       content:
         <CopyText children={
           <JsonApi json={extrinsicDetails?.args}/>}
                   text={extrinsicDetails?.args}/>
-    }, {
-      title: t('Signature'),
-      content: <div className="text-gray-arrow font-semibold">
-        {extrinsicDetails?.data}
-      </div>,
     }
+    // , {
+    //   title: t('Signature'),
+    //   content: <div className="text-gray-arrow font-semibold">
+    //     {extrinsicDetails?.data}
+    //   </div>,
+    // }
   ];
   const tabList: TabInfo[] = [
     {

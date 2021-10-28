@@ -8,7 +8,6 @@ import leakageIcon from '../../assets/icon_search event.svg';
 import pulldown from '../../assets/icon-pulldown.svg';
 import { Button, Input } from 'antd';
 import { get } from '../../hooks/useApi';
-import JsonApi from '../../components/Jsonformat';
 import noDataIcon from '../../assets/noData.svg';
 import Icon from '../../assets/img_switch.png';
 
@@ -33,7 +32,10 @@ export default function Tools() {
     if (nowSearch === 'Event') {
       try {
         let res: any = await get(`/search/${inputValue}?page=${page}&page_size=${pageSize}`, ``);
+        debugger
+
         setListValue(res);
+        debugger
         setLoading(false);
       }catch (e) {
         setIsCorrectValue('No Data');
@@ -116,13 +118,24 @@ export default function Tools() {
             <div
               className="bg-white-darker border bor items-center my-auto ml-0 text-center mr-6 bg-topBar-gray h-overSpread flex justify-center items-center"
               style={{
+                background: '#F9F9F9',
                 borderRadius: '10px',
-                border: '1px solid #DBDBDB'
+                border: '1px solid #DBDBDB',
+                maxHeight: '34rem'
               }}>
-              {listValue ?
+              {listValue || listValue.length > 0 ?
                 <div className="overflow-scroll w-overSpread h-overSpread"
                      style={{background: 'white', borderRadius: '10px'}}>
-                  {<JsonApi json={listValue}/>}
+                  {/*{<JsonApi json={listValue}/>}*/}
+                  <pre
+                    style={{
+                      textAlign: 'left',
+                      backgroundColor: 'white',
+                      padding: 0,
+                      color: '#959595'
+                    }}
+                  >
+                  {JSON.stringify(listValue, null, 2)}</pre>
                 </div> : <>
                   {loading ?
                     <img src="https://scan.chainx.org/static/media/loading.80f33db6.png" alt=""/> : <>{!isCorrectValue ?

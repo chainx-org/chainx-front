@@ -31,7 +31,7 @@ export const Wrapper = styled.div`
       box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.15);
       border-radius: 4px;
       width: 100%;
-      height: 5rem;
+      height: 2.5rem;
 
       & > li {
         height: 2.5rem;

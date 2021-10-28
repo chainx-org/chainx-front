@@ -49,12 +49,12 @@ export default function CrossBlock() {
   const {t} = useTranslation();
 
   const tag = 'crossBlock'
-  const [currentTab, setCurrentTab] = useState('crossBlock');
+  const [currentTab, setCurrentTab] = useState('block');
   const tabList: TabInfo[] = [
     {
       title: t('Block'),
       content: <BitcoinBlock/>,
-      name:'crossBlock'
+      name:'block'
     },
     {
       title: t('Deposit Deals'),
@@ -132,7 +132,7 @@ export default function CrossBlock() {
     if(activeTab){
       setCurrentTab(activeTab)
     }else{
-      setCurrentTab('assets')
+      setCurrentTab('block')
     }
 
   },[])

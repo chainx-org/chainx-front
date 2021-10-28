@@ -100,13 +100,13 @@ export default function NodeDetails() {
           {reName(addressDetails?.account)}
         </div>)
     },
-    {
-      title: t('Authored Address'),
-      content: (
-        <div className="text-blue-light cursor-pointer"
-             onClick={() => <div>{(addressDetails?.header?.number)?reName(addressDetails?.header?.number):'-'}</div>}/>
-      )
-    },
+    // {
+    //   title: t('Authored Address'),
+    //   content: (
+    //     <div className="text-blue-light cursor-pointer"
+    //          onClick={() => <div>{(addressDetails?.header?.number)?reName(addressDetails?.header?.number):'-'}</div>}/>
+    //   )
+    // },
     {
       title: t('Jackpot Address'),
       content: (
@@ -117,7 +117,7 @@ export default function NodeDetails() {
       title: t('Missed Blocks'),
       content: (
         <div className="text-black-dark">
-          {(addressDetails?.extrinsicsRoot)?(addressDetails?.extrinsicsRoot):'-'}
+          {(addressDetails?.missed)?(addressDetails?.missed):'0'}
         </div>
       ),
     },{
@@ -128,21 +128,22 @@ export default function NodeDetails() {
         </div>
       ),
     },
+    {
+      title: t('Total Nominations'),
+      content: (
+        <div className="text-black-dark">
+          {addressDetails?.totalNomination}
+        </div>
+      ),
+    },
     // {
-    //   title: t('Missed Blocks'),
-    //   content: (
+    //   title: t('Authored Blocks'),
+    //   content:
     //     <div className="text-black-dark">
-    //       {addressDetails?.extrinsicsRoot}
-    //     </div>
-    //   ),
+    //       {reName(addressDetails?.totalNomination)}
+    //     </div>,
     // },
     {
-      title: t('Authored Blocks'),
-      content:
-        <div className="text-black-dark">
-          {reName(addressDetails?.totalNomination)}
-        </div>,
-    }, {
       title: t('Vote Weight Last Update'),
       content: <div className="text-black-dark">
         {addressDetails?.lastTotalVoteWeightUpdate}
