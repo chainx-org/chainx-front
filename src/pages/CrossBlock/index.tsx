@@ -17,7 +17,8 @@ import Claim from './claim';
 import { get } from '../../hooks/useApi';
 import MyEchart from './myEcharts';
 import { ShorterLink } from '../../components/LinkX';
-
+import distributionIcon from '../../assets/icon_Mining_rate.svg'
+import bridgeIcon from '../../assets/icon_bridge.svg'
 
 const Wrapper = styled.div`
     background: #FFFFFF;
@@ -47,27 +48,36 @@ const BridgeWrapper = styled.div`
 export default function CrossBlock() {
   const {t} = useTranslation();
 
-
+  const tag = 'crossBlock'
+  const [currentTab, setCurrentTab] = useState('crossBlock');
   const tabList: TabInfo[] = [
     {
       title: t('Block'),
       content: <BitcoinBlock/>,
+      name:'crossBlock'
     },
     {
       title: t('Deposit Deals'),
       content: <Deposit/>,
+      name:'deals'
+
     },
     {
       title: t('Withdraw'),
       content: <Withdraw/>,
+      name:'withdraw'
+
     },
     {
       title: t('Host'),
       content: <Host/>,
+      name:'host'
+
     },
     {
       title: t('Claim'),
       content: <Claim/>,
+      name:'claim'
     }
   ];
   const [mingApiData, setMingApiData] = useState<any>([{
@@ -116,6 +126,16 @@ export default function CrossBlock() {
   useEffect(() => {
     getData();
   }, []);
+  useEffect(()=>{
+    
+    const activeTab = sessionStorage.getItem(tag)
+    if(activeTab){
+      setCurrentTab(activeTab)
+    }else{
+      setCurrentTab('assets')
+    }
+
+  },[])
   return (
     <>
       <Header showSearch={true}/>
@@ -123,7 +143,7 @@ export default function CrossBlock() {
         <BridgeWrapper>
           <Wrapper>
             <CardTitle>
-              <div className="flex flex-row" style={{padding: '0.5rem 0rem 0.5rem 1rem'}}>
+              <div className="flex flex-row" >
                 <img src={mining} alt=""/>
                 <span className="ml-4" style={{fontSize: '14px'}}>{t('Deposit Mining')}</span>
               </div>
@@ -156,8 +176,8 @@ export default function CrossBlock() {
           </Wrapper>
           <Wrapper>
             <CardTitle>
-              <div className="flex flex-row" style={{padding: '0.5rem 0rem 0.5rem 1rem'}}>
-                <img src={mining} alt=""/>
+              <div className="flex flex-row" >
+                <img src={distributionIcon} alt=""/>
                 <span className="ml-4" style={{fontSize: '14px'}}>{t('Mining Distribution')}</span>
               </div>
             </CardTitle>
@@ -166,12 +186,12 @@ export default function CrossBlock() {
         </BridgeWrapper>
         <Wrapper>
           <CardTitle>
-            <div className="flex flex-row" style={{padding: '0.5rem 0rem 0.5rem 1rem'}}>
-              <img src={mining} alt=""/>
+            <div className="flex flex-row" >
+              <img src={bridgeIcon} alt=""/>
               <span className="ml-4" style={{fontSize: '14px'}}>{t('Bitcoin Bridge')}</span>
             </div>
           </CardTitle>
-          <TableMenuBox tabList={tabList} key={''}/>
+          <TableMenuBox tabList={tabList}  currentTab={currentTab} setCurrentTab={setCurrentTab} tag={tag}/>
         </Wrapper>
       </Wrapper>
       <Footer/>

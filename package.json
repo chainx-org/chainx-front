@@ -19,6 +19,7 @@
     "echarts": "^5.2.0",
     "i18next": "^20.3.1",
     "i18next-browser-languagedetector": "^6.1.1",
+    "lodash": "^4.17.21",
     "moment": "^2.29.1",
     "qs": "^6.10.1",
     "react": "16.13.1",
@@ -40,9 +41,7 @@
     "eject": "react-scripts eject",
     "build:css": "postcss src/css/index.src.css -o src/css/index.css",
     "watch:css": "postcss src/css/index.src.css -o src/css/index.css -w",
-    "dev": "concurrently \"yarn watch:css --silent\" \"yarn start --silent\"",
-    "generate:defs": "ts-node --skip-project node_modules/.bin/polkadot-types-from-defs --package x-bridge-v2/interfaces --input ./src/interfaces",
-    "generate:meta": "ts-node --skip-project node_modules/.bin/polkadot-types-from-chain --package . --endpoint wss://xbridge.spiderx.pro/ws --output ./src/interfaces --strict"
+    "dev": "concurrently \"yarn watch:css --silent\" \"yarn start --silent\""
   },
   "eslintConfig": {
     "extends": "react-app"

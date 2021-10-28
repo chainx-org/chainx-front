@@ -33,6 +33,8 @@ export default function AddressDetails() {
   const address = window.location.pathname.slice(16, window.location.pathname.length);
   const pubKey = decodeAddress(address) || '';
   const [nowBlock, setNowBlock] = useState(address);
+  const tag = 'address'
+  const [currentTab, setCurrentTab] = useState('assets');
   const getData = async () => {
     const res: any = await get(`/accounts/${address}/assets`, ``);
     if (res) {
@@ -43,6 +45,16 @@ export default function AddressDetails() {
     }
 
   };
+  useEffect(()=>{
+    
+    const activeTab = sessionStorage.getItem(tag)
+    if(activeTab){
+      setCurrentTab(activeTab)
+    }else{
+      setCurrentTab('assets')
+    }
+
+  },[])
   useEffect(() => {
     if (window.history.state && window.history.state?.state) {
       setBlockDetails(window.history.state.state);
@@ -89,14 +101,17 @@ export default function AddressDetails() {
     {
       title: t('Assets'),
       content: <Assets account={address}/>,
+      name:'assets'
     },
     {
       title: t('Transactions'),
       content: <Transaction account={address}/>,
+      name:'transaction'
     },
     {
       title: t('Transfers'),
-      content: <Transfers account={address}/>
+      content: <Transfers account={address}/>,
+      name:'transfer'
     }
   ];
   const routerPath = () => {
@@ -120,7 +135,7 @@ export default function AddressDetails() {
           <List list={list} loading={loading}/>
           <div className="px-24 pb-16 bg-gray-bgWhite screen:px-4">
             <Wrapper>
-              <TableMenuBox tabList={tabList}/>
+              <TableMenuBox tabList={tabList} currentTab={currentTab} setCurrentTab={setCurrentTab} tag={tag} />
             </Wrapper>
           </div>
         </>}

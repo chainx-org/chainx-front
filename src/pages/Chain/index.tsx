@@ -10,28 +10,7 @@ import Account from './account';
 import Extrinsic from './extrinsic';
 import Event from './event';
 
-
-export default function Chain() {
-  const {t} = useTranslation();
-  const currentRoute = window.location.pathname.slice(7, window.location.pathname.length);
-  const [currentTab, setCurrentTab] = useState('');
-  const chooseTab = (currentRoute: string) => {
-    switch (currentRoute) {
-      case 'extrinsic':
-        setCurrentTab(t('Extrinsic'));
-        break;
-      case 'event':
-        setCurrentTab(t('Event'));
-        break;
-      case 'account':
-        setCurrentTab(t('Accounts'));
-        break;
-      default:
-        setCurrentTab(t('Blocks'));
-    }
-  };
-  useEffect(() => {chooseTab(currentRoute);}, []);
-  const Wrapper = styled.div`
+const Wrapper = styled.div`
     min-height: 688px;
     background: #FFFFFF;
     box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.04);
@@ -39,22 +18,58 @@ export default function Chain() {
     border: 1px solid #E9E9E9;
   `;
 
+export default function Chain() {
+  const {t} = useTranslation();
+  // const currentRoute = window.location.pathname.slice(7, window.location.pathname.length);
+  const tag = 'chain'
+  const [currentTab, setCurrentTab] = useState('block');
+  // const chooseTab = (currentRoute: string) => {
+  //   switch (currentRoute) {
+  //     case 'extrinsic':
+  //       setCurrentTab(t('Extrinsic'));
+  //       break;
+  //     case 'event':
+  //       setCurrentTab(t('Event'));
+  //       break;
+  //     case 'account':
+  //       setCurrentTab(t('Accounts'));
+  //       break;
+  //     default:
+  //       setCurrentTab(t('Blocks'));
+  //   }
+  // };
+  useEffect(()=>{
+    
+    const activeTab = sessionStorage.getItem(tag)
+    if(activeTab){
+      setCurrentTab(activeTab)
+    }else{
+      setCurrentTab('block')
+    }
+
+  },[])
+  // useEffect(() => {chooseTab(currentRoute);}, [currentTab]);
+
   const tabList: TabInfo[] = [
     {
       title: t('Blocks'),
       content: <Block/>,
+      name:'block'
     },
     {
       title: t('Extrinsic'),
       content: <Extrinsic/>,
+      name:'extrinsic'
     },
     {
       title: t('Event'),
       content: <Event/>,
+      name:'event'
     },
     {
       title: t('Accounts'),
       content: <Account/>,
+      name:'account'
     }
   ];
   return (
@@ -62,7 +77,7 @@ export default function Chain() {
       <Header showSearch={true}/>
       <div className="px-24 pt-8 pb-16 bg-gray-bgWhite screen:px-4">
         <Wrapper>
-          <TableMenuBox tabList={tabList} currentTab={currentTab}/>
+          <TableMenuBox tabList={tabList} currentTab={currentTab} setCurrentTab={setCurrentTab} tag={tag}/>
         </Wrapper>
       </div>
       <Footer/>

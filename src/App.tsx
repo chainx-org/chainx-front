@@ -17,7 +17,7 @@ import NoDataPage from './pages/NoData';
 
 function App() {
   return (
-    <PolkaApi url="wss://testnet-2.chainx.org/ws">
+    // <PolkaApi url="wss://testnet-2.chainx.org/ws">
       <BrowserRouter>
         <Switch>
           <Route path="/tools/SS58" exact component={SS58}/>
@@ -35,7 +35,7 @@ function App() {
           <Route path="/" component={Home}/>
         </Switch>
     </BrowserRouter>
-    </PolkaApi>
+    // </PolkaApi>
   );
 };
 

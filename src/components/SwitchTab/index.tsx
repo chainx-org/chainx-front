@@ -1,11 +1,13 @@
 import React, { ReactNode } from 'react';
 import { Tabs } from 'antd';
 import { useTranslation } from 'react-i18next';
+
 const { TabPane } = Tabs;
 
 export interface TabInfo {
   key?:number,
   title: string;
+  name?: string;
   content: ReactNode;
 }
 
@@ -14,17 +16,35 @@ interface SwitchTabsProps {
   tabList: TabInfo[];
   className?: string;
   size: 'lg' | 'medium' | 'sm';
-  currentTab?:string
+  currentTab?: string;
+  setCurrentTab?:any;
+  tag:string
 }
 
-function SwitchTab({ children, currentTab, tabList, size, className = '' }: SwitchTabsProps): React.ReactElement<SwitchTabsProps> {
-  const {t} = useTranslation()
+function SwitchTab({
+                     children,
+                     currentTab,
+                     setCurrentTab,
+                     tag,
+                     tabList,
+                     size,
+                     className = '',
+                   }: SwitchTabsProps): React.ReactElement<SwitchTabsProps> {
+  const {t} = useTranslation();
+  function changeTab(key:any){
+    
+    setCurrentTab(key)
+    sessionStorage.setItem(tag,key)
+  }
   return (
     <Tabs
       defaultActiveKey={currentTab}
-      className={`${className} ui--switchTabs-${size ? size : ''} `}>
+      activeKey={currentTab}
+      className={`${className} ui--switchTabs-${size ? size : ''} `}
+      onChange={changeTab}
+     >
       {tabList.map((tab) => (
-        <TabPane tab={tab.title} key={tab.title} >
+        <TabPane tab={tab.title} key={tab.name}>
           {tab.content}
         </TabPane>
       ))}

@@ -22,7 +22,7 @@ function SwitchTabs({ children, onTabClick, tabList, size, className = '' }: Swi
     return (
         <Tabs
             className={`${className} ui--switchTabs-${size ? size : ''} `}>
-            {tabList.map((tab) => (
+            {tabList.map((tab,index) => (
                 <TabPane tab={tab.title} key={tab.title} >
                     {tab.content}
                 </TabPane>
