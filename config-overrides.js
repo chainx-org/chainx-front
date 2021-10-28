@@ -1,6 +1,7 @@
-const {override, addWebpackPlugin, setWebpackOptimizationSplitChunks} = require('customize-cra')
+const {override, addWebpackPlugin, setWebpackOptimizationSplitChunks,  } = require('customize-cra')
 const ProgressBarPlugin = require('progress-bar-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 
 const isProductionEnv = () => {
   return process.env.NODE_ENV === 'production'
@@ -28,6 +29,9 @@ module.exports = override(
       }
     }
   })),
+  isProductionEnv() && addWebpackPlugin(
+    new HardSourceWebpackPlugin()
+  ),
   isProductionEnv() && setWebpackOptimizationSplitChunks({
     minSize: 10000,
     maxSize: 250000,
