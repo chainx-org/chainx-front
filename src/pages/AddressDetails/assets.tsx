@@ -102,7 +102,7 @@ export default function Assets({account}: ExtrinsicProps) {
 
   return (
     <div className="px-8 overflow-scroll">
-      <div className='px-1 py-1' style={{fontSize:'500'}}>{t('ChainX Assets')}</div>
+      <div className='px-1 py-1 font-medium text-base'>{t('ChainX Assets')}</div>
       <TableX
         columns={chainColumns}
         pagination={false}

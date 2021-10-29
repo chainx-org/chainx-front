@@ -22,19 +22,19 @@ export default function DetailTitle({routeTitle, routePath, content, isBlock, se
 
   return (<div className="flex flex-row justify-between px-4 py-4">
     <div>
-      <span className="text-gray-white font-medium">{routeTitle}</span>
-      {isBlock ? <span className="text-topBar-blueLight font-medium"> #{content}</span>
-        : <span className="text-topBar-blueLight font-medium"> {content}</span>
+      <span className="text-gray-white text-xl font-medium">{routeTitle}</span>
+      {isBlock ? <span className="text-topBar-blueLight font-medium text-base cursor-pointer"> #{content}</span>
+        : <span className="text-topBar-blueLight font-medium text-base"> {content}</span>
       }
       {isBlock ?
         <>
-          <img src={arrow} alt="" style={{display: 'inline-block', transform: 'rotateY(180deg)'}}
-               onClick={reduceBlock}/>
-          <img src={arrow} alt="" style={{display: 'inline-block'}} onClick={increaseBlock}/>
+          <img src={arrow} alt="" style={{display: 'inline-block', transform: 'rotateY(180deg)'} }
+               onClick={reduceBlock} className='cursor-pointer'/>
+          <img src={arrow} alt="" style={{display: 'inline-block'}} onClick={increaseBlock} className='cursor-pointer'/>
         </> : ''}
 
     </div>
-    <span className="text-gray-white font-medium">{routePath()}</span>
+    <span className="text-gray-white text-xl font-medium">{routePath()}</span>
   </div>);
 
 }

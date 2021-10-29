@@ -36,6 +36,8 @@ module.exports = {
         light: "#777777",
         dark: "#504862",
         darker: "#272233",
+        textColor:'rgba(0, 0, 0, 0.85)',
+        titleColor:'#080810'
       },
       white: {
         light: "#ffffff",

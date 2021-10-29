@@ -24,7 +24,7 @@ export default function BlockDetails() {
   const [noData, setNoData] = useState(false);
   const [blockDetails, setBlockDetails] = useState<any>();
   const block = window.location.pathname.slice(14, window.location.pathname.length);
-  const isBlockNumber = (typeof (block) === 'number');
+  const isBlockNumber = (/^[0-9]*$/.test(block));
   const [nowBlock, setNowBlock] = useState(block);
   const tag = 'blockDetails'
   const [currentTab, setCurrentTab] = useState('extrinsic');
@@ -66,13 +66,13 @@ export default function BlockDetails() {
       title: t('Block Height'),
       content: (
         <div
-          className="text-gray-arrow font-semibold">{(blockDetails?.header?.number) ? blockDetails?.header?.number : '-'}</div>
+          className="font-medium text-gray-arrow ">{(blockDetails?.header?.number) ? blockDetails?.header?.number : '-'}</div>
       ),
     },
     {
       title: t('Time'),
       content: (
-        <div className="text-gray-arrow font-semibold">
+        <div className="font-medium text-gray-arrow ">
           {(blockDetails?.blockTime) ? moment(Number(blockDetails?.blockTime)).format('YYYY-MM-DD HH:mm:ss') + '(+UTC)' : '-'}
         </div>)
     },
@@ -89,7 +89,7 @@ export default function BlockDetails() {
     {
       title: t('Block Hash'),
       content: (
-        <div className="text-gray-arrow font-semibold">
+        <div className="font-medium text-gray-arrow ">
           {blockDetails?.hash}
         </div>
       ),
@@ -103,7 +103,7 @@ export default function BlockDetails() {
     {
       title: t('Extrinsics Root'),
       content: (
-        <div className="text-gray-arrow font-semibold">
+        <div className="font-medium text-gray-arrow ">
           {blockDetails?.header?.stateRoot}
         </div>
       ),
@@ -111,14 +111,14 @@ export default function BlockDetails() {
     // {
     //   title: t('Block Time'),
     //   content:
-    //     <div className="text-gray-arrow font-semibold">
+    //     <div className="font-medium text-gray-arrow ">
     //       {/*{moment(Number(blockDetails?.blockTime)).format('YYYY-MM-DD HH:mm:ss')}*/}
     //       -
     //     </div>,
     // }, {
     //   title: t('Validator'),
     //   content:
-    //     <div className="text-gray-arrow font-semibold">
+    //     <div className="font-medium text-gray-arrow ">
     //       {(blockDetails?.address) ?
     //         <LinkXWithPopAndIcon content={blockDetails?.address} linkUrl={`/addressDetails/${blockDetails?.address}`}
     //                              img={successIcon}/> : '-'}
@@ -139,8 +139,8 @@ export default function BlockDetails() {
   ];
   const routerPath = () => {
     return (<div className="flex flex-row cursor-pointer text-gray-white">
-      <Link to={'/'} style={{color:'rgba(255, 255, 255, 0.65)'}}>{t('Home')}/</Link>
-      <Link to={'/chain'} style={{color:'rgba(255, 255, 255, 0.65)'}}>{t('Chain')}/ </Link>
+      <Link to={'/'} style={{color:'rgba(255, 255, 255, 0.65)'}}>{t('Home')}<span className='inline-block mx-2'>/</span></Link>
+      <Link to={'/chain'} style={{color:'rgba(255, 255, 255, 0.65)'}}>{t('Chain')}<span className='inline-block mx-2'>/</span> </Link>
       <Link to={`./${block}`}>{t('BlockDetails')}</Link>
     </div>);
   };

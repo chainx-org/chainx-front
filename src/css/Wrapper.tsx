@@ -12,6 +12,22 @@ export const Wrapper = styled.div`
   }
 `;
 
+export const WrapperBgWhite = styled.div`
+  min-height: 688px;
+  @media screen and (min-width: 1600px) {
+    width: 1500px;
+    margin: 0 auto;
+  }
+`;
+
+export const WrapperWith= styled.div`
+  min-height: 400px;
+  background: #FFFFFF;
+  box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.04);
+  border-radius: 10px;
+  border: 1px solid #E9E9E9;
+`;
+
 export const WrapperList = styled.div`
   min-height: 688px;
   width: 100%;

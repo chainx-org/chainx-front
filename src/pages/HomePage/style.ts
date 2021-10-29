@@ -26,7 +26,7 @@ export const TableWrapper = styled.div`
 
 export const BgColor = styled.div`
   height: 20.6rem;
-  position: fixed;
+  position: absolute;
   background-color: black;
   width: 100%;
   z-index: 0;

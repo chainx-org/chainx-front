@@ -35,7 +35,7 @@ const LatestItemBox = styled.div`
   padding: 16px;
   @media screen and (max-width: 900px) {
     font-size: 12px !important;
-    width: 21.5rem;
+    //width: 21.5rem;
     > div {
       > span {
         font-size: 16px;
@@ -65,7 +65,7 @@ export default function LatestItem({title, icon, ListData}: LatestItemPop) {
           ListData?.map((item, index) => {
             return (
               <div className="px-4" key={index}>
-                <div className="flex flex-row justify-start py-3 overflow-scroll w-85"
+                <div className="flex flex-row justify-start py-3 overflow-scroll"
                      style={{borderBottom: '1px solid #E9E9E9'}}>
                   <div className="latestDiv">
                     <span>BX</span>
@@ -98,7 +98,7 @@ export default function LatestItem({title, icon, ListData}: LatestItemPop) {
           : ListData?.map((item, index) => {
             return (
               <div className="px-4" key={index}>
-                <div className="flex flex-row justify-start py-3 overflow-scroll w-85"
+                <div className="flex flex-row justify-start py-3 overflow-scroll"
                      style={{borderBottom: '1px solid #E9E9E9'}}>
                   <div className="latestDiv">
                     <span>TX</span>

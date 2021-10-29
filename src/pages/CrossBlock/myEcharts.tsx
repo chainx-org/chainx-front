@@ -27,9 +27,9 @@ const  Model_echarts = (props:any) => {
         type: 'pie',
         radius: ['40%', '70%'],
         data: [
-          {value: 50.00, name: 'X-BTC'},
-          {value: 2.00, name: 'PCX'},
-          {value: 42.87, name: 'TR'},
+          {value: 50.00, name: 'X-BTC',color:'#2C83EA'},
+          {value: 42.87, name: 'TR',color:'#E0E0E0 '},
+          {value: 2.00, name: 'PCX',color:'#FFE403'},
         ]
       }
     ]
@@ -78,7 +78,7 @@ const  Model_echarts = (props:any) => {
   }
   // 绘制图表
   return (
-    <div id="main"></div>
+    <div id="main" style={{width:'auto',height:'auto'}}></div>
   )
 }
 

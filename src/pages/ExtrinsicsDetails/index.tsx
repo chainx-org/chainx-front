@@ -100,16 +100,16 @@ export default function ExtrinsicDetails() {
     // {
     //   title: t('Fee'),
     //   content:
-    //     <div className="text-gray-arrow font-semibold">
+    //     <div className="font-medium text-gray-arrow ">
     //       {extrinsicDetails?.blockTime}
     //     </div>,
     // }, {
     //   title: t('Node'),
-    //   content: <div className="text-gray-arrow font-semibold">
+    //   content: <div className="font-medium text-gray-arrow ">
     //   </div>,
     // }, {
     //   title: t('Result'),
-    //   content: <div className="text-gray-arrow font-semibold">
+    //   content: <div className="font-medium text-gray-arrow ">
     //     {extrinsicDetails?.isSuccess}
     //   </div>,
     // },
@@ -122,7 +122,7 @@ export default function ExtrinsicDetails() {
     }
     // , {
     //   title: t('Signature'),
-    //   content: <div className="text-gray-arrow font-semibold">
+    //   content: <div className="font-medium text-gray-arrow ">
     //     {extrinsicDetails?.data}
     //   </div>,
     // }
@@ -136,8 +136,8 @@ export default function ExtrinsicDetails() {
   ];
   const routerPath = () => {
     return (<div className="flex flex-row cursor-pointer text-gray-white">
-      <Link to={'/'} style={{color:'rgba(255, 255, 255, 0.65)'}}>{t('Home')}/</Link>
-      <Link to={'/chain/extrinsic'} style={{color:'rgba(255, 255, 255, 0.65)'}}>{t('Extrinsic')}/ </Link>
+      <Link to={'/'} style={{color:'rgba(255, 255, 255, 0.65)'}}>{t('Home')}<span className='inline-block mx-2'>/</span></Link>
+      <Link to={'/chain/extrinsic'} style={{color:'rgba(255, 255, 255, 0.65)'}}>{t('Extrinsic')}<span className='inline-block mx-2'>/</span></Link>
       <Link to={`./${extrinsic}`}>{t('ExtrinsicDetails')}</Link>
     </div>);
   };

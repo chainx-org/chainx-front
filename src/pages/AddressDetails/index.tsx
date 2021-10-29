@@ -80,13 +80,13 @@ export default function AddressDetails() {
       title: t('Address'),
       content: (
         <div
-          className="text-gray-arrow font-semibold">{address}</div>
+          className="font-medium text-gray-arrow ">{address}</div>
       ),
     },
     {
       title: t('Nonce'),
       content: (
-        <div className="text-gray-arrow font-semibold">
+        <div className="font-medium text-gray-arrow ">
           {blockDetails?.nonce}
         </div>
       )
@@ -111,8 +111,8 @@ export default function AddressDetails() {
   ];
   const routerPath = () => {
     return (<div className="flex flex-row cursor-pointer text-gray-white">
-      <Link to={'/'} style={{color:'rgba(255, 255, 255, 0.65)'}}>{t('Home')}/</Link>
-      <Link to={'/chain/extrinsic'} style={{color:'rgba(255, 255, 255, 0.65)'}}>{t('Chain')}/ </Link>
+      <Link to={'/'} style={{color:'rgba(255, 255, 255, 0.65)'}}>{t('Home')}<span className='inline-block mx-2'>/</span></Link>
+      <Link to={'/chain/extrinsic'} style={{color:'rgba(255, 255, 255, 0.65)'}}>{t('Chain')}<span className='inline-block mx-2'>/</span> </Link>
       <Link to={`./${address}`} >{t('AccountDetails')}</Link>
     </div>);
   };
