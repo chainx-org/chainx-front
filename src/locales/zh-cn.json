@@ -149,6 +149,13 @@
     "Search Extrinsic": "搜索交易",
     "Enter the address or public key for conversion": "输入地址或者公钥转换",
     "Enter the Event or Extrinsic for conversion": "输入事件或者交易转换",
-    "Total Nominations": "总得票数"
-
+    "Total Nominations": "总得票数",
+    "Finalized Block": "已确认块高",
+    "Latest Block": "最新块高",
+    "Total Extrinsics": "交易签名",
+    "Total Accounts": "账户信息",
+    "Transfer Count": "转账总数",
+    "Total Validators": "验证节点",
+    "Total Issuance(PCX)": "总供应量",
+    "Turnout": "质押率"
 }

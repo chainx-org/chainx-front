@@ -54,35 +54,35 @@ export default function Container() {
     const [latestExtrinsic, setLatestExtrinsic] = useState([])
     const [metaData, setMetaData] = useState([{
         icon: highSure,
-        name: '已确认块高',
+        name: t('Finalized Block'),
         data: '-'
     }, {
         icon: highSure,
-        name: '最新块高',
+        name: t('Latest Block'),
         data: '-'
     }, {
         icon: holders,
-        name: '交易签名',
+        name: t('Total Extrinsics'),
         data: '-'
     }, {
         icon: holders,
-        name: '账户信息',
+        name: t('Total Accounts'),
         data: '-'
     }, {
         icon: transfer,
-        name: '转账总数',
+        name: t('Transfer Count'),
         data: '-'
     }, {
         icon: node,
-        name: '验证节点',
+        name: t('Total Validators'),
         data: '-'
     }, {
         icon: issuance,
-        name: '总供应量',
+        name: t('Total Issuance(PCX)'),
         data: '-'
     }, {
         icon: issuance,
-        name: '质押率',
+        name: t('Turnout'),
         data: '-'
     }]);
     const [firstInit, InitCallBack] = useState(true);
@@ -92,35 +92,35 @@ export default function Container() {
         const {latestChainStatus}: any = await get('/latestChainStatus', '');
         setMetaData([...[{
             icon: highSure,
-            name: '已确认块高',
+            name: t('Finalized Block'),
             data: latestChainStatus.finalized
         }, {
             icon: highSure,
-            name: '最新块高',
+            name: t('Latest Block'),
             data: latestChainStatus.best
         }, {
             icon: holders,
-            name: '交易签名',
+            name: t('Total Extrinsics'),
             data: latestChainStatus.extrinsic_count
         }, {
             icon: holders,
-            name: '账户信息',
+            name: t('Total Accounts'),
             data: latestChainStatus.account_count
         }, {
             icon: transfer,
-            name: '转账总数',
+            name: t('Transfer Count'),
             data: latestChainStatus.transfer_count
         }, {
             icon: node,
-            name: '验证节点',
+            name: t('Total Validators'),
             data: latestChainStatus.validator_count
         }, {
             icon: issuance,
-            name: '总供应量',
+            name: t('Total Issuance(PCX)'),
             data: latestChainStatus.pcx_issuance/100000000
         }, {
             icon: issuance,
-            name: '质押率',
+            name: t('Turnout'),
             data: ((latestChainStatus.totalValidatorBonded + latestChainStatus.totalNominationSum) /
               latestChainStatus.pcx_issuance*100).toFixed(2)+'%'
         }]]);
