@@ -131,7 +131,6 @@ export default function Container() {
     };
     const getLatestExtrinsic = async () => {
         const res: any = await get(`/extrinsics?page=${1}&page_size=${5}`, ``);
-        console.log(res.items[0]);
         setLatestExtrinsic(res.items);
     };
     const callBack = () => {

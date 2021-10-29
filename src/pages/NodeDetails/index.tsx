@@ -32,7 +32,6 @@ export default function NodeDetails() {
     const {items}: any = await get(`/validators/all`, ``);
     const result =  items.filter((item: any, index: number) => {
       if(item.account === node){
-        console.log(item)
         return item
       }
     });

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
 import moment from 'moment';
 import Event from '../Chain/event';
 import Extrinsic from '../Chain/extrinsic';
@@ -12,7 +11,6 @@ import Footer from '../../components/Footer';
 import TableMenuBox from '../../components/TableMenuBox';
 import { TabInfo } from '../../components/SwitchTab';
 import DetailTitle from '../../components/DetailTitle';
-import { LinkXWithPopAndIcon } from '../../components/LinkX';
 import NoData from '../../components/NoData';
 import { ListBgColor, WrapperDetails, WrapperList } from '../../css/Wrapper';
 
@@ -39,17 +37,10 @@ export default function BlockDetails() {
 
   };
   useEffect(() => {
-    // if (window.history.state && window.history.state?.state) {
-    //   setBlockDetails(window.history.state.state);
-    //   console.log('window', window.history.state.state);
-    //   setLoading(false);
-    // } else {
-      getData().then(
+    getData().then(
       ).catch(() => {
-        console.log('find error');
         setNoData(true);
       });
-    // }
   }, []);
   useEffect(()=>{
     
