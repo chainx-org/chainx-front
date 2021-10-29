@@ -45,7 +45,7 @@
     "include": "包含",
     "extrinsic": "交易",
     "event": "事件",
-    "ago": "之前",
+    "ago": "前",
     "type": "类型",
     "Block": "区块",
     "Extrinsics": "交易",

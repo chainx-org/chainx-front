@@ -53,7 +53,7 @@ function Footer(): React.ReactElement {
 
     return (
       <div
-        style={{bottom:'0px'}}
+        style={{bottom:'0px',zIndex:99}}
         className="w-overSpread bottom-0 flex bg-topBar-black mt-29 desktop:px-7 desktop:fixed desktop:flex-row desktop:justify-between screen:flex-col screen:items-center">
         <div className="flex flex-row screen:flex-col">
           <ImgContent>

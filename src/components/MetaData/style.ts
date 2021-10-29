@@ -2,13 +2,13 @@ import styled from 'styled-components';
 
 export const MetaDataBox = styled.div`
   width: 100%;
-  height: 12rem;
+  height:12rem;
   padding:0rem 6rem;
   background: linear-gradient(to bottom, black 0%, black 30%, #f5f5f5 30%, #f5f5f5 100%);
   border: 0px solid #ccc;
   position: relative;
   z-index: 1;
-  @media screen and (max-width: 900px) {
+  @media screen and (max-width: 1150px) {
     height: 22rem;
     padding:0rem 1rem;
 
@@ -28,6 +28,7 @@ export const Wrapper = styled.div`
   > div:nth-child(-n+4) {
     .line-div {
       top: 20px;
+      color: #000;
     }
   }
 
@@ -36,26 +37,35 @@ export const Wrapper = styled.div`
       display: none;
     }
   }
-  > div:nth-child(n+4) {
+
+  > div:nth-child(n+5) {
     .container-div {
       border-bottom: 0px !important;
     }
   }
 
-  @media screen and (max-width: 900px) {
+  @media screen and (max-width: 1150px) {
     grid-template-columns: 50% 50%;
     > div:nth-child(n+7) {
       .container-div {
         border-bottom: 0px !important;
       }
     }
-  }
 
-  > div:nth-child(-n+4) {
-    .container-div {
-      border-bottom: 1px solid #E9E9E9 !important;
+    > div:nth-child(2n+2) {
+      > div:nth-child(2n+2) {
+        border: none !important;
+      }
+    }
+
+    > div:nth-child(-n+6) {
+      .container-div {
+        border-bottom: 1px solid #E9E9E9 !important;
+      }
     }
   }
+
+
 `;
 export const RightLine = styled.div`
   position: relative;
@@ -90,13 +100,14 @@ export const Container = styled.div`
     }
   }
 
-  @media screen and (max-width: 900px) {
+  @media screen and (max-width: 1150px) {
     > img {
       display: inline-block;
       width: 24px;
       height: 24px;
       margin: auto 3px auto 0px;
     }
+
     > div {
       > span {
         :nth-child(1) {

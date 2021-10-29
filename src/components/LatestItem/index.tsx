@@ -18,7 +18,7 @@ const ItemContainer = styled.div`
   background: #FFFFFF;
   box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.04);
   border-radius: 10px;
-  @media screen and (max-width: 900px) {
+  @media screen and (max-width: 1150px) {
     font-size: 14px;
     > div {
       > span {
@@ -33,7 +33,7 @@ const LatestItemBox = styled.div`
   display: flex;
   flex-direction: column;
   padding: 16px;
-  @media screen and (max-width: 900px) {
+  @media screen and (max-width: 1150px) {
     font-size: 12px !important;
     //width: 21.5rem;
     > div {

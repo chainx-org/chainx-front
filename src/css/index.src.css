@@ -247,6 +247,20 @@ html {
   background: #2C83EA;
   border-radius: 2px;
 }
+
+.ant-pagination-item-active{
+  background: #2C83EA;
+  border-radius: 2px;
+}
+.ant-pagination-item-active a{
+  color:white;
+}
+.ant-select-single .ant-select-selector .ant-select-selection-item{
+  color: rgba(0, 0, 0, 0.65);
+}
+.ant-pagination-item a{
+  color: rgba(0, 0, 0, 0.65);
+}
 .ant-pagination-item a:hover{
   color:white;
 }
@@ -261,5 +275,10 @@ html {
   padding: 5px 8px;
   background: white;
   color: #422D01;
+}
+.ant-table-pagination.ant-pagination{
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.65);
 }
 @tailwind utilities;
