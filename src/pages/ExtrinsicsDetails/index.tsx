@@ -8,22 +8,17 @@ import Event from '../Chain/event';
 import List from '../../components/List';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
-import JsonApi from '../../components/Jsonformat'
+import JsonApi from '../../components/Jsonformat';
 import TableMenuBox from '../../components/TableMenuBox';
 import { TabInfo } from '../../components/SwitchTab';
 import DetailTitle from '../../components/DetailTitle';
-import { LinkX, LinkXWithPop } from '../../components/LinkX';
+import { LinkX, Normal } from '../../components/LinkX';
 import Operation from '../../components/Operation';
 import CopyText from '../../components/copyText';
 import successIcon from '../../assets/icon_success.svg';
 import NoData from '../../components/NoData';
+import {Wrapper} from '../../css/Wrapper'
 
-const Wrapper = styled.div`
-    background: #FFFFFF;
-    box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.04);
-    border-radius: 10px;
-    border: 1px solid #E9E9E9;
-  `;
 export default function ExtrinsicDetails() {
 
   const {t} = useTranslation();
@@ -80,20 +75,13 @@ export default function ExtrinsicDetails() {
     {
       title: t('Block Time'),
       content: (
-        <div className="text-gray-arrow font-semibold">
-          {moment(Number(extrinsicDetails?.indexer?.blockTime)).format('YYYY-MM-DD HH:mm:ss')}
-        </div>)
-
+        <Normal state={moment(Number(extrinsicDetails?.indexer?.blockTime)).format('YYYY-MM-DD HH:mm:ss')}/>
+      )
     },
     {
       title: t('Extrinsic Hash'),
       content: (
-        <div className="text-gray-arrow font-semibold">
-          {(extrinsicDetails?.hash)?(extrinsicDetails?.hash):'-'}
-        </div>
-        // <LinkXWithPop linkUrl={'/'} content={extrinsicDetails?.hash}/>
-        // <></>
-
+        <Normal state={(extrinsicDetails?.hash) ? (extrinsicDetails?.hash) : '-'}/>
       )
     },
     {
@@ -102,32 +90,26 @@ export default function ExtrinsicDetails() {
       width:'15rem',
       content: (
         <Operation content={extrinsicDetails?.section + '-' + extrinsicDetails?.name} more={false} left={true}/>
-        // <></>
       ),
     },
     {
       title: t('Sender'),
       content: (
-        <div className="text-gray-arrow font-semibold">
-          {(extrinsicDetails?.singer)?(extrinsicDetails?.singer):'-'}
-        </div>
-    // <LinkXWithPop linkUrl={'/'} content={extrinsicDetails?.singer}/>
-
-),
+        <Normal state={(extrinsicDetails?.singer) ? (extrinsicDetails?.singer) : '-'}/>),
     },
     // {
     //   title: t('Fee'),
     //   content:
-    //     <div className="text-gray-arrow font-semibold">
+    //     <div className="font-medium text-gray-arrow ">
     //       {extrinsicDetails?.blockTime}
     //     </div>,
     // }, {
     //   title: t('Node'),
-    //   content: <div className="text-gray-arrow font-semibold">
+    //   content: <div className="font-medium text-gray-arrow ">
     //   </div>,
     // }, {
     //   title: t('Result'),
-    //   content: <div className="text-gray-arrow font-semibold">
+    //   content: <div className="font-medium text-gray-arrow ">
     //     {extrinsicDetails?.isSuccess}
     //   </div>,
     // },
@@ -140,7 +122,7 @@ export default function ExtrinsicDetails() {
     }
     // , {
     //   title: t('Signature'),
-    //   content: <div className="text-gray-arrow font-semibold">
+    //   content: <div className="font-medium text-gray-arrow ">
     //     {extrinsicDetails?.data}
     //   </div>,
     // }
@@ -154,8 +136,8 @@ export default function ExtrinsicDetails() {
   ];
   const routerPath = () => {
     return (<div className="flex flex-row cursor-pointer text-gray-white">
-      <Link to={'/'} style={{color:'rgba(255, 255, 255, 0.65)'}}>{t('Home')}/</Link>
-      <Link to={'/chain/extrinsic'} style={{color:'rgba(255, 255, 255, 0.65)'}}>{t('Extrinsic')}/ </Link>
+      <Link to={'/'} style={{color:'rgba(255, 255, 255, 0.65)'}}>{t('Home')}<span className='inline-block mx-2'>/</span></Link>
+      <Link to={'/chain/extrinsic'} style={{color:'rgba(255, 255, 255, 0.65)'}}>{t('Extrinsic')}<span className='inline-block mx-2'>/</span></Link>
       <Link to={`./${extrinsic}`}>{t('ExtrinsicDetails')}</Link>
     </div>);
   };
@@ -171,7 +153,7 @@ export default function ExtrinsicDetails() {
                          isBlock={false} setNowBlock={extrinsic} routePath={routerPath}/>
           </div>
           <List list={list} loading={loading}/>
-          <div className="px-24 pb-16 bg-gray-bgWhite screen:px-4">
+          <div className="px-24 pb-4 bg-gray-bgWhite screen:px-4">
             <Wrapper>
               <TableMenuBox tabList={tabList} currentTab={currentTab} setCurrentTab={setCurrentTab} tag={tag}/>
             </Wrapper>

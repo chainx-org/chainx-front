@@ -9,7 +9,6 @@ const JsonContainer = styled.div`
   `;
 // @ts-ignore
 export default function Jsonformat({ json }) {
-  debugger
   const filterStyle = (value:any)=>{
     if(typeof value==='string'){
       return {color:'#F55D8F'}

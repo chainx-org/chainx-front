@@ -15,7 +15,7 @@ interface HeaderPop {
 
 const SelectList = styled.div`
     display: none;
-    @media screen and (max-width: 900px) {
+    @media screen and (max-width: 1150px) {
         display: block;
 
     }
@@ -46,9 +46,9 @@ export default function Header({showSearch}: HeaderPop) {
 
     // @ts-ignore
     return (
-      <div className="flex flex-row justify-between bg-gray-arrow px-12 screen:px-4 screen:py-4">
+      <div className="flex flex-row justify-between bg-gray-arrow px-12 screen:px-4 screen:py-4 medium:px-4 medium:py-4">
           <Wrapper>
-              <Link to="/"><img src={icon} alt=""/></Link>
+              <Link to="/"><img src={icon} alt="" style={{maxWidth:'none'}}/></Link>
               <HeardLine></HeardLine>
               <span className="pl-3 text-gray-white mr-9.5" style={{
                   letterSpacing: '1px', fontWeight: 'bold',

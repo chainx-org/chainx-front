@@ -32,7 +32,6 @@ function SwitchTab({
                    }: SwitchTabsProps): React.ReactElement<SwitchTabsProps> {
   const {t} = useTranslation();
   function changeTab(key:any){
-    
     setCurrentTab(key)
     sessionStorage.setItem(tag,key)
   }
@@ -40,7 +39,7 @@ function SwitchTab({
     <Tabs
       defaultActiveKey={currentTab}
       activeKey={currentTab}
-      className={`${className} ui--switchTabs-${size ? size : ''} `}
+      className={`${className} ui--switchTabs-${size ? size : ''}`}
       onChange={changeTab}
      >
       {tabList.map((tab) => (

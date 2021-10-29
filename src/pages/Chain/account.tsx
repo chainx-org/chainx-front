@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import React from 'react';
 import addressIcon from '../../assets/address_icon.svg';
-import { LinkX } from '../../components/LinkX';
+import { LinkX, Normal } from '../../components/LinkX';
 import ChainxTable from '../../components/Table/table';
 
 export default function Account() {
@@ -26,8 +26,9 @@ export default function Account() {
       key: 'FrozenAmount',
       render: (text: any, record: any) => {
         return (
-          <div>{record.data.feeFrozen}</div>
-        );
+        <Normal state={(record.data.feeFrozen)?(record.data.feeFrozen):'-'}/>
+
+      );
       },
       sorter: (a: any, b: any) => a.data.feeFrozen - b.data.feeFrozen
     },
@@ -37,7 +38,7 @@ export default function Account() {
       key: 'TotalBalance',
       render: (text: any, record: any) => {
         return (
-          <div>{record.data.free}</div>
+        <Normal state={(record.data.feeFrozen)?(record.data.feeFrozen):'-'}/>
         );
       },
       sorter: (a: any, b: any) => {

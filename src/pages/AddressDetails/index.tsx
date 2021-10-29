@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import Event from '../Chain/event';
 import { get } from '../../hooks/useApi';
 import List from '../../components/List';
 import Header from '../../components/Header';
@@ -17,13 +16,9 @@ import { Popover } from 'antd';
 import Assets from './assets';
 import Transaction from './transaction';
 import Transfers from './transfers';
+import { ListBgColor, WrapperDetails, WrapperList } from '../../css/Wrapper';
+import { BgColor } from '../HomePage/style';
 
-const Wrapper = styled.div`
-    background: #FFFFFF;
-    box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.04);
-    border-radius: 10px;
-    border: 1px solid #E9E9E9;
-  `;
 export default function AddressDetails() {
 
   const {t} = useTranslation();
@@ -85,13 +80,13 @@ export default function AddressDetails() {
       title: t('Address'),
       content: (
         <div
-          className="text-gray-arrow font-semibold">{address}</div>
+          className="font-medium text-gray-arrow ">{address}</div>
       ),
     },
     {
       title: t('Nonce'),
       content: (
-        <div className="text-gray-arrow font-semibold">
+        <div className="font-medium text-gray-arrow ">
           {blockDetails?.nonce}
         </div>
       )
@@ -116,29 +111,31 @@ export default function AddressDetails() {
   ];
   const routerPath = () => {
     return (<div className="flex flex-row cursor-pointer text-gray-white">
-      <Link to={'/'} style={{color:'rgba(255, 255, 255, 0.65)'}}>{t('Home')}/</Link>
-      <Link to={'/chain/extrinsic'} style={{color:'rgba(255, 255, 255, 0.65)'}}>{t('Chain')}/ </Link>
+      <Link to={'/'} style={{color:'rgba(255, 255, 255, 0.65)'}}>{t('Home')}<span className='inline-block mx-2'>/</span></Link>
+      <Link to={'/chain/extrinsic'} style={{color:'rgba(255, 255, 255, 0.65)'}}>{t('Chain')}<span className='inline-block mx-2'>/</span> </Link>
       <Link to={`./${address}`} >{t('AccountDetails')}</Link>
     </div>);
   };
   return (
     <>
       <Header showSearch={true}/>
+      <ListBgColor/>
       {noData ?
         <NoData/> :
-        <>
+        <WrapperList>
           <div className="px-24 pt-8 bg-gray-arrow screen:px-4">
             <DetailTitle routeTitle={t('Address')} content={nowBlock}
                          setNowBlock={setNowBlock}
                          routePath={routerPath}/>
           </div>
           <List list={list} loading={loading}/>
-          <div className="px-24 pb-16 bg-gray-bgWhite screen:px-4">
-            <Wrapper>
-              <TableMenuBox tabList={tabList} currentTab={currentTab} setCurrentTab={setCurrentTab} tag={tag} />
-            </Wrapper>
+          <div className="px-24 pb-4 bg-gray-bgWhite screen:px-4">
+            <WrapperDetails>
+              <TableMenuBox tabList={tabList} currentTab={currentTab} setCurrentTab={setCurrentTab} tag={tag}/>
+            </WrapperDetails>
           </div>
-        </>}
+        </WrapperList>
+      }
       <Footer/>
     </>);
 }

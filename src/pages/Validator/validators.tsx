@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import React, { useEffect, useState } from 'react';
 import TableX from '../../components/Table';
 import { get } from '../../hooks/useApi';
-import { LinkX, ShorterLink } from '../../components/LinkX';
+import { LinkX, Normal, ShorterLink } from '../../components/LinkX';
 import TrustTag from '../../components/TrustTag';
 
 
@@ -29,10 +29,36 @@ export default function Validator() {
       title: t('Range'),
       dataIndex: 'id',
       key: 'id',
-      render:(text:number)=>{
-        return <div style={{width:'32px',height:'32px',display:'flex',justifyContent:'center', borderRadius: '50%', background:'#2C83EA',position:'relative'}}>
-          <span style={{display:'inline-block',position:'relative',color:'white',margin:'auto 0'}}>{text}</span>
-        </div>
+      render:(text:number)=> {
+        return (
+          <>
+            {text<=10? <div style={{
+              width: '32px',
+              height: '32px',
+              display: 'flex',
+              justifyContent: 'center',
+              borderRadius: '50%',
+              background: '#2C83EA',
+              position: 'relative'
+            }}>
+            <span
+              style={{display: 'inline-block', position: 'relative', color: 'white', margin: 'auto 0'}}>{text}</span>
+            </div>: <div style={{
+              width: '32px',
+              height: '32px',
+              display: 'flex',
+              justifyContent: 'center',
+              borderRadius: '50%',
+              background: '#FAFAFA',
+              border: '1px solid #080810',
+              position: 'relative'
+            }}>
+            <span
+              style={{display: 'inline-block', position: 'relative', color: '#080810', margin: 'auto 0'}}>{text}</span>
+            </div>}
+          </>
+
+        );
       }
     },
     {
@@ -42,8 +68,8 @@ export default function Validator() {
       render: (text: any, record: any) => {
         return (
           <div className="flex flex-row">
-            {record.referralId}
-            {record.isTrust === true ? <TrustTag/> : ''}
+            <Normal state={(record.referralId) ? (record.referralId) : '-'}/>
+            <Normal state={record.isTrust === true ? <TrustTag/> : ''}/>
           </div>);
       }
     },
@@ -62,7 +88,7 @@ export default function Validator() {
       key: 'Self Bonded',
       render: (text: any, record: any) => {
         return (
-          <div>{record.selfBonded}</div>
+          <Normal state={(record.selfBonded) ? (record.selfBonded) : '-'}/>
         );
       },
       sorter: (a: any, b: any) => {
@@ -75,7 +101,7 @@ export default function Validator() {
       key: 'Nominations',
       render: (text: any, record: any) => {
         return (
-          <div>{record.totalNomination}</div>);
+          <Normal state={(record.totalNomination) ? (record.totalNomination) : '-'}/>)
       },
       sorter: (a: any, b: any) => {
         return a.totalNomination - b.totalNomination
@@ -87,7 +113,7 @@ export default function Validator() {
       key: 'Balance',
       render: (text: any, record: any) => {
         return (
-          <div>{record.rewardPotBalance}</div>);
+          <Normal state={(record.rewardPotBalance) ? (record.rewardPotBalance) : '-'}/>)
       },
       sorter: (a: any, b: any) => {
         return a.rewardPotBalance - b.rewardPotBalance
@@ -129,6 +155,7 @@ export default function Validator() {
     total: validatorTotal,
     showSizeChanger: true,
     showQuickJumper: true,
+    hideOnSinglePage:true,
     onChange: (page: number, pageSize: number) => onChange(page, pageSize),
     showTotal: (validatorTotal: number) => `${t('total')} ${validatorTotal} ${t('items')}`
   };

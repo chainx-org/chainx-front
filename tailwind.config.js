@@ -36,6 +36,8 @@ module.exports = {
         light: "#777777",
         dark: "#504862",
         darker: "#272233",
+        textColor:'rgba(0, 0, 0, 0.85)',
+        titleColor:'#080810'
       },
       white: {
         light: "#ffffff",
@@ -118,7 +120,7 @@ module.exports = {
     customForms: (theme) => ({
       default: {
         input: {
-          backgroundColor: theme("colors.gray.900"),
+          backgroundColor: theme("colors.gray.1150"),
           "&::placeholder": {
             color: theme("colors.gray.500"),
             opacity: "1",
@@ -351,6 +353,7 @@ module.exports = {
     },
     screens: {
       screen: { min: "0px", max: "900px" },
+      medium: {min:'900px',max:'1150px'},
       desktop: { min: "900px" },
     },
     bottom: {

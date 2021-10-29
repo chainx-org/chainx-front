@@ -59,7 +59,7 @@ export const NavLink = styled.div`
   justify-content: space-between;
   height: 3rem;
   line-height: 3rem;
-  @media screen and (max-width: 900px) {
+  @media screen and (max-width: 1150px) {
     display: none;
   }
 `;

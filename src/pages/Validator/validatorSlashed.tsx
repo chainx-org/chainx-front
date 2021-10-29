@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import React, { useEffect, useState } from 'react';
 import TableX from '../../components/Table';
 import { get } from '../../hooks/useApi';
-import { LinkX, ShorterLink } from '../../components/LinkX';
+import { LinkX, Normal, ShorterLink } from '../../components/LinkX';
 import TrustTag from '../../components/TrustTag';
 
 
@@ -47,7 +47,7 @@ export default function ValidatorSlashed() {
       key: 'Count',
       render: (text: any, record: any) => {
         return (
-          <div>{record.missed}</div>);
+            <Normal state={(record.missed) ? (record.missed) : '-'}/>)
       }
     }
   ];
@@ -69,6 +69,7 @@ export default function ValidatorSlashed() {
     total: missedTotal,
     showSizeChanger: true,
     showQuickJumper: true,
+    hideOnSinglePage:true,
     onChange: (page: number, pageSize: number) => onChange(page, pageSize),
     showTotal: (missedTotal: number) => `${t('total')} ${missedTotal} ${t('items')}`
   };

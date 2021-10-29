@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next';
 import { TabInfo } from '../../components/SwitchTab';
 import { CardTitle } from '../../components/CardBox/style';
 import mining from '../../assets/icon_mining.svg';
-import { CardDiv, Container, RightLine, WrapperBridge } from './style';
+import { BottomLine, CardDiv, RightLine, WrapperBridge } from './style';
 import { reName } from '../../helper/hooks';
 import BitcoinBlock from './block';
 import Deposit from './deposit';
@@ -17,34 +17,28 @@ import Claim from './claim';
 import { get } from '../../hooks/useApi';
 import MyEchart from './myEcharts';
 import { ShorterLink } from '../../components/LinkX';
-import distributionIcon from '../../assets/icon_Mining_rate.svg'
-import bridgeIcon from '../../assets/icon_bridge.svg'
-
-const Wrapper = styled.div`
-    background: #FFFFFF;
-    box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.04);
-    border-radius: 10px;
-    border: 1px solid #E9E9E9;
-  `;
+import distributionIcon from '../../assets/icon_Mining_rate.svg';
+import bridgeIcon from '../../assets/icon_bridge.svg';
+import { WrapperBgWhite, WrapperWith } from '../../css/Wrapper';
 
 const BridgeWrapper = styled.div`
-    display: grid;
-    grid-template-columns: 59% 39%;
-    grid-gap: 1rem;
-    place-content: space-around space-evenly;
-    position: relative;
-    margin-bottom: 2rem;
-    @media screen and (max-width: 900px) {
-      grid-template-columns: 100%;
-      padding: 1rem;
-      margin-bottom: 1rem;
+  display: grid;
+  grid-template-columns: 59% 39%;
+  grid-gap: 1rem;
+  place-content: space-around space-evenly;
+  position: relative;
+  margin-bottom: 2rem;
+  @media screen and (max-width: 900px) {
+    grid-template-columns: 100%;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    > div {
       > div {
-        > div {
-          font-size: 1.5rem !important;
-        }
+        font-size: 1.5rem !important;
       }
     }
-  `;
+  }
+`;
 export default function CrossBlock() {
   const {t} = useTranslation();
 
@@ -71,57 +65,58 @@ export default function CrossBlock() {
     {
       title: t('Host'),
       content: <Host/>,
-      name:'host'
+      name: 'host'
 
     },
     {
       title: t('Claim'),
       content: <Claim/>,
-      name:'claim'
+      name: 'claim'
     }
   ];
-  const [mingApiData, setMingApiData] = useState<any>([{
-    name: t('Total Balance'),
+  const [mingApiData, setMingApiData] = useState<any>([[{
+    name: 'Total Balance',
     data: '-'
   }, {
-    name: t('Total Weight'),
+    name: 'Total Weight',
+    data: '-'
+  }], [{
+    name: 'Reward Pot Last Update Height(PCX)',
     data: '-'
   }, {
-    name: t('Reward Pot Last Update Height(PCX)'),
+    name: 'Mining Power(PCX)',
+    data: '-'
+  }], [{
+    name: 'Equivalent Nominations(PCX)',
     data: '-'
   }, {
-    name: t('Mining Power(PCX)'),
+    name: 'Reward Pot Balance(PCX)',
     data: '-'
-  }, {
-    name: t('Equivalent Nominations(PCX)'),
-    data: '-'
-  }, {
-    name: t('Reward Pot Balance(PCX)'),
-    data: '-'
-  }]);
-  const [rewardPot,setRewardPot] = useState('')
+  }]]);
+  const [rewardPot, setRewardPot] = useState('');
   const getData = async () => {
     const {items}: any = await get(`/crossblocks/deposit_mine?page=0&page_size=20`, ``);
-    setMingApiData([{
-      name: t('Total Balance'),
-      data: (items[0]?.balance?.Usable) / 1000000
-    }, {
-      name: t('Total Weight'),
-      data: items[0]?.lastTotalMiningWeight / 1000000
-    }, {
-      name: t('Reward Pot Last Update Height(PCX)'),
-      data: items[0]?.lastTotalMiningWeightUpdate
-    }, {
-      name: t('Mining Power(PCX)'),
-      data: items[0]?.miningPower
-    }, {
-      name: t('Equivalent Nominations(PCX)'),
-      data: items[0]?.equivalent_nominations
-    }, {
-      name: t('Reward Pot Balance(PCX)'),
-      data: items[0]?.rewardPotBalance
-    }]);
-    setRewardPot(items[0]?.rewardPot)
+    setMingApiData([
+      [{
+        name: 'Total Balance',
+        data: (items[0]?.balance?.Usable) / 1000000
+      }, {
+        name: 'Total Weight',
+        data: items[0]?.lastTotalMiningWeight / 1000000
+      }], [{
+        name: 'Reward Pot Last Update Height(PCX)',
+        data: items[0]?.lastTotalMiningWeightUpdate
+      }, {
+        name: 'Mining Power(PCX)',
+        data: items[0]?.miningPower
+      }], [{
+        name: 'Equivalent Nominations(PCX)',
+        data: items[0]?.equivalent_nominations
+      }, {
+        name: 'Reward Pot Balance(PCX)',
+        data: items[0]?.rewardPotBalance
+      }]]);
+    setRewardPot(items[0]?.rewardPot);
   };
   useEffect(() => {
     getData();
@@ -139,13 +134,13 @@ export default function CrossBlock() {
   return (
     <>
       <Header showSearch={true}/>
-      <Wrapper className="px-24 py-4 bg-gray-bgWhite screen:px-4">
+      <WrapperBgWhite className="px-24 py-4 screen:px-4">
         <BridgeWrapper>
-          <Wrapper>
+          <WrapperWith>
             <CardTitle>
-              <div className="flex flex-row" >
+              <div className="flex flex-row">
                 <img src={mining} alt=""/>
-                <span className="ml-4" style={{fontSize: '14px'}}>{t('Deposit Mining')}</span>
+                <span className="ml-4 text-base text-black-titleColor font-medium">{t('Deposit Mining')}</span>
               </div>
             </CardTitle>
             <div className="flex flex-row w-overSpread justify-between px-8 py-4">
@@ -155,45 +150,97 @@ export default function CrossBlock() {
               </div>
               <div className="flex flex-col">
                 <span style={{fontSize: '14px', color: 'rgba(0, 0, 0, 0.45)'}}>{t('Reward Pot Address(PCX)')}</span>
-                <span style={{fontSize: '18px', fontWeight: 'bold'}}><ShorterLink linkUrl={`/addressDetails/${rewardPot}`} content={rewardPot}/></span>
+                <span style={{fontSize: '18px', fontWeight: 'bold'}}><ShorterLink
+                  linkUrl={`/addressDetails/${rewardPot}`} content={rewardPot}/></span>
               </div>
             </div>
             <WrapperBridge>
               {mingApiData?.map((item: any, index: any) => {
                 return (
-                  <CardDiv key={index}>
-                    <Container className={'container-div'}>
-                      <div className="flex flex-col justify-start my-auto ">
+                  <>
+                    <div className="itemThree">
+                      <div className="flex flex-col">
+                        <CardDiv>
+                          <div className="flex flex-col justify-start my-auto ">
                         <span className="name"
-                              style={{fontSize: '14px', color: 'rgba(0, 0, 0, 0.45)'}}>{item.name}</span>
-                        <span className="date" style={{fontSize: '18px', fontWeight: 'bold'}}>{reName(item.data)}</span>
+                              style={{
+                                fontSize: '14px',
+                                color: 'rgba(0, 0, 0, 0.45)'
+                              }}>{t(`${item[0]?.name}`)}</span>
+                            <span className="date"
+                                  style={{fontSize: '18px', fontWeight: 'bold'}}>{reName(item[0]?.data)}</span>
+                          </div>
+                        </CardDiv>
+                        <BottomLine/>
+                        <CardDiv>
+                          <div className="flex flex-col justify-start my-auto ">
+                        <span className="name"
+                              style={{
+                                fontSize: '14px',
+                                color: 'rgba(0, 0, 0, 0.45)'
+                              }}>{t(`${item[1]?.name}`)}</span>
+                            <span className="date"
+                                  style={{fontSize: '18px', fontWeight: 'bold'}}>{reName(item[1]?.data)}</span>
+                          </div>
+                        </CardDiv>
                       </div>
-                    </Container>
-                    {/*<RightLine className={'line-div'}/>*/}
-                  </CardDiv>);
+                      <RightLine/>
+                    </div>
+                    <div className="itemTwo">
+                      <div className="flex flex-row">
+                        <CardDiv>
+                          <div className="flex flex-col justify-start my-auto ">
+                        <span className="name"
+                              style={{
+                                fontSize: '14px',
+                                color: 'rgba(0, 0, 0, 0.45)'
+                              }}>{t(`${item[0]?.name}`)}</span>
+                            <span className="date"
+                                  style={{fontSize: '18px', fontWeight: 'bold'}}>{reName(item[0]?.data)}</span>
+                          </div>
+                        </CardDiv>
+                        <RightLine/>
+                        <CardDiv>
+                          <div className="flex flex-col justify-start my-auto ">
+                        <span className="name"
+                              style={{
+                                fontSize: '14px',
+                                color: 'rgba(0, 0, 0, 0.45)'
+                              }}>{t(`${item[1]?.name}`)}</span>
+                            <span className="date"
+                                  style={{fontSize: '18px', fontWeight: 'bold'}}>{reName(item[1]?.data)}</span>
+                          </div>
+                        </CardDiv>
+                      </div>
+                    </div>
+                  </>
+
+                );
               })}
             </WrapperBridge>
-          </Wrapper>
-          <Wrapper>
+          </WrapperWith>
+          <WrapperWith>
             <CardTitle>
-              <div className="flex flex-row" >
+              <div className="flex flex-row">
                 <img src={distributionIcon} alt=""/>
-                <span className="ml-4" style={{fontSize: '14px'}}>{t('Mining Distribution')}</span>
+                <span className="ml-4 text-base text-black-titleColor font-medium">{t('Mining Distribution')}</span>
               </div>
             </CardTitle>
+            {/*<div className='w-20 h-13'>*/}
             <MyEchart/>
-          </Wrapper>
+            {/*</div>*/}
+          </WrapperWith>
         </BridgeWrapper>
-        <Wrapper>
+        <WrapperWith>
           <CardTitle>
-            <div className="flex flex-row" >
+            <div className="flex flex-row">
               <img src={bridgeIcon} alt=""/>
-              <span className="ml-4" style={{fontSize: '14px'}}>{t('Bitcoin Bridge')}</span>
+              <span className="ml-4 text-base text-black-titleColor font-medium">{t('Bitcoin Bridge')}</span>
             </div>
           </CardTitle>
-          <TableMenuBox tabList={tabList}  currentTab={currentTab} setCurrentTab={setCurrentTab} tag={tag}/>
-        </Wrapper>
-      </Wrapper>
+          <TableMenuBox tabList={tabList} currentTab={currentTab} setCurrentTab={setCurrentTab} tag={tag}/>
+        </WrapperWith>
+      </WrapperBgWhite>
       <Footer/>
     </>
   );

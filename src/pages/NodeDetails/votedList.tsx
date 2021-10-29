@@ -1,10 +1,8 @@
 import { useTranslation } from 'react-i18next';
 import React, { useEffect, useState } from 'react';
-import { LinkX, ShorterLink } from '../../components/LinkX';
+import { LinkX, Normal } from '../../components/LinkX';
 import TimeStatus from '../../components/TimeStatus';
-import waitIcon from '../../assets/icon_waiting.svg';
 import { get } from '../../hooks/useApi';
-import Operation from '../../components/Operation';
 import TableX from '../../components/Table';
 
 
@@ -39,8 +37,7 @@ function VotedList() {
       key: 'address',
       render: (text: any, record: any) => {
         return (
-          <div>{record[1].data[1]}</div>
-        );
+          <Normal state={(record[1].data[1]) ? (record[1].data[1]) : '-'}/>)
       }
     },
     {
@@ -49,7 +46,7 @@ function VotedList() {
       key: 'address',
       render: (text: any, record: any) => {
         return (
-          <div>{record[1].phase.value}</div>
+          <Normal state={(record[1].phase.value) ? (record[1].phase.value) : '-'}/>
         );
       }
     },
@@ -77,7 +74,7 @@ function VotedList() {
       key: 'extrinsic',
       render: (text: any, record: any) => {
         return (
-          <div>{record[1].data[3]/10000000}</div>
+          <Normal state={(record[1].data[3]/10000000) ? (record[1].data[3]/10000000) : '-'}/>
         );
       }
     }
@@ -101,6 +98,7 @@ function VotedList() {
     total: eventTotal,
     showSizeChanger: true,
     showQuickJumper: true,
+    hideOnSinglePage:true,
     onChange: (page: number, pageSize: number) => onChange(page, pageSize),
     showTotal: (eventTotal: number) => `${t('total')} ${eventTotal} ${t('items')}`
   };

@@ -118,6 +118,7 @@ export default function Event({block, extrinsic}: EventProps) {
     total: eventTotal,
     showSizeChanger: true,
     showQuickJumper: true,
+    hideOnSinglePage:true,
     onChange: (page: number, pageSize: number) => onChange(page, pageSize),
     showTotal: (eventTotal: number) => `${t('total')} ${eventTotal} ${t('items')}`
   };

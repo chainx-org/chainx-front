@@ -8,19 +8,21 @@ import { message } from 'antd';
 import { useTranslation } from 'react-i18next';
 
 const ImgContent = styled.div`
-      display: flex;
-      flex-direction: row;
-      position: relative;
-      > a {
-        display: inline-block;
-      }
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  margin: auto 0;
 
-      .weChatImg {
-        cursor: pointer;
-      }
+  > a {
+    display: inline-block;
+  }
 
-      .wechatHover img {
-        display: none;
+  .weChatImg {
+    cursor: pointer;
+  }
+
+  .wechatHover img {
+    display: none;
       }
 
       .wechatHoverImg {
@@ -51,7 +53,7 @@ function Footer(): React.ReactElement {
 
     return (
       <div
-        style={{bottom:'0px'}}
+        style={{bottom:'0px',zIndex:99}}
         className="w-overSpread bottom-0 flex bg-topBar-black mt-29 desktop:px-7 desktop:fixed desktop:flex-row desktop:justify-between screen:flex-col screen:items-center">
         <div className="flex flex-row screen:flex-col">
           <ImgContent>
@@ -71,7 +73,7 @@ function Footer(): React.ReactElement {
               <img src='https://i.postimg.cc/5tKzXDsK/twitter-2x.png' alt="" style={{width:'3rem'}}/>
             </a>
             <div className="weChatImg" >
-              <img src='https://i.postimg.cc/B6d1gH9x/wechat-2x.png' alt="" style={{width:'3rem'}}/>
+              <img src="https://i.postimg.cc/B6d1gH9x/wechat-2x.png" alt="" style={{width: '3rem'}}/>
             </div>
             <div className="wechatHover">
               <img src={wechatImg} alt=""/>
@@ -81,8 +83,9 @@ function Footer(): React.ReactElement {
             </div>
 
           </ImgContent>
-          <div className={'text-topBar-white mx-0 my-auto bg-opacity-38'} style={{textAlign:'center'}}>All rights reserved © 2019
-            ChainX
+          <div className={'text-topBar-white mx-0 my-auto'}
+               style={{textAlign: 'center', opacity: '38%', fontSize: '14px', marginLeft: '3rem'}}>All rights reserved ©
+            2019 ChainX
           </div>
         </div>
         <div className="flex flex-row screen:flex-col">

@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import React, { useEffect, useState } from 'react';
 import TableX from '../../components/Table';
 import { get } from '../../hooks/useApi';
-import { LinkX, ShorterLink } from '../../components/LinkX';
+import { LinkX, Normal, ShorterLink } from '../../components/LinkX';
 import TrustTag from '../../components/TrustTag';
 
 
@@ -47,11 +47,10 @@ export default function StandBy() {
       key: 'Self Bonded',
       render: (text: any, record: any) => {
         return (
-          <div>{record.selfBonded}</div>
-        );
+          <Normal state={(record.selfBonded) ? (record.selfBonded) : '-'}/>);
       },
       sorter: (a: any, b: any) => {
-        return a.selfBonded - b.selfBonded
+        return a.selfBonded - b.selfBonded;
       }
     },
     {
@@ -60,10 +59,10 @@ export default function StandBy() {
       key: 'Nominations',
       render: (text: any, record: any) => {
         return (
-          <div>{record.totalNomination}</div>);
+          <Normal state={(record.totalNomination) ? (record.totalNomination) : '-'}/>);
       },
       sorter: (a: any, b: any) => {
-        return a.totalNomination - b.totalNomination
+        return a.totalNomination - b.totalNomination;
       }
     },
     {
@@ -72,10 +71,12 @@ export default function StandBy() {
       key: 'Balance',
       render: (text: any, record: any) => {
         return (
-          <div>{record.rewardPotBalance}</div>);
+
+          <Normal state={(record.rewardPotBalance) ? (record.rewardPotBalance) : '-'}/>);
+
       },
       sorter: (a: any, b: any) => {
-        return a.rewardPotBalance - b.rewardPotBalance
+        return a.rewardPotBalance - b.rewardPotBalance;
       }
     },
     {
@@ -84,8 +85,8 @@ export default function StandBy() {
       key: 'Mining',
       render: (text: any, record: any) => {
         return (
-        <LinkX linkUrl={`/blockDetails/${record.lastTotalVoteWeightUpdate}`}
-               content={record.lastTotalVoteWeightUpdate}/>
+          <LinkX linkUrl={`/blockDetails/${record.lastTotalVoteWeightUpdate}`}
+                 content={record.lastTotalVoteWeightUpdate}/>
         );
       }
     }
@@ -98,7 +99,7 @@ export default function StandBy() {
   }
 
   useEffect(() => {
-    getUnsettledData().then()
+    getUnsettledData().then();
   }, [page, pageSize]);
 
   const pagination = {
@@ -108,6 +109,7 @@ export default function StandBy() {
     total: unsettledTotal,
     showSizeChanger: true,
     showQuickJumper: true,
+    hideOnSinglePage: true,
     onChange: (page: number, pageSize: number) => onChange(page, pageSize),
     showTotal: (unsettledTotal: number) => `${t('total')} ${unsettledTotal} ${t('items')}`
   };

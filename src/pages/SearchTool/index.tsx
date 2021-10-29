@@ -32,10 +32,7 @@ export default function Tools() {
     if (nowSearch === 'Event') {
       try {
         let res: any = await get(`/search/${inputValue}?page=${page}&page_size=${pageSize}`, ``);
-        debugger
-
         setListValue(res);
-        debugger
         setLoading(false);
       }catch (e) {
         setIsCorrectValue('No Data');

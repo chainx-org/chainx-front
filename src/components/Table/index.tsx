@@ -4,7 +4,7 @@ import { Table } from 'antd';
 
 interface TableXProps {
   columns: Array<any>,
-  dataList?: Array<any>,
+  dataList: Array<any>,
   pagination?: Object,
   Children?: any,
   loading?: any,
@@ -21,10 +21,15 @@ interface TableXProps {
 }
 
 export default function TableX({Children, columns, dataList, pagination,loading,rowKey,expandedRowRender,rowExpandable,expandIcon}: TableXProps) {
-
+  const emptyDiv = ()=>{
+    return (
+      <div style={{height:'10rem'}}> </div>
+    )
+  }
   return (
     <div className="flex flex-col">
       <Table
+        locale={{emptyText: (dataList.length>0)?'': emptyDiv()}}
         columns={columns}
         dataSource={dataList}
         pagination={pagination}

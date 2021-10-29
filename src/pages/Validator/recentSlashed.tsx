@@ -64,6 +64,8 @@ export default function RecentSlashed() {
       key: 'Slash Amount',
       render: (text: any, record: any) => {
         return (
+
+
           <div>{record.data[1]}</div>);
       },
       sorter: (a: any, b: any) => {
@@ -90,6 +92,7 @@ export default function RecentSlashed() {
     total: recentSlashedTotal,
     showSizeChanger: true,
     showQuickJumper: true,
+    hideOnSinglePage:true,
     onChange: (page: number, pageSize: number) => onChange(page, pageSize),
     showTotal: (recentSlashedTotal: number) => `${t('total')} ${recentSlashedTotal} ${t('items')}`
   };

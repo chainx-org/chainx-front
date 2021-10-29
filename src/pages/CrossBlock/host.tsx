@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import React from 'react';
-import { ShorterLink } from '../../components/LinkX';
+import { Normal, ShorterLink } from '../../components/LinkX';
 import TimeStatus from '../../components/TimeStatus';
 import ChainxTable from '../../components/Table/table';
 
@@ -15,10 +15,7 @@ export default function Host() {
       key: 'Threshold',
       render: (text: any, record: any) => {
         return (
-          <div>
-            {record.threshold}
-          </div>
-        );
+          <Normal state={record.threshold}/>);
       }
     },
     {
@@ -37,7 +34,7 @@ export default function Host() {
       key: 'hotKey',
       render: (text: any, record: any) => {
         return (
-         <div>{record.hotPubkey}</div>);
+          <Normal state={record.hotPubkey}/>);
       }
     },
     {

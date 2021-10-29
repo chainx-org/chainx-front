@@ -15,15 +15,9 @@ import { encodeAddress } from '@polkadot/keyring';
 import decodeAddress from '../../helper/encodeAddress';
 import TrustTag from '../../components/TrustTag';
 import { reName } from '../../helper/hooks';
-
+import {Wrapper} from '../../css/Wrapper'
 const {hexToU8a, isHex} = require('@polkadot/util');
 
-const Wrapper = styled.div`
-    background: #FFFFFF;
-    box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.04);
-    border-radius: 10px;
-    border: 1px solid #E9E9E9;
-  `;
 export default function NodeDetails() {
 
   const {t} = useTranslation();
@@ -86,7 +80,7 @@ export default function NodeDetails() {
     {
       title: t('NikeName'),
       content: (
-        <div className="text-black-dark">
+        <div className="font-medium text-gray-arrow ">
           <div className='flex flex-row'>
             <span>{addressDetails?.referralId}</span>{(addressDetails?.isValidating)?<TrustTag/>:'-'}</div>
         </div>
@@ -95,7 +89,7 @@ export default function NodeDetails() {
     {
       title: t('Account'),
       content: (
-        <div className="text-black-dark">
+        <div className="font-medium text-gray-arrow ">
           {reName(addressDetails?.account)}
         </div>)
     },
@@ -109,20 +103,20 @@ export default function NodeDetails() {
     {
       title: t('Jackpot Address'),
       content: (
-        <div className="text-black-dark">{addressDetails?.rewardPotAccount}</div>
+        <div className="font-medium text-gray-arrow ">{addressDetails?.rewardPotAccount}</div>
       ),
     },
     {
       title: t('Missed Blocks'),
       content: (
-        <div className="text-black-dark">
+        <div className="font-medium text-gray-arrow ">
           {(addressDetails?.missed)?(addressDetails?.missed):'0'}
         </div>
       ),
     },{
       title: t('Self Bonded'),
       content: (
-        <div className="text-black-dark">
+        <div className="font-medium text-gray-arrow ">
           {reName(addressDetails?.selfBonded)}
         </div>
       ),
@@ -130,7 +124,7 @@ export default function NodeDetails() {
     {
       title: t('Total Nominations'),
       content: (
-        <div className="text-black-dark">
+        <div className="font-medium text-gray-arrow ">
           {addressDetails?.totalNomination}
         </div>
       ),
@@ -138,18 +132,18 @@ export default function NodeDetails() {
     // {
     //   title: t('Authored Blocks'),
     //   content:
-    //     <div className="text-black-dark">
+    //     <div className="font-medium text-gray-arrow ">
     //       {reName(addressDetails?.totalNomination)}
     //     </div>,
     // },
     {
       title: t('Vote Weight Last Update'),
-      content: <div className="text-black-dark">
+      content: <div className="font-medium text-gray-arrow ">
         {addressDetails?.lastTotalVoteWeightUpdate}
       </div>,
     }, {
       title: t('Total Weight'),
-      content: <div className="text-black-dark">
+      content: <div className="font-medium text-gray-arrow ">
         {reName(addressDetails?.lastTotalVoteWeight)}
       </div>,
     }
@@ -164,8 +158,8 @@ export default function NodeDetails() {
   ];
   const routerPath = () => {
     return (<div className="flex flex-row cursor-pointer text-gray-white">
-      <Link to={'/'} style={{color:'rgba(255, 255, 255, 0.65)'}}>{t('Home')}/</Link>
-      <Link to={'/validators'} style={{color:'rgba(255, 255, 255, 0.65)'}}>{t('Chain')}/ </Link>
+      <Link to={'/'} style={{color:'rgba(255, 255, 255, 0.65)'}}>{t('Home')}<span className='inline-block mx-2'>/</span></Link>
+      <Link to={'/validators'} style={{color:'rgba(255, 255, 255, 0.65)'}}>{t('Chain')}<span className='inline-block mx-2'>/</span></Link>
       <Link to={`./${node}`}>{t('NodeDetails')}</Link>
     </div>);
   };
@@ -180,7 +174,7 @@ export default function NodeDetails() {
                          routePath={routerPath}/>
           </div>
           <List list={list} loading={loading}/>
-          <div className="px-24 pb-16 bg-gray-bgWhite screen:px-4">
+          <div className="px-24 pb-4 bg-gray-bgWhite screen:px-4">
             <Wrapper>
               <TableMenuBox tabList={tabList} currentTab={currentTab} setCurrentTab={setCurrentTab} tag={tag} />
             </Wrapper>

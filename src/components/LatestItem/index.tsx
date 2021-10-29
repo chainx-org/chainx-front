@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
-import { LinkX, Shorter, ShorterLink } from '../../components/LinkX';
+import { LinkX, ShorterLink } from '../../components/LinkX';
 import Operation from '../Operation';
 import TimeStatus from '../TimeStatus';
 
@@ -18,7 +18,7 @@ const ItemContainer = styled.div`
   background: #FFFFFF;
   box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.04);
   border-radius: 10px;
-  @media screen and (max-width: 900px) {
+  @media screen and (max-width: 1150px) {
     font-size: 14px;
     > div {
       > span {
@@ -33,9 +33,9 @@ const LatestItemBox = styled.div`
   display: flex;
   flex-direction: column;
   padding: 16px;
-  @media screen and (max-width: 900px) {
+  @media screen and (max-width: 1150px) {
     font-size: 12px !important;
-    width: 21.5rem;
+    //width: 21.5rem;
     > div {
       > span {
         font-size: 16px;
@@ -65,16 +65,18 @@ export default function LatestItem({title, icon, ListData}: LatestItemPop) {
           ListData?.map((item, index) => {
             return (
               <div className="px-4" key={index}>
-                <div className="flex flex-row justify-start py-3" style={{borderBottom: '1px solid #E9E9E9'}}>
+                <div className="flex flex-row justify-start py-3 overflow-scroll"
+                     style={{borderBottom: '1px solid #E9E9E9'}}>
                   <div className="latestDiv">
                     <span>BX</span>
                   </div>
                   <div className="flex flex-col justify-start ml-4 w-overSpread">
                     <div className=" flex flex-row justify-between text-homeText-gray text-homeText-gray">
-                      <LinkX linkUrl={`/blockDetails/${item.number}`} content={item.number} style={{fontSize:'16px'}}/>
+                      <LinkX linkUrl={`/blockDetails/${item.number}`} content={item.number} style={{fontSize: '16px'}}/>
                       <div className="flex flex-row">
                         <div className="inline-block mr-1">{t('Validator')}</div>
-                        <LinkX linkUrl={`/nodeDetails/${item.address}`} content={item.nikename} style={{fontSize:'16px'}}/>
+                        <LinkX linkUrl={`/nodeDetails/${item.address}`} content={item.nikename}
+                               style={{fontSize: '16px'}}/>
                       </div>
                     </div>
                     <div className="flex flex-row justify-between text-homeText-gray">
@@ -96,25 +98,27 @@ export default function LatestItem({title, icon, ListData}: LatestItemPop) {
           : ListData?.map((item, index) => {
             return (
               <div className="px-4" key={index}>
-                <div className="flex flex-row justify-start py-3" style={{borderBottom: '1px solid #E9E9E9'}}>
+                <div className="flex flex-row justify-start py-3 overflow-scroll"
+                     style={{borderBottom: '1px solid #E9E9E9'}}>
                   <div className="latestDiv">
                     <span>TX</span>
                   </div>
                   <div className="flex flex-col justify-start ml-4 w-overSpread">
                     <div className="flex flex-row justify-between text-homeText-gray text-homeText-gray">
-                      <ShorterLink linkUrl={`/extrinsicDetails/${item.hash}`} content={item.hash} style={{fontSize:'16px'}}/>
+                      <LinkX linkUrl={`/extrinsicDetails/${item.hash}`}
+                                   content={(item?.indexer?.blockHeight)?(item?.indexer?.blockHeight):'' + '-' + (item?.indexer?.index)?(item?.indexer?.index):''}
+                                   style={{fontSize: '16px'}}/>
                       <div className="flex flex-row">
-                        <Operation mini={true} content={item.name + '-' + item.section} more={true}/>
+                        <ShorterLink linkUrl={`/extrinsicDetails/${item.hash}`} content={item.hash}/>
                         {/*<img src={iconImg} alt="" style={{width: '12px', height: '12px'}}/>*/}
                       </div>
                     </div>
                     <div className="flex flex-row justify-between text-homeText-gray">
                       <div>
-                        <span>{item.section}</span>
-                        <span>{t('type')}{item.type}</span>
+                        <Operation mini={true} content={(item.section)?(item.section):'' + '-' + (item.name)?(item.name):''} more={true}/>
                       </div>
                       <div>
-                        <Shorter linkUrl={`/addressDetails/${item.signer}`} content={item.signer} style={{fontSize:'16px'}}/>
+                        <TimeStatus content={item?.indexer?.blockTime}/>
                       </div>
                     </div>
                   </div>
