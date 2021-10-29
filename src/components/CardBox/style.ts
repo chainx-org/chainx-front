@@ -26,6 +26,9 @@ export const CardTitle = styled.div`
   & > span {
     display: inline-block;
     margin-left: 1rem;
+    font-size: 16px;
+    font-weight: 500;
+    color: #080810;
   }
 `;
 export const SpliteLine = styled.div`

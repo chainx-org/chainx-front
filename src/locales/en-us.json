@@ -151,7 +151,14 @@
     "Search Extrinsic": "Search Extrinsic",
     "Enter the address or public key for conversion": "Enter the address or public key for conversion",
     "Enter the Event or Extrinsic for conversion": "Enter the Event or Extrinsic for conversion",
-    "Total Nominations": "Total Nominations"
-
+    "Total Nominations": "Total Nominations",
+    "Finalized Block": "Finalized Block",
+    "Latest Block": "Latest Block",
+    "Total Extrinsics": "Total Extrinsics",
+    "Total Accounts": "Total Accounts",
+    "Transfer Count": "Transfer Count",
+    "Total Validators": "Total Validators",
+    "Total Issuance(PCX)": "Total Issuance(PCX)",
+    "Turnout": "Turnout"
 }
 

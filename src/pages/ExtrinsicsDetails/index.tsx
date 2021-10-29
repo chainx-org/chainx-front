@@ -3,7 +3,6 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
 import { get } from '../../hooks/useApi';
-import styled from 'styled-components';
 import Event from '../Chain/event';
 import List from '../../components/List';
 import Header from '../../components/Header';
@@ -17,7 +16,7 @@ import Operation from '../../components/Operation';
 import CopyText from '../../components/copyText';
 import successIcon from '../../assets/icon_success.svg';
 import NoData from '../../components/NoData';
-import {Wrapper} from '../../css/Wrapper'
+import { ListBgColor, WrapperDetails, WrapperList } from '../../css/Wrapper';
 
 export default function ExtrinsicDetails() {
 
@@ -48,16 +47,16 @@ export default function ExtrinsicDetails() {
     getData();
     // }
   }, []);
-  useEffect(()=>{
-    
+  useEffect(() => {
+
     const activeTab = sessionStorage.getItem(tag)
-    if(activeTab){
+    if (activeTab) {
       setCurrentTab(activeTab)
-    }else{
+    } else {
       setCurrentTab('event')
     }
 
-  },[])
+  }, [])
   const list = [
     {
       title: t('Block'),
@@ -86,8 +85,8 @@ export default function ExtrinsicDetails() {
     },
     {
       title: t('Operation'),
-      align:'right',
-      width:'15rem',
+      align: 'right',
+      width: '15rem',
       content: (
         <Operation content={extrinsicDetails?.section + '-' + extrinsicDetails?.name} more={false} left={true}/>
       ),
@@ -131,35 +130,41 @@ export default function ExtrinsicDetails() {
     {
       title: t('Event'),
       content: <Event extrinsic={extrinsic}/>,
-      name:'event'
+      name: 'event'
     }
   ];
   const routerPath = () => {
-    return (<div className="flex flex-row cursor-pointer text-gray-white">
-      <Link to={'/'} style={{color:'rgba(255, 255, 255, 0.65)'}}>{t('Home')}<span className='inline-block mx-2'>/</span></Link>
-      <Link to={'/chain/extrinsic'} style={{color:'rgba(255, 255, 255, 0.65)'}}>{t('Extrinsic')}<span className='inline-block mx-2'>/</span></Link>
+    return (<div className="flex flex-row cursor-pointer text-gray-white text-base mx-0 my-auto">
+      <Link to={'/'} style={{color: 'rgba(255, 255, 255, 0.65)'}}>{t('Home')}<span
+        className="inline-block mx-2">/</span></Link>
+      <Link to={'/chain/extrinsic'} style={{color: 'rgba(255, 255, 255, 0.65)'}}>{t('Extrinsic')}<span
+        className="inline-block mx-2">/</span></Link>
       <Link to={`./${extrinsic}`}>{t('ExtrinsicDetails')}</Link>
     </div>);
   };
   return (
     <>
       <Header showSearch={true}/>
+      <ListBgColor style={{height:'195px'}}/>
       {noData ?
         <NoData/> :
         <>
-          <div className="px-24 pt-8 bg-gray-arrow screen:px-4">
-            <DetailTitle routeTitle={t('Extrinsics')}
-                         content={extrinsicDetails?.indexer?.blockHeight + '-' + extrinsicDetails?.indexer?.index}
-                         isBlock={false} setNowBlock={extrinsic} routePath={routerPath}/>
-          </div>
-          <List list={list} loading={loading}/>
-          <div className="px-24 pb-4 bg-gray-bgWhite screen:px-4">
-            <Wrapper>
-              <TableMenuBox tabList={tabList} currentTab={currentTab} setCurrentTab={setCurrentTab} tag={tag}/>
-            </Wrapper>
-          </div>
-        </>}
-
+          <WrapperList>
+            <div className="px-24 pt-8 bg-gray-arrow screen:px-4">
+              <DetailTitle routeTitle={t('Extrinsics')}
+                           content={extrinsicDetails?.indexer?.blockHeight + '-' + extrinsicDetails?.indexer?.index}
+                           isBlock={false} setNowBlock={extrinsic} routePath={routerPath}/>
+            </div>
+            <List list={list} loading={loading}/>
+            <div className="px-24 pb-4 bg-gray-bgWhite screen:px-4">
+              <WrapperDetails>
+                <TableMenuBox tabList={tabList} currentTab={currentTab} setCurrentTab={setCurrentTab} tag={tag}/>
+              </WrapperDetails>
+            </div>
+          </WrapperList>
+        </>
+      }
       <Footer/>
-    </>);
+    </>
+  )
 }

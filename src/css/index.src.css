@@ -37,7 +37,7 @@
 }
 
 #root {
-  height: 100%;
+  /*height: 100%;*/
   background-color: #F5F5F5;
 }
 
@@ -48,21 +48,25 @@ html {
   'Noto Color Emoji';
 }
 
+body {
+  background-color: #F5F5F5;
+}
+
 .Container{
-  background: #FFFFFF;
-  box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.04);
-  border-radius: 10px;
-  border: 1px solid #E9E9E9;
+  /*background: #FFFFFF;*/
+  /*box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.04);*/
+  /*border-radius: 10px;*/
+  /*border: 1px solid #E9E9E9;*/
   padding:1.25rem 6rem 4rem 6rem;
 
 }
 
 @media screen and (max-width: 900px) {
    .Container{
-     background: #FFFFFF;
-     box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.04);
-     border-radius: 10px;
-     border: 1px solid #E9E9E9;
+     /*background: #FFFFFF;*/
+     /*box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.04);*/
+     /*border-radius: 10px;*/
+     /*border: 1px solid #E9E9E9;*/
      padding:1.25rem 1rem 4rem 1rem;
    }
 }
@@ -221,7 +225,7 @@ html {
 }
 .ant-input-group {
   background-color: white;
-  border-radius: 8px !important;
+  border-radius: 11px !important;
 }
 .ant-input-search > .ant-input-group > .ant-input-group-addon:last-child {
   left: 0;
@@ -252,8 +256,8 @@ html {
   background: #2C83EA;
   border-radius: 2px;
 }
-.ant-pagination-item-active a{
-  color:white;
+.ant-pagination-item-active a {
+  color: white !important;
 }
 .ant-select-single .ant-select-selector .ant-select-selection-item{
   color: rgba(0, 0, 0, 0.65);
@@ -265,20 +269,33 @@ html {
   color:white;
 }
 .ant-popover-content{
-  border: 1px solid #080810;
+  /*border: 1px solid #080810;*/
   border-radius:4px ;
 }
-.ant-popover-arrow-content{
+.ant-popover-arrow-content {
+  border: 1px solid #080810;
+  margin-top: 1px;
+}
+.ant-popover-inner-content {
+  padding: 5px 8px;
+  background: #FAFAFA;
+  color: #422D01;
+  border-radius: 4px;
   border: 1px solid #080810;
 }
-.ant-popover-inner-content{
-  padding: 5px 8px;
-  background: white;
-  color: #422D01;
-}
-.ant-table-pagination.ant-pagination{
+
+.ant-table-pagination.ant-pagination {
   font-size: 14px;
   font-weight: 400;
   color: rgba(0, 0, 0, 0.65);
 }
+
+.ant-skeleton-content .ant-skeleton-title + .ant-skeleton-paragraph {
+  margin-top: 0px !important;
+}
+
+.ant-skeleton-content .ant-skeleton-title {
+  margin-top: 0px !important;
+}
+
 @tailwind utilities;

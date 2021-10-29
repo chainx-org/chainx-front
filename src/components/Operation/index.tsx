@@ -13,7 +13,7 @@ const ContentBox = styled.div`
   box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.04);
   border-radius: 4px;
   border: 1px solid #E9E9E9;
-  padding: 0.25rem 0.5rem;
+  padding: 0.05rem 0.5rem;
 `;
 const ContentMiniBox = styled.div`
   background: #FFFFFF;

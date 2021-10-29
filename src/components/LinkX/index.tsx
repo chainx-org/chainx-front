@@ -58,7 +58,7 @@ export function ShorterLink({linkUrl, content, state,style}: LinkProps) {
     </div>
   );
   return (
-    <Popover content={popWithCopy} style={style}>
+    <Popover content={popWithCopy}  style={style}>
     <Link to={{
       pathname: linkUrl,
       state: state

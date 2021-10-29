@@ -5,7 +5,6 @@ import { get } from '../../hooks/useApi';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import TableMenuBox from '../../components/TableMenuBox';
-import styled from 'styled-components';
 import { TabInfo } from '../../components/SwitchTab';
 import DetailTitle from '../../components/DetailTitle';
 import { Link } from 'react-router-dom';
@@ -15,7 +14,8 @@ import { encodeAddress } from '@polkadot/keyring';
 import decodeAddress from '../../helper/encodeAddress';
 import TrustTag from '../../components/TrustTag';
 import { reName } from '../../helper/hooks';
-import {Wrapper} from '../../css/Wrapper'
+import { ExtrinWrapper, ListBgColor, Wrapper, WrapperDetails, WrapperList } from '../../css/Wrapper';
+
 const {hexToU8a, isHex} = require('@polkadot/util');
 
 export default function NodeDetails() {
@@ -157,7 +157,7 @@ export default function NodeDetails() {
     }
   ];
   const routerPath = () => {
-    return (<div className="flex flex-row cursor-pointer text-gray-white">
+    return (<div className="flex flex-row cursor-pointer text-gray-white text-base mx-0 my-auto">
       <Link to={'/'} style={{color:'rgba(255, 255, 255, 0.65)'}}>{t('Home')}<span className='inline-block mx-2'>/</span></Link>
       <Link to={'/validators'} style={{color:'rgba(255, 255, 255, 0.65)'}}>{t('Chain')}<span className='inline-block mx-2'>/</span></Link>
       <Link to={`./${node}`}>{t('NodeDetails')}</Link>
@@ -166,21 +166,22 @@ export default function NodeDetails() {
   return (
     <>
       <Header showSearch={true}/>
+      <ListBgColor style={{height:'195px'}}/>
       {noData ?
         <NoData/> :
-        <>
+        <WrapperList>
           <div className="px-24 pt-8 bg-gray-arrow screen:px-4">
             <DetailTitle routeTitle={t('Validator')} content={node} isBlock={false}
                          routePath={routerPath}/>
           </div>
           <List list={list} loading={loading}/>
           <div className="px-24 pb-4 bg-gray-bgWhite screen:px-4">
-            <Wrapper>
-              <TableMenuBox tabList={tabList} currentTab={currentTab} setCurrentTab={setCurrentTab} tag={tag} />
-            </Wrapper>
+            <WrapperDetails>
+              <TableMenuBox tabList={tabList} currentTab={currentTab} setCurrentTab={setCurrentTab} tag={tag}/>
+            </WrapperDetails>
           </div>
-        </>}
-
+        </WrapperList>
+      }
       <Footer/>
     </>);
 }

@@ -110,7 +110,7 @@ export default function AddressDetails() {
     }
   ];
   const routerPath = () => {
-    return (<div className="flex flex-row cursor-pointer text-gray-white">
+    return (<div className="flex flex-row cursor-pointer text-gray-white text-base mx-0 my-auto">
       <Link to={'/'} style={{color:'rgba(255, 255, 255, 0.65)'}}>{t('Home')}<span className='inline-block mx-2'>/</span></Link>
       <Link to={'/chain/extrinsic'} style={{color:'rgba(255, 255, 255, 0.65)'}}>{t('Chain')}<span className='inline-block mx-2'>/</span> </Link>
       <Link to={`./${address}`} >{t('AccountDetails')}</Link>
@@ -119,7 +119,7 @@ export default function AddressDetails() {
   return (
     <>
       <Header showSearch={true}/>
-      <ListBgColor/>
+      <ListBgColor style={{height:'195px'}}/>
       {noData ?
         <NoData/> :
         <WrapperList>
