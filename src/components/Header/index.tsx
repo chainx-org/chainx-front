@@ -47,9 +47,9 @@ export default function Header({showSearch}: HeaderPop) {
 
     // @ts-ignore
     return (
-      <div className='relative z-10'>
+      <div >
           <div className="flex flex-row justify-between bg-gray-arrow px-12 screen:px-4 screen:py-4">
-              <Wrapper>
+              <Wrapper className='relative z-10'>
                   <Link to="/"><img src={icon} alt="" style={{maxWidth:'none'}}/></Link>
                   <HeardLine></HeardLine>
                   <span className="pl-3 text-gray-white mr-9.5" style={{

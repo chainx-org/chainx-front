@@ -58,7 +58,7 @@ export default function AddressDetails() {
     // } else {
       getData().then(
       ).catch(() => {
-        console.log('find error');
+        // console.log('find error');
         setNoData(true);
       });
     // }
