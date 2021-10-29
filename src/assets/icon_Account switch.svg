@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>icon_Account switch</title>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="006-01-01SS58账号转换" transform="translate(-128.000000, -86.000000)">
+            <g id="编组-3" transform="translate(96.000000, 72.000000)">
+                <g id="icon_Account-switch" transform="translate(32.000000, 14.000000)">
+                    <rect id="矩形" stroke="#979797" fill="#D8D8D8" opacity="0" x="0.5" y="0.5" width="23" height="23"></rect>
+                    <g id="编组-12" transform="translate(1.500000, 1.500000)">
+                        <circle id="椭圆形" fill="#FFE403" cx="11.4821892" cy="7.62577057" r="5.25"></circle>
+                        <circle id="椭圆形" stroke="#080810" cx="9.48218918" cy="5.91554675" r="5.10139758"></circle>
+                        <path d="M15.4000093,13.6222287 C13.855932,12.1642587 11.773441,11.2704473 9.48218918,11.2704473 C4.72074632,11.2704473 0.860834237,15.1303594 0.860834237,19.8918022" id="路径" stroke="#080810" stroke-linecap="round"></path>
+                        <polyline id="路径-3" stroke="#080810" stroke-linecap="round" stroke-linejoin="round" points="11.6661072 15.3900824 21.7982712 15.3900824 17.8582077 12.5169443"></polyline>
+                        <polyline id="路径-3" stroke="#080810" stroke-linecap="round" stroke-linejoin="round" transform="translate(16.732189, 19.455233) scale(-1, -1) translate(-16.732189, -19.455233) " points="11.6661072 20.8918022 21.7982712 20.8918022 17.8582077 18.0186641"></polyline>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

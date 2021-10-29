@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>icon_mining</title>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="005-01验证节点" transform="translate(-128.000000, -84.000000)">
+            <g id="编组-3" transform="translate(96.000000, 72.000000)">
+                <g id="icon_mining" transform="translate(32.000000, 12.000000)">
+                    <rect id="矩形" stroke="#979797" fill="#D8D8D8" opacity="0" x="0.5" y="0.5" width="23" height="23"></rect>
+                    <g id="编组-7" transform="translate(1.000000, 0.673935)">
+                        <line x1="11.2193094" y1="3.80555973" x2="11.2193094" y2="0.805559728" id="路径-4" stroke="#080810" stroke-linecap="round"></line>
+                        <line x1="16.4795621" y1="5.21504018" x2="17.9795621" y2="2.61696397" id="路径-4" stroke="#080810" stroke-linecap="round"></line>
+                        <line x1="6.14206945" y1="4.89805288" x2="4.64206945" y2="2.29997667" id="路径-4" stroke="#080810" stroke-linecap="round"></line>
+                        <polygon id="矩形" fill="#FFE403" points="12.0324539 14.650329 18.5505116 14.650329 20.1243738 21.1683867 10.4585917 21.1683867"></polygon>
+                        <polygon id="矩形" stroke="#080810" stroke-linecap="round" stroke-linejoin="round" points="2.25536726 14.650329 8.77342502 14.650329 10.3472872 21.1683867 0.681505116 21.1683867"></polygon>
+                        <polygon id="矩形" stroke="#080810" stroke-linecap="round" stroke-linejoin="round" points="13.6020834 14.650329 20.1201412 14.650329 21.6940033 21.1683867 12.0282213 21.1683867"></polygon>
+                        <polygon id="矩形" stroke="#080810" stroke-linecap="round" stroke-linejoin="round" points="7.95443517 6.7332375 14.4724929 6.7332375 16.0463551 13.2512952 6.38057302 13.2512952"></polygon>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

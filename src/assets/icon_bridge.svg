@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="27px" viewBox="0 0 24 27" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>icon_bridge</title>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="005-01验证节点" transform="translate(-128.000000, -471.000000)">
+            <g id="Group-33" transform="translate(96.000000, 459.000000)">
+                <g id="icon_bridge" transform="translate(32.000000, 12.965710)">
+                    <rect id="矩形" stroke="#979797" fill="#D8D8D8" opacity="0" x="0.5" y="1.5" width="23" height="23"></rect>
+                    <g id="编组-7" transform="translate(0.000000, 0.673935)">
+                        <g id="编组-12" transform="translate(0.500000, 0.826065)">
+                            <rect id="矩形" fill="#FFE403" x="12.6883761" y="13.1972305" width="9.68713231" height="9.68713231" rx="2"></rect>
+                            <rect id="矩形" stroke="#080810" x="0.5" y="0.5" width="8.68713231" height="8.68713231" rx="2"></rect>
+                            <rect id="矩形" stroke="#080810" x="13.1883761" y="13.6972305" width="8.68713231" height="8.68713231" rx="2"></rect>
+                            <path d="M11.2526855,4.84356615 L11.2526855,4.84356615 L15.8441881,4.84356615 C16.9487576,4.84356615 17.8441881,5.73899665 17.8441881,6.84356615 L17.8441881,11.2286301 L17.8441881,11.2286301 M11.1584167,18.1564338 L11.1584167,18.1564338 L6.53132037,18.1564338 C5.42675087,18.1564338 4.53132037,17.2610033 4.53132037,16.1564338 L4.53132037,11.1442719 L4.53132037,11.1442719" id="形状" stroke="#080810" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

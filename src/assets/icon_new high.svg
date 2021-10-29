@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="33px" height="32px" viewBox="0 0 33 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>icon_new high</title>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="001首页" transform="translate(-445.000000, -423.000000)">
+            <g id="编组-9" transform="translate(96.000000, 392.000000)">
+                <g id="编组-7" transform="translate(311.250000, 0.000000)">
+                    <g id="icon_new-high" transform="translate(38.250000, 31.000000)">
+                        <rect id="矩形" stroke="#979797" fill="#D8D8D8" opacity="0" x="0.5" y="0.5" width="31" height="31"></rect>
+                        <path d="M4.28880189,12.7349509 C4.28880189,12.4051761 4.28880189,12.0527868 4.28880189,11.3932372 C4.28880189,10.678706 4.66999973,10.0184519 5.28880189,9.66118635 L15,4.0544235 C15.6188022,3.69715791 16.3811978,3.69715791 17,4.0544235 L17.0722801,4.09615441 L26.0561447,9.2829911 L26.7111981,9.66118635 C27.3300003,10.0184519 27.7111981,10.678706 27.7111981,11.3932372 L27.7111981,22.6067628 C27.7111981,23.321294 27.3300003,23.9815481 26.7111981,24.3388137 L17,29.9455765 C16.3811978,30.3028421 15.6188022,30.3028421 15,29.9455765 L5.28880189,24.3388137 C4.66999973,23.9815481 4.28880189,23.321294 4.28880189,22.6067628 C4.28880189,22.1417125 4.28880189,21.9747703 4.28880189,21.7494238" id="路径" stroke="#4E3603" stroke-width="0.8" stroke-linecap="round"></path>
+                        <circle id="椭圆形" fill="#D8D8D8" opacity="0.432396298" cx="24.3167972" cy="22.6961404" r="5"></circle>
+                        <circle id="椭圆形" fill="#FFE403" cx="24.3167972" cy="21" r="5"></circle>
+                        <polyline id="路径-18" stroke="#4E3603" stroke-width="0.8" stroke-linecap="round" points="16 27.0088309 16 16.6567627 25.4805908 11.4286642"></polyline>
+                        <line x1="16" y1="16.6567627" x2="6.45449511" y2="11.4286642" id="路径-19" stroke="#4E3603" stroke-width="0.8" stroke-linecap="round"></line>
+                        <path d="M10.3521746,17.8622844 L6.15817882,15.5652218 M4.07286962,14.4230924 L2.64342002,13.640179" id="形状" stroke="#4E3603" stroke-width="0.8" stroke-linecap="round"></path>
+                        <path d="M10.2788149,20.7060396 L8.58321107,19.7773528 M6.60153764,18.691985 L2.64342002,16.5241134" id="形状" stroke="#4E3603" stroke-width="0.8" stroke-linecap="round"></path>
+                        <line x1="5.98613887" y1="21" x2="2.64342002" y2="19.169184" id="路径" stroke="#4E3603" stroke-width="0.8" stroke-linecap="round"></line>
+                        <polyline id="路径-22" stroke="#4E3603" stroke-width="0.8" stroke-linecap="round" points="27.5279953 21.3480702 24.3167972 21.3480702 24.3167972 17.8622844"></polyline>
+                        <polygon id="路径-23" fill="#FFE403" points="15.9962273 5.77981603 8.87520618 9.99280633 15.9962273 13.779816 23.1055427 9.77981603"></polygon>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

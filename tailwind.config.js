@@ -10,14 +10,23 @@ module.exports = {
   },
   theme: {
     colors: {
+      homeText:{
+        gray:'rgba(0, 0, 0, 0.45)'
+      },
       gray: {
         lightest: "#C2C2C2",
         lighter: "#F3F5F9",
         light: "#f5f5f5",
         dark: "#F8F9FA",
-        arrow: "#040B38",
+        arrow: "#000000",
         white: "#fff",
         lightGary: "#DEDEDE",
+        borderGray: "#E9E9E9",
+        backgroundGray: "#131319",
+        grayWhite: "#FFFFFFA6",
+        bgWhite: "#F5F5F5FF",
+        border: '#E8E8E8',
+        hover:'#E7F1FF',
       },
       blue: {
         light: "#4572DE",
@@ -27,15 +36,22 @@ module.exports = {
         light: "#777777",
         dark: "#504862",
         darker: "#272233",
+        textColor:'rgba(0, 0, 0, 0.85)',
+        textLighter:'rgba(0, 0, 0, 0.45)',
+        titleColor:'#080810'
       },
       white: {
         light: "#ffffff",
         dark: "#fbfafc",
+        darker:"#F9F9F9"
       },
       topBar: {
-        black: "#2F2F2F",
+        black: "#000000",
         blue: "#040B38",
         light: "#F2F5F9",
+        gray:"#0A000000",
+        white:'#fff',
+        blueLight:'#61B7FF'
       },
       textColor: {
         gray: " #504862;",
@@ -60,6 +76,7 @@ module.exports = {
         '"Segoe UI Symbol"',
         '"Noto Color Emoji"',
         '"PingFangSC-Semibold, PingFang SC"',
+        "PingFangSC-Medium, PingFang SC",
       ],
     },
     fontSize: {
@@ -104,7 +121,7 @@ module.exports = {
     customForms: (theme) => ({
       default: {
         input: {
-          backgroundColor: theme("colors.gray.900"),
+          backgroundColor: theme("colors.gray.1150"),
           "&::placeholder": {
             color: theme("colors.gray.500"),
             opacity: "1",
@@ -118,16 +135,22 @@ module.exports = {
       },
     }),
     extend: {
+      opacity: {
+        '15': '0.15',
+        '38': '0.38',
+        '35': '0.35',
+        '65': '0.65',
+      },
       boxShadow: {
         ...boxShadow,
-        outline: "0 0 0 3px rgba(239, 121, 48, 0.5)",
-        card: "0px 1px 6px 0px rgba(0, 0, 0, 0.05)",
-        sm: "0px 2px 16px 0px rgba(0, 0, 0, 0.12);",
+        outline: '0 0 0 3px rgba(239, 121, 48, 0.5)',
+        card: '0px 1px 6px 0px rgba(0, 0, 0, 0.05)',
+        sm: '0px 2px 16px 0px rgba(0, 0, 0, 0.12);',
       },
       gridTemplateColumns: {
         // Simple 16 column grid
-        listItem: "1.5fr 8.5fr",
-        card: "2fr 1fr",
+        listItem: '1.5fr 8.5fr',
+        card: '2fr 1fr',
       },
       margin: {
         auto: "auto",
@@ -142,6 +165,7 @@ module.exports = {
         7: "1.75rem",
         7.5: "1.875rem",
         8: "2rem",
+        9.5: "2.374rem",
         10: "2.5rem",
         12: "3rem",
         22.5: "5.625rem",
@@ -183,7 +207,6 @@ module.exports = {
         6: "1.5rem",
         6.5: "1.625rem",
         7: "1.75rem",
-        7.5: "1.75rem",
         8: "2rem",
         10: "2.5rem",
         11: "2.75rem",
@@ -192,14 +215,17 @@ module.exports = {
         17.75: "4.4375rem",
         20: "5rem",
         25: "5.75rem",
+        24: "6rem",
         28: "7rem",
         30: "6.625rem",
-        40: "12.3125rem",
+        40: "10rem",
+        75: "18.75rem",
         50: "29.75rem",
       },
       width: {
         fitContent: "fit-content",
         overSpread: "100%",
+        0.25: "0.0625rem",
         4: '1rem',
         6: "1.5rem",
         7: "1.75rem",
@@ -225,6 +251,7 @@ module.exports = {
         78: "19.5rem",
         85: "21.25rem",
         88: "22rem",
+        100: "25rem",
         108: "27rem",
         118: "29.5rem",
         145: "36.25rem",
@@ -232,6 +259,7 @@ module.exports = {
       height: {
         fitContent: "fit-content",
         overSpread: "100%",
+        0.25: '0.0625rem',
         0.5: "0.125rem",
         2: "0.5rem",
         2.5: ".625rem",
@@ -247,7 +275,7 @@ module.exports = {
         10: "2.5rem",
         11: "2.75rem",
         12: "3rem",
-        13: "3.125rem",
+        13: "3.25rem",
         14: "3.5rem",
         15: "3.75rem",
         16: "4rem",
@@ -274,7 +302,6 @@ module.exports = {
         175: "39.75rem",
         180: "40rem",
       },
-
       minWidth: {
         10: "3.5rem",
         11: "4rem",
@@ -300,11 +327,7 @@ module.exports = {
         66: "16.5rem",
       },
       lineHeight: {
-        9.5: "2.375rem",
-        12: "3rem",
-        20: "1.25rem",
-        22: "1.375rem",
-        25: "1.5rem",
+        12: "3"
       },
       display: {
         flex: "flex",
@@ -313,13 +336,26 @@ module.exports = {
           column: "column",
         },
       },
+      ringWidth: {
+        'select': '0px 2px 10px 0px rgba(0, 0, 0, 0.04);'
+      },
+      borderWidth: {
+        DEFAULT: '0px',
+        '1': '1px',
+        '2': '2px',
+        '3': '3px',
+        '4': '4px',
+        '6': '6px',
+        '8': '8px',
+      },
       backgroundImage: (theme) => ({
         indexBg: "url('./src/assets/background.png')",
       }),
     },
     screens: {
-      screen: { min: "374px", max: "779px" },
-      desktop: { min: "780px" },
+      screen: { min: "0px", max: "1150px" },
+      medium: {min:'900px',max:'1150px'},
+      desktop: { min: "1150px" },
     },
     bottom: {
       28: '28vh'

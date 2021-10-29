@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="12px" height="12px" viewBox="0 0 12 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>icon_pulldown</title>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="000_补充说明" transform="translate(-1224.000000, -819.000000)">
+            <g id="编组-20" transform="translate(0.000000, 784.000000)">
+                <g id="编组" transform="translate(1105.000000, 25.000000)">
+                    <g id="icon_pulldown" transform="translate(125.000000, 16.000000) scale(1, -1) translate(-125.000000, -16.000000) translate(119.000000, 10.000000)">
+                        <rect id="Rectangle" x="0" y="0" width="12" height="12"></rect>
+                        <path d="M1.61243091,3.73170732 L5.66791335,8.84320557 C5.75512846,8.94773571 5.86246853,9 5.98993677,9 C6.11740501,9 6.22474508,8.94773571 6.31196019,8.84320557 L10.3875691,3.73170732 C10.5083285,3.5923338 10.5318091,3.43554094 10.4580117,3.26132404 C10.3842143,3.08710714 10.2533936,3 10.0655457,3 L1.93445433,3 C1.7466064,3 1.61578569,3.08710714 1.54198829,3.26132404 C1.46819089,3.43554094 1.49167153,3.5923338 1.61243091,3.73170732 Z" id="-copy" fill="#FFFFFF"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
