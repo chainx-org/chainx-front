@@ -52,7 +52,7 @@ export default function CardBox({
         <SpliteLine/>
         <Container>
           <div className="items-center my-auto mx-0 text-center">
-            <span className="inline-block mb-12">{cardBoxTitleContainer.title}</span>
+            <span className="inline-block mb-12 text-sm font-medium text-black-textColor">{cardBoxTitleContainer.title}</span>
             <div className="border">
               <TextArea
                 value={inputValue}
@@ -96,11 +96,11 @@ export default function CardBox({
                   <img src="https://scan.chainx.org/static/media/loading.80f33db6.png" alt=""/> : <> {!correctValue ?
                     <div className="flex flex-col">
                       <img className="inline-block w-18 my-0 mx-auto" src={cardBoxTitleContainer.icon} alt=""/>
-                      <div>{t('Enter the address or public key for conversion')}</div>
+                      <div className='inline-block mb-12 text-sm text-black-textLighter'>{t('Enter the address or public key for conversion')}</div>
                     </div> :
                     <div className="flex flex-col">
                       <img className="inline-block w-18 my-0 mx-auto" src={noDataIcon} alt=""/>
-                      <div>{t(`${correctValue}`)}</div>
+                      <div className='inline-block mb-12 text-sm text-black-textLighter'>{t(`${correctValue}`)}</div>
                     </div>}</>}
               </>}
           </div>

@@ -14,7 +14,9 @@ export default function Account() {
       render: (text: any, record: any) => {
         return (
           <div className="flex flex-row items-center">
-            <img src={addressIcon} alt="" style={{marginRight: '0.25rem'}}/>
+            <div style={{marginRight: '0.25rem', width: '2rem', height: '2rem', display: 'inline-block'}}><img
+              src={addressIcon} alt=""/>
+            </div>
             <LinkX linkUrl={`/addressDetails/${record.address}`} content={record.address}/>
           </div>
         );

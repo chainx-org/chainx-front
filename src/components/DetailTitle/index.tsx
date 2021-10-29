@@ -22,7 +22,7 @@ export default function DetailTitle({routeTitle, routePath, content, isBlock, se
 
   return (<div className="flex flex-row justify-between px-4 py-4">
     <div>
-      <span className="text-gray-white text-xl font-medium">{routeTitle}</span>
+      <span className="text-gray-white text-xl font-medium mx-0 my-auto">{routeTitle}</span>
       {isBlock ? <span className="text-topBar-blueLight font-medium text-base cursor-pointer"> #{content}</span>
         : <span className="text-topBar-blueLight font-medium text-base"> {content}</span>
       }
@@ -34,7 +34,7 @@ export default function DetailTitle({routeTitle, routePath, content, isBlock, se
         </> : ''}
 
     </div>
-    <span className="text-gray-white text-xl font-medium">{routePath()}</span>
+    <span className="text-gray-white text-xl font-medium mx-0 my-auto">{routePath()}</span>
   </div>);
 
 }

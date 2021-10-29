@@ -90,7 +90,7 @@ function Footer(): React.ReactElement {
         </div>
         <div className="flex flex-row screen:flex-col">
           <LangSelect/>
-          <img src={logo} alt="" className='inline-block h-6 my-auto ml-8 screen:ml-0'/>
+          <img src={logo} alt="" className='inline-block h-6 my-auto ml-8 screen:ml-0' style={{width:'112px',height:'24px'}}/>
         </div>
       </div>
     );

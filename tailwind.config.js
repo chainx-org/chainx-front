@@ -37,6 +37,7 @@ module.exports = {
         dark: "#504862",
         darker: "#272233",
         textColor:'rgba(0, 0, 0, 0.85)',
+        textLighter:'rgba(0, 0, 0, 0.45)',
         titleColor:'#080810'
       },
       white: {
@@ -352,9 +353,9 @@ module.exports = {
       }),
     },
     screens: {
-      screen: { min: "0px", max: "900px" },
+      screen: { min: "0px", max: "1150px" },
       medium: {min:'900px',max:'1150px'},
-      desktop: { min: "900px" },
+      desktop: { min: "1150px" },
     },
     bottom: {
       28: '28vh'

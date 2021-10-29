@@ -138,7 +138,8 @@ export default function BlockDetails() {
     }
   ];
   const routerPath = () => {
-    return (<div className="flex flex-row cursor-pointer text-gray-white">
+    return (
+      <div className="flex flex-row cursor-pointer text-gray-white text-base">
       <Link to={'/'} style={{color:'rgba(255, 255, 255, 0.65)'}}>{t('Home')}<span className='inline-block mx-2'>/</span></Link>
       <Link to={'/chain'} style={{color:'rgba(255, 255, 255, 0.65)'}}>{t('Chain')}<span className='inline-block mx-2'>/</span> </Link>
       <Link to={`./${block}`}>{t('BlockDetails')}</Link>
@@ -147,7 +148,7 @@ export default function BlockDetails() {
   return (
     <>
       <Header showSearch={true}/>
-      <ListBgColor style={{height:'9rem',top:'48px'}}/>
+      <ListBgColor/>
       {noData ?
         <NoData/> :
         <WrapperList>
@@ -162,7 +163,8 @@ export default function BlockDetails() {
               <TableMenuBox tabList={tabList} currentTab={currentTab} setCurrentTab={setCurrentTab} tag={tag}/>
             </WrapperDetails>
           </div>
-        </WrapperList>}
+        </WrapperList>
+      }
       <Footer/>
     </>);
 }

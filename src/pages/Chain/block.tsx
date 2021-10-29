@@ -61,7 +61,13 @@ export default function Block() {
       title: t('Events'),
       dataIndex: 'eventCount',
       key: 'eventCount',
-    }, {
+      render: (text: any, record: any) => {
+        return (
+          <Normal state={record?.eventCount}/>
+        );
+      }
+    },
+    {
       title: t('Validator'),
       dataIndex: 'Validator',
       key: 'Validator',

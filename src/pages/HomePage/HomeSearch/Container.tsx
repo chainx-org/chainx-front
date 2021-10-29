@@ -51,32 +51,7 @@ export default function Container() {
         exe: '-',
         time: '-'
     }]);
-    const [latestExtrinsic, setLatestExtrinsic] = useState([{
-        exe: '-',
-        type: '-',
-        pcxNum: '-',
-        time: '-',
-    }, {
-        exe: 2,
-        type: 1,
-        pcxNum: 909090,
-        time: 1212
-    }, {
-        exe: 3,
-        type: 1,
-        pcxNum: 909090,
-        time: 1212
-    }, {
-        exe: 4,
-        type: 1,
-        pcxNum: 909090,
-        time: 1212
-    }, {
-        exe: 5,
-        type: 1,
-        pcxNum: 909090,
-        time: 1212
-    }])
+    const [latestExtrinsic, setLatestExtrinsic] = useState([])
     const [metaData, setMetaData] = useState([{
         icon: highSure,
         name: '已确认块高',
