@@ -144,7 +144,7 @@ export default function ExtrinsicDetails() {
   };
   return (
     <>
-      <Header showSearch={true}/>
+      {/* <Header showSearch={true}/> */}
       <ListBgColor style={{height:'195px'}}/>
       {noData ?
         <NoData/> :
@@ -164,7 +164,7 @@ export default function ExtrinsicDetails() {
           </WrapperList>
         </>
       }
-      <Footer/>
+      {/* <Footer/> */}
     </>
   )
 }

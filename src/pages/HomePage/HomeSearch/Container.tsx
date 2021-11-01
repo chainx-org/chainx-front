@@ -11,6 +11,7 @@ import transfer from '../../../assets/icon_transfer.svg';
 import node from '../../../assets/icon_node.svg';
 import issuance from '../../../assets/icon-issuance.svg';
 import { accuracy, accuracyInt } from '../../../helper/hooks';
+import { Skeleton } from 'antd';
 
 export default function Container() {
     const {t} = useTranslation();
@@ -52,6 +53,7 @@ export default function Container() {
         exe: '-',
         time: '-'
     }]);
+
     const [latestExtrinsic, setLatestExtrinsic] = useState([])
     const [metaData, setMetaData] = useState([{
         icon: highSure,

@@ -9,6 +9,7 @@ import styled from 'styled-components';
 import menuIcon from '../../assets/menu.svg';
 import { useOnClickOutside } from '../../helper/hooks';
 import { ListBgColor } from '../../css/Wrapper';
+import { useEffect } from 'hoist-non-react-statics/node_modules/@types/react';
 
 interface HeaderPop {
     showSearch?: boolean
@@ -28,11 +29,15 @@ const HeardLine = styled.div`
     margin: auto 0;
     margin-left: 12px;;
 `;
-export default function Header({showSearch}: HeaderPop) {
+export default function Header() {
+    const [showSearch,setShowSearch] = useState(window.location.pathname)
     const {t} = useTranslation();
     const [showMenu, setShowMenu] = useState(false);
-
+    const goHome = () => {
+        setShowSearch(window.location.pathname)
+    };
     const handleClick = (e: any) => {
+        setShowSearch(window.location.pathname)
         e.persist();
         if (e._targetInst.key === '1') {
 
@@ -50,7 +55,7 @@ export default function Header({showSearch}: HeaderPop) {
       <div >
           <div className="flex flex-row justify-between bg-gray-arrow px-12 screen:px-4 screen:py-4">
               <Wrapper className='relative z-10'>
-                  <Link to="/"><img src={icon} alt="" style={{maxWidth:'none',width:'93px',height:'20px'}}/></Link>
+                  <div onClick={goHome}><Link to="/" ><img src={icon} alt="" style={{maxWidth:'none',width:'93px',height:'20px'}}/></Link></div>
                   <HeardLine></HeardLine>
                   <span className="pl-3 text-gray-white mr-9.5" style={{
                       letterSpacing: '1px', fontWeight: 'bold',
@@ -82,7 +87,7 @@ export default function Header({showSearch}: HeaderPop) {
                       </div>
                   </NavLink>
               </Wrapper>
-              {showSearch && <Search className="NavSearch"/>}
+              {showSearch.length > 2 && <Search className="NavSearch"/>}
               {<SelectList className="selectList" style={{margin: 'auto 0'}}>
                   <div  onClick={() => setShowMenu(!showMenu)}><img src={menuIcon} alt="" style={{
                       height: '1.5rem',

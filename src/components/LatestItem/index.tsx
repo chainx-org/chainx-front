@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
 import { LinkX, ShorterLink } from '../../components/LinkX';
 import Operation from '../Operation';
 import TimeStatus from '../TimeStatus';
+import { Skeleton } from 'antd';
+import SkeletonItem from './skeletonItem';
 
 interface LatestItemPop {
   title: string,
@@ -51,6 +53,7 @@ export default function LatestItem({title, icon, ListData}: LatestItemPop) {
       window.location.href = window.location.origin + '/chain/extrinsic';
   }
 
+
   return (
     <ItemContainer>
       <div className="flex flex-row justify-between text-homeText-gray"
@@ -95,36 +98,41 @@ export default function LatestItem({title, icon, ListData}: LatestItemPop) {
 
               </div>);
           })
-          : ListData?.map((item, index) => {
-            return (
-              <div className="px-4" key={index}>
-                <div className="flex flex-row justify-start py-3 overflow-scroll"
-                     style={{borderBottom: '1px solid #E9E9E9'}}>
-                  <div className="latestDiv">
-                    <span>TX</span>
-                  </div>
-                  <div className="flex flex-col justify-start ml-4 w-overSpread">
-                    <div className="flex flex-row justify-between text-homeText-gray text-homeText-gray">
-                      <LinkX linkUrl={`/extrinsicDetails/${item.hash}`}
-                                   content={(item?.indexer?.blockHeight)?(item?.indexer?.blockHeight):'' + '-' + (item?.indexer?.index)?(item?.indexer?.index):''}
-                                   style={{fontSize: '16px'}}/>
-                      <div className="flex flex-row">
-                        <ShorterLink linkUrl={`/extrinsicDetails/${item.hash}`} content={item.hash}/>
-                        {/*<img src={iconImg} alt="" style={{width: '12px', height: '12px'}}/>*/}
+          : <>
+            {ListData.length > 0 ? ListData?.map((item, index) => {
+                return (
+                  <div className="px-4" key={index}>
+                    <div className="flex flex-row justify-start py-3 overflow-scroll"
+                         style={{borderBottom: '1px solid #E9E9E9'}}>
+                      <div className="latestDiv">
+                        <span>TX</span>
+                      </div>
+                      <div className="flex flex-col justify-start ml-4 w-overSpread">
+                        <div className="flex flex-row justify-between text-homeText-gray text-homeText-gray">
+                          <LinkX linkUrl={`/extrinsicDetails/${item.hash}`}
+                                 content={(item?.indexer?.blockHeight) ? (item?.indexer?.blockHeight) : '' + '-' + (item?.indexer?.index) ? (item?.indexer?.index) : ''}
+                                 style={{fontSize: '16px'}}/>
+                          <div className="flex flex-row">
+                            <ShorterLink linkUrl={`/extrinsicDetails/${item.hash}`} content={item.hash}/>
+                            {/*<img src={iconImg} alt="" style={{width: '12px', height: '12px'}}/>*/}
+                          </div>
+                        </div>
+                        <div className="flex flex-row justify-between text-homeText-gray">
+                          <div>
+                            <Operation mini={true}
+                                       content={(item.section) ? (item.section) : '' + '-' + (item.name) ? (item.name) : ''}
+                                       more={true}/>
+                          </div>
+                          <div>
+                            <TimeStatus content={item?.indexer?.blockTime}/>
+                          </div>
+                        </div>
                       </div>
                     </div>
-                    <div className="flex flex-row justify-between text-homeText-gray">
-                      <div>
-                        <Operation mini={true} content={(item.section)?(item.section):'' + '-' + (item.name)?(item.name):''} more={true}/>
-                      </div>
-                      <div>
-                        <TimeStatus content={item?.indexer?.blockTime}/>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>);
-          })}
+                  </div>);
+              }) :
+              <SkeletonItem/>}
+          </>}
       </LatestItemBox>
     </ItemContainer>
   );
