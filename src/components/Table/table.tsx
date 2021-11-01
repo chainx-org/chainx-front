@@ -21,6 +21,7 @@ export default function ChainxTable({Columns, urlControl, result, keyNum}: chain
     const res: any = await get(`${urlControl}page=${page - 1}&page_size=${pageSize}`, ``);
     setDataTotal(res.total);
     setData(res.items);
+    debugger
     setLoading(false);
   };
 

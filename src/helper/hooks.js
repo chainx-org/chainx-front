@@ -39,10 +39,11 @@ export function reName(num){
 
 //精度转化工具
 export function accuracy(num) {
+  debugger
   let type = Object.prototype.toString.call(num)
   let resultParse
   if (type === '[object Number]') {
-    let accuracyNum = num / (1000000000)
+    let accuracyNum = num / (100000000)
     let header = parseInt(accuracyNum)
     let end = (accuracyNum - header)
     let endstr = end.toFixed(8).substring(2)
@@ -50,7 +51,20 @@ export function accuracy(num) {
     resultParse = headerSplit.concat('.' + endstr)
     return resultParse
   } else if (type === '[object String]') {
-    accuracy(Number(num))
+    return accuracy(Number(num))
+  } else {
+    return '-'
+  }
+}
+
+export function accuracyInt(num) {
+  let type = Object.prototype.toString.call(num)
+  if (type === '[object Number]') {
+    let accuracyNum = num / (100000000)
+    let header = parseInt(accuracyNum)
+    return header
+  } else if (type === '[object String]') {
+    return accuracy(Number(num))
   } else {
     return '-'
   }

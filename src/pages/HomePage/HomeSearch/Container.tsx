@@ -10,7 +10,7 @@ import holders from '../../../assets/icon_holders.svg';
 import transfer from '../../../assets/icon_transfer.svg';
 import node from '../../../assets/icon_node.svg';
 import issuance from '../../../assets/icon-issuance.svg';
-import { accuracy } from '../../../helper/hooks';
+import { accuracy, accuracyInt } from '../../../helper/hooks';
 
 export default function Container() {
     const {t} = useTranslation();
@@ -83,7 +83,7 @@ export default function Container() {
         data: '-'
     }, {
         icon: issuance,
-        name: t('Turnout'),
+        name: t('Staked Value'),
         data: '-'
     }]);
     const [firstInit, InitCallBack] = useState(true);
@@ -118,10 +118,10 @@ export default function Container() {
         }, {
             icon: issuance,
             name: t('Total Issuance(PCX)'),
-            data: accuracy(latestChainStatus.pcx_issuance)
+            data: accuracyInt(latestChainStatus.pcx_issuance)
         }, {
             icon: issuance,
-            name: t('Turnout'),
+            name: t('Staked Value'),
             data: ((latestChainStatus.totalValidatorBonded + latestChainStatus.totalNominationSum) /
               latestChainStatus.pcx_issuance*100).toFixed(2)+'%'
         }]]);

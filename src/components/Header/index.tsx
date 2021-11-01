@@ -50,7 +50,7 @@ export default function Header({showSearch}: HeaderPop) {
       <div >
           <div className="flex flex-row justify-between bg-gray-arrow px-12 screen:px-4 screen:py-4">
               <Wrapper className='relative z-10'>
-                  <Link to="/"><img src={icon} alt="" style={{maxWidth:'none'}}/></Link>
+                  <Link to="/"><img src={icon} alt="" style={{maxWidth:'none',width:'93px',height:'20px'}}/></Link>
                   <HeardLine></HeardLine>
                   <span className="pl-3 text-gray-white mr-9.5" style={{
                       letterSpacing: '1px', fontWeight: 'bold',

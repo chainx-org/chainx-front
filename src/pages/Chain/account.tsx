@@ -1,13 +1,16 @@
 import { useTranslation } from 'react-i18next';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import addressIcon from '../../assets/address_icon.svg';
 import { LinkX, Normal } from '../../components/LinkX';
 import ChainxTable from '../../components/Table/table';
 import { accuracy } from '../../helper/hooks';
+import TableX from '../../components/Table';
+import ExpandIcon from '../../components/ExpandIcon';
+import JsonApi from '../../components/Jsonformat';
+import { get } from '../../hooks/useApi';
 
 export default function Account() {
   const {t} = useTranslation();
-  debugger
   const AccountColumns = [
     {
       title: t('Account'),
@@ -30,7 +33,7 @@ export default function Account() {
       key: 'FrozenAmount',
       render: (text: any, record: any) => {
         return (
-        <Normal state={(record?.data?.feeFrozen)?(accuracy(record.data.feeFrozen)):'-'}/>
+        <Normal state={accuracy(record.data.feeFrozen)}/>
 
       );
       },
@@ -42,7 +45,7 @@ export default function Account() {
       key: 'TotalBalance',
       render: (text: any, record: any) => {
         return (
-        <Normal state={(record?.data?.feeFrozen)?(accuracy(record.data.feeFrozen)):'-'}/>
+        <Normal state={(record?.data?.free)?(accuracy(record.data.free)):'-'}/>
         );
       },
       sorter: (a: any, b: any) => {
@@ -50,8 +53,41 @@ export default function Account() {
       }
     }
   ];
+  const [eventData, setEventData] = useState([]);
+  const [page, setPage] = useState(1);
+  const [pageSize, setPageSize] = useState(10);
+  const [eventTotal, setEventTotal] = useState(0);
+  const [loading, setLoading] = useState(true);
+  const getEventData = async () => {
+    let res: any = await get(`/accounts?page=${page - 1}&page_size=${pageSize}`, ``);
+    setEventTotal(res.total);
+    setEventData(res.items);
+    setLoading(false);
+  };
+  function onChange(page: number, pageSize: any) {
+    setPage(page);
+    setPageSize(pageSize);
+    setLoading(true);
+  }
+  useEffect(() => {
+    getEventData();
+  }, [page, pageSize]);
+
+  const pagination = {
+    pageSize: pageSize,
+    current: page,
+    defaultCurrent: page,
+    total: eventTotal,
+    showSizeChanger: true,
+    showQuickJumper: true,
+    hideOnSinglePage:true,
+    onChange: (page: number, pageSize: number) => onChange(page, pageSize),
+    showTotal: (eventTotal: number) => `${t('total')} ${eventTotal} ${t('items')}`
+  };
 
   return (
-  <ChainxTable Columns={AccountColumns} urlControl={'/accounts?'} result={'items'} keyNum={4}/>
-);
+    <div className="px-8 overflow-scroll">
+      <TableX columns={AccountColumns} dataList={eventData} pagination={pagination} loading={loading}/>
+    </div>
+  );
 }

@@ -8,7 +8,7 @@ import { TabInfo } from '../../components/SwitchTab';
 import { CardTitle } from '../../components/CardBox/style';
 import mining from '../../assets/icon_mining.svg';
 import { BottomLine, CardDiv, RightLine, WrapperBridge } from './style';
-import { reName } from '../../helper/hooks';
+import { accuracy, reName } from '../../helper/hooks';
 import BitcoinBlock from './block';
 import Deposit from './deposit';
 import Withdraw from './withdraw';
@@ -99,10 +99,10 @@ export default function CrossBlock() {
     setMingApiData([
       [{
         name: 'Total Balance',
-        data: (items[0]?.balance?.Usable) / 1000000
+        data: accuracy(items[0]?.balance?.Usable)
       }, {
         name: 'Total Weight',
-        data: items[0]?.lastTotalMiningWeight / 1000000
+        data: accuracy(items[0]?.lastTotalMiningWeight)
       }], [{
         name: 'Reward Pot Last Update Height(PCX)',
         data: items[0]?.lastTotalMiningWeightUpdate
@@ -111,10 +111,10 @@ export default function CrossBlock() {
         data: items[0]?.miningPower
       }], [{
         name: 'Equivalent Nominations(PCX)',
-        data: items[0]?.equivalent_nominations
+        data: accuracy(items[0]?.equivalent_nominations)
       }, {
         name: 'Reward Pot Balance(PCX)',
-        data: items[0]?.rewardPotBalance
+        data: accuracy(items[0]?.rewardPotBalance)
       }]]);
     setRewardPot(items[0]?.rewardPot);
   };

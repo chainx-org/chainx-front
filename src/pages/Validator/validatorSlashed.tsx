@@ -4,6 +4,7 @@ import TableX from '../../components/Table';
 import { get } from '../../hooks/useApi';
 import { LinkX, Normal, ShorterLink } from '../../components/LinkX';
 import TrustTag from '../../components/TrustTag';
+import { accuracy } from '../../helper/hooks';
 
 
 export default function ValidatorSlashed() {
@@ -47,7 +48,7 @@ export default function ValidatorSlashed() {
       key: 'Count',
       render: (text: any, record: any) => {
         return (
-            <Normal state={(record.missed) ? (record.missed) : '-'}/>)
+            <Normal state={(record.missed) ? accuracy(record.missed) : '-'}/>)
       }
     }
   ];
