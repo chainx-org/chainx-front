@@ -19,7 +19,6 @@ import Footer from './components/Footer';
 
 function App() {
   return (
-    // <PolkaApi url="wss://testnet-2.chainx.org/ws">
       <BrowserRouter>
         <Header />
         <Switch>
@@ -39,7 +38,6 @@ function App() {
         </Switch>
         <Footer />
     </BrowserRouter>
-    // </PolkaApi>
   );
 };
 

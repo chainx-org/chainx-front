@@ -6,7 +6,6 @@ import { Popover } from 'antd';
 export default function TimeStatus(content: any) {
   const {t} = useTranslation();
 
-
   const originTime = (
     <div>
       {moment(Number(content.content)).format('YYYY-MM-DD HH:mm:ss')}
@@ -27,12 +26,13 @@ export default function TimeStatus(content: any) {
     else if (minutes > 0) duration = ' ' + minutes + ' ' + t('Minutes') + seconds + ' ' + t('Seconds') + ' ' + t('ago');
     else if (seconds > 0) duration = ' ' + seconds + ' ' + t('Seconds') + ' ' + t('ago');
     setTimeData(duration);
+
     return duration;
   }
 
   useEffect(() => {
     getDuration();
-  }, []);
+  }, [content]);
 
   return (
     <Popover content={originTime}>

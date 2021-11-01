@@ -39,7 +39,6 @@ export function reName(num){
 
 //精度转化工具
 export function accuracy(num) {
-  debugger
   let type = Object.prototype.toString.call(num)
   let resultParse
   if (type === '[object Number]') {

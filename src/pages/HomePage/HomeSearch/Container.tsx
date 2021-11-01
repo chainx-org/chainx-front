@@ -12,6 +12,7 @@ import node from '../../../assets/icon_node.svg';
 import issuance from '../../../assets/icon-issuance.svg';
 import { accuracy, accuracyInt } from '../../../helper/hooks';
 import { Skeleton } from 'antd';
+import i18n from '../../../i18n';
 
 export default function Container() {
     const {t} = useTranslation();
@@ -147,7 +148,7 @@ export default function Container() {
         saveCallBack.current = callBack;
         callBack();
         return () => { };
-    }, []);
+    }, [i18n.language]);
 
     useEffect(() => {
         const tick = () => {
