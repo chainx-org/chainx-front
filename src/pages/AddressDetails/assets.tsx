@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import TableX from '../../components/Table';
 import { get } from '../../hooks/useApi';
 import Icon from '../../assets/icon_PCX .svg'
+import { accuracy } from '../../helper/hooks';
 
 interface ExtrinsicProps {
   account?: number | string,
@@ -42,7 +43,7 @@ export default function Assets({account}: ExtrinsicProps) {
       render: (text: any, record: any) => {
         return (
           <div>
-            {(record?.data?.free) ?(record?.data?.free / 100000000):''}
+            {(record?.data?.free) ?(accuracy(record?.data?.free)):'-'}
           </div>
         );
       }

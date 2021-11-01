@@ -13,7 +13,7 @@ import Missed from './missed';
 import { encodeAddress } from '@polkadot/keyring';
 import decodeAddress from '../../helper/encodeAddress';
 import TrustTag from '../../components/TrustTag';
-import { reName } from '../../helper/hooks';
+import { accuracy, reName } from '../../helper/hooks';
 import { ExtrinWrapper, ListBgColor, Wrapper, WrapperDetails, WrapperList } from '../../css/Wrapper';
 
 const {hexToU8a, isHex} = require('@polkadot/util');
@@ -116,7 +116,7 @@ export default function NodeDetails() {
       title: t('Self Bonded'),
       content: (
         <div className="font-medium text-gray-arrow ">
-          {reName(addressDetails?.selfBonded)}
+          {accuracy(addressDetails?.selfBonded)}
         </div>
       ),
     },
@@ -124,7 +124,7 @@ export default function NodeDetails() {
       title: t('Total Nominations'),
       content: (
         <div className="font-medium text-gray-arrow ">
-          {addressDetails?.totalNomination}
+          {accuracy(addressDetails?.totalNomination)}
         </div>
       ),
     },
@@ -164,7 +164,7 @@ export default function NodeDetails() {
   };
   return (
     <>
-      <Header showSearch={true}/>
+      {/* <Header showSearch={true}/> */}
       <ListBgColor style={{height:'195px'}}/>
       {noData ?
         <NoData/> :
@@ -181,6 +181,6 @@ export default function NodeDetails() {
           </div>
         </WrapperList>
       }
-      <Footer/>
+      {/* <Footer/> */}
     </>);
 }

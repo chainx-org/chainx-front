@@ -10,6 +10,7 @@ import React, { useEffect, useState } from 'react';
 const  Model_echarts = (props:any) => {
   let [main , setMain] = useState<any>('')
   const option ={
+    animation:false,//去除动画渲染
     tooltip: {
       trigger: 'item'
     },
@@ -21,45 +22,20 @@ const  Model_echarts = (props:any) => {
       itemHeight: 10, // 设置高度
       itemGap: 40 // 设置间距
     },
+
+    color:['#2C83EA','#FFE403', '#E0E0E0'],
     series: [
       {
         name: 'Rate',
         type: 'pie',
         radius: ['40%', '70%'],
         data: [
-          {value: 50.00, name: 'X-BTC',color:'#2C83EA'},
-          {value: 42.87, name: 'TR',color:'#E0E0E0 '},
-          {value: 2.00, name: 'PCX',color:'#FFE403'},
+          {value: 42.87, name: 'TR'},
+          {value: 50.00, name: 'X-BTC'},
+          {value: 2.00, name: 'PCX'},
         ]
       }
     ]
-    // series: [
-    //   {
-    //     name: 'Rate',
-    //     type: 'pie',
-    //     radius: ['40%', '70%'],
-    //     avoidLabelOverlap: false,
-    //     label: {
-    //       show: true,
-    //       position: 'center'
-    //     },
-    //     emphasis: {
-    //       label: {
-    //         show: true,
-    //         fontSize: '30',
-    //         fontWeight: 'bold'
-    //       }
-    //     },
-    //     labelLine: {
-    //       show: true
-    //     },
-    //     data: [
-    //       { value: 50.00,name: 'X-BTC' },
-    //       { value: 2.00, name: 'PCX' },
-    //       { value: 42.87, name: 'TR' },
-    //     ]
-    //   }
-    // ]
   };
   useEffect(()=>{
     let node = document.getElementById('main')

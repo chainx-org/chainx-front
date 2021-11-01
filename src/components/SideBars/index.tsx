@@ -26,7 +26,7 @@ const Wrapper = styled.div`
   width: 0;
   background: #fff;
   color: rgba(0, 0, 0, 0.4);
-  transition: all 0.3s linear;
+  transition: .1s;
 
   &.collapsed {
     width: 12em;

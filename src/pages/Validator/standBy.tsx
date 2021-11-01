@@ -4,6 +4,7 @@ import TableX from '../../components/Table';
 import { get } from '../../hooks/useApi';
 import { LinkX, Normal, ShorterLink } from '../../components/LinkX';
 import TrustTag from '../../components/TrustTag';
+import { accuracy } from '../../helper/hooks';
 
 
 export default function StandBy() {
@@ -47,7 +48,7 @@ export default function StandBy() {
       key: 'Self Bonded',
       render: (text: any, record: any) => {
         return (
-          <Normal state={(record.selfBonded) ? (record.selfBonded) : '-'}/>);
+          <Normal state={(record.selfBonded) ? accuracy(record.selfBonded) : '-'}/>);
       },
       sorter: (a: any, b: any) => {
         return a.selfBonded - b.selfBonded;
@@ -59,7 +60,7 @@ export default function StandBy() {
       key: 'Nominations',
       render: (text: any, record: any) => {
         return (
-          <Normal state={(record.totalNomination) ? (record.totalNomination) : '-'}/>);
+          <Normal state={(record.totalNomination) ? accuracy(record.totalNomination) : '-'}/>);
       },
       sorter: (a: any, b: any) => {
         return a.totalNomination - b.totalNomination;
@@ -72,7 +73,7 @@ export default function StandBy() {
       render: (text: any, record: any) => {
         return (
 
-          <Normal state={(record.rewardPotBalance) ? (record.rewardPotBalance) : '-'}/>);
+          <Normal state={(record.rewardPotBalance) ? accuracy(record.rewardPotBalance) : '-'}/>);
 
       },
       sorter: (a: any, b: any) => {

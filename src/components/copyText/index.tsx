@@ -23,7 +23,7 @@ export default function CopyText({children, text}:CopyTextProps) {
   const {t} = useTranslation()
   const onCopy = () => {
     if (text && copy(text)) {
-      message.success(t('copy success'))
+      message.success({content:t('copy success')})
     }
   };
 

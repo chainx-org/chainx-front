@@ -159,6 +159,9 @@
     "Transfer Count": "Transfer Count",
     "Total Validators": "Total Validators",
     "Total Issuance(PCX)": "Total Issuance(PCX)",
-    "Staked Value": "Staked Value"
+    "Staked Value": "Staked Value",
+    "Session": "Session",
+    "Height": "Height"
+
 }
 

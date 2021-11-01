@@ -10,6 +10,9 @@ import holders from '../../../assets/icon_holders.svg';
 import transfer from '../../../assets/icon_transfer.svg';
 import node from '../../../assets/icon_node.svg';
 import issuance from '../../../assets/icon-issuance.svg';
+import { accuracy, accuracyInt } from '../../../helper/hooks';
+import { Skeleton } from 'antd';
+import i18n from '../../../i18n';
 
 export default function Container() {
     const {t} = useTranslation();
@@ -51,6 +54,7 @@ export default function Container() {
         exe: '-',
         time: '-'
     }]);
+
     const [latestExtrinsic, setLatestExtrinsic] = useState([])
     const [metaData, setMetaData] = useState([{
         icon: highSure,
@@ -82,7 +86,7 @@ export default function Container() {
         data: '-'
     }, {
         icon: issuance,
-        name: t('Turnout'),
+        name: t('Staked Value'),
         data: '-'
     }]);
     const [firstInit, InitCallBack] = useState(true);
@@ -117,10 +121,10 @@ export default function Container() {
         }, {
             icon: issuance,
             name: t('Total Issuance(PCX)'),
-            data: latestChainStatus.pcx_issuance/100000000
+            data: accuracyInt(latestChainStatus.pcx_issuance)
         }, {
             icon: issuance,
-            name: t('Turnout'),
+            name: t('Staked Value'),
             data: ((latestChainStatus.totalValidatorBonded + latestChainStatus.totalNominationSum) /
               latestChainStatus.pcx_issuance*100).toFixed(2)+'%'
         }]]);
@@ -144,7 +148,7 @@ export default function Container() {
         saveCallBack.current = callBack;
         callBack();
         return () => { };
-    }, []);
+    }, [i18n.language]);
 
     useEffect(() => {
         const tick = () => {

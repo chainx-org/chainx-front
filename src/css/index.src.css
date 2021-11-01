@@ -298,4 +298,20 @@ body {
   margin-top: 0px !important;
 }
 
+.ant-message-custom-content, .ant-message-success {
+  display: flex !important;
+  align-items: center !important;
+}
+
+.ant-pagination-item-link {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+.indexSkeleton .ant-skeleton-title{
+  width: 100% !important;
+  height:3rem;
+}
+
 @tailwind utilities;

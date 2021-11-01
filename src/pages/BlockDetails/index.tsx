@@ -138,7 +138,7 @@ export default function BlockDetails() {
   };
   return (
     <>
-      <Header showSearch={true}/>
+      {/* <Header showSearch={true}/> */}
       <ListBgColor/>
       {noData ?
         <NoData/> :
@@ -156,6 +156,6 @@ export default function BlockDetails() {
           </div>
         </WrapperList>
       }
-      <Footer/>
+      {/* <Footer/> */}
     </>);
 }
