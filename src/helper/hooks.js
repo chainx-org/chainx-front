@@ -36,3 +36,6 @@ export function reName(num){
     return str.replace(/\d(?=(\d{3})+$)/g, "$&,");
   }
 }
+
+//精度转化工具
+export function
