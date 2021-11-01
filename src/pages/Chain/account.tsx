@@ -3,9 +3,11 @@ import React from 'react';
 import addressIcon from '../../assets/address_icon.svg';
 import { LinkX, Normal } from '../../components/LinkX';
 import ChainxTable from '../../components/Table/table';
+import { accuracy } from '../../helper/hooks';
 
 export default function Account() {
   const {t} = useTranslation();
+  debugger
   const AccountColumns = [
     {
       title: t('Account'),
@@ -28,7 +30,7 @@ export default function Account() {
       key: 'FrozenAmount',
       render: (text: any, record: any) => {
         return (
-        <Normal state={(record.data.feeFrozen)?(record.data.feeFrozen):'-'}/>
+        <Normal state={(record?.data?.feeFrozen)?(accuracy(record.data.feeFrozen)):'-'}/>
 
       );
       },
@@ -40,7 +42,7 @@ export default function Account() {
       key: 'TotalBalance',
       render: (text: any, record: any) => {
         return (
-        <Normal state={(record.data.feeFrozen)?(record.data.feeFrozen):'-'}/>
+        <Normal state={(record?.data?.feeFrozen)?(accuracy(record.data.feeFrozen)):'-'}/>
         );
       },
       sorter: (a: any, b: any) => {

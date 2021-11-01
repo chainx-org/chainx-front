@@ -10,6 +10,7 @@ import holders from '../../../assets/icon_holders.svg';
 import transfer from '../../../assets/icon_transfer.svg';
 import node from '../../../assets/icon_node.svg';
 import issuance from '../../../assets/icon-issuance.svg';
+import { accuracy } from '../../../helper/hooks';
 
 export default function Container() {
     const {t} = useTranslation();
@@ -117,7 +118,7 @@ export default function Container() {
         }, {
             icon: issuance,
             name: t('Total Issuance(PCX)'),
-            data: latestChainStatus.pcx_issuance/100000000
+            data: accuracy(latestChainStatus.pcx_issuance)
         }, {
             icon: issuance,
             name: t('Turnout'),
