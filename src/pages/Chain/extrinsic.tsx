@@ -8,10 +8,7 @@ import { LinkX, ShorterLink } from '../../components/LinkX';
 import TimeStatus from '../../components/TimeStatus';
 import Operation from '../../components/Operation';
 import JsonApi from '../../components/Jsonformat';
-import moreIcon from '../../assets/icon_more.svg';
-import pulldownIcon from '../../assets/icon_pulldown_list.svg'
-import styled from 'styled-components';
-import ExpandIcon from '../../components/ExpandIcon'
+import ExpandIcon from '../../components/ExpandIcon';
 
 interface ExtrinsicProps {
   block?: number | string,
