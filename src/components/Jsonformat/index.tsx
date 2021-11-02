@@ -72,9 +72,9 @@ export default function Jsonformat({ json }) {
       }}
     >
       {/*{JSON.stringify(json, null, 2)}*/}
-      <JsonContainer>
 
-        <div className="flex flex-row justify-end absolute" style={{right: '0'}}><CopyText children={''} text={json}/></div>
+      <JsonContainer>
+        <div className="flex flex-row justify-end absolute" style={{right: '0'}}><CopyText children={''} text={JSON.stringify(json, null, 2)}/></div>
         {
           filterJson(json, 1)
         }</JsonContainer>
