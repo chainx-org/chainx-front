@@ -1,12 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
+import CopyText from '../copyText';
+import JsonApi from '../../components/Jsonformat';
 
 const JsonContainer = styled.div`
-    background: #F9F9F9;
-    border-radius: 10px;
-    padding:2px 4px;
-    border: 1px solid #DBDBDB;
-  `;
+  background: #F9F9F9;
+  border-radius: 10px;
+  padding: 2px 4px;
+  border: 1px solid #DBDBDB;
+  position: relative;
+`;
 // @ts-ignore
 export default function Jsonformat({ json }) {
   const filterStyle = (value:any)=>{
@@ -70,9 +73,11 @@ export default function Jsonformat({ json }) {
     >
       {/*{JSON.stringify(json, null, 2)}*/}
       <JsonContainer>
-      {
-        filterJson(json, 1)
-      }</JsonContainer>
+
+        <div className="flex flex-row justify-end absolute" style={{right: '0'}}><CopyText children={''} text={json}/></div>
+        {
+          filterJson(json, 1)
+        }</JsonContainer>
     </pre>
   )
 }

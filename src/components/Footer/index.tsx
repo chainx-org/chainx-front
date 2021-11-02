@@ -83,7 +83,7 @@ function Footer(): React.ReactElement {
             </div>
 
           </ImgContent>
-          <div className={'text-topBar-white mx-0 my-auto'}
+          <div className={'text-topBar-white mx-0 my-auto '}
                style={{textAlign: 'center', opacity: '38%', fontSize: '14px', marginLeft: '3rem'}}>All rights reserved ©
             2019 ChainX
           </div>

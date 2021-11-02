@@ -38,14 +38,7 @@ export default function ExtrinsicDetails() {
     }
   };
   useEffect(() => {
-    // if (window.history.state && window.history.state?.state) {
-    //   console.log(window.history.state?.state)
-    //   setExtrinsicDetails(window.history.state.state);
-    //   console.log('window', window.history.state.state);
-    //   setLoading(false);
-    // } else {
     getData();
-    // }
   }, []);
   useEffect(() => {
 
@@ -115,9 +108,7 @@ export default function ExtrinsicDetails() {
     {
       title: t('Arguments'),
       content:
-        <CopyText children={
-          <JsonApi json={extrinsicDetails?.args}/>}
-                  text={extrinsicDetails?.args}/>
+          <JsonApi json={extrinsicDetails?.args}/>
     }
     // , {
     //   title: t('Signature'),
