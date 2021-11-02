@@ -90,7 +90,7 @@ export default function LatestItem({title, icon, ListData}: LatestItemPop) {
                         <span>{item?.event ? item?.event : 0}{t('event')}{item?.event ? item?.event : 0}</span>
                       </div>
                       <div>
-                        <TimeStatus content={item.timestamp}/>
+                        <TimeStatus content={item.timestamp} isHome={true}/>
                       </div>
                     </div>
                   </div>
@@ -124,7 +124,7 @@ export default function LatestItem({title, icon, ListData}: LatestItemPop) {
                                        more={true}/>
                           </div>
                           <div>
-                            <TimeStatus content={item?.indexer?.blockTime}/>
+                            <TimeStatus content={item?.indexer?.blockTime} isHome={true}/>
                           </div>
                         </div>
                       </div>

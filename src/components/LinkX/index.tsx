@@ -18,7 +18,8 @@ interface LinkProps {
   children?: any,
   img?: any,
   state?: any,
-  style?: any
+  style?: any,
+  isHome?: boolean
 }
 
 const NormalSpan = styled.div`
@@ -26,14 +27,22 @@ const NormalSpan = styled.div`
   color: rgba(0, 0, 0, 0.65);
 `;
 
+const NormalSpanHome = styled.div`
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.45);
+`;
+
 //简短的link ,样式，点击跳转方法
 export function LinkX({linkUrl, content, state, style}: LinkProps) {
   return (<Link to={{pathname: linkUrl, state: state}}><LinkSpan style={style}>{content}</LinkSpan></Link>);
 }
 
-export function Normal({state}: LinkProps) {
-  return (<NormalSpan>{state}</NormalSpan>
-  );
+export function Normal({state, isHome}: LinkProps) {
+  if (isHome) {
+    return (<NormalSpanHome>{state}</NormalSpanHome>);
+  } else {
+    return (<NormalSpan>{state}</NormalSpan>);
+  }
 }
 
 
