@@ -8,6 +8,7 @@ import Faviconnav from '../../components/SideBars';
 import styled from 'styled-components';
 import menuIcon from '../../assets/menu.svg';
 import { useOnClickOutside } from '../../helper/hooks';
+import MobileMenu from '../MobileMenu';
 
 interface HeaderPop {
     showSearch?: boolean
@@ -31,6 +32,7 @@ const HomeSearch = styled.div`
     display: flex;
     .NavSearch {
         margin:auto 0;
+        width:26rem;
     }
     @media screen and (max-width: 1150px) {
         display: none;
@@ -131,27 +133,30 @@ export default function Header({showSearch}: HeaderPop) {
           <MobileSearch>
               <div
                 className="w-overSpread flex flex-col justify-atart bg-gray-arrow px-4 pt-2 pb-4">
-                  <Wrapper className="relative z-10">
-                      <div className='flex flex-row justify-start'>
-                          <div><Link to="/"><img src={icon} alt=""
-                                                 style={{maxWidth: 'none', width: '93px', height: '20px'}}/></Link>
+                  <div className='flex flex-row justify-between'>
+                      <Wrapper className="relative z-10">
+                          <div className='flex flex-row justify-start'>
+                              <div><Link to="/"><img src={icon} alt=""
+                                                     style={{maxWidth: 'none', width: '93px', height: '20px'}}/></Link>
+                              </div>
+                              <HeardLine></HeardLine>
+                              <span className="pl-3 text-gray-white mr-9.5" style={{
+                                  letterSpacing: '1px', fontWeight: 'bold',
+                                  lineHeight: '19px', fontSize: '19px'
+                              }}>EXPLORER</span>
                           </div>
-                          <HeardLine></HeardLine>
-                          <span className="pl-3 text-gray-white mr-9.5" style={{
-                              letterSpacing: '1px', fontWeight: 'bold',
-                              lineHeight: '19px', fontSize: '19px'
-                          }}>EXPLORER</span>
-                      </div>
-                      {<SelectList className="selectList" style={{margin: 'auto 0'}}>
-                          <div onClick={() => setShowMenu(!showMenu)}><img src={menuIcon} alt="" style={{
-                              height: '1.5rem',
-                              width: '1.5rem'
-                          }}/></div>
-                          {showMenu &&
-                          <Faviconnav isCollapsed={showMenu} onClose={() => setShowMenu(!showMenu)}/>
-                          }
-                      </SelectList>}
-                  </Wrapper>
+                      </Wrapper>
+                      {/*{<SelectList className="selectList" style={{margin: 'auto 0'}}>*/}
+                      {/*    <div onClick={() => setShowMenu(!showMenu)}><img src={menuIcon} alt="" style={{*/}
+                      {/*        height: '1.5rem',*/}
+                      {/*        width: '1.5rem'*/}
+                      {/*    }}/></div>*/}
+                      {/*    {showMenu &&*/}
+                      {/*    <Faviconnav isCollapsed={showMenu} onClose={() => setShowMenu(!showMenu)}/>*/}
+                      {/*    }*/}
+                      {/*</SelectList>}*/}
+                  </div>
+                  <MobileMenu/>
                   {showSearch && <Search className="NavSearch"/>}
 
               </div>

@@ -251,14 +251,15 @@ body {
   background: #2C83EA;
   border-radius: 2px;
 }
-
-.ant-pagination-item-active{
-  background: #2C83EA;
+.ant-pagination-item-active, .ant-pagination-item:focus-visible, .ant-pagination-item:hover{
+  background: #2C83EA!important;
+}
+.ant-pagination-item-active a{
+  background: #2C83EA!important;
+  color: white !important;
   border-radius: 2px;
 }
-.ant-pagination-item-active a {
-  color: white !important;
-}
+
 .ant-select-single .ant-select-selector .ant-select-selection-item{
   color: rgba(0, 0, 0, 0.65);
 }
@@ -276,8 +277,10 @@ body {
   border-radius: 4px;
 }
 .ant-popover-arrow{
-  position: relative;
-  bottom: -42px !important;
+  bottom: 2.1px !important;
+}
+.ant-popover-arrow{
+
 }
 .ant-popover-arrow-content {
   border: 1px solid #080810;

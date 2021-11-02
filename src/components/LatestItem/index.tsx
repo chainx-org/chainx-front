@@ -88,7 +88,7 @@ export default function LatestItem({title, icon, ListData}: LatestItemPop) {
                           <div className="inline-block mr-1">{t('include')}</div>
                           <div
                             className="inline-block mr-1">{item.extrinsicsCnt ? item.extrinsicsCnt : 0}{t('extrinsic')}</div>
-                          <span>{item?.event ? item?.event : 0}{t('event')}{item?.event ? item?.event : 0}</span>
+                          <span>{item?.event ? item?.event : 0}{t('event')}</span>
                         </div>
                         <div>
                           <TimeStatus content={item.timestamp} isHome={true}/>

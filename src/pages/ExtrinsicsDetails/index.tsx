@@ -136,7 +136,7 @@ export default function ExtrinsicDetails() {
   return (
     <>
        <Header showSearch={true}/>
-      <ListBgColor style={{height:'195px'}}/>
+      <ListBgColor/>
       {noData ?
         <NoData/> :
         <>

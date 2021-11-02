@@ -66,7 +66,7 @@ export const WrapperDetails = styled.div`
 `;
 
 export const ListBgColor = styled.div`
-  height: 208px;
+  height: 205px;
   position: fixed;
   background-color: black;
   width: 100%;

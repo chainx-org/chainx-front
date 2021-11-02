@@ -13,8 +13,9 @@ export const Wrapper = styled.div`
     .topLinkTool {
       --text-opacity: 1;
       color: #fff;
-      color: rgba(255, 255, 255, var(--text-opacity));
-      margin-right: 2.374rem;
+      width: 5rem;
+      //color: rgba(255, 255, 255, var(--text-opacity));
+      //margin-right: 2.374rem;
       cursor: pointer;
     }
 
@@ -25,7 +26,8 @@ export const Wrapper = styled.div`
     :hover {
       .toolList {
         display: block;
-        position: relative;
+        position: absolute;
+        width: 14rem;
         z-index: 999;
       }
     }   
@@ -38,7 +40,7 @@ export const Wrapper = styled.div`
 
       & > li {
         height: 2.5rem;
-        width: 15rem;
+        width: 14rem;
         display: flex;
         justify-content: start;
         padding-left:1rem;

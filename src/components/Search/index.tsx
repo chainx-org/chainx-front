@@ -23,7 +23,7 @@ export default function Search({ className }: SearchProps) {
       {className === 'NavSearch' ?
 
         <div className={className}>
-          <Search placeholder={t('Search Address/Extrinsics/Blocks')} onSearch={onSearch} disabled={loading}
+          <Search  placeholder={t('Search Address/Extrinsics/Blocks')} onSearch={onSearch} disabled={loading}
                   loading={loading} enterButton/>
         </div> :
         <Search className={'Home_pageSearch'} placeholder={t('Search Address/Extrinsics/Blocks')} onSearch={onSearch}

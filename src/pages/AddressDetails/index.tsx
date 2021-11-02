@@ -132,7 +132,7 @@ export default function AddressDetails() {
   return (
     <>
        <Header showSearch={true}/>
-      <ListBgColor style={{height:'195px'}}/>
+      <ListBgColor/>
       {noData ?
         <NoData/> :
         <WrapperList>
