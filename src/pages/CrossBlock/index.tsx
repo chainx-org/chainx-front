@@ -133,7 +133,7 @@ export default function CrossBlock() {
   },[])
   return (
     <>
-      {/* <Header showSearch={true}/> */}
+       <Header showSearch={true}/>
       <WrapperBgWhite className="px-24 py-4 screen:px-4">
         <BridgeWrapper>
           <WrapperWith>
@@ -241,7 +241,7 @@ export default function CrossBlock() {
           <TableMenuBox tabList={tabList} currentTab={currentTab} setCurrentTab={setCurrentTab} tag={tag}/>
         </WrapperWith>
       </WrapperBgWhite>
-      {/* <Footer/> */}
+       {/*<Footer/>*/}
     </>
   );
 }

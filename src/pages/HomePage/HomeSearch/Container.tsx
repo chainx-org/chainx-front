@@ -18,42 +18,7 @@ export default function Container() {
     const {t} = useTranslation();
     const [timers, setTimers] = useState<Array<NodeJS.Timeout>>([]);
     const saveCallBack: any = useRef();
-    const [latestBlock, setListData] = useState([{
-        number: '-',
-        nikeName: '-',
-        extrinsic: '-',
-        event: '-',
-        exe: '-',
-        time: '-'
-    }, {
-        number: '-',
-        nikeName: '-',
-        extrinsic: '-',
-        event: '-',
-        exe: '-',
-        time: '-'
-    }, {
-        number: '-',
-        nikeName: '-',
-        extrinsic: '-',
-        event: '-',
-        exe: '-',
-        time: '-'
-    }, {
-        number: '-',
-        nikeName: '-',
-        extrinsic: '-',
-        event: '-',
-        exe: '-',
-        time: '-'
-    }, {
-        number: '-',
-        nikeName: '-',
-        extrinsic: '-',
-        event: '-',
-        exe: '-',
-        time: '-'
-    }]);
+    const [latestBlock, setListData] = useState([]);
 
     const [latestExtrinsic, setLatestExtrinsic] = useState([])
     const [metaData, setMetaData] = useState([{
@@ -131,7 +96,7 @@ export default function Container() {
     };
     const getLatestBlockData = async () => {
         const {latestBlocks}: any = await get('/latestBlock', '');
-        setListData([...latestBlocks]);
+        setListData(latestBlocks);
     };
     const getLatestExtrinsic = async () => {
         const res: any = await get(`/extrinsics?page=${1}&page_size=${5}`, ``);

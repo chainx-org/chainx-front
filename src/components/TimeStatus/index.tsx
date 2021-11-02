@@ -7,6 +7,9 @@ interface TimeStatusProps {
   content: any,
   isHome?:boolean
 }
+// const popverStylr = {
+//
+// }
 export default function TimeStatus({content,isHome}:TimeStatusProps) {
   const {t} = useTranslation();
   const originTime = (
@@ -38,7 +41,7 @@ export default function TimeStatus({content,isHome}:TimeStatusProps) {
   }, [content]);
 
   return (
-    <Popover content={originTime}>
+    <Popover  content={originTime}>
       <div style={{
         fontSize:'14px',
         color:'rgba(0,0,0,0.65)',

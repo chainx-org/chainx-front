@@ -83,14 +83,13 @@ function Footer(): React.ReactElement {
             </div>
 
           </ImgContent>
-          <div className={'text-topBar-white mx-0 my-auto '}
-               style={{textAlign: 'center', opacity: '38%', fontSize: '14px', marginLeft: '3rem'}}>All rights reserved ©
-            2019 ChainX
+          <div className={'text-topBar-white mx-0 my-auto text-center text-sm desktop:ml-12 screen:ml-0'}
+               style={{ opacity: '38%'}}>All rights reserved © 2019 ChainX
           </div>
         </div>
         <div className="flex flex-row screen:flex-col">
           <LangSelect/>
-          <img src={logo} alt="" className='inline-block h-6 my-auto ml-8 screen:ml-0' style={{width:'112px',height:'24px'}}/>
+          <img src={logo} alt="" className='inline-block h-6 my-auto ml-8 screen:ml-0 screen:mb-8' style={{width:'112px',height:'24px'}}/>
         </div>
       </div>
     );

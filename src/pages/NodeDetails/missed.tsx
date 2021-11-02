@@ -2,6 +2,10 @@ import { useTranslation } from 'react-i18next';
 import React, { useEffect, useState } from 'react';
 import { get } from '../../hooks/useApi';
 import TableX from '../../components/Table';
+import TimeStatus from '../../components/TimeStatus';
+import { LinkX, Normal } from '../../components/LinkX';
+import { accuracy } from '../../helper/hooks';
+
 
 
 export default function Missed() {
@@ -13,9 +17,15 @@ export default function Missed() {
   const [loading, setLoading] = useState(true);
   const address = window.location.pathname.slice(13, window.location.pathname.length);
   const getEventData = async () => {
-    let res: any = await get(`/unitmissed/${address}?page=${page - 1}&page_size=${pageSize}`, ``);
-    setEventTotal(res.total);
-    setEventData(res.items);
+    try {
+      let res: any = await get(`/unitmissed/${address}?page=${page - 1}&page_size=${pageSize}`, ``);
+      setEventTotal(res.total);
+      setEventData(res.items);
+      setLoading(false);
+    } catch (e) {
+      setEventData([]);
+      setLoading(false);
+    }
   };
 
   const chainColumns = [
@@ -23,39 +33,39 @@ export default function Missed() {
       title: t('Session'),
       dataIndex: 'number',
       key: 'number',
-      // render: (text: any, record: any) => {
-      //   return (
-      //     <LinkX linkUrl={`/blockDetails/${record.header.number}`} state={record} content={record.header.number}/>
-      //   );
-      // }
+      render: (text: any, record: any) => {
+        return (
+          <Normal state={record.session}/>);
+      }
     },
     {
       title: t('Height'),
       dataIndex: 'address',
       key: 'address',
-      // render: (text: any, record: any) => {
-      //   return (
-      //     <img src={waitIcon} alt=""/>
-      //   );
-      // }
+      render: (text: any, record: any) => {
+        return (
+          <LinkX linkUrl={`/blockDetails/${record.indexer.blockHeight}`} state={record}
+                 content={(record.indexer.blockHeight)}/>
+        );
+      }
     },
     {
       title: t('Block Time'),
       dataIndex: 'blockTime',
       key: 'blockTime',
-      // render: (text: any, record: any) => {
-      //   return (
-      //     <TimeStatus content={record.blockTime}/>);
-      // }
+      render: (text: any, record: any) => {
+        return (
+          <TimeStatus content={record.indexer.blockTime}/>);
+      }
     },
     {
       title: t('Slash Amount'),
       dataIndex: 'hash',
       key: 'hash',
-      // render: (text: any, record: any) => {
-      //   return (
-      //     <ShorterLink linkUrl={`/blockDetails/${record.hash}`} state={record} content={record.hash}/>);
-      // }
+      render: (text: any, record: any) => {
+        return (
+          <Normal state={accuracy(record.data[1])}/>);
+      }
     }
   ];
 

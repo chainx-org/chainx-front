@@ -20,7 +20,7 @@ import Footer from './components/Footer';
 function App() {
   return (
       <BrowserRouter>
-        <Header />
+        {/*<Header/>*/}
         <Switch>
           <Route path="/tools/SS58" exact component={SS58}/>
           <Route path="/tools/searchTool" exact  component={SearchTool}/>

@@ -5,9 +5,9 @@ import Container from './HomeSearch/Container';
 export default function HomePage() {
   return (
     <>
-      {/* <Header showSearch={false}/> */}
+       <Header showSearch={false}/>
       <Container/>
-      {/* <Footer/> */}
+       {/*<Footer/>*/}
     </>
   );
 }
