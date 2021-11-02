@@ -48,7 +48,7 @@ export default function ValidatorSlashed() {
       key: 'Count',
       render: (text: any, record: any) => {
         return (
-            <Normal state={(record.missed) ? accuracy(record.missed) : '-'}/>)
+            <Normal state={(record.missed) ? (record.missed) : '-'}/>)
       }
     }
   ];

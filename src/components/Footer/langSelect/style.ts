@@ -38,4 +38,9 @@ export const ChangeNetDiv = styled.div`
         }
       }
     }
+
+  @media screen and (max-width: 1150px) {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
   `;

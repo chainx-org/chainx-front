@@ -30,6 +30,6 @@ export default function CopyText({children, text}:CopyTextProps) {
   return (
     <Wrapper>
       <div>{children}</div>
-      <img src={Icon} alt="" onClick={onCopy}/>
+      <img src={Icon} alt="" onClick={onCopy} className='cursor-pointer my-2 mx-2'/>
     </Wrapper>);
 }

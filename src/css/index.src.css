@@ -272,6 +272,9 @@ body {
   /*border: 1px solid #080810;*/
   border-radius:4px ;
 }
+.ant-popover-inner{
+  border-radius: 4px;
+}
 .ant-popover-arrow-content {
   border: 1px solid #080810;
   margin-top: 1px;
