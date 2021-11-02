@@ -13,6 +13,7 @@ import { TabInfo } from '../../components/SwitchTab';
 import DetailTitle from '../../components/DetailTitle';
 import NoData from '../../components/NoData';
 import { ListBgColor, WrapperDetails, WrapperList } from '../../css/Wrapper';
+import Search from '../../components/Search';
 
 
 export default function BlockDetails() {
@@ -57,7 +58,7 @@ export default function BlockDetails() {
       title: t('Block Height'),
       content: (
         <div
-          className="font-medium text-gray-arrow ">{(blockDetails?.header?.number) ? blockDetails?.header?.number : '-'}</div>
+          className="font-medium text-gray-arrow">{(blockDetails?.header?.number) ? blockDetails?.header?.number : '-'}</div>
       ),
     },
     {
@@ -130,20 +131,21 @@ export default function BlockDetails() {
   ];
   const routerPath = () => {
     return (
-      <div className="flex flex-row cursor-pointer text-gray-white text-base">
-      <Link to={'/'} style={{color:'rgba(255, 255, 255, 0.65)'}}>{t('Home')}<span className='inline-block mx-2'>/</span></Link>
-      <Link to={'/chain'} style={{color:'rgba(255, 255, 255, 0.65)'}}>{t('Chain')}<span className='inline-block mx-2'>/</span> </Link>
+      <div className="flex flex-row cursor-pointer text-gray-white text-base" style={{'whiteSpace': 'nowrap'}}>
+      <Link to={'/'} style={{color:'rgba(255, 255, 255, 0.65)'}}><div className='flex flex-row w-fitContent'>{t('Home')}<span className='inline-block mx-2'>/</span></div></Link>
+      <Link to={'/chain'} style={{color:'rgba(255, 255, 255, 0.65)'}}><div className='flex flex-row w-fitContent'>{t('Chain')}<span className='inline-block mx-2'>/</span></div></Link>
       <Link to={`./${block}`}>{t('BlockDetails')}</Link>
     </div>);
   };
   return (
     <>
-      {/* <Header showSearch={true}/> */}
+       <Header showSearch={true}/>
       <ListBgColor/>
       {noData ?
         <NoData/> :
         <WrapperList>
-          <div className="px-24 pt-8 bg-gray-arrow screen:px-4">
+          {/*<Search className="NavSearch"/>*/}
+          <div className="px-24 bg-gray-arrow desktop:pt-8 screen:px-4 ">
             <DetailTitle routeTitle={t('Block Height')} content={nowBlock} isBlock={isBlockNumber}
                          setNowBlock={setNowBlock}
                          routePath={routerPath}/>

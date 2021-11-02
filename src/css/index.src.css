@@ -156,8 +156,8 @@ body {
 }
 
 .NavSearch {
-  width: 430px;
-  margin: auto 0;
+  /*width: 430px;*/
+  /*margin: auto 0;*/
 }
 
 
@@ -225,7 +225,7 @@ body {
 }
 .ant-input-group {
   background-color: white;
-  border-radius: 11px !important;
+  border-radius: 8px 9px 9px 8px !important;
 }
 .ant-input-search > .ant-input-group > .ant-input-group-addon:last-child {
   left: 0;
@@ -275,6 +275,10 @@ body {
 .ant-popover-inner{
   border-radius: 4px;
 }
+.ant-popover-arrow{
+  position: relative;
+  bottom: -42px !important;
+}
 .ant-popover-arrow-content {
   border: 1px solid #080810;
   margin-top: 1px;
@@ -315,6 +319,9 @@ body {
 .indexSkeleton .ant-skeleton-title{
   width: 100% !important;
   height:3rem;
+}
+.ant-table-cell{
+  white-space: nowrap;
 }
 
 @tailwind utilities;

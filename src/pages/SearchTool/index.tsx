@@ -61,7 +61,7 @@ export default function Tools() {
 
   return (
     <>
-      {/* <Header showSearch={true}/> */}
+       <Header showSearch={true}/>
       <div className="Container">
         <Wrapper>
           <CardTitle>

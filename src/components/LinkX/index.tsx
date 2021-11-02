@@ -10,6 +10,20 @@ const LinkSpan = styled.div`
   color: #3C88C6;
   line-height: 22px;
   cursor: pointer;
+  @media screen and (max-width: 1150px) {
+    font-size: 12px;
+  }
+`;
+
+const LinkSpanHome = styled.div`
+  font-size: 16px;
+  font-weight: 500;
+  color: #3C88C6;
+  line-height: 22px;
+  cursor: pointer;
+  @media screen and (max-width: 1150px) {
+    font-size: 14px;
+  }
 `;
 
 interface LinkProps {
@@ -25,17 +39,28 @@ interface LinkProps {
 const NormalSpan = styled.div`
   font-size: 14px;
   color: rgba(0, 0, 0, 0.65);
+  @media screen and (max-width: 1150px) {
+    font-size: 12px;
+  }
 `;
 
 const NormalSpanHome = styled.div`
   font-size: 14px;
   color: rgba(0, 0, 0, 0.45);
+  @media screen and (max-width: 1150px) {
+    font-size: 12px;
+  }
 `;
 
 //简短的link ,样式，点击跳转方法
 export function LinkX({linkUrl, content, state, style}: LinkProps) {
   return (<Link to={{pathname: linkUrl, state: state}}><LinkSpan style={style}>{content}</LinkSpan></Link>);
 }
+
+export function LinkXHome({linkUrl, content, state, style}: LinkProps) {
+  return (<Link to={{pathname: linkUrl, state: state}}><LinkSpanHome style={style}>{content}</LinkSpanHome></Link>);
+}
+
 
 export function Normal({state, isHome}: LinkProps) {
   if (isHome) {

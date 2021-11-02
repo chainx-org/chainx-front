@@ -13,6 +13,7 @@ export default function Block() {
       title: t('Block'),
       dataIndex: 'number',
       key: 'number',
+      width: 100,
       render: (text: any, record: any) => {
         return (
           <LinkX linkUrl={`/blockDetails/${record.header.number}`} state={record} content={record.header.number}/>
@@ -33,6 +34,7 @@ export default function Block() {
       title: t('Time'),
       dataIndex: 'blockTime',
       key: 'blockTime',
+      width: 100,
       render: (text: any, record: any) => {
         return (
           <TimeStatus content={record.blockTime}/>);
@@ -42,6 +44,7 @@ export default function Block() {
       title: t('Block hash'),
       dataIndex: 'hash',
       key: 'hash',
+      width: 150,
       render: (text: any, record: any) => {
         return (
           <ShorterLink linkUrl={`/blockDetails/${record.hash}`} state={record} content={record.hash}/>);
@@ -51,6 +54,7 @@ export default function Block() {
       title: t('Extrinsic'),
       dataIndex: 'extrinsic',
       key: 'extrinsic',
+      width: 100,
       render: (text: any, record: any) => {
         return (
           <Normal state={record?.extrinsics.length}/>
@@ -61,6 +65,7 @@ export default function Block() {
       title: t('Events'),
       dataIndex: 'eventCount',
       key: 'eventCount',
+      width: 100,
       render: (text: any, record: any) => {
         return (
           <Normal state={record?.eventCount}/>
@@ -71,6 +76,7 @@ export default function Block() {
       title: t('Validator'),
       dataIndex: 'Validator',
       key: 'Validator',
+      width: 150,
       render: (text: any, record: any) => {
         return (
           <LinkX linkUrl={`/nodeDetails/${_encodeAddress(record?.author)}`} state={record} content={record.referralId}/>);

@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
-import { LinkX, ShorterLink } from '../../components/LinkX';
+import { LinkXHome, ShorterLink } from '../../components/LinkX';
 import Operation from '../Operation';
 import TimeStatus from '../TimeStatus';
-import { Skeleton } from 'antd';
 import SkeletonItem from './skeletonItem';
 
 interface LatestItemPop {
@@ -25,6 +24,8 @@ const ItemContainer = styled.div`
     > div {
       > span {
         font-size: 16px;
+        display: inline-block;
+        margin: auto 0;
       }
     }
   }
@@ -58,46 +59,47 @@ export default function LatestItem({title, icon, ListData}: LatestItemPop) {
     <ItemContainer>
       <div className="flex flex-row justify-between text-homeText-gray"
            style={{borderBottom: '1px solid #E9E9E9', padding: '1rem'}}>
-        <span className="text-gray-backgroundGray text-xl font-medium">{title}</span>
+        <span className="text-gray-backgroundGray font-medium desktop:text-xl screen:text-base">{title}</span>
         <div id="homePageBtn" onClick={() => linkToChain()}>
           <span>{t('See All')}</span>
         </div>
       </div>
       <LatestItemBox>
         {title === t('Latest block') ?
-          ListData?.map((item, index) => {
-            return (
-              <div className="px-4" key={index}>
-                <div className="flex flex-row justify-start py-3 overflow-scroll"
-                     style={{borderBottom: '1px solid #E9E9E9'}}>
-                  <div className="latestDiv">
-                    <span>BX</span>
-                  </div>
-                  <div className="flex flex-col justify-start ml-4 w-overSpread">
-                    <div className=" flex flex-row justify-between text-homeText-gray text-homeText-gray">
-                      <LinkX linkUrl={`/blockDetails/${item.number}`} content={item.number} style={{fontSize: '16px'}}/>
-                      <div className="flex flex-row">
-                        <div className="inline-block mr-1">{t('Validator')}</div>
-                        <LinkX linkUrl={`/nodeDetails/${item.address}`} content={item.nikename}
-                               style={{fontSize: '16px'}}/>
+          <>
+            {ListData.length>0?ListData?.map((item, index) => {
+              return (
+                <div className="px-4" key={index}>
+                  <div className="flex flex-row justify-start py-3 overflow-scroll"
+                       style={{borderBottom: '1px solid #E9E9E9'}}>
+                    <div className="latestDiv">
+                      <span>BX</span>
+                    </div>
+                    <div className="flex flex-col justify-start ml-4 w-overSpread">
+                      <div className=" flex flex-row justify-between text-homeText-gray text-homeText-gray">
+                        <LinkXHome linkUrl={`/blockDetails/${item.number}`} content={item.number}/>
+                        <div className="flex flex-row">
+                          <div className="inline-block mr-1">{t('Validator')}</div>
+                          <LinkXHome linkUrl={`/nodeDetails/${item.address}`} content={item.nikename}/>
+                        </div>
+                      </div>
+                      <div className="flex flex-row justify-between text-homeText-gray">
+                        <div>
+                          <div className="inline-block mr-1">{t('include')}</div>
+                          <div
+                            className="inline-block mr-1">{item.extrinsicsCnt ? item.extrinsicsCnt : 0}{t('extrinsic')}</div>
+                          <span>{item?.event ? item?.event : 0}{t('event')}{item?.event ? item?.event : 0}</span>
+                        </div>
+                        <div>
+                          <TimeStatus content={item.timestamp} isHome={true}/>
+                        </div>
                       </div>
                     </div>
-                    <div className="flex flex-row justify-between text-homeText-gray">
-                      <div>
-                        <div className="inline-block mr-1">{t('include')}</div>
-                        <div
-                          className="inline-block mr-1">{item.extrinsicsCnt ? item.extrinsicsCnt : 0}{t('extrinsic')}</div>
-                        <span>{item?.event ? item?.event : 0}{t('event')}{item?.event ? item?.event : 0}</span>
-                      </div>
-                      <div>
-                        <TimeStatus content={item.timestamp} isHome={true}/>
-                      </div>
-                    </div>
                   </div>
-                </div>
 
-              </div>);
-          })
+                </div>);
+            }):<SkeletonItem/>}
+          </>
           : <>
             {ListData.length > 0 ? ListData?.map((item, index) => {
                 return (
@@ -109,9 +111,9 @@ export default function LatestItem({title, icon, ListData}: LatestItemPop) {
                       </div>
                       <div className="flex flex-col justify-start ml-4 w-overSpread">
                         <div className="flex flex-row justify-between text-homeText-gray text-homeText-gray">
-                          <LinkX linkUrl={`/extrinsicDetails/${item.hash}`}
-                                 content={(item?.indexer?.blockHeight) ? (item?.indexer?.blockHeight) : '' + '-' + (item?.indexer?.index) ? (item?.indexer?.index) : ''}
-                                 style={{fontSize: '16px'}}/>
+                          <LinkXHome linkUrl={`/extrinsicDetails/${item.hash}`}
+                                     content={(item?.indexer?.blockHeight) ? (item?.indexer?.blockHeight) : '' + '-' + (item?.indexer?.index) ? (item?.indexer?.index) : ''}
+                          />
                           <div className="flex flex-row">
                             <ShorterLink linkUrl={`/extrinsicDetails/${item.hash}`} content={item.hash}/>
                             {/*<img src={iconImg} alt="" style={{width: '12px', height: '12px'}}/>*/}

@@ -156,20 +156,20 @@ export default function NodeDetails() {
     }
   ];
   const routerPath = () => {
-    return (<div className="flex flex-row cursor-pointer text-gray-white text-base mx-0 my-auto">
-      <Link to={'/'} style={{color:'rgba(255, 255, 255, 0.65)'}}>{t('Home')}<span className='inline-block mx-2'>/</span></Link>
-      <Link to={'/validators'} style={{color:'rgba(255, 255, 255, 0.65)'}}>{t('Chain')}<span className='inline-block mx-2'>/</span></Link>
+    return (<div className="flex flex-row cursor-pointer text-gray-white text-base mx-0 my-auto" style={{'whiteSpace': 'nowrap'}}>
+      <Link to={'/'} style={{color:'rgba(255, 255, 255, 0.65)'}}><div className='flex flex-row'>{t('Home')}<span className='inline-block mx-2'>/</span></div></Link>
+        <Link to={'/validators'} style={{color:'rgba(255, 255, 255, 0.65)'}}><div className='flex flex-row'>{t('Chain')}<span className='inline-block mx-2'>/</span></div></Link>
       <Link to={`./${node}`}>{t('NodeDetails')}</Link>
     </div>);
   };
   return (
     <>
-      {/* <Header showSearch={true}/> */}
+       <Header showSearch={true}/>
       <ListBgColor style={{height:'195px'}}/>
       {noData ?
         <NoData/> :
         <WrapperList>
-          <div className="px-24 pt-8 bg-gray-arrow screen:px-4">
+          <div className="px-24 bg-gray-arrow desktop:pt-8 screen:px-4 ">
             <DetailTitle routeTitle={t('Validator')} content={node} isBlock={false}
                          routePath={routerPath}/>
           </div>
@@ -181,6 +181,6 @@ export default function NodeDetails() {
           </div>
         </WrapperList>
       }
-      {/* <Footer/> */}
+       {/*<Footer/> */}
     </>);
 }

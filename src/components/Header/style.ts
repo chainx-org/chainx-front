@@ -5,7 +5,10 @@ export const Wrapper = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: flex-end;
-
+  @media screen and (max-width: 1150px) {
+    justify-content: space-between;
+    margin:1rem 0rem;
+  }
   .topLink {
     .topLinkTool {
       --text-opacity: 1;

@@ -13,8 +13,8 @@ function ListItem({ className = '', children, title, content, loading }: ListIte
 {
 
     return (
-        <div className={`${className} grid grid-cols-listItem w-full py-4 px-8 last:border-0 border-listItem text-sm overflow-auto`}>
-            <div className='text-black-textColor text-sm min-w-11 font-normal' >{title}</div>
+        <div className={`${className} grid desktop:grid-cols-listItem desktop:py-4 screen:pt-4 screen:pb-2 w-full px-8 last:border-0 border-listItem text-sm`}>
+            <div className='text-black-textColor text-sm min-w-8 font-normal' >{title}</div>
             <div className={`font-normal`}>
                 {loading ? <Skeleton active paragraph={{ rows: 0 }} /> : content}
             </div>

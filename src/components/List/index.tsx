@@ -1,7 +1,6 @@
 import React from 'react';
 import ListItem from './ListItem';
 import styled from 'styled-components';
-import lightNing from '../../assets/Lightning.svg';
 
 interface Item {
   title: string;
@@ -22,6 +21,14 @@ const Box = styled.div`
   border-radius: 10px;
   border: 1px solid #E9E9E9;
   position: relative;
+  overflow: scroll;
+  @media screen and (max-width: 1150px) {
+    > div {
+      :nth-last-child(1) {
+        margin-bottom: 1rem;
+      }
+    }
+  }
 `;
 
 function List({
@@ -30,21 +37,24 @@ function List({
                 loading,
               }: ListProps): React.ReactElement {
   return (
-    <div className="px-24 pb-4 bg-gray-bgWhite screen:px-4" style={{
+    <div className="px-24 pb-4 bg-gray-bgWhite screen:px-4 overflow-auto" style={{
       background: 'linear-gradient(to bottom, black 0%, black 100px, #f5f5f5 100px, #f5f5f5 100%)'
     }}>
       <Box
       >
-        {list.map((item) => {
-          return (
-            <ListItem
-              key={item.title}
-              title={item.title}
-              content={item.content}
-              loading={loading}
-            />
-          );
-        })}
+        {/*<div>*/}
+          {list.map((item) => {
+            return (
+              <ListItem
+                key={item.title}
+                title={item.title}
+                content={item.content}
+                loading={loading}
+              />
+            );
+          })}
+        {/*</div>*/}
+
       </Box>
     </div>
   );
