@@ -19,10 +19,11 @@ interface DetailTitleProps {
   routePath: Function,
   content: number | string,
   isBlock?: boolean,
-  setNowBlock?: any
+  setNowBlock?: any,
+  showHeightIcon?:boolean
 }
 
-export default function DetailTitle({routeTitle, routePath, content, isBlock, setNowBlock}: DetailTitleProps) {
+export default function DetailTitle({routeTitle, routePath, content, isBlock, setNowBlock,showHeightIcon}: DetailTitleProps) {
   const {t} = useTranslation()
   const increaseBlock = () => {
     setNowBlock(Number(content) + 1);
@@ -45,11 +46,11 @@ export default function DetailTitle({routeTitle, routePath, content, isBlock, se
         <span className="text-gray-white text-xl font-medium my-auto">{routeTitle}</span>
         {isBlock ?
           <DetailSpan className="inline-block text-topBar-blueLight font-medium cursor-pointer text-xl h-fitContent pl-1"
-                style={{margin: 'auto 0'}}> <span style={{verticalAlign: 'middle'}}>{(content==="undefined-undefined"?'-':content)}</span></DetailSpan>
+                style={{margin: 'auto 0'}}> <span style={{verticalAlign: 'middle'}}>{(content==="undefined-undefined"?'-':'#'+content)}</span></DetailSpan>
           : <DetailSpan className="inline-block text-topBar-blueLight font-medium text-base cursor-pointer h-fitContent pl-1"
                   style={{margin: 'auto 0'}}><span style={{verticalAlign: 'middle'}}>{content==="undefined-undefined"?'-':content}</span> <img src={Icon} onClick={onCopy} alt="" className='inline-block cursor-pointer'/></DetailSpan>
         }
-        {isBlock ?
+        {showHeightIcon ?
           <>
             <img src={arrow} alt="" style={{display: 'inline-block', transform: 'rotateY(180deg)',width:'48px'}}
                  onClick={reduceBlock} className="cursor-pointer"/>

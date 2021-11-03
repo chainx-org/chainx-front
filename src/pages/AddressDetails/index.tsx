@@ -136,13 +136,13 @@ export default function AddressDetails() {
       {noData ?
         <NoData/> :
         <WrapperList>
-          <div className="px-24 bg-gray-arrow desktop:pt-8 screen:px-4  media:px-4">
+          <div className="px-24 bg-gray-arrow desktop:pt-8 screen:px-4  medium:px-4">
             <DetailTitle routeTitle={t('Address')} content={nowBlock}
                          setNowBlock={setNowBlock}
                          routePath={routerPath}/>
           </div>
           <List list={list} loading={loading}/>
-          <div className="px-24 pb-4 bg-gray-bgWhite screen:px-4">
+          <div className="px-24 pb-4 bg-gray-bgWhite screen:px-4 medium:px-4">
             <WrapperDetails>
               <TableMenuBox tabList={tabList} currentTab={currentTab} setCurrentTab={setCurrentTab} tag={tag}/>
             </WrapperDetails>

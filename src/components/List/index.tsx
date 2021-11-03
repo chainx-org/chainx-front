@@ -25,7 +25,7 @@ const Box = styled.div`
   @media screen and (max-width: 1150px) {
     > div {
       :nth-last-child(1) {
-        margin-bottom: 1rem;
+        //margin-bottom: 1rem;
       }
     }
   }

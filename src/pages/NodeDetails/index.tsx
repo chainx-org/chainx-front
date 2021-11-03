@@ -15,6 +15,7 @@ import decodeAddress from '../../helper/encodeAddress';
 import TrustTag from '../../components/TrustTag';
 import { accuracy, reName } from '../../helper/hooks';
 import { ExtrinWrapper, ListBgColor, Wrapper, WrapperDetails, WrapperList } from '../../css/Wrapper';
+import CopyText from '../../components/copyText';
 
 const {hexToU8a, isHex} = require('@polkadot/util');
 
@@ -89,7 +90,7 @@ export default function NodeDetails() {
       title: t('Account'),
       content: (
         <div className="text-black-textColor">
-          {reName(addressDetails?.account)}
+          <CopyText text={addressDetails?.rewardPotAccount} children={ <div className="text-black-textColor">{reName(addressDetails?.account)}</div>}/>
         </div>)
     },
     // {
@@ -102,7 +103,7 @@ export default function NodeDetails() {
     {
       title: t('Jackpot Address'),
       content: (
-        <div className="text-black-textColor">{addressDetails?.rewardPotAccount}</div>
+        <CopyText text={addressDetails?.rewardPotAccount} children={ <div className="text-black-textColor">{addressDetails?.rewardPotAccount}</div>}/>
       ),
     },
     {
@@ -169,12 +170,12 @@ export default function NodeDetails() {
       {noData ?
         <NoData/> :
         <WrapperList>
-          <div className="px-24 bg-gray-arrow desktop:pt-8 screen:px-4  media:px-4">
+          <div className="px-24 bg-gray-arrow desktop:pt-8 screen:px-4  medium:px-4">
             <DetailTitle routeTitle={t('Validator')} content={node} isBlock={false}
                          routePath={routerPath}/>
           </div>
           <List list={list} loading={loading}/>
-          <div className="px-24 pb-4 bg-gray-bgWhite screen:px-4">
+          <div className="px-24 pb-4 bg-gray-bgWhite screen:px-4 medium:px-4">
             <WrapperDetails>
               <TableMenuBox tabList={tabList} currentTab={currentTab} setCurrentTab={setCurrentTab} tag={tag}/>
             </WrapperDetails>
