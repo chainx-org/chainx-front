@@ -14,6 +14,7 @@ import DetailTitle from '../../components/DetailTitle';
 import NoData from '../../components/NoData';
 import { ListBgColor, WrapperDetails, WrapperList } from '../../css/Wrapper';
 import Search from '../../components/Search';
+import CopyText from '../../components/copyText';
 
 
 export default function BlockDetails() {
@@ -95,8 +96,9 @@ export default function BlockDetails() {
     {
       title: t('Extrinsics Root'),
       content: (
-        <div className="text-black-textColor">
-          {blockDetails?.header?.stateRoot}
+        <div className='flex flex-row'>
+          <div className="text-black-textColor mr-1">{blockDetails?.header?.stateRoot}</div>
+          <CopyText text={blockDetails?.header?.stateRoot} showText={true}/>
         </div>
       ),
     },
@@ -145,13 +147,13 @@ export default function BlockDetails() {
         <NoData/> :
         <WrapperList>
           {/*<Search className="NavSearch"/>*/}
-          <div className="px-24 bg-gray-arrow desktop:pt-8 screen:px-4  media:px-4">
-            <DetailTitle routeTitle={t('Block Height')} content={'#'.concat(nowBlock)} isBlock={true}
+          <div className="px-24 bg-gray-arrow desktop:pt-8 screen:px-4 medium:px-4">
+            <DetailTitle routeTitle={t('Block Height')} content={nowBlock} isBlock={isBlockNumber}
                          setNowBlock={setNowBlock}
-                         routePath={routerPath}/>
+                         routePath={routerPath} showHeightIcon = {true}/>
           </div>
           <List list={list} loading={loading}/>
-          <div className="px-24 pb-4 bg-gray-bgWhite screen:px-4">
+          <div className="px-24 pb-4 bg-gray-bgWhite screen:px-4 medium:px-4">
             <WrapperDetails>
               <TableMenuBox tabList={tabList} currentTab={currentTab} setCurrentTab={setCurrentTab} tag={tag}/>
             </WrapperDetails>

@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import copy from 'copy-to-clipboard';
 import Icon from '../../assets/copy.svg';
+import listIcon from '../../assets/icon_copy_address.svg'
 import { message } from 'antd';
 import { useTranslation } from 'react-i18next';
 
@@ -14,22 +15,24 @@ const Wrapper = styled.div`
   }
 `;
 interface CopyTextProps{
-  children?:any,
-  text:string
+  children?: any,
+  text: string,
+  showText?: boolean
 }
 
 // @ts-ignore
-export default function CopyText({children, text}:CopyTextProps) {
-  const {t} = useTranslation()
+export default function CopyText({children, text, showText}: CopyTextProps) {
+  const {t} = useTranslation();
   const onCopy = () => {
     if (text && copy(text)) {
-      message.success({content:t('copy success')})
+      message.success({content: t('copy success')});
     }
   };
 
   return (
     <Wrapper>
-      <div>{children}</div>
-      <img src={Icon} alt="" onClick={onCopy} className='cursor-pointer my-2 mx-2'/>
+      {!showText ? <div style={{margin: 'auto 0'}}>{children}</div> : ''}
+      {!showText ? <img src={Icon} alt="" onClick={onCopy} className="cursor-pointer my-2 mx-2"/> :
+        <img src={listIcon} alt="" onClick={onCopy} className="cursor-pointer"/>}
     </Wrapper>);
 }
