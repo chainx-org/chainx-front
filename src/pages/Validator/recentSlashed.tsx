@@ -5,6 +5,7 @@ import { get } from '../../hooks/useApi';
 import { LinkX, ShorterLink } from '../../components/LinkX';
 import TimeStatus from '../../components/TimeStatus';
 import TrustTag from '../../components/TrustTag';
+import { accuracy } from '../../helper/hooks';
 
 
 export default function RecentSlashed() {
@@ -64,9 +65,7 @@ export default function RecentSlashed() {
       key: 'Slash Amount',
       render: (text: any, record: any) => {
         return (
-
-
-          <div>{record.data[1]}</div>);
+          <div>{accuracy(record.data[1])}</div>);
       },
       sorter: (a: any, b: any) => {
         return a.data[1] - b.data[1]

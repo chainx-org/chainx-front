@@ -31,6 +31,9 @@ export const BgColor = styled.div`
   width: 100%;
   z-index: 0;
   top:48px;
+  @media screen and (max-width: 1150px) {
+    display: none;
+  }
 `;
 
 export const FloatBox = styled.div`

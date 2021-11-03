@@ -8,10 +8,7 @@ import { LinkX, ShorterLink } from '../../components/LinkX';
 import TimeStatus from '../../components/TimeStatus';
 import Operation from '../../components/Operation';
 import JsonApi from '../../components/Jsonformat';
-import moreIcon from '../../assets/icon_more.svg';
-import pulldownIcon from '../../assets/icon_pulldown_list.svg'
-import styled from 'styled-components';
-import ExpandIcon from '../../components/ExpandIcon'
+import ExpandIcon from '../../components/ExpandIcon';
 
 interface ExtrinsicProps {
   block?: number | string,
@@ -45,6 +42,8 @@ export default function Extrinsic({block}: ExtrinsicProps) {
       title: t('Extrinsic ID'),
       dataIndex: 'extrinsicId',
       key: 'extrinsicId',
+      className:'w-28',
+      width: 100,
       render: (text: any, record: any) => {
         return (
           <LinkX linkUrl={`/extrinsicDetails/${record.hash}`} state={record} content={(record.indexer.blockHeight)+'-'+(record.indexer.index)}/>
@@ -55,6 +54,7 @@ export default function Extrinsic({block}: ExtrinsicProps) {
       title: t('Block'),
       dataIndex: 'block',
       key: 'block',
+      width: 100,
       render: (text: any, record: any) => {
         return (
           <LinkX linkUrl={`/blockDetails/${record.indexer.blockHeight}`} state={record}
@@ -66,6 +66,7 @@ export default function Extrinsic({block}: ExtrinsicProps) {
       title: t('Extrinsic Hash'),
       dataIndex: 'extrinsicHash',
       key: 'extrinsicHash',
+      width: 150,
       render: (text: any, record: any) => {
         return (
           <ShorterLink linkUrl={`/extrinsicDetails/${record.hash}`} state={record} content={record.hash}/>
@@ -76,6 +77,7 @@ export default function Extrinsic({block}: ExtrinsicProps) {
       title: t('Time'),
       dataIndex: 'time',
       key: 'time',
+      width: 100,
       render: (text: any, record: any) => {
         return (
           <TimeStatus content={record.indexer.blockTime}/>);
@@ -85,6 +87,7 @@ export default function Extrinsic({block}: ExtrinsicProps) {
       title: t('Result'),
       dataIndex: 'result',
       key: 'result',
+      width: 90,
       render: (text: any, record: any) => {
         return (
           <div>{record.isSuccess === true ? <img src={successIcon} alt=""/> : <img src={failIcon} alt=""/>}</div>
@@ -96,7 +99,7 @@ export default function Extrinsic({block}: ExtrinsicProps) {
       dataIndex: 'Operation',
       key: 'Operation',
       align:'right',
-      width:'15rem',
+      width: 200,
       render: (text: any, record: any) => {
         return (
           <Operation content={record.section+'-'+record.name}/>

@@ -149,7 +149,7 @@ module.exports = {
       },
       gridTemplateColumns: {
         // Simple 16 column grid
-        listItem: '1.5fr 8.5fr',
+        listItem: '2fr 8fr',
         card: '2fr 1fr',
       },
       margin: {
@@ -211,6 +211,7 @@ module.exports = {
         10: "2.5rem",
         11: "2.75rem",
         12: "3rem",
+        14:"3.6rem",
         15: "3.75rem",
         17.75: "4.4375rem",
         20: "5rem",
@@ -303,6 +304,7 @@ module.exports = {
         180: "40rem",
       },
       minWidth: {
+        8:'2rem',
         10: "3.5rem",
         11: "4rem",
         12: "5rem",
@@ -353,9 +355,9 @@ module.exports = {
       }),
     },
     screens: {
-      screen: { min: "0px", max: "1150px" },
+      screen: { min: "0px", max: "900px" },
       medium: {min:'900px',max:'1150px'},
-      desktop: { min: "1150px" },
+      desktop: { min: "900px" },
     },
     bottom: {
       28: '28vh'

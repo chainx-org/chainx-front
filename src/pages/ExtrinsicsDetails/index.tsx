@@ -38,14 +38,7 @@ export default function ExtrinsicDetails() {
     }
   };
   useEffect(() => {
-    // if (window.history.state && window.history.state?.state) {
-    //   console.log(window.history.state?.state)
-    //   setExtrinsicDetails(window.history.state.state);
-    //   console.log('window', window.history.state.state);
-    //   setLoading(false);
-    // } else {
     getData();
-    // }
   }, []);
   useEffect(() => {
 
@@ -64,8 +57,8 @@ export default function ExtrinsicDetails() {
         <LinkX linkUrl={`/blockDetails/${extrinsicDetails?.indexer?.blockHeight}`}
                content={
                  <div className="flex flex-row items-center">
-                   <img src={successIcon} alt=""/>
-                   <span className="inline-block mr-1">{extrinsicDetails?.indexer?.blockHeight}</span>
+                   <img src={successIcon} alt="" className='inline-block mr-4'/>
+                   <span className="inline-block">{extrinsicDetails?.indexer?.blockHeight}</span>
                  </div>
                }/>
         // <></>
@@ -80,7 +73,11 @@ export default function ExtrinsicDetails() {
     {
       title: t('Extrinsic Hash'),
       content: (
-        <Normal state={(extrinsicDetails?.hash) ? (extrinsicDetails?.hash) : '-'}/>
+        <div className='flex flex-row'>
+          <Normal state={(extrinsicDetails?.hash) ? (extrinsicDetails?.hash) : '-'}/>
+          {(extrinsicDetails?.hash) ?  <CopyText text={extrinsicDetails?.hash} showText={true}/>:''}
+        </div>
+
       )
     },
     {
@@ -115,9 +112,7 @@ export default function ExtrinsicDetails() {
     {
       title: t('Arguments'),
       content:
-        <CopyText children={
-          <JsonApi json={extrinsicDetails?.args}/>}
-                  text={extrinsicDetails?.args}/>
+          <JsonApi json={extrinsicDetails?.args}/>
     }
     // , {
     //   title: t('Signature'),
@@ -134,29 +129,29 @@ export default function ExtrinsicDetails() {
     }
   ];
   const routerPath = () => {
-    return (<div className="flex flex-row cursor-pointer text-gray-white text-base mx-0 my-auto">
-      <Link to={'/'} style={{color: 'rgba(255, 255, 255, 0.65)'}}>{t('Home')}<span
-        className="inline-block mx-2">/</span></Link>
-      <Link to={'/chain/extrinsic'} style={{color: 'rgba(255, 255, 255, 0.65)'}}>{t('Extrinsic')}<span
-        className="inline-block mx-2">/</span></Link>
+    return (<div className="flex flex-row cursor-pointer text-gray-white text-base mx-0 my-auto" style={{'whiteSpace': 'nowrap'}}>
+      <Link to={'/'} style={{color: 'rgba(255, 255, 255, 0.65)'}}><div className='flex flex-row'>{t('Home')}<span
+        className="inline-block mx-2">/</span></div></Link>
+      <Link to={'/chain/extrinsic'} style={{color: 'rgba(255, 255, 255, 0.65)'}}><div className='flex flex-row'>{t('Extrinsic')}<span
+        className="inline-block mx-2">/</span></div></Link>
       <Link to={`./${extrinsic}`}>{t('ExtrinsicDetails')}</Link>
     </div>);
   };
   return (
     <>
-      <Header showSearch={true}/>
-      <ListBgColor style={{height:'195px'}}/>
+       <Header showSearch={true}/>
+      <ListBgColor/>
       {noData ?
         <NoData/> :
         <>
           <WrapperList>
-            <div className="px-24 pt-8 bg-gray-arrow screen:px-4">
+            <div className="px-24 bg-gray-arrow desktop:pt-8 screen:px-4  medium:px-4">
               <DetailTitle routeTitle={t('Extrinsics')}
                            content={extrinsicDetails?.indexer?.blockHeight + '-' + extrinsicDetails?.indexer?.index}
-                           isBlock={false} setNowBlock={extrinsic} routePath={routerPath}/>
+                           isBlock={true} setNowBlock={extrinsic} routePath={routerPath}/>
             </div>
             <List list={list} loading={loading}/>
-            <div className="px-24 pb-4 bg-gray-bgWhite screen:px-4">
+            <div className="px-24 pb-4 bg-gray-bgWhite screen:px-4 medium:px-4">
               <WrapperDetails>
                 <TableMenuBox tabList={tabList} currentTab={currentTab} setCurrentTab={setCurrentTab} tag={tag}/>
               </WrapperDetails>
@@ -164,7 +159,7 @@ export default function ExtrinsicDetails() {
           </WrapperList>
         </>
       }
-      <Footer/>
+      {/* <Footer/> */}
     </>
   )
 }

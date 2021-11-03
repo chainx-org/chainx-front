@@ -37,6 +37,7 @@ export default function Transaction({account}: ExtrinsicProps) {
       title: t('Extrinsic ID'),
       dataIndex: 'extrinsicId',
       key: 'extrinsicId',
+      columnWidth:'200px',
       render: (text: any, record: any) => {
         return (
           <LinkX linkUrl={`/extrinsicDetails/${record.hash}`} state={record} content={(record.indexer.blockHeight)+'-'+(record.indexer.index)}/>
@@ -124,6 +125,7 @@ export default function Transaction({account}: ExtrinsicProps) {
     total: extrinsicTotal,
     showSizeChanger: true,
     showQuickJumper: true,
+    hideOnSinglePage:true,
     onChange: (page: number, pageSize: number) => onChange(page, pageSize),
     showTotal: (extrinsicTotal: number) => `${t('total')} ${extrinsicTotal} ${t('items')}`,
 

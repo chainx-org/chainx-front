@@ -8,7 +8,7 @@ import { TabInfo } from '../../components/SwitchTab';
 import { CardTitle } from '../../components/CardBox/style';
 import mining from '../../assets/icon_mining.svg';
 import { BottomLine, CardDiv, RightLine, WrapperBridge } from './style';
-import { reName } from '../../helper/hooks';
+import { accuracy, reName } from '../../helper/hooks';
 import BitcoinBlock from './block';
 import Deposit from './deposit';
 import Withdraw from './withdraw';
@@ -23,14 +23,16 @@ import { WrapperBgWhite, WrapperWith } from '../../css/Wrapper';
 
 const BridgeWrapper = styled.div`
   display: grid;
-  grid-template-columns: 59% 39%;
+  grid-template-columns: 66% 33%;
+  //grid-template-rows:311px;
   grid-gap: 1rem;
   place-content: space-around space-evenly;
   position: relative;
-  margin-bottom: 2rem;
-  @media screen and (max-width: 900px) {
+  margin-bottom: 1rem;
+  @media screen and (max-width: 1150px) {
     grid-template-columns: 100%;
-    padding: 1rem;
+    grid-template-rows:400px;
+    //padding: 1rem;
     margin-bottom: 1rem;
     > div {
       > div {
@@ -99,10 +101,10 @@ export default function CrossBlock() {
     setMingApiData([
       [{
         name: 'Total Balance',
-        data: (items[0]?.balance?.Usable) / 1000000
+        data: accuracy(items[0]?.balance?.Usable)
       }, {
         name: 'Total Weight',
-        data: items[0]?.lastTotalMiningWeight / 1000000
+        data: accuracy(items[0]?.lastTotalMiningWeight)
       }], [{
         name: 'Reward Pot Last Update Height(PCX)',
         data: items[0]?.lastTotalMiningWeightUpdate
@@ -111,10 +113,10 @@ export default function CrossBlock() {
         data: items[0]?.miningPower
       }], [{
         name: 'Equivalent Nominations(PCX)',
-        data: items[0]?.equivalent_nominations
+        data: accuracy(items[0]?.equivalent_nominations)
       }, {
         name: 'Reward Pot Balance(PCX)',
-        data: items[0]?.rewardPotBalance
+        data: accuracy(items[0]?.rewardPotBalance)
       }]]);
     setRewardPot(items[0]?.rewardPot);
   };
@@ -133,7 +135,7 @@ export default function CrossBlock() {
   },[])
   return (
     <>
-      <Header showSearch={true}/>
+       <Header showSearch={true}/>
       <WrapperBgWhite className="px-24 py-4 screen:px-4">
         <BridgeWrapper>
           <WrapperWith>
@@ -143,15 +145,15 @@ export default function CrossBlock() {
                 <span className="ml-4 text-base text-black-titleColor font-medium">{t('Deposit Mining')}</span>
               </div>
             </CardTitle>
-            <div className="flex flex-row w-overSpread justify-between px-8 py-4">
+            <div className="flex flex-row w-overSpread justify-between desktop:pl-8 desktop:pr-14 screen:px-8 py-4">
               <div className="flex flex-col">
                 <span style={{fontSize: '14px', color: 'rgba(0, 0, 0, 0.45)'}}>{t('Asset Type')}</span>
                 <span style={{fontSize: '18px', fontWeight: 'bold'}}>Interchain BTC(X-BTC)</span>
               </div>
               <div className="flex flex-col">
                 <span style={{fontSize: '14px', color: 'rgba(0, 0, 0, 0.45)'}}>{t('Reward Pot Address(PCX)')}</span>
-                <span style={{fontSize: '18px', fontWeight: 'bold'}}><ShorterLink
-                  linkUrl={`/addressDetails/${rewardPot}`} content={rewardPot}/></span>
+                <span style={{fontSize: '18px', fontWeight: 'bold'}}>
+                  <ShorterLink linkUrl={`/addressDetails/${rewardPot}` } style={{fontSize: '18px'}} content={rewardPot}/></span>
               </div>
             </div>
             <WrapperBridge>
@@ -168,7 +170,7 @@ export default function CrossBlock() {
                                 color: 'rgba(0, 0, 0, 0.45)'
                               }}>{t(`${item[0]?.name}`)}</span>
                             <span className="date"
-                                  style={{fontSize: '18px', fontWeight: 'bold'}}>{reName(item[0]?.data)}</span>
+                                  style={{fontSize: '18px', fontWeight: 'bold'}}>{(item[0]?.data)}</span>
                           </div>
                         </CardDiv>
                         <BottomLine/>
@@ -180,7 +182,7 @@ export default function CrossBlock() {
                                 color: 'rgba(0, 0, 0, 0.45)'
                               }}>{t(`${item[1]?.name}`)}</span>
                             <span className="date"
-                                  style={{fontSize: '18px', fontWeight: 'bold'}}>{reName(item[1]?.data)}</span>
+                                  style={{fontSize: '18px', fontWeight: 'bold'}}>{(item[1]?.data)}</span>
                           </div>
                         </CardDiv>
                       </div>
@@ -196,7 +198,7 @@ export default function CrossBlock() {
                                 color: 'rgba(0, 0, 0, 0.45)'
                               }}>{t(`${item[0]?.name}`)}</span>
                             <span className="date"
-                                  style={{fontSize: '18px', fontWeight: 'bold'}}>{reName(item[0]?.data)}</span>
+                                  style={{fontSize: '18px', fontWeight: 'bold'}}>{(item[0]?.data)}</span>
                           </div>
                         </CardDiv>
                         <RightLine/>
@@ -208,7 +210,7 @@ export default function CrossBlock() {
                                 color: 'rgba(0, 0, 0, 0.45)'
                               }}>{t(`${item[1]?.name}`)}</span>
                             <span className="date"
-                                  style={{fontSize: '18px', fontWeight: 'bold'}}>{reName(item[1]?.data)}</span>
+                                  style={{fontSize: '18px', fontWeight: 'bold'}}>{(item[1]?.data)}</span>
                           </div>
                         </CardDiv>
                       </div>
@@ -241,7 +243,7 @@ export default function CrossBlock() {
           <TableMenuBox tabList={tabList} currentTab={currentTab} setCurrentTab={setCurrentTab} tag={tag}/>
         </WrapperWith>
       </WrapperBgWhite>
-      <Footer/>
+       {/*<Footer/>*/}
     </>
   );
 }

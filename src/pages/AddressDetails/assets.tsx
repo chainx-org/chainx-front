@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import TableX from '../../components/Table';
 import { get } from '../../hooks/useApi';
 import Icon from '../../assets/icon_PCX .svg'
+import { accuracy } from '../../helper/hooks';
 
 interface ExtrinsicProps {
   account?: number | string,
@@ -42,7 +43,7 @@ export default function Assets({account}: ExtrinsicProps) {
       render: (text: any, record: any) => {
         return (
           <div>
-            {(record?.data?.free) ?(record?.data?.free / 100000000):''}
+            {(record?.data?.free) ?accuracy(record?.data?.free):''}
           </div>
         );
       }
@@ -54,7 +55,7 @@ export default function Assets({account}: ExtrinsicProps) {
       render: (text: any, record: any) => {
         return (
           <div>
-            {record?.data?.reserved}
+            {accuracy(record?.data?.reserved)}
           </div>
         );
       }
@@ -65,7 +66,7 @@ export default function Assets({account}: ExtrinsicProps) {
       render: (text: any, record: any) => {
         return (
           <div>
-            {record?.data?.miscFrozen}
+            {accuracy(record?.data?.miscFrozen)}
           </div>
         );
       }
@@ -77,7 +78,7 @@ export default function Assets({account}: ExtrinsicProps) {
       render: (text: any, record: any) => {
         return (
           <div>
-            {record?.data?.feeFrozen}
+            {accuracy(record?.data?.feeFrozen)}
           </div>
         );
       }
@@ -88,7 +89,7 @@ export default function Assets({account}: ExtrinsicProps) {
       render: (text: any, record: any) => {
         return (
           <div>
-            {record?.data?.free/100000000}
+            {accuracy(record?.data?.free)}
           </div>
         );
       }

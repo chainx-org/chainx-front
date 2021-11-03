@@ -3,7 +3,12 @@ import styled from 'styled-components';
 export const ChangeNetDiv = styled.div`
     position: relative;
     margin: auto 0;
-
+    & > div .rotate {
+      transition: all 0.3s linear 0s;
+    }
+    & > div .rotated {
+      transform: rotate(180deg);
+    }
     & > div:nth-child(2) {
       display: flex;
       align-items: center;
@@ -33,4 +38,9 @@ export const ChangeNetDiv = styled.div`
         }
       }
     }
+
+  @media screen and (max-width: 1150px) {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
   `;

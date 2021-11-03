@@ -110,7 +110,7 @@ export default function Transfers({account}: ExtrinsicProps) {
       width: '15rem',
       render: (text: any, record: any) => {
         return (
-          <Operation content={record.section + '-' + record.name}/>
+          <Operation content={record.section}/>
         );
       }
     }
@@ -145,6 +145,7 @@ const rowExpandable = (record: any) => {
     total: extrinsicTotal,
     showSizeChanger: true,
     showQuickJumper: true,
+    hideOnSinglePage:true,
     onChange: (page: number, pageSize: number) => onChange(page, pageSize),
     showTotal: (extrinsicTotal: number) => `${t('total')} ${extrinsicTotal} ${t('items')}`,
 

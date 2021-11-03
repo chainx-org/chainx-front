@@ -1,6 +1,9 @@
 import React from 'react';
 import 'antd/dist/antd.css';
 import { Table } from 'antd';
+import NoData from '../NoData';
+import noDataIcon from '../../assets/noData.svg';
+import { useTranslation } from 'react-i18next';
 
 interface TableXProps {
   columns: Array<any>,
@@ -21,15 +24,21 @@ interface TableXProps {
 }
 
 export default function TableX({Children, columns, dataList, pagination,loading,rowKey,expandedRowRender,rowExpandable,expandIcon}: TableXProps) {
+  const {t} = useTranslation();
   const emptyDiv = ()=>{
     return (
-      <div style={{height:'10rem'}}> </div>
+      <div style={{height:'10rem'}}>
+         <div className="flex flex-col ">
+          <img src={noDataIcon} alt="" className='inline-block w-12 mx-auto '/>
+          <span className='inline-block w-28 mx-auto text-center mx-auto mt-4'>{t('No Data')}</span>
+        </div>
+      </div>
     )
   }
   return (
     <div className="flex flex-col">
       <Table
-        locale={{emptyText: (dataList.length>0)?'': emptyDiv()}}
+        locale={{emptyText: loading?<div style={{height:'10rem'}}>' '</div>: emptyDiv()}}
         columns={columns}
         dataSource={dataList}
         pagination={pagination}

@@ -5,13 +5,17 @@ export const Wrapper = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: flex-end;
-
+  @media screen and (max-width: 1150px) {
+    justify-content: space-between;
+    margin:1rem 0rem;
+  }
   .topLink {
     .topLinkTool {
       --text-opacity: 1;
       color: #fff;
-      color: rgba(255, 255, 255, var(--text-opacity));
-      margin-right: 2.374rem;
+      width: 5rem;
+      //color: rgba(255, 255, 255, var(--text-opacity));
+      //margin-right: 2.374rem;
       cursor: pointer;
     }
 
@@ -22,7 +26,8 @@ export const Wrapper = styled.div`
     :hover {
       .toolList {
         display: block;
-        position: relative;
+        position: absolute;
+        width: 14rem;
         z-index: 999;
       }
     }   
@@ -35,7 +40,7 @@ export const Wrapper = styled.div`
 
       & > li {
         height: 2.5rem;
-        width: 15rem;
+        width: 14rem;
         display: flex;
         justify-content: start;
         padding-left:1rem;
@@ -59,6 +64,15 @@ export const NavLink = styled.div`
   justify-content: space-between;
   height: 3rem;
   line-height: 3rem;
+  >a{
+    min-width: 80px;
+  }
+  >a:nth-child(n+3){
+    min-width: 116px;
+  }
+  >a:nth-child(5){
+    min-width: 230px;
+  }
   @media screen and (max-width: 1150px) {
     display: none;
   }

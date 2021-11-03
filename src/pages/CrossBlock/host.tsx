@@ -34,7 +34,7 @@ export default function Host() {
       key: 'hotKey',
       render: (text: any, record: any) => {
         return (
-          <Normal state={record.hotPubkey}/>);
+          <Normal state={record?.hotPubkey}/>);
       }
     },
     {
@@ -43,7 +43,7 @@ export default function Host() {
       key: 'coldKey',
       render: (text: any, record: any) => {
         return (
-          <TimeStatus content={record.coldPubkey}/>);
+          <Normal state={record?.coldPubkey}/>);
       }
     }
   ];

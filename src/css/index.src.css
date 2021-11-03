@@ -7,12 +7,12 @@
   /* @apply text-xs; */
 }
 #main {
-  width: 100% !important;
-  height: 100% !important;
+  width: 400px;
+  height: 300px;
 }
-#echart {
-  width: 100% !important;
-  height: 100% !important;
+#mainEchats {
+  width: 400px;
+  height: 300px;
 }
 .Line {
   @apply w-overSpread h-0.25 bg-gray-border;
@@ -156,8 +156,8 @@ body {
 }
 
 .NavSearch {
-  width: 430px;
-  margin: auto 0;
+  /*width: 430px;*/
+  /*margin: auto 0;*/
 }
 
 
@@ -225,7 +225,7 @@ body {
 }
 .ant-input-group {
   background-color: white;
-  border-radius: 11px !important;
+  border-radius: 8px 9px 9px 8px !important;
 }
 .ant-input-search > .ant-input-group > .ant-input-group-addon:last-child {
   left: 0;
@@ -251,14 +251,15 @@ body {
   background: #2C83EA;
   border-radius: 2px;
 }
-
-.ant-pagination-item-active{
-  background: #2C83EA;
+.ant-pagination-item-active, .ant-pagination-item:focus-visible, .ant-pagination-item:hover{
+  background: #2C83EA!important;
+}
+.ant-pagination-item-active a{
+  background: #2C83EA!important;
+  color: white !important;
   border-radius: 2px;
 }
-.ant-pagination-item-active a {
-  color: white !important;
-}
+
 .ant-select-single .ant-select-selector .ant-select-selection-item{
   color: rgba(0, 0, 0, 0.65);
 }
@@ -271,6 +272,15 @@ body {
 .ant-popover-content{
   /*border: 1px solid #080810;*/
   border-radius:4px ;
+}
+.ant-popover-inner{
+  border-radius: 4px;
+}
+.ant-popover-arrow{
+  bottom: 2.1px !important;
+}
+.ant-popover-arrow{
+
 }
 .ant-popover-arrow-content {
   border: 1px solid #080810;
@@ -296,6 +306,25 @@ body {
 
 .ant-skeleton-content .ant-skeleton-title {
   margin-top: 0px !important;
+}
+
+.ant-message-custom-content, .ant-message-success {
+  display: flex !important;
+  align-items: center !important;
+}
+
+.ant-pagination-item-link {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+.indexSkeleton .ant-skeleton-title{
+  width: 100% !important;
+  height:3rem;
+}
+.ant-table-cell{
+  white-space: nowrap;
 }
 
 @tailwind utilities;

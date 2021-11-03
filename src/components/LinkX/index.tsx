@@ -10,6 +10,20 @@ const LinkSpan = styled.div`
   color: #3C88C6;
   line-height: 22px;
   cursor: pointer;
+  @media screen and (max-width: 900px) {
+    font-size: 12px;
+  }
+`;
+
+const LinkSpanHome = styled.div`
+  font-size: 16px;
+  font-weight: 500;
+  color: #3C88C6;
+  line-height: 22px;
+  cursor: pointer;
+  @media screen and (max-width: 900px) {
+    font-size: 14px;
+  }
 `;
 
 interface LinkProps {
@@ -18,12 +32,24 @@ interface LinkProps {
   children?: any,
   img?: any,
   state?: any,
-  style?: any
+  style?: any,
+  isHome?: boolean
 }
 
 const NormalSpan = styled.div`
   font-size: 14px;
   color: rgba(0, 0, 0, 0.65);
+  @media screen and (max-width: 900px) {
+    font-size: 12px;
+  }
+`;
+
+const NormalSpanHome = styled.div`
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.45);
+  @media screen and (max-width: 900px) {
+    font-size: 12px;
+  }
 `;
 
 //简短的link ,样式，点击跳转方法
@@ -31,9 +57,17 @@ export function LinkX({linkUrl, content, state, style}: LinkProps) {
   return (<Link to={{pathname: linkUrl, state: state}}><LinkSpan style={style}>{content}</LinkSpan></Link>);
 }
 
-export function Normal({state}: LinkProps) {
-  return (<NormalSpan>{state}</NormalSpan>
-  );
+export function LinkXHome({linkUrl, content, state, style}: LinkProps) {
+  return (<Link to={{pathname: linkUrl, state: state}}><LinkSpanHome style={style}>{content}</LinkSpanHome></Link>);
+}
+
+
+export function Normal({state, isHome}: LinkProps) {
+  if (isHome) {
+    return (<NormalSpanHome>{state}</NormalSpanHome>);
+  } else {
+    return (<NormalSpan>{state}</NormalSpan>);
+  }
 }
 
 
@@ -53,7 +87,6 @@ export function ShorterLink({linkUrl, content, state,style}: LinkProps) {
   let value = content?.toString();
   const popWithCopy = (
     <div>
-      {/*<CopyText children={value} text={value}/>*/}
       {value}
     </div>
   );
@@ -64,6 +97,22 @@ export function ShorterLink({linkUrl, content, state,style}: LinkProps) {
       state: state
     }}><LinkSpan
       style={style}>{value?.substring(0, 7).concat('...').concat(value?.substring(value.length - 5))}</LinkSpan></Link></Popover>);
+}
+
+export function ShorterLinkHome({linkUrl, content, state,style}: LinkProps) {
+  let value = content?.toString();
+  const popWithCopy = (
+    <div>
+      {value}
+    </div>
+  );
+  return (
+    <Popover content={popWithCopy}  style={style}>
+      <Link to={{
+        pathname: linkUrl,
+        state: state
+      }}><LinkSpanHome
+        style={style}>{value?.substring(0, 7).concat('...').concat(value?.substring(value.length - 5))}</LinkSpanHome></Link></Popover>);
 }
 
 export function Shorter({linkUrl, content, state}: LinkProps) {

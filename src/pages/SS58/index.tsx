@@ -94,11 +94,11 @@ export default function SS58() {
 
   return (
     <>
-      <Header showSearch={true}/>
+       <Header showSearch={true}/>
       <CardBox cardBoxTitleIcon={blockLeakage} cardBoxTitleName={t('Transform Address/Public Key')}
                cardBoxTitleContainer={BoxContainer} inputValue={inputValue} listValue={listValue}
                selectAddress={selectAddress} inputValueFun={changeAddress} correctValue={isCorrectValue} loading={loading}/>
-      <Footer/>
+      {/* <Footer/> */}
 
     </>
   );

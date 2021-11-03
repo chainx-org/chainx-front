@@ -14,11 +14,13 @@ import extrinsicDetails from './pages/ExtrinsicsDetails';
 import addressDetails from './pages/AddressDetails';
 import NodeDetails from './pages/NodeDetails';
 import NoDataPage from './pages/NoData';
+import Header from './components/Header';
+import Footer from './components/Footer';
 
 function App() {
   return (
-    // <PolkaApi url="wss://testnet-2.chainx.org/ws">
       <BrowserRouter>
+        {/*<Header/>*/}
         <Switch>
           <Route path="/tools/SS58" exact component={SS58}/>
           <Route path="/tools/searchTool" exact  component={SearchTool}/>
@@ -34,8 +36,8 @@ function App() {
           <Route path="/Nodata" component={NoDataPage}/>
           <Route path="/" component={Home}/>
         </Switch>
+        <Footer />
     </BrowserRouter>
-    // </PolkaApi>
   );
 };
 

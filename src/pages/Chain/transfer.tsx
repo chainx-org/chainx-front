@@ -12,6 +12,7 @@ export default function Transfer() {
       title: t('extrinsic'),
       dataIndex: 'address',
       key: 'address',
+      width: 800,
       render: (text: any, record: any) => {
         return (
           <div className="flex flex-row items-center">
@@ -25,6 +26,7 @@ export default function Transfer() {
       title: t('Frozen amount')+'(PCX)',
       dataIndex: 'FrozenAmount',
       key: 'FrozenAmount',
+      width: 100,
       render: (text: any, record: any) => {
         return (
           <Normal state={(record.data.feeFrozen)?(record.data.feeFrozen):'-'}/>
@@ -36,6 +38,7 @@ export default function Transfer() {
       title: t('Total balance')+'(PCX)',
       dataIndex: 'TotalBalance',
       key: 'TotalBalance',
+      width: 100,
       render: (text: any, record: any) => {
         return (
           <Normal state={(record.data.free)?(record.data.free):'-'}/>

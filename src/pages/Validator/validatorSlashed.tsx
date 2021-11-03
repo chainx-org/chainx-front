@@ -4,6 +4,7 @@ import TableX from '../../components/Table';
 import { get } from '../../hooks/useApi';
 import { LinkX, Normal, ShorterLink } from '../../components/LinkX';
 import TrustTag from '../../components/TrustTag';
+import { accuracy } from '../../helper/hooks';
 
 
 export default function ValidatorSlashed() {

@@ -157,5 +157,7 @@
     "Transfer Count": "转账总数",
     "Total Validators": "验证节点",
     "Total Issuance(PCX)": "总供应量",
-    "Staked Value": "质押率"
+    "Staked Value": "质押率",
+    "Session": "届数",
+    "Height": "区块高度"
 }

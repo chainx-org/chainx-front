@@ -104,7 +104,7 @@
     "Withdrawal ID": "Withdrawal ID",
     "ChainX Withdraw ": "ChainX Withdraw",
     "AddressWithdraw ": "AddressWithdraw",
-    "AddressWithdraw Created Time": "a",
+    "AddressWithdraw Created Time": "AddressWithdraw Created Time",
     "State": "State",
     "Multi Signer Threshold": "Multi Signer Threshold",
     "Trustee": "Trustee",
@@ -136,7 +136,7 @@
     "Usable": "Usable",
     "Vote Frozen": "Vote Frozen",
     "miscFrozen": "miscFrozen",
-    "Reserved`": "Reserved",
+    "Reserved": "Reserved",
     "Receiver": "Receiver",
     "Transactions": "Transactions",
     "Transfers": "Transfers",
@@ -159,6 +159,9 @@
     "Transfer Count": "Transfer Count",
     "Total Validators": "Total Validators",
     "Total Issuance(PCX)": "Total Issuance(PCX)",
-    "Staked Value": "Staked Value"
+    "Staked Value": "Staked Value",
+    "Session": "Session",
+    "Height": "Height"
+
 }
 

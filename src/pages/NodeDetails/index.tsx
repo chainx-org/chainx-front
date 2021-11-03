@@ -13,8 +13,9 @@ import Missed from './missed';
 import { encodeAddress } from '@polkadot/keyring';
 import decodeAddress from '../../helper/encodeAddress';
 import TrustTag from '../../components/TrustTag';
-import { reName } from '../../helper/hooks';
+import { accuracy, reName } from '../../helper/hooks';
 import { ExtrinWrapper, ListBgColor, Wrapper, WrapperDetails, WrapperList } from '../../css/Wrapper';
+import CopyText from '../../components/copyText';
 
 const {hexToU8a, isHex} = require('@polkadot/util');
 
@@ -79,7 +80,7 @@ export default function NodeDetails() {
     {
       title: t('NikeName'),
       content: (
-        <div className="font-medium text-gray-arrow ">
+        <div className="text-black-textColor">
           <div className='flex flex-row'>
             <span>{addressDetails?.referralId}</span>{(addressDetails?.isValidating)?<TrustTag/>:'-'}</div>
         </div>
@@ -88,8 +89,8 @@ export default function NodeDetails() {
     {
       title: t('Account'),
       content: (
-        <div className="font-medium text-gray-arrow ">
-          {reName(addressDetails?.account)}
+        <div className="text-black-textColor">
+          <CopyText text={addressDetails?.rewardPotAccount} children={ <div className="text-black-textColor">{reName(addressDetails?.account)}</div>}/>
         </div>)
     },
     // {
@@ -102,29 +103,29 @@ export default function NodeDetails() {
     {
       title: t('Jackpot Address'),
       content: (
-        <div className="font-medium text-gray-arrow ">{addressDetails?.rewardPotAccount}</div>
+        <CopyText text={addressDetails?.rewardPotAccount} children={ <div className="text-black-textColor">{addressDetails?.rewardPotAccount}</div>}/>
       ),
     },
     {
       title: t('Missed Blocks'),
       content: (
-        <div className="font-medium text-gray-arrow ">
+        <div className="text-black-textColor">
           {(addressDetails?.missed)?(addressDetails?.missed):'0'}
         </div>
       ),
     },{
       title: t('Self Bonded'),
       content: (
-        <div className="font-medium text-gray-arrow ">
-          {reName(addressDetails?.selfBonded)}
+        <div className="text-black-textColor">
+          {accuracy(addressDetails?.selfBonded)}
         </div>
       ),
     },
     {
       title: t('Total Nominations'),
       content: (
-        <div className="font-medium text-gray-arrow ">
-          {addressDetails?.totalNomination}
+        <div className="text-black-textColor">
+          {accuracy(addressDetails?.totalNomination)}
         </div>
       ),
     },
@@ -137,12 +138,12 @@ export default function NodeDetails() {
     // },
     {
       title: t('Vote Weight Last Update'),
-      content: <div className="font-medium text-gray-arrow ">
+      content: <div className="text-black-textColor">
         {addressDetails?.lastTotalVoteWeightUpdate}
       </div>,
     }, {
       title: t('Total Weight'),
-      content: <div className="font-medium text-gray-arrow ">
+      content: <div className="text-black-textColor">
         {reName(addressDetails?.lastTotalVoteWeight)}
       </div>,
     }
@@ -156,31 +157,31 @@ export default function NodeDetails() {
     }
   ];
   const routerPath = () => {
-    return (<div className="flex flex-row cursor-pointer text-gray-white text-base mx-0 my-auto">
-      <Link to={'/'} style={{color:'rgba(255, 255, 255, 0.65)'}}>{t('Home')}<span className='inline-block mx-2'>/</span></Link>
-      <Link to={'/validators'} style={{color:'rgba(255, 255, 255, 0.65)'}}>{t('Chain')}<span className='inline-block mx-2'>/</span></Link>
+    return (<div className="flex flex-row cursor-pointer text-gray-white text-base mx-0 my-auto" style={{'whiteSpace': 'nowrap'}}>
+      <Link to={'/'} style={{color:'rgba(255, 255, 255, 0.65)'}}><div className='flex flex-row'>{t('Home')}<span className='inline-block mx-2'>/</span></div></Link>
+        <Link to={'/validators'} style={{color:'rgba(255, 255, 255, 0.65)'}}><div className='flex flex-row'>{t('Chain')}<span className='inline-block mx-2'>/</span></div></Link>
       <Link to={`./${node}`}>{t('NodeDetails')}</Link>
     </div>);
   };
   return (
     <>
-      <Header showSearch={true}/>
-      <ListBgColor style={{height:'195px'}}/>
+       <Header showSearch={true}/>
+      <ListBgColor/>
       {noData ?
         <NoData/> :
         <WrapperList>
-          <div className="px-24 pt-8 bg-gray-arrow screen:px-4">
+          <div className="px-24 bg-gray-arrow desktop:pt-8 screen:px-4  medium:px-4">
             <DetailTitle routeTitle={t('Validator')} content={node} isBlock={false}
                          routePath={routerPath}/>
           </div>
           <List list={list} loading={loading}/>
-          <div className="px-24 pb-4 bg-gray-bgWhite screen:px-4">
+          <div className="px-24 pb-4 bg-gray-bgWhite screen:px-4 medium:px-4">
             <WrapperDetails>
               <TableMenuBox tabList={tabList} currentTab={currentTab} setCurrentTab={setCurrentTab} tag={tag}/>
             </WrapperDetails>
           </div>
         </WrapperList>
       }
-      <Footer/>
+       {/*<Footer/> */}
     </>);
 }

@@ -14,6 +14,9 @@ const ContentBox = styled.div`
   border-radius: 4px;
   border: 1px solid #E9E9E9;
   padding: 0.05rem 0.5rem;
+  @media screen and (max-width: 1150px) {
+    font-size: 12px;
+  }
 `;
 const ContentMiniBox = styled.div`
   background: #FFFFFF;
@@ -21,6 +24,9 @@ const ContentMiniBox = styled.div`
   border-radius: 4px;
   border: 1px solid #E9E9E9;
   padding: 0rem 0.5rem;
+  @media screen and (max-width: 1150px) {
+    font-size: 12px;
+  }
 `;
 export default function Operation({content,more,mini,left}:OperationProps) {
 

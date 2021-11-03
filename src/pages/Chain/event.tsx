@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import React, { useEffect, useState } from 'react';
 import TableX from '../../components/Table';
 import { get } from '../../hooks/useApi';
-import { LinkX, ShorterLink } from '../../components/LinkX';
+import { LinkX, Normal, ShorterLink } from '../../components/LinkX';
 import TimeStatus from '../../components/TimeStatus';
 import Operation from '../../components/Operation';
 import JsonApi from '../../components/Jsonformat';
@@ -44,6 +44,7 @@ export default function Event({block, extrinsic}: EventProps) {
       title: t('Extrinsic ID'),
       dataIndex: 'Extrinsic ID',
       key: 'Extrinsic ID',
+      width: 100,
       render: (text: any, record: any) => {
         return (
           <LinkX linkUrl={`/extrinsicDetails/${record.extrinsicHash}`} state={record}
@@ -55,6 +56,7 @@ export default function Event({block, extrinsic}: EventProps) {
       title: t('Block'),
       dataIndex: 'Block',
       key: 'Block',
+      width: 100,
       render: (text: any, record: any) => {
         return (
           <LinkX linkUrl={`/blockDetails/${record.indexer.blockHeight}`}  state={record} content={record.indexer.blockHeight}/>
@@ -65,16 +67,24 @@ export default function Event({block, extrinsic}: EventProps) {
       title: t('Extrinsic Hash'),
       dataIndex: 'Extrinsic Hash',
       key: 'Extrinsic Hash',
+      width: 200,
       render: (text: any, record: any) => {
-        return (
-          <ShorterLink linkUrl={`/extrinsicDetails/${record.extrinsicHash}`} state={record} content={record.extrinsicHash}/>
-        );
+        {
+          if (record.extrinsicHash) {
+            return (<ShorterLink linkUrl={`/extrinsicDetails/${record.extrinsicHash}`} state={record}
+                                 content={record.extrinsicHash}/>
+            );
+          } else {
+            return (<Normal state={'-'}/>);
+          }
+        }
       }
     },
     {
       title: t('Time'),
       dataIndex: 'Time',
       key: 'Time',
+      width: 150,
       render: (text: any, record: any) => {
         return (
           <TimeStatus content={record.indexer.blockTime}/>);
@@ -85,7 +95,7 @@ export default function Event({block, extrinsic}: EventProps) {
       dataIndex: 'Operation',
       key: 'Operation',
       align:'right',
-      width:'15rem',
+      width:150,
       render: (text: any, record: any) => {
         return (
           <Operation content={record.section+'-'+record.method}/>
