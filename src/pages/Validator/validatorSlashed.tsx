@@ -27,10 +27,11 @@ export default function ValidatorSlashed() {
       key: 'NikeName',
       render: (text: any, record: any) => {
         return (
-          <div className="flex flex-row">
-            <LinkX linkUrl={`/addressDetails/${record.account}`} content={record.referralId}/>
-            {record.isValidating === true ? <TrustTag/> : ''}
-          </div>);
+        <div className="flex flex-row">
+          <Normal state={(record.referralId) ? (record.referralId) : '-'}/>
+          <Normal state={record.isTrust === true ? <TrustTag/> : ''}/>
+        </div>
+        );
       }
     },
     {

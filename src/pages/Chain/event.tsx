@@ -105,6 +105,7 @@ export default function Event({block, extrinsic}: EventProps) {
   ];
 
   function onChange(page: number, pageSize: any) {
+    setExpandedRowKeys([])
     setPage(page);
     setPageSize(pageSize);
     setLoading(true);
@@ -120,6 +121,10 @@ export default function Event({block, extrinsic}: EventProps) {
   };
   const rowExpandable = (record: any) => {
     return true;
+  };
+  const [expandedRowKeys, setExpandedRowKeys] = useState<string[]>([]);
+  const onExpandedRowsChange = (expandedRows: string[]) => {
+    setExpandedRowKeys(expandedRows);
   };
   const pagination = {
     pageSize: pageSize,
@@ -139,7 +144,10 @@ export default function Event({block, extrinsic}: EventProps) {
               columns={chainColumns} dataList={eventData} pagination={pagination} loading={loading}
               expandIcon={({expanded, onExpand, record}: any) => ExpandIcon(expanded, onExpand, record)}
               expandedRowRender={expandedRowRender}
-              rowExpandable={rowExpandable}/>
+              rowExpandable={rowExpandable}
+              expandedRowKeys={expandedRowKeys}
+              onExpandedRowsChange={onExpandedRowsChange}
+      />
     </div>
   );
 }

@@ -33,6 +33,6 @@ export default function CopyText({children, text, showText}: CopyTextProps) {
     <Wrapper>
       {!showText ? <div style={{margin: 'auto 0'}}>{children}</div> : ''}
       {!showText ? <img src={Icon} alt="" onClick={onCopy} className="cursor-pointer my-2 mx-2"/> :
-        <img src={listIcon} alt="" onClick={onCopy} className="cursor-pointer"/>}
+        <img src={listIcon} alt="" onClick={onCopy} className="cursor-pointer" style={{maxWidth:'none',marginLeft:'8px'}}/>}
     </Wrapper>);
 }

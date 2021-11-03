@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-  //min-height: 688px;
+  min-height: 688px;
   background: #FFFFFF;
   box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.04);
   border-radius: 10px;
@@ -38,10 +38,23 @@ export const WrapperWith= styled.div`
   box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.04);
   border-radius: 10px;
   border: 1px solid #E9E9E9;
+
+  .titleName {
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.45);
+  }
+
+  .titleValue {
+    font-size: 18px;
+    font-weight: bold;
+    @media screen and (max-width: 900px) {
+      font-size: 16px;
+    }
+  }
   @media screen and (max-width: 1200px) {
     min-height: 400px;
-  }
-`;
+  }`;
+
 
 export const WrapperList = styled.div`
   .NavSearch{
