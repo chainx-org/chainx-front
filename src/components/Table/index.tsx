@@ -21,9 +21,12 @@ interface TableXProps {
   expandedRowRender?:any,
   rowExpandable?:any,
   expandIcon?:any,
+  expandedRowKeys?:any,
+  onExpandedRowsChange?:any
 }
 
-export default function TableX({Children, columns, dataList, pagination,loading,rowKey,expandedRowRender,rowExpandable,expandIcon}: TableXProps) {
+export default function TableX({Children, columns, dataList, pagination,loading,rowKey,expandedRowRender,rowExpandable,
+                                 expandIcon,expandedRowKeys,onExpandedRowsChange}: TableXProps) {
   const {t} = useTranslation();
   const emptyDiv = ()=>{
     return (
@@ -49,6 +52,8 @@ export default function TableX({Children, columns, dataList, pagination,loading,
           expandIcon:expandIcon,
           expandedRowRender: expandedRowRender,
           rowExpandable:rowExpandable,
+          expandedRowKeys:expandedRowKeys,
+          onExpandedRowsChange:onExpandedRowsChange
         }}
       />
       <div className="flex justify-end py-4">

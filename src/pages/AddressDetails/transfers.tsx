@@ -118,6 +118,7 @@ export default function Transfers({account}: ExtrinsicProps) {
   ];
 
   function onChange(page: number, pageSize: any) {
+    setExpandedRowKeys([])
     setPage(page);
     setPageSize(pageSize);
     setLoading(true);
@@ -134,10 +135,13 @@ export default function Transfers({account}: ExtrinsicProps) {
       <JsonApi json={record?.meta}/>
     );
   };
-const rowExpandable = (record: any) => {
+  const rowExpandable = (record: any) => {
     return true;
-  }
-  ;
+  };
+  const [expandedRowKeys, setExpandedRowKeys] = useState<string[]>([]);
+  const onExpandedRowsChange = (expandedRows: string[]) => {
+    setExpandedRowKeys(expandedRows);
+  };
   const pagination = {
     pageSize: pageSize,
     current: page,
@@ -145,7 +149,7 @@ const rowExpandable = (record: any) => {
     total: extrinsicTotal,
     showSizeChanger: true,
     showQuickJumper: true,
-    hideOnSinglePage:true,
+    hideOnSinglePage: true,
     onChange: (page: number, pageSize: number) => onChange(page, pageSize),
     showTotal: (extrinsicTotal: number) => `${t('total')} ${extrinsicTotal} ${t('items')}`,
 
@@ -161,6 +165,8 @@ const rowExpandable = (record: any) => {
         expandIcon={({expanded, onExpand, record}: any) => ExpandIcon(expanded, onExpand, record)}
         expandedRowRender={expandedRowRender}
         rowExpandable={rowExpandable}
+        expandedRowKeys={expandedRowKeys}
+        onExpandedRowsChange={onExpandedRowsChange}
       />
     </div>
   );

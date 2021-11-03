@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import React, { useEffect, useState } from 'react';
 import TableX from '../../components/Table';
 import { get } from '../../hooks/useApi';
-import { LinkX, ShorterLink } from '../../components/LinkX';
+import { LinkX, Normal, ShorterLink } from '../../components/LinkX';
 import TimeStatus from '../../components/TimeStatus';
 import TrustTag from '../../components/TrustTag';
 import { accuracy } from '../../helper/hooks';
@@ -46,10 +46,11 @@ export default function RecentSlashed() {
       key: 'NikeName',
       render: (text: any, record: any) => {
         return (
-          <div className="flex flex-row">
-            <LinkX linkUrl={`/addressDetails/${record.data[0]}`} content={record.referralId}/>
-            {record.isValidating === true ? <TrustTag/> : ''}
-          </div>);
+        <div className="flex flex-row">
+          <Normal state={(record.referralId) ? (record.referralId) : '-'}/>
+          <Normal state={record.isTrust === true ? <TrustTag/> : ''}/>
+        </div>
+        );
       }
     }, {
       title: t('Address'),

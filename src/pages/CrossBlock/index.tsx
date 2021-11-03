@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import Header from '../../components/Header';
-import Footer from '../../components/Footer';
 import TableMenuBox from '../../components/TableMenuBox';
 import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
@@ -8,7 +7,7 @@ import { TabInfo } from '../../components/SwitchTab';
 import { CardTitle } from '../../components/CardBox/style';
 import mining from '../../assets/icon_mining.svg';
 import { BottomLine, CardDiv, RightLine, WrapperBridge } from './style';
-import { accuracy, reName } from '../../helper/hooks';
+import { accuracy } from '../../helper/hooks';
 import BitcoinBlock from './block';
 import Deposit from './deposit';
 import Withdraw from './withdraw';
@@ -16,7 +15,7 @@ import Host from './host';
 import Claim from './claim';
 import { get } from '../../hooks/useApi';
 import MyEchart from './myEcharts';
-import { ShorterLink } from '../../components/LinkX';
+import { ShorterLinkCross } from '../../components/LinkX';
 import distributionIcon from '../../assets/icon_Mining_rate.svg';
 import bridgeIcon from '../../assets/icon_bridge.svg';
 import { WrapperBgWhite, WrapperWith } from '../../css/Wrapper';
@@ -135,25 +134,26 @@ export default function CrossBlock() {
   },[])
   return (
     <>
-       <Header showSearch={true}/>
-      <WrapperBgWhite className="px-24 py-4 screen:px-4">
+      <Header showSearch={true}/>
+      <WrapperBgWhite className="px-24 py-4 screen:px-4 medium:px-4">
         <BridgeWrapper>
           <WrapperWith>
             <CardTitle>
               <div className="flex flex-row">
                 <img src={mining} alt=""/>
-                <span className="ml-4 text-base text-black-titleColor font-medium">{t('Deposit Mining')}</span>
+                <span
+                  className="ml-4 text-base text-black-titleColor font-medium screen:text-sm">{t('Deposit Mining')}</span>
               </div>
             </CardTitle>
             <div className="flex flex-row w-overSpread justify-between desktop:pl-8 desktop:pr-14 screen:px-8 py-4">
               <div className="flex flex-col">
-                <span style={{fontSize: '14px', color: 'rgba(0, 0, 0, 0.45)'}}>{t('Asset Type')}</span>
-                <span style={{fontSize: '18px', fontWeight: 'bold'}}>Interchain BTC(X-BTC)</span>
+                <span className="titleName">{t('Asset Type')}</span>
+                <span className="titleValue">Interchain BTC(X-BTC)</span>
               </div>
               <div className="flex flex-col">
-                <span style={{fontSize: '14px', color: 'rgba(0, 0, 0, 0.45)'}}>{t('Reward Pot Address(PCX)')}</span>
-                <span style={{fontSize: '18px', fontWeight: 'bold'}}>
-                  <ShorterLink linkUrl={`/addressDetails/${rewardPot}` } style={{fontSize: '18px'}} content={rewardPot}/></span>
+                <span className="titleName">{t('Reward Pot Address(PCX)')}</span>
+                <span className="titleValue">
+                  <ShorterLinkCross linkUrl={`/addressDetails/${rewardPot}`} content={rewardPot}/></span>
               </div>
             </div>
             <WrapperBridge>
@@ -164,25 +164,15 @@ export default function CrossBlock() {
                       <div className="flex flex-col">
                         <CardDiv>
                           <div className="flex flex-col justify-start my-auto ">
-                        <span className="name"
-                              style={{
-                                fontSize: '14px',
-                                color: 'rgba(0, 0, 0, 0.45)'
-                              }}>{t(`${item[0]?.name}`)}</span>
-                            <span className="date"
-                                  style={{fontSize: '18px', fontWeight: 'bold'}}>{(item[0]?.data)}</span>
+                            <span className="titleName">{t(`${item[0]?.name}`)}</span>
+                            <span className="titleValue">{(item[0]?.data)}</span>
                           </div>
                         </CardDiv>
                         <BottomLine/>
                         <CardDiv>
                           <div className="flex flex-col justify-start my-auto ">
-                        <span className="name"
-                              style={{
-                                fontSize: '14px',
-                                color: 'rgba(0, 0, 0, 0.45)'
-                              }}>{t(`${item[1]?.name}`)}</span>
-                            <span className="date"
-                                  style={{fontSize: '18px', fontWeight: 'bold'}}>{(item[1]?.data)}</span>
+                            <span className="titleName">{t(`${item[1]?.name}`)}</span>
+                            <span className="titleValue">{(item[1]?.data)}</span>
                           </div>
                         </CardDiv>
                       </div>
@@ -192,25 +182,15 @@ export default function CrossBlock() {
                       <div className="flex flex-row">
                         <CardDiv>
                           <div className="flex flex-col justify-start my-auto ">
-                        <span className="name"
-                              style={{
-                                fontSize: '14px',
-                                color: 'rgba(0, 0, 0, 0.45)'
-                              }}>{t(`${item[0]?.name}`)}</span>
-                            <span className="date"
-                                  style={{fontSize: '18px', fontWeight: 'bold'}}>{(item[0]?.data)}</span>
+                        <span className="titleName">{t(`${item[0]?.name}`)}</span>
+                            <span className="titleValue">{(item[0]?.data)}</span>
                           </div>
                         </CardDiv>
                         <RightLine/>
                         <CardDiv>
                           <div className="flex flex-col justify-start my-auto ">
-                        <span className="name"
-                              style={{
-                                fontSize: '14px',
-                                color: 'rgba(0, 0, 0, 0.45)'
-                              }}>{t(`${item[1]?.name}`)}</span>
-                            <span className="date"
-                                  style={{fontSize: '18px', fontWeight: 'bold'}}>{(item[1]?.data)}</span>
+                        <span className="titleName">{t(`${item[1]?.name}`)}</span>
+                            <span className="titleValue">{(item[1]?.data)}</span>
                           </div>
                         </CardDiv>
                       </div>
@@ -225,7 +205,8 @@ export default function CrossBlock() {
             <CardTitle>
               <div className="flex flex-row">
                 <img src={distributionIcon} alt=""/>
-                <span className="ml-4 text-base text-black-titleColor font-medium">{t('Mining Distribution')}</span>
+                <span
+                  className="ml-4 text-base text-black-titleColor font-medium screen:text-sm">{t('Mining Distribution')}</span>
               </div>
             </CardTitle>
             {/*<div className='w-20 h-13'>*/}
@@ -237,7 +218,8 @@ export default function CrossBlock() {
           <CardTitle>
             <div className="flex flex-row">
               <img src={bridgeIcon} alt=""/>
-              <span className="ml-4 text-base text-black-titleColor font-medium">{t('Bitcoin Bridge')}</span>
+              <span
+                className="ml-4 text-base text-black-titleColor font-medium screen:text-sm">{t('Bitcoin Bridge')}</span>
             </div>
           </CardTitle>
           <TableMenuBox tabList={tabList} currentTab={currentTab} setCurrentTab={setCurrentTab} tag={tag}/>

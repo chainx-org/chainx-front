@@ -60,7 +60,10 @@ body {
   padding:1.25rem 6rem 4rem 6rem;
 
 }
+@media (min-width: 900px) and (max-width: 1150px) {
+  .Container{padding:1.25rem 1rem 4rem 1rem;}
 
+}
 @media screen and (max-width: 900px) {
    .Container{
      /*background: #FFFFFF;*/
@@ -114,12 +117,10 @@ body {
   background: transparent;
 }
 
-.ui--switchTabs-lg .ant-tabs-nav {
-  padding: 0 20px;
-}
 .ui--switchTabs-lg .ant-tabs-tab {
   font-size: 14px;
   color: #bfbfbf;
+  /*padding:0 20px;*/
 }
 .ant-tabs-tab:hover {
   color: #bfbfbf;
@@ -127,6 +128,16 @@ body {
 .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
   color: #080810;
   font-size: 14px;
+}
+.ant-select-item-option-content{
+  color: rgba(0,0,0,.65);
+  font-size: 14px;
+}
+.ant-tabs-tab + .ant-tabs-tab{
+  margin:0 !important;
+}
+.ant-tabs-tab .ant-tabs-tab-btn {
+  padding:0px 20px;
 }
 
 .ant-input:focus {
@@ -325,6 +336,12 @@ body {
 }
 .ant-table-cell{
   white-space: nowrap;
+}
+
+.ant-popover-inner-content{
+  max-width: 200px;
+  word-wrap: break-word;
+  word-break: break-all;
 }
 
 @tailwind utilities;

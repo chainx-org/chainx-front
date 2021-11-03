@@ -1,8 +1,10 @@
 import pulldownIcon from '../../assets/icon_pulldown_list.svg';
 import moreIcon from '../../assets/icon_more.svg';
-import React from 'react';
+import React, { useEffect } from 'react';
 
 export default function ExpandIcon(expanded:any, onExpand:any, record:any){
+  useEffect(()=>{
+  },[])
   return (
     <>
       {expanded
