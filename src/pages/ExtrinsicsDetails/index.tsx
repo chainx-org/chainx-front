@@ -141,10 +141,10 @@ export default function ExtrinsicDetails() {
         <NoData/> :
         <>
           <WrapperList>
-            <div className="px-24 bg-gray-arrow desktop:pt-8 screen:px-4 ">
+            <div className="px-24 bg-gray-arrow desktop:pt-8 screen:px-4  media:px-4">
               <DetailTitle routeTitle={t('Extrinsics')}
                            content={extrinsicDetails?.indexer?.blockHeight + '-' + extrinsicDetails?.indexer?.index}
-                           isBlock={false} setNowBlock={extrinsic} routePath={routerPath}/>
+                           isBlock={true} setNowBlock={extrinsic} routePath={routerPath}/>
             </div>
             <List list={list} loading={loading}/>
             <div className="px-24 pb-4 bg-gray-bgWhite screen:px-4">

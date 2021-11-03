@@ -58,13 +58,13 @@ export default function BlockDetails() {
       title: t('Block Height'),
       content: (
         <div
-          className="font-medium text-gray-arrow">{(blockDetails?.header?.number) ? blockDetails?.header?.number : '-'}</div>
+          className="text-black-textColor">{(blockDetails?.header?.number) ? blockDetails?.header?.number : '-'}</div>
       ),
     },
     {
       title: t('Time'),
       content: (
-        <div className="font-medium text-gray-arrow ">
+        <div className="text-black-textColor">
           {(blockDetails?.blockTime) ? moment(Number(blockDetails?.blockTime)).format('YYYY-MM-DD HH:mm:ss') + '(+UTC)' : '-'}
         </div>)
     },
@@ -81,7 +81,7 @@ export default function BlockDetails() {
     {
       title: t('Block Hash'),
       content: (
-        <div className="font-medium text-gray-arrow ">
+        <div className="text-black-textColor">
           {blockDetails?.hash}
         </div>
       ),
@@ -95,7 +95,7 @@ export default function BlockDetails() {
     {
       title: t('Extrinsics Root'),
       content: (
-        <div className="font-medium text-gray-arrow ">
+        <div className="text-black-textColor">
           {blockDetails?.header?.stateRoot}
         </div>
       ),
@@ -145,8 +145,8 @@ export default function BlockDetails() {
         <NoData/> :
         <WrapperList>
           {/*<Search className="NavSearch"/>*/}
-          <div className="px-24 bg-gray-arrow desktop:pt-8 screen:px-4 ">
-            <DetailTitle routeTitle={t('Block Height')} content={nowBlock} isBlock={isBlockNumber}
+          <div className="px-24 bg-gray-arrow desktop:pt-8 screen:px-4  media:px-4">
+            <DetailTitle routeTitle={t('Block Height')} content={'#'.concat(nowBlock)} isBlock={true}
                          setNowBlock={setNowBlock}
                          routePath={routerPath}/>
           </div>

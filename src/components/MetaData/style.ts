@@ -19,7 +19,7 @@ export const Wrapper = styled.div`
   background: white;
   box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.04);
   border: 1px solid #E9E9E9;
-  border-radius: 6px;
+  border-radius: 10px;
   width: 100%;
   margin: 3rem auto;
   display: grid;
@@ -100,7 +100,7 @@ export const Container = styled.div`
     }
   }
 
-  @media screen and (max-width: 1150px) {
+  @media screen and (max-width: 900px) {
     > img {
       display: inline-block;
       width: 24px;

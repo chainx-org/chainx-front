@@ -40,7 +40,7 @@ export default function Jsonformat({ json }) {
 
     const keys = Object.keys(query)
     return (
-      <div style={{marginLeft:(deep-1)*60+'px'}}>
+      <div style={{marginLeft:(deep-1)*60+'px'}} >
         <span>{`{`}</span>
         {
           Object.keys(query).map((key:string)=>{

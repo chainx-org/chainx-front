@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import React, { useEffect, useState } from 'react';
 import TableX from '../../components/Table';
 import { get } from '../../hooks/useApi';
-import { LinkX, ShorterLink } from '../../components/LinkX';
+import { LinkX, Normal, ShorterLink } from '../../components/LinkX';
 import TimeStatus from '../../components/TimeStatus';
 import Operation from '../../components/Operation';
 import JsonApi from '../../components/Jsonformat';
@@ -69,9 +69,15 @@ export default function Event({block, extrinsic}: EventProps) {
       key: 'Extrinsic Hash',
       width: 200,
       render: (text: any, record: any) => {
-        return (
-          <ShorterLink linkUrl={`/extrinsicDetails/${record.extrinsicHash}`} state={record} content={record.extrinsicHash}/>
-        );
+        {
+          if (record.extrinsicHash) {
+            return (<ShorterLink linkUrl={`/extrinsicDetails/${record.extrinsicHash}`} state={record}
+                                 content={record.extrinsicHash}/>
+            );
+          } else {
+            return (<Normal state={'-'}/>);
+          }
+        }
       }
     },
     {

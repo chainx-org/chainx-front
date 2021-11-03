@@ -18,10 +18,24 @@ const TableWrapper = styled.div`
           }
         }
 
-        .bgImage {
-          display: none;
-        }
+        //.bgImage {
+        //  display: none;
+        //}
       }
+  .bgImage{
+    height: 128%;
+    width: 73%;
+    position: relative;
+    max-width: none;
+    object-fit: cover;
+    z-index:1;
+    top:22px;
+    margin:auto;
+    @media screen and (max-width: 1150px) {
+      top:10px;
+      z-index:1
+    }
+  }
   .Home_pageSearch {
     width: 70%;
     @media screen and (max-width: 1150px) {
@@ -52,7 +66,7 @@ function homeSearch() {
     return (
       <TableWrapper>
         <div className='w-overSpread h-overSpread absolute items-center mx-auto my-auto'>
-          <img src={bgImg} alt="" style={{position: 'relative', objectFit: 'cover', margin: 'auto auto',maxWidth:'none',width:'60%',zIndex:1}}/>
+          <img src={bgImg} alt="" className='bgImage' />
         </div>
         <div className="grid grid-rows-2 relative" style={{zIndex:2}}>
           <div className="h-13 text-4xl PingFangSC-Medium, PingFang SC text-textColor-white mb-5">ChainX Blockchain

@@ -64,6 +64,15 @@ export const NavLink = styled.div`
   justify-content: space-between;
   height: 3rem;
   line-height: 3rem;
+  >a{
+    min-width: 80px;
+  }
+  >a:nth-child(n+3){
+    min-width: 116px;
+  }
+  >a:nth-child(5){
+    min-width: 230px;
+  }
   @media screen and (max-width: 1150px) {
     display: none;
   }

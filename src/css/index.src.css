@@ -7,12 +7,12 @@
   /* @apply text-xs; */
 }
 #main {
-  width: 100% !important;
-  height: 100% !important;
+  width: 400px;
+  height: 300px;
 }
-#echart {
-  width: 100% !important;
-  height: 100% !important;
+#mainEchats {
+  width: 400px;
+  height: 300px;
 }
 .Line {
   @apply w-overSpread h-0.25 bg-gray-border;

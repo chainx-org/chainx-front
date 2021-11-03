@@ -37,7 +37,7 @@ function List({
                 loading,
               }: ListProps): React.ReactElement {
   return (
-    <div className="px-24 pb-4 bg-gray-bgWhite screen:px-4 overflow-auto" style={{
+    <div className="px-24 pb-4 bg-gray-bgWhite screen:px-4 overflow-auto medium:px-4" style={{
       background: 'linear-gradient(to bottom, black 0%, black 100px, #f5f5f5 100px, #f5f5f5 100%)'
     }}>
       <Box
