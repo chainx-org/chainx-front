@@ -44,10 +44,10 @@ export default function DetailTitle({routeTitle, routePath, content, isBlock, se
       <div className="w-overSpread flex flex-row">
         <span className="text-gray-white text-xl font-medium my-auto">{routeTitle}</span>
         {isBlock ?
-          <DetailSpan className="inline-block text-topBar-blueLight font-medium text-base cursor-pointer h-fitContent pl-4"
-                style={{margin: 'auto 0'}}> <span>#{(content==="undefined-undefined"?'-':content)}</span></DetailSpan>
-          : <DetailSpan className="inline-block text-topBar-blueLight font-medium text-base cursor-pointer h-fitContent pl-4"
-                  style={{margin: 'auto 0'}}><span>{content==="undefined-undefined"?'-':content}</span> <img src={Icon} onClick={onCopy} alt="" className='inline-block cursor-pointer'/></DetailSpan>
+          <DetailSpan className="inline-block text-topBar-blueLight font-medium cursor-pointer text-xl h-fitContent pl-1"
+                style={{margin: 'auto 0'}}> <span style={{verticalAlign: 'middle'}}>{(content==="undefined-undefined"?'-':content)}</span></DetailSpan>
+          : <DetailSpan className="inline-block text-topBar-blueLight font-medium text-base cursor-pointer h-fitContent pl-1"
+                  style={{margin: 'auto 0'}}><span style={{verticalAlign: 'middle'}}>{content==="undefined-undefined"?'-':content}</span> <img src={Icon} onClick={onCopy} alt="" className='inline-block cursor-pointer'/></DetailSpan>
         }
         {isBlock ?
           <>

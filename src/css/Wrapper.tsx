@@ -33,11 +33,14 @@ export const ExtrinWrapper = styled.div`
 
 
 export const WrapperWith= styled.div`
-  min-height: 400px;
+  min-height: 335px;
   background: #FFFFFF;
   box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.04);
   border-radius: 10px;
   border: 1px solid #E9E9E9;
+  @media screen and (max-width: 1200px) {
+    min-height: 400px;
+  }
 `;
 
 export const WrapperList = styled.div`

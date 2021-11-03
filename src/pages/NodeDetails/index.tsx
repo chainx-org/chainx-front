@@ -79,7 +79,7 @@ export default function NodeDetails() {
     {
       title: t('NikeName'),
       content: (
-        <div className="font-medium text-gray-arrow ">
+        <div className="text-black-textColor">
           <div className='flex flex-row'>
             <span>{addressDetails?.referralId}</span>{(addressDetails?.isValidating)?<TrustTag/>:'-'}</div>
         </div>
@@ -88,7 +88,7 @@ export default function NodeDetails() {
     {
       title: t('Account'),
       content: (
-        <div className="font-medium text-gray-arrow ">
+        <div className="text-black-textColor">
           {reName(addressDetails?.account)}
         </div>)
     },
@@ -102,20 +102,20 @@ export default function NodeDetails() {
     {
       title: t('Jackpot Address'),
       content: (
-        <div className="font-medium text-gray-arrow ">{addressDetails?.rewardPotAccount}</div>
+        <div className="text-black-textColor">{addressDetails?.rewardPotAccount}</div>
       ),
     },
     {
       title: t('Missed Blocks'),
       content: (
-        <div className="font-medium text-gray-arrow ">
+        <div className="text-black-textColor">
           {(addressDetails?.missed)?(addressDetails?.missed):'0'}
         </div>
       ),
     },{
       title: t('Self Bonded'),
       content: (
-        <div className="font-medium text-gray-arrow ">
+        <div className="text-black-textColor">
           {accuracy(addressDetails?.selfBonded)}
         </div>
       ),
@@ -123,7 +123,7 @@ export default function NodeDetails() {
     {
       title: t('Total Nominations'),
       content: (
-        <div className="font-medium text-gray-arrow ">
+        <div className="text-black-textColor">
           {accuracy(addressDetails?.totalNomination)}
         </div>
       ),
@@ -137,12 +137,12 @@ export default function NodeDetails() {
     // },
     {
       title: t('Vote Weight Last Update'),
-      content: <div className="font-medium text-gray-arrow ">
+      content: <div className="text-black-textColor">
         {addressDetails?.lastTotalVoteWeightUpdate}
       </div>,
     }, {
       title: t('Total Weight'),
-      content: <div className="font-medium text-gray-arrow ">
+      content: <div className="text-black-textColor">
         {reName(addressDetails?.lastTotalVoteWeight)}
       </div>,
     }
@@ -169,7 +169,7 @@ export default function NodeDetails() {
       {noData ?
         <NoData/> :
         <WrapperList>
-          <div className="px-24 bg-gray-arrow desktop:pt-8 screen:px-4 ">
+          <div className="px-24 bg-gray-arrow desktop:pt-8 screen:px-4  media:px-4">
             <DetailTitle routeTitle={t('Validator')} content={node} isBlock={false}
                          routePath={routerPath}/>
           </div>

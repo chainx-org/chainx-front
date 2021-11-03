@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
-import { LinkXHome, ShorterLink } from '../../components/LinkX';
+import { LinkXHome, ShorterLink,ShorterLinkHome } from '../../components/LinkX';
 import Operation from '../Operation';
 import TimeStatus from '../TimeStatus';
 import SkeletonItem from './skeletonItem';
@@ -19,7 +19,7 @@ const ItemContainer = styled.div`
   background: #FFFFFF;
   box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.04);
   border-radius: 10px;
-  @media screen and (max-width: 1150px) {
+  @media screen and (max-width: 900px) {
     font-size: 14px;
     > div {
       > span {
@@ -36,13 +36,16 @@ const LatestItemBox = styled.div`
   display: flex;
   flex-direction: column;
   padding: 16px;
-  @media screen and (max-width: 1150px) {
+  @media screen and (max-width: 900px) {
     font-size: 12px !important;
     //width: 21.5rem;
     > div {
       > span {
         font-size: 16px;
       }
+    }
+    .latestDiv{
+      display: none;
     }
   }
 `;
@@ -64,7 +67,7 @@ export default function LatestItem({title, icon, ListData}: LatestItemPop) {
           <span>{t('See All')}</span>
         </div>
       </div>
-      <LatestItemBox>
+      <LatestItemBox className='overflow-scroll' style={{whiteSpace:'nowrap'}}>
         {title === t('Latest block') ?
           <>
             {ListData.length>0?ListData?.map((item, index) => {
@@ -75,7 +78,7 @@ export default function LatestItem({title, icon, ListData}: LatestItemPop) {
                     <div className="latestDiv">
                       <span>BX</span>
                     </div>
-                    <div className="flex flex-col justify-start ml-4 w-overSpread">
+                    <div className="flex flex-col justify-start desktop:ml-4 w-overSpread">
                       <div className=" flex flex-row justify-between text-homeText-gray text-homeText-gray">
                         <LinkXHome linkUrl={`/blockDetails/${item.number}`} content={item.number}/>
                         <div className="flex flex-row">
@@ -109,13 +112,13 @@ export default function LatestItem({title, icon, ListData}: LatestItemPop) {
                       <div className="latestDiv">
                         <span>TX</span>
                       </div>
-                      <div className="flex flex-col justify-start ml-4 w-overSpread">
+                      <div className="flex flex-col justify-start desktop:ml-4  w-overSpread">
                         <div className="flex flex-row justify-between text-homeText-gray text-homeText-gray">
                           <LinkXHome linkUrl={`/extrinsicDetails/${item.hash}`}
                                      content={(item?.indexer?.blockHeight) ? (item?.indexer?.blockHeight) : '' + '-' + (item?.indexer?.index) ? (item?.indexer?.index) : ''}
                           />
                           <div className="flex flex-row">
-                            <ShorterLink linkUrl={`/extrinsicDetails/${item.hash}`} content={item.hash}/>
+                            <ShorterLinkHome linkUrl={`/extrinsicDetails/${item.hash}`} content={item.hash}/>
                             {/*<img src={iconImg} alt="" style={{width: '12px', height: '12px'}}/>*/}
                           </div>
                         </div>

@@ -136,7 +136,7 @@ export default function AddressDetails() {
       {noData ?
         <NoData/> :
         <WrapperList>
-          <div className="px-24 bg-gray-arrow desktop:pt-8 screen:px-4 ">
+          <div className="px-24 bg-gray-arrow desktop:pt-8 screen:px-4  media:px-4">
             <DetailTitle routeTitle={t('Address')} content={nowBlock}
                          setNowBlock={setNowBlock}
                          routePath={routerPath}/>

@@ -2,27 +2,27 @@ import styled from 'styled-components';
 
 export const MobileDataBox = styled.div`
   background: transparent;
-  height: 2rem;
+  //height: 2rem;
   position: absolute;
   right:0px;
   top:0px;
-  z-index: 999;
+  z-index: 3;
   width: 100%;
   a {
     text-decoration: none;
   }
   body{
-    background-color: gray;
+    background-color: black;
   }
 
   .hamburger {
     display: flex;
     flex-direction: column;
-    height: 25px;
+    height: 16px;
     justify-content: space-between;
     //margin: 0.1rem 0.1rem;
     z-index: 999;
-    margin: 1rem;
+    margin: 1.6rem;
   }
 
   .hamburger:hover {
@@ -30,10 +30,10 @@ export const MobileDataBox = styled.div`
   }
 
   .nav-bar {
-    width: 32px;
-    height: 3px;
+    width: 20px;
+    height: 2px;
     background-color: white;
-    transition: 500ms ease-in-out all;
+    transition: 300ms ease-in-out all;
   }
 
   .nav-container {
@@ -42,28 +42,30 @@ export const MobileDataBox = styled.div`
     justify-content: flex-end;
   }
   .dropdown {
-    top: -200px;
+    top: -500px;
     position: absolute;
-    height: 200px;
+    height: 409px;
     width: 100%;
-    background-color: #2d2929;
-    transition: 500ms ease-in-out all;
+    background-color: black;
+    transition: 300ms ease-in-out all;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    border-bottom: 1px solid white;
+    //justify-content: center;
+    padding: 100px 0 0px 0;
   }
 
   .dropdown p {
-    font-size: 14px;
+    font-size: 18px;
+    font-weight: 500;
     font-family: "Urbanist", sans-serif;
     color: white;
     margin: 0.2rem 0;
     border-bottom: 1px solid transparent;
     padding: 0 0.4em; /* adjust padding to make the underline longer or shorter */
-    padding-bottom: 4px; /* this padding can be used to adjust the distance from text to underlink */
-    transition: 200ms ease all;
+    padding-bottom: 7px; /* this padding can be used to adjust the distance from text to underlink */
+    padding-top:10px;
+    transition: 300ms ease all;
   }
 
   .dropdown p:hover {
@@ -76,8 +78,8 @@ export const MobileDataBox = styled.div`
   }
 
   .one-active {
-    background-color: yellow;
-    transform: translateY(13px) rotate(45deg);
+    background-color: white;
+    transform: translateY(5px) rotate(45deg);
   }
 
   .two-active {
@@ -85,7 +87,7 @@ export const MobileDataBox = styled.div`
   }
 
   .three-active {
-    background-color: yellow;
+    background-color: white;
     transform: translateY(-9px) rotate(135deg);
   }
 

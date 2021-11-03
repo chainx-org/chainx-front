@@ -6,19 +6,21 @@ import MetaData from '../../../components/MetaData';
 import { useTranslation } from 'react-i18next';
 import { get } from '../../../hooks/useApi';
 import highSure from '../../../assets/icon_high_sure.svg';
-import holders from '../../../assets/icon_holders.svg';
-import transfer from '../../../assets/icon_transfer.svg';
-import node from '../../../assets/icon_node.svg';
-import issuance from '../../../assets/icon-issuance.svg';
+import Latest from '../../../assets/icon_new high.svg';
+import Extrinsics from '../../../assets/icon_sign.svg';
+import Accounts from '../../../assets/icon_holders.svg';
+import Count from '../../../assets/icon_transfer.svg';
+import Validators from '../../../assets/icon_node.svg';
+import Staked from '../../../assets/icon_zhiya.svg';
+import Issuance from '../../../assets/icon-issuance.svg';
 import { accuracy, accuracyInt } from '../../../helper/hooks';
-import { Skeleton } from 'antd';
 import i18n from '../../../i18n';
 
 export default function Container() {
     const {t} = useTranslation();
     const [timers, setTimers] = useState<Array<NodeJS.Timeout>>([]);
     const saveCallBack: any = useRef();
-    const [latestBlock, setListData] = useState([]);
+    const [latestBlock, setListData] = useState<any>('');
 
     const [latestExtrinsic, setLatestExtrinsic] = useState([])
     const [metaData, setMetaData] = useState([{
@@ -26,31 +28,31 @@ export default function Container() {
         name: t('Finalized Block'),
         data: '-'
     }, {
-        icon: highSure,
+        icon: Latest,
         name: t('Latest Block'),
         data: '-'
     }, {
-        icon: holders,
+        icon: Extrinsics,
         name: t('Total Extrinsics'),
         data: '-'
     }, {
-        icon: holders,
+        icon: Accounts,
         name: t('Total Accounts'),
         data: '-'
     }, {
-        icon: transfer,
+        icon: Count,
         name: t('Transfer Count'),
         data: '-'
     }, {
-        icon: node,
+        icon: Validators,
         name: t('Total Validators'),
         data: '-'
     }, {
-        icon: issuance,
+        icon: Issuance,
         name: t('Total Issuance(PCX)'),
         data: '-'
     }, {
-        icon: issuance,
+        icon: Staked,
         name: t('Staked Value'),
         data: '-'
     }]);
@@ -64,31 +66,31 @@ export default function Container() {
             name: t('Finalized Block'),
             data: latestChainStatus.finalized
         }, {
-            icon: highSure,
+            icon: Latest,
             name: t('Latest Block'),
             data: latestChainStatus.best
         }, {
-            icon: holders,
+            icon: Extrinsics,
             name: t('Total Extrinsics'),
             data: latestChainStatus.extrinsic_count
         }, {
-            icon: holders,
+            icon:Accounts,
             name: t('Total Accounts'),
             data: latestChainStatus.account_count
         }, {
-            icon: transfer,
+            icon: Count,
             name: t('Transfer Count'),
             data: latestChainStatus.transfer_count
         }, {
-            icon: node,
+            icon: Validators,
             name: t('Total Validators'),
             data: latestChainStatus.validator_count
         }, {
-            icon: issuance,
+            icon: Issuance,
             name: t('Total Issuance(PCX)'),
             data: accuracyInt(latestChainStatus.pcx_issuance)
         }, {
-            icon: issuance,
+            icon: Staked,
             name: t('Staked Value'),
             data: ((latestChainStatus.totalValidatorBonded + latestChainStatus.totalNominationSum) /
               latestChainStatus.pcx_issuance*100).toFixed(2)+'%'
@@ -96,7 +98,8 @@ export default function Container() {
     };
     const getLatestBlockData = async () => {
         const {latestBlocks}: any = await get('/latestBlock', '');
-        setListData(latestBlocks);
+        let result = latestBlocks.slice(0,5)
+        setListData([...result]);
     };
     const getLatestExtrinsic = async () => {
         const res: any = await get(`/extrinsics?page=${1}&page_size=${5}`, ``);
@@ -131,12 +134,12 @@ export default function Container() {
       <>
           <ContainerBox>
               <HomeSearch/>
-              <div>
+              <div className='bg-gray-bgWhite'>
                   <MetaData metaData={metaData}/>
                   <div className="bg-gray-bgWhite">
                       <TableWrapper>
                           <LatestItem key={1} title={t('Latest block')} icon="latestblock"
-                                      ListData={latestBlock.slice(5)}/>
+                                      ListData={[...latestBlock]}/>
                           <LatestItem key={2} title={t('Latest transaction')} icon="icon" ListData={latestExtrinsic}/>
                       </TableWrapper>
                   </div>

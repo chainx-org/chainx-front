@@ -32,7 +32,7 @@ const HomeSearch = styled.div`
     display: flex;
     .NavSearch {
         margin:auto 0;
-        width:26rem;
+        width:20rem;
     }
     @media screen and (max-width: 1150px) {
         display: none;
@@ -103,30 +103,33 @@ export default function Header({showSearch}: HeaderPop) {
                           <Link to="/crossBlock">
                               <span key="4" className="toplinkName">{t('Cross Bridge')}</span>
                           </Link>
-                          <div className="topLink" style={{cursor: 'pointer'}}>
-                              <span key="6" className="topLinkTool">{t('Tools')}</span>
-                              <ul className="toolList">
-                                  <li>
-                                      <div
-                                        onClick={() => toolLink('/tools/ss58')}>{t('Transform Address/Public Key')}</div>
-                                  </li>
-                                  {/*<li>*/}
-                                  {/*    <div onClick={() => toolLink('/tools/SearchTool')}>{t('Search Events/Extrinsics')}</div>*/}
-                                  {/*</li>*/}
-                              </ul>
-                          </div>
+                          <Link to="/tools/ss58">
+                              <span key="5" className="toplinkName">{t('Transform Address/Public Key')}</span>
+                          </Link>
+                          {/*<div className="topLink" style={{cursor: 'pointer'}}>*/}
+                          {/*    <span key="6" className="topLinkTool">{t('Tools')}</span>*/}
+                          {/*    <ul className="toolList">*/}
+                          {/*        <li>*/}
+                          {/*            <div*/}
+                          {/*              onClick={() => toolLink('/tools/ss58')}>{t('Transform Address/Public Key')}</div>*/}
+                          {/*        </li>*/}
+                          {/*        /!*<li>*!/*/}
+                          {/*        /!*    <div onClick={() => toolLink('/tools/SearchTool')}>{)t('Search Events/Extrinsics'}</div>*!/*/}
+                          {/*        /!*</li>*!/*/}
+                          {/*    </ul>*/}
+                          {/*</div>*/}
                       </NavLink>
                   </Wrapper>
                   {showSearch && <Search className="NavSearch"/>}
-                  {<SelectList className="selectList" style={{margin: 'auto 0'}}>
-                      <div onClick={() => setShowMenu(!showMenu)}><img src={menuIcon} alt="" style={{
-                          height: '1.5rem',
-                          width: '1.5rem'
-                      }}/></div>
-                      {showMenu &&
-                      <Faviconnav isCollapsed={showMenu} onClose={() => setShowMenu(!showMenu)}/>
-                      }
-                  </SelectList>}
+                  {/*{<SelectList className="selectList" style={{margin: 'auto 0'}}>*/}
+                  {/*    <div onClick={() => setShowMenu(!showMenu)}><img src={menuIcon} alt="" style={{*/}
+                  {/*        height: '1.5rem',*/}
+                  {/*        width: '1.5rem'*/}
+                  {/*    }}/></div>*/}
+                  {/*    {showMenu &&*/}
+                  {/*    <Faviconnav isCollapsed={showMenu} onClose={() => setShowMenu(!showMenu)}/>*/}
+                  {/*    }*/}
+                  {/*</SelectList>}*/}
               </div>
               {/*<ListBgColor/>*/}
           </HomeSearch>
