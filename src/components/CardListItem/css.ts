@@ -1,23 +1,24 @@
 import styled from 'styled-components';
 
 export const ItemContainer = styled.div`
-  :nth-child(1) {
-    border-radius: 10px 10px 0px 0px;
-  }
-
-  :nth-last-child(1) {
-    border-radius: 0px 0px 10px 10px;
-
-  }
-
   width: 100%;
   background: white;
   color: black;
   display: flex;
   flex-direction: row;
   justify-content: start;
+  margin-bottom:24px;
 
-  > img {
+  :nth-child(1) {
+    //border-radius: 10px 10px 0px 0px;
+    margin-top:10px;
+  }
+  
+  :nth-last-child(1) {
+    //border-radius: 0px 0px 10px 10px;
+    margin-bottom:10px;
+  }
+  .imgIcon {
     margin: 20px 7px 20px 32px;
   }
 

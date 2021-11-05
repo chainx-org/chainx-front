@@ -8,6 +8,7 @@ import TableX from '../../components/Table';
 import ExpandIcon from '../../components/ExpandIcon';
 import JsonApi from '../../components/Jsonformat';
 import { get } from '../../hooks/useApi';
+import Identicon from "@polkadot/react-identicon";
 
 export default function Account() {
   const {t} = useTranslation();
@@ -19,8 +20,12 @@ export default function Account() {
       render: (text: any, record: any) => {
         return (
           <div className="flex flex-row items-center">
-            <div style={{marginRight: '0.25rem', width: '2rem', height: '2rem', display: 'inline-block'}}><img
-              src={addressIcon} alt=""/>
+            <div style={{marginRight: '0.25rem', width: '2rem', height: '2rem', display: 'inline-block'}}>
+              <Identicon
+                value={record.address}
+                size={32}
+                theme={'polkadot'}
+              />
             </div>
             <LinkX linkUrl={`/addressDetails/${record.address}`} content={record.address}/>
           </div>
