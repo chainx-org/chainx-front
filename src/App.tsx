@@ -22,18 +22,18 @@ function App() {
       <BrowserRouter>
         {/*<Header/>*/}
         <Switch>
-          {/*<Route path="/tools/SS58" exact component={SS58}/>*/}
-          {/*<Route path="/tools/searchTool" exact  component={SearchTool}/>*/}
-          {/*<Route path="/Search"  component={searchPage}/>*/}
-          {/*<Route path="/AccountTransfer"  component={AccountTransfer}/>*/}
-          {/*<Route path="/blockDetails"  component={blockDetails}/>*/}
-          {/*<Route path="/extrinsicDetails"  component={extrinsicDetails}/>*/}
-          {/*<Route path="/nodeDetails"  component={NodeDetails}/>*/}
-          {/*<Route path="/addressDetails"  component={addressDetails}/>*/}
-          {/*<Route path="/crossBlock" component={CrossBlock}/>*/}
-          {/*<Route path="/validators" component={Validator}/>*/}
-          {/*<Route path="/chain" component={Chain}/>*/}
-          {/*<Route path="/Nodata" component={NoDataPage}/>*/}
+          <Route path="/tools/SS58" exact component={SS58}/>
+          <Route path="/tools/searchTool" exact  component={SearchTool}/>
+          <Route path="/Search"  component={searchPage}/>
+          <Route path="/AccountTransfer"  component={AccountTransfer}/>
+          <Route path="/blockDetails"  component={blockDetails}/>
+          <Route path="/extrinsicDetails"  component={extrinsicDetails}/>
+          <Route path="/nodeDetails"  component={NodeDetails}/>
+          <Route path="/addressDetails"  component={addressDetails}/>
+          <Route path="/crossBlock" component={CrossBlock}/>
+          <Route path="/validators" component={Validator}/>
+          <Route path="/chain" component={Chain}/>
+          <Route path="/Nodata" component={NoDataPage}/>
           <Route path="/" component={Home}/>
         </Switch>
         <Footer />
