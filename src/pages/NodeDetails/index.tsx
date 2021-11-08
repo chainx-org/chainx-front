@@ -31,7 +31,7 @@ export default function NodeDetails() {
   const [currentTab, setCurrentTab] = useState('missed');
   const getData = async (node:string) => {
     const {items}: any = await get(`/validators/all`, ``);
-    const result =  items.filter((item: any, index: number) => {
+    const result =  items.find((item: any, index: number) => {
       if(item.account === node){
         return item
       }
