@@ -25,7 +25,6 @@ const Box = styled.div`
   @media screen and (max-width: 1150px) {
     > div {
       :nth-last-child(1) {
-        //margin-bottom: 1rem;
       }
     }
   }
@@ -42,19 +41,18 @@ function List({
     }}>
       <Box
       >
-        {/*<div>*/}
-          {list.map((item) => {
+          {list.map((item, index) => {
             return (
-              <ListItem
-                key={item.title}
-                title={item.title}
-                content={item.content}
-                loading={loading}
-              />
+              <div key={index}>
+                <ListItem
+                  key={item.title}
+                  title={item.title}
+                  content={item.content}
+                  loading={loading}
+                />
+              </div>
             );
           })}
-        {/*</div>*/}
-
       </Box>
     </div>
   );

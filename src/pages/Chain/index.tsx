@@ -12,7 +12,6 @@ import {Wrapper} from '../../css/Wrapper'
 
 export default function Chain() {
   const {t} = useTranslation();
-  // const currentRoute = window.location.pathname.slice(7, window.location.pathname.length);
   const tag = 'chain'
   const [currentTab, setCurrentTab] = useState('block');
 
@@ -26,7 +25,6 @@ export default function Chain() {
     }
 
   },[])
-  // useEffect(() => {chooseTab(currentRoute);}, [currentTab]);
 
   const tabList: TabInfo[] = [
     {
@@ -52,13 +50,11 @@ export default function Chain() {
   ];
   return (
     <>
-       <Header showSearch={true}/>
       <div className="px-24 pt-8 pb-16 bg-gray-bgWhite screen:px-4 medium:px-4">
         <Wrapper>
           <TableMenuBox tabList={tabList} currentTab={currentTab} setCurrentTab={setCurrentTab} tag={tag}/>
         </Wrapper>
       </div>
-       {/*<Footer/>*/}
     </>
   );
 }

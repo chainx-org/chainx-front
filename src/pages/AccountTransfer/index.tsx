@@ -26,10 +26,7 @@ export default function AccountTransfer() {
 
   return (
     <>
-       <Header showSearch={true}/>
         <CardBox cardBoxTitleIcon={blockLeakage} cardBoxTitleName={t('Query block leakage')} cardBoxTitleContainer={BoxContainer} inputValueFun={changeAddress} selectAddress={changeAddress}/>
-      {/* <Footer/> */}
-
     </>
   );
 }

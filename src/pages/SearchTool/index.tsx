@@ -61,7 +61,6 @@ export default function Tools() {
 
   return (
     <>
-       <Header showSearch={true}/>
       <div className="Container">
         <Wrapper>
           <CardTitle>
@@ -150,8 +149,6 @@ export default function Tools() {
           </Container>
         </Wrapper>
       </div>
-      {/* <Footer/> */}
-
     </>
   );
 }

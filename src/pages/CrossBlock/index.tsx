@@ -134,7 +134,6 @@ export default function CrossBlock() {
   },[])
   return (
     <>
-      <Header showSearch={true}/>
       <WrapperBgWhite className="px-24 py-4 screen:px-4 medium:px-4">
         <BridgeWrapper>
           <WrapperWith>
@@ -160,7 +159,7 @@ export default function CrossBlock() {
               {mingApiData?.map((item: any, index: any) => {
                 return (
                   <>
-                    <div className="itemThree">
+                    <div className="itemThree" key={index}>
                       <div className="flex flex-col">
                         <CardDiv>
                           <div className="flex flex-col justify-start my-auto ">
@@ -209,9 +208,7 @@ export default function CrossBlock() {
                   className="ml-4 text-base text-black-titleColor font-medium screen:text-sm">{t('Mining Distribution')}</span>
               </div>
             </CardTitle>
-            {/*<div className='w-20 h-13'>*/}
             <MyEchart/>
-            {/*</div>*/}
           </WrapperWith>
         </BridgeWrapper>
         <WrapperWith>
@@ -225,7 +222,6 @@ export default function CrossBlock() {
           <TableMenuBox tabList={tabList} currentTab={currentTab} setCurrentTab={setCurrentTab} tag={tag}/>
         </WrapperWith>
       </WrapperBgWhite>
-       {/*<Footer/>*/}
     </>
   );
 }
