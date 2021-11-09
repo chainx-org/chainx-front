@@ -12,8 +12,6 @@ export default function NoDataPage() {
 
   return (
     <>
-       <Header showSearch={true}/>
         <NoData/>
-       {/*<Footer/>*/}
     </>);
 }

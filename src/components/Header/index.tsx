@@ -1,82 +1,23 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import icon from '../../assets/Group8Copy1.svg';
 import Search from '../Search';
-import { NavLink, Wrapper } from './style';
+import { NavLink, Wrapper,HomeSearch,HeardLine,MobileSearch } from './style';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import Faviconnav from '../../components/SideBars';
-import styled from 'styled-components';
-import menuIcon from '../../assets/menu.svg';
 import { useOnClickOutside } from '../../helper/hooks';
 import MobileMenu from '../MobileMenu';
 
 interface HeaderPop {
     showSearch?: boolean
 }
-
-const SelectList = styled.div`
-    display: none;
-    @media screen and (max-width: 1150px) {
-        display: block;
-    }
-`;
-
-const HeardLine = styled.div`
-    height: 1.5rem;
-    border-right: 1px solid #E9E9E9;
-    margin: auto 0;
-    margin-left: 12px;;
-`;
-
-const HomeSearch = styled.div`
-    display: flex;
-    .NavSearch {
-        margin:auto 0;
-        width:20rem;
-    }
-    @media screen and (max-width: 1150px) {
-        display: none;
-    }
-`;
-
-const MobileSearch = styled.div`
-    display: none;
-    @media screen and (max-width: 1150px) {
-        display: flex;
-        .NavSearch {
-            width: 100%;
-            margin:auto 0;
-        }
-        .NavSearch .ant-input-group{
-            height:2.5rem;
-        }
-        .NavSearch .ant-input-group .ant-input{
-            height:2.5rem;
-        }
-    }
-`;
-export default function Header({showSearch}: HeaderPop) {
-    // const [showSearch,setShowSearch] = useState(window.location.pathname)
+function Header(props:any) {
     const {t} = useTranslation();
     const [showMenu, setShowMenu] = useState(false);
-    // const goHome = () => {
-    //     setShowSearch(window.location.pathname)
-    // };
-    // const handleClick = (e: any) => {
-    //     setShowSearch(window.location.pathname)
-    //     e.persist();
-    //     if (e._targetInst.key === '1') {
-    //
-    //     } else if (e._targetInst.key === '2') {
-    //     }
-    // };
     const toolLink = (value: string) => {
         window.location.href = window.location.origin + `${value}`;
     };
     const ref = useRef();
     useOnClickOutside(ref, () => setShowMenu(false));
-
-    // @ts-ignore
     return (
       <>
           <HomeSearch>
@@ -103,35 +44,21 @@ export default function Header({showSearch}: HeaderPop) {
                           <Link to="/crossBlock">
                               <span key="4" className="toplinkName">{t('Cross Bridge')}</span>
                           </Link>
-                          <Link to="/tools/ss58">
-                              <span key="5" className="toplinkName">{t('Transform Address/Public Key')}</span>
-                          </Link>
-                          {/*<div className="topLink" style={{cursor: 'pointer'}}>*/}
-                          {/*    <span key="6" className="topLinkTool">{t('Tools')}</span>*/}
-                          {/*    <ul className="toolList">*/}
-                          {/*        <li>*/}
-                          {/*            <div*/}
-                          {/*              onClick={() => toolLink('/tools/ss58')}>{t('Transform Address/Public Key')}</div>*/}
-                          {/*        </li>*/}
-                          {/*        /!*<li>*!/*/}
-                          {/*        /!*    <div onClick={() => toolLink('/tools/SearchTool')}>{)t('Search Events/Extrinsics'}</div>*!/*/}
-                          {/*        /!*</li>*!/*/}
-                          {/*    </ul>*/}
-                          {/*</div>*/}
+                          <div className="topLink" style={{cursor: 'pointer'}}>
+                              <span key="6" className="topLinkTool">{t('Tools')}</span>
+                              <ul className="toolList">
+                                  <li>
+                                      <Link to={'/tools/ss58'}>{t('Transform Address/Public Key')}</Link>
+                                  </li>
+                                  <li>
+                                      <Link to={'/tools/SearchTool'}>{t('Search Events/Extrinsics')}</Link>
+                                  </li>
+                              </ul>
+                          </div>
                       </NavLink>
                   </Wrapper>
-                  {showSearch && <Search className="NavSearch"/>}
-                  {/*{<SelectList className="selectList" style={{margin: 'auto 0'}}>*/}
-                  {/*    <div onClick={() => setShowMenu(!showMenu)}><img src={menuIcon} alt="" style={{*/}
-                  {/*        height: '1.5rem',*/}
-                  {/*        width: '1.5rem'*/}
-                  {/*    }}/></div>*/}
-                  {/*    {showMenu &&*/}
-                  {/*    <Faviconnav isCollapsed={showMenu} onClose={() => setShowMenu(!showMenu)}/>*/}
-                  {/*    }*/}
-                  {/*</SelectList>}*/}
+                  {props.showSearch && <Search className="NavSearch"/>}
               </div>
-              {/*<ListBgColor/>*/}
           </HomeSearch>
           <MobileSearch>
               <div
@@ -149,22 +76,14 @@ export default function Header({showSearch}: HeaderPop) {
                               }}>EXPLORER</span>
                           </div>
                       </Wrapper>
-                      {/*{<SelectList className="selectList" style={{margin: 'auto 0'}}>*/}
-                      {/*    <div onClick={() => setShowMenu(!showMenu)}><img src={menuIcon} alt="" style={{*/}
-                      {/*        height: '1.5rem',*/}
-                      {/*        width: '1.5rem'*/}
-                      {/*    }}/></div>*/}
-                      {/*    {showMenu &&*/}
-                      {/*    <Faviconnav isCollapsed={showMenu} onClose={() => setShowMenu(!showMenu)}/>*/}
-                      {/*    }*/}
-                      {/*</SelectList>}*/}
                   </div>
                   <MobileMenu/>
-                  {showSearch && <Search className="NavSearch"/>}
+                  {props.showSearch && <Search className="NavSearch"/>}
 
               </div>
-              {/*<ListBgColor/>*/}
           </MobileSearch>
       </>
     );
 }
+
+export default React.memo(Header)

@@ -7,8 +7,13 @@
   /* @apply text-xs; */
 }
 #main {
-  width: 400px;
-  height: 300px;
+  width: 100%;
+  height: 100%;
+}
+
+#mainChat{
+  width: 100%;
+  height: 100%;
 }
 #mainEchats {
   width: 400px;

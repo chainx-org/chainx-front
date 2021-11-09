@@ -12,7 +12,7 @@ export default function Search({ className }: SearchProps) {
   const {t}  = useTranslation();
   const {Search} = Input;
   const onSearch = async (value: any) => {
-    if(value){
+    if(value??'' !== ''){
       setLoading(true);
       await api(value, window);
     }
