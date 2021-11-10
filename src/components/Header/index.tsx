@@ -51,7 +51,7 @@ function Header(props:any) {
                                       <Link to={'/tools/ss58'}>{t('Transform Address/Public Key')}</Link>
                                   </li>
                                   <li>
-                                      <Link to={'/tools/SearchTool'}>{t('Search Events/Extrinsics')}</Link>
+                                      <Link to={'/tools/SearchEvent'}>{t('Search Events/Extrinsics')}</Link>
                                   </li>
                               </ul>
                           </div>

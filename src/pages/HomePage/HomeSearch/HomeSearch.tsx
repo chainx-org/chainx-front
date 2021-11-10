@@ -51,33 +51,33 @@ function HomeSearch() {
         </div>
         <Search className="Home_pageSearch "/>
       </div>
-      <EchartBox>
-        <div className="flex flex-col justify-start px-6 py-1">
-          <div className="flex flex-row">
-            <img src={icon} alt="" className="h-6 pr-2"/>
-            <span className="text-base text-gray-white">ChainX</span>
-          </div>
-          <div className="flex flex-row justify-between pb-2">
-            <span className="text-3xl text-gray-white pr-6">$ {currentPrice}</span>
-            <div className="flex flex-row justify-start">
-              {/*<span className="miniGrayFront">11%</span>*/}
-              <div id="triangle" className="leading-12"/>
-            </div>
-          </div>
-          <div className="Line"/>
-          <div className="flex flex-row justify-between py-2">
-            <span className="miniGrayFront">发行总量</span>
-            <span className="miniGrayFront">$ 6,731,598,423</span>
-          </div>
-          <div className="flex flex-row justify-between pt-2">
-            <span className="miniGrayFront">24小时交易量</span>
-            <span className="miniGrayFront">$ 12,423</span>
-          </div>
-        </div>
-        <div className="w-overSpread h-overSpread">
-          <Model_echarts data={chainxResult}/>
-        </div>
-      </EchartBox>
+      {/*<EchartBox>*/}
+      {/*  <div className="flex flex-col justify-start px-6 py-1">*/}
+      {/*    <div className="flex flex-row">*/}
+      {/*      <img src={icon} alt="" className="h-6 pr-2"/>*/}
+      {/*      <span className="text-base text-gray-white">ChainX</span>*/}
+      {/*    </div>*/}
+      {/*    <div className="flex flex-row justify-between pb-2">*/}
+      {/*      <span className="text-3xl text-gray-white pr-6">$ {currentPrice}</span>*/}
+      {/*      <div className="flex flex-row justify-start">*/}
+      {/*        /!*<span className="miniGrayFront">11%</span>*!/*/}
+      {/*        <div id="triangle" className="leading-12"/>*/}
+      {/*      </div>*/}
+      {/*    </div>*/}
+      {/*    <div className="Line"/>*/}
+      {/*    <div className="flex flex-row justify-between py-2">*/}
+      {/*      <span className="miniGrayFront">发行总量</span>*/}
+      {/*      <span className="miniGrayFront">$ 6,731,598,423</span>*/}
+      {/*    </div>*/}
+      {/*    <div className="flex flex-row justify-between pt-2">*/}
+      {/*      <span className="miniGrayFront">24小时交易量</span>*/}
+      {/*      <span className="miniGrayFront">$ 12,423</span>*/}
+      {/*    </div>*/}
+      {/*  </div>*/}
+      {/*  <div className="w-overSpread h-overSpread">*/}
+      {/*    <Model_echarts data={chainxResult}/>*/}
+      {/*  </div>*/}
+      {/*</EchartBox>*/}
     </TableWrapper>
   );
 }
