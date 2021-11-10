@@ -29,7 +29,7 @@ export default function ValidatorSlashed() {
         return (
           <div className="flex flex-row">
             <LinkX linkUrl={`/addressDetails/${record.account}`} content={record.referralId}/>
-            {record.isValidating === true ? <TrustTag/> : ''}
+            {/*{record.isValidating === true ? <TrustTag/> : ''}*/}
           </div>);
       }
     },
