@@ -7,14 +7,16 @@ import TrustTag from '../../components/TrustTag';
 import { accuracy } from '../../helper/hooks';
 
 
-export default function Trustees() {
-  const {t} = useTranslation();
+export default function Trustees()
+{
+  const { t } = useTranslation();
   const [trusteesData, setTrusteesData] = useState([]);
   const [page, setPage] = useState(1);
   const [pageSize, setPageSize] = useState(10);
   const [trusteesTotal, setTrusteesTotal] = useState(0);
   const [loading, setLoading] = useState(true);
-  const getTrusteesData = async () => {
+  const getTrusteesData = async () =>
+  {
     const res: any = await get(`/trustees?page=${page - 1}&page_size=${pageSize}`, ``);
     setTrusteesTotal(res.total);
     setTrusteesData(res.items);
@@ -25,11 +27,12 @@ export default function Trustees() {
       title: t('NikeName'),
       dataIndex: 'NikeName',
       key: 'NikeName',
-      render: (text: any, record: any) => {
+      render: (text: any, record: any) =>
+      {
         return (
           <div className="flex flex-row">
-            <LinkX linkUrl={`/addressDetails/${record.account}`} content={record.referralId}/>
-            {record.isValidating === true ? <TrustTag/> : ''}
+            <LinkX linkUrl={`/addressDetails/${record.account}`} content={record.referralId} />
+            <TrustTag />
           </div>);
       }
     },
@@ -37,20 +40,23 @@ export default function Trustees() {
       title: t('Address'),
       dataIndex: 'Address',
       key: 'Address',
-      render: (text: any, record: any) => {
+      render: (text: any, record: any) =>
+      {
         return (
-          <ShorterLink linkUrl={`/addressDetails/${record.account}`} content={record.account}/>);
+          <ShorterLink linkUrl={`/addressDetails/${record.account}`} content={record.account} />);
       }
     },
     {
       title: t('Self Bonded'),
       dataIndex: 'Self Bonded',
       key: 'Self Bonded',
-      render: (text: any, record: any) => {
+      render: (text: any, record: any) =>
+      {
         return (
-          <Normal state={(record.selfBonded) ? accuracy(record.selfBonded) : '-'}/>);
+          <Normal state={(record.selfBonded) ? accuracy(record.selfBonded) : '-'} />);
       },
-      sorter: (a: any, b: any) => {
+      sorter: (a: any, b: any) =>
+      {
         return a.selfBonded - b.selfBonded;
       }
     },
@@ -58,11 +64,13 @@ export default function Trustees() {
       title: t('Total Nominations(PCX)'),
       dataIndex: 'Nominations',
       key: 'Nominations',
-      render: (text: any, record: any) => {
+      render: (text: any, record: any) =>
+      {
         return (
-          <Normal state={(record.totalNomination) ? accuracy(record.totalNomination) : '-'}/>);
+          <Normal state={(record.totalNomination) ? accuracy(record.totalNomination) : '-'} />);
       },
-      sorter: (a: any, b: any) => {
+      sorter: (a: any, b: any) =>
+      {
         return a.totalNomination - b.totalNomination;
       }
     },
@@ -70,23 +78,27 @@ export default function Trustees() {
       title: t('Reward Pot Balance(PCX)'),
       dataIndex: 'Balance',
       key: 'Balance',
-      render: (text: any, record: any) => {
+      render: (text: any, record: any) =>
+      {
         return (
-          <Normal state={(record.rewardPotBalance) ? accuracy(record.rewardPotBalance) : '-'}/>);
+          <Normal state={(record.rewardPotBalance) ? accuracy(record.rewardPotBalance) : '-'} />);
       },
-      sorter: (a: any, b: any) => {
+      sorter: (a: any, b: any) =>
+      {
         return a.rewardPotBalance - b.rewardPotBalance;
       }
     }
   ];
 
-  function onChange(page: number, pageSize: any) {
+  function onChange(page: number, pageSize: any)
+  {
     setPage(page);
     setPageSize(pageSize);
     setLoading(true);
   }
 
-  useEffect(() => {
+  useEffect(() =>
+  {
     getTrusteesData().then();
   }, [page, pageSize]);
 
@@ -104,7 +116,7 @@ export default function Trustees() {
 
   return (
     <div className="px-8 overflow-scroll">
-      <TableX columns={chainColumns} dataList={trusteesData} pagination={pagination} loading={loading}/>
+      <TableX columns={chainColumns} dataList={trusteesData} pagination={pagination} loading={loading} />
     </div>
   );
 }
