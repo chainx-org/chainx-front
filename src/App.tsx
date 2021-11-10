@@ -15,6 +15,7 @@ import NodeDetails from './pages/NodeDetails';
 import NoDataPage from './pages/NoData';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import SearchEvent from './pages/SearchEvent';
 
 function App(props: any) {
   const [showSearch, setShowSearch] = useState(window.location.pathname === '/');
@@ -31,7 +32,7 @@ function App(props: any) {
       <Header showSearch={showSearch}/>
       <Switch>
         <Route path="/tools/SS58" exact component={SS58}/>
-        <Route path="/tools/searchTool" exact component={SearchTool}/>
+        <Route path="/tools/SearchEvent" exact component={SearchEvent}/>
         <Route path="/Search" component={searchPage}/>
         <Route path="/AccountTransfer" component={AccountTransfer}/>
         <Route path="/blockDetails" component={blockDetails}/>

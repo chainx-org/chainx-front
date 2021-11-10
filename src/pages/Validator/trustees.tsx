@@ -29,7 +29,7 @@ export default function Trustees() {
         return (
         <div className="flex flex-row">
           <Normal state={(record.referralId) ? (record.referralId) : '-'}/>
-          <Normal state={record.isTrust === true ? <TrustTag/> : ''}/>
+          <TrustTag/>
         </div>
         );
       }

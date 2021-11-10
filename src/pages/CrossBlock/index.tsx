@@ -49,29 +49,34 @@ export default function CrossBlock() {
     {
       title: t('Block'),
       content: <BitcoinBlock/>,
+      key:1,
       name:'block'
     },
     {
       title: t('Deposit Deals'),
       content: <Deposit/>,
+      key:2,
       name:'deals'
 
     },
     {
       title: t('Withdraw'),
       content: <Withdraw/>,
+      key:3,
       name:'withdraw'
 
     },
     {
       title: t('Host'),
       content: <Host/>,
+      key:4,
       name: 'host'
 
     },
     {
       title: t('Claim'),
       content: <Claim/>,
+      key:5,
       name: 'claim'
     }
   ];
@@ -158,8 +163,8 @@ export default function CrossBlock() {
             <WrapperBridge>
               {mingApiData?.map((item: any, index: any) => {
                 return (
-                  <>
-                    <div className="itemThree" key={index}>
+                  <div key={index}>
+                    <div className="itemThree">
                       <div className="flex flex-col">
                         <CardDiv>
                           <div className="flex flex-col justify-start my-auto ">
@@ -194,7 +199,7 @@ export default function CrossBlock() {
                         </CardDiv>
                       </div>
                     </div>
-                  </>
+                  </div>
 
                 );
               })}

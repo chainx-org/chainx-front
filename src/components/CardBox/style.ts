@@ -88,7 +88,6 @@ export const Container = styled.div`
   .toolSearch {
     display: flex;
     flex-direction: row;
-
     .showSelect {
       width: 80%;
       height: 3rem;
@@ -181,6 +180,142 @@ export const Container = styled.div`
 
       :hover {
         background: rgba(22, 119, 255, 0.1);
+      }
+    }
+  }
+`;
+
+
+export const ContainerEvent = styled.div`
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  @media screen and (max-width: 900px) {
+    flex-direction: column;
+  }
+  .selectiveText{
+    display: flex;
+    align-items: center;
+    color: #4a4a4a;
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  .toolSearch {
+    display: flex;
+    flex-direction: row;
+    width: 24rem;
+    padding:1rem 0.5rem 1rem 1rem;
+    position: relative;
+    .showSelect {
+      width: 90%;
+      height: 2.5rem;
+      background: #F9F9F9;
+      border-radius: 4px 0px 0px 4px;
+      border: 1px solid #DBDBDB;
+      display: flex;
+      flex-direction: row;
+      justify-content: start;
+      align-items: center;
+      padding-left: 0.5rem;
+    }
+
+    .selectBtn {
+      width: 10%;
+      height: 2.5rem;
+      border-radius: 0px 4px 4px 0px;
+      border: 1px solid #DBDBDB;
+      display: flex;
+      position: relative;
+      justify-content: center;
+      //>img{
+      //  display: inline-block;
+      //  position: absolute;
+      //  top:11px;
+      //
+      
+      & > ul {
+        background: #FFFFFF;
+        box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.15);
+        border-radius: 4px;
+        width: 8rem;
+        height: 5rem;
+        margin-top: 48px;
+
+        & > li {
+          height: 2.5rem;
+          width: 8rem;
+          display: flex;
+          justify-content: center;
+
+          & > div {
+            line-height: 2.5rem;
+            text-align: start;
+            color: #666666;
+          }
+
+          :hover {
+            background: rgba(22, 119, 255, 0.1);
+          }
+        }
+      }
+    }
+    .toolList {
+      display: none;
+    }
+    :hover {
+      .toolList {
+        display: block;
+        position: absolute;
+        width: 100%;
+        z-index: 999;
+        margin-top: 2.5rem;
+      }
+    }
+    & > ul {
+      background: #FFFFFF;
+      box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.15);
+      border-radius: 4px;
+      width: 100%;
+      height: 5rem;
+
+      & > li {
+        height: 2.5rem;
+        display: flex;
+        justify-content: center;
+
+        & > div {
+          line-height: 2.5rem;
+          text-align: start;
+          color: #666666;
+        }
+
+        :hover {
+          background: rgba(22, 119, 255, 0.1);
+        }
+      }
+    }
+  }
+  
+  .helpMessage{
+    display: flex;
+    flex-direction: row;
+    position:relative;
+    .popverMessage{
+      display: none;
+    }
+    :hover{
+      .popverMessage{
+        display: block;
+        position: absolute;
+        top: 80%;
+        left: -600%;
+        z-index: 999;
+        width: 300px;
+        background: #FAFAFA;
+        border: 1px solid #080810;
+        border-radius: 10px;
       }
     }
   }

@@ -8,7 +8,7 @@ export default function SkeletonItem() {
       {fisrtInit?.map((item, index) => {
         return (
           <div className="flex flex-row justify-start py-3 overflow-scroll"
-               style={{borderBottom: '1px solid #E9E9E9'}}>
+               style={{borderBottom: '1px solid #E9E9E9'}} key={index}>
             <div className="latestDiv">
               <Skeleton active paragraph={{rows: 0}} className="indexSkeleton"/>
             </div>

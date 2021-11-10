@@ -47,11 +47,11 @@ function Header(props:any) {
                           <div className="topLink" style={{cursor: 'pointer'}}>
                               <span key="6" className="topLinkTool">{t('Tools')}</span>
                               <ul className="toolList">
-                                  <li>
+                                  <li key={1}>
                                       <Link to={'/tools/ss58'}>{t('Transform Address/Public Key')}</Link>
                                   </li>
-                                  <li>
-                                      <Link to={'/tools/SearchTool'}>{t('Search Events/Extrinsics')}</Link>
+                                  <li key={2}>
+                                      <Link to={'/tools/SearchEvent'}>{t('Search Events/Extrinsics')}</Link>
                                   </li>
                               </ul>
                           </div>
