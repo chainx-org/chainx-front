@@ -8,8 +8,6 @@ import {Wrapper} from '../../css/Wrapper'
 
 export default function NoDataPage() {
 
-  const {t} = useTranslation();
-
   return (
     <>
         <NoData/>

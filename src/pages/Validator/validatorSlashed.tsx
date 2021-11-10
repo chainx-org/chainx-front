@@ -29,7 +29,7 @@ export default function ValidatorSlashed() {
         return (
         <div className="flex flex-row">
           <Normal state={(record.referralId) ? (record.referralId) : '-'}/>
-          <Normal state={record.isTrust === true ? <TrustTag/> : ''}/>
+          {/*<Normal state={record.isTrust === true ? <TrustTag/> : ''}/>*/}
         </div>
         );
       }

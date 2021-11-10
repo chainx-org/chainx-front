@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import Header from '../../components/Header';
-import Footer from '../../components/Footer';
 import { useTranslation } from 'react-i18next';
 import { CardTitle, Container, SpliteLine, Wrapper } from '../../components/CardBox/style';
 import arrowChangeIcon from '../../assets/icon_awitch.svg';

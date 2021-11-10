@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Search from '../../../components/Search';
-import bgImg from '../../../assets/Lightning@2x.webp';
-import icon from '../../../assets/icon_PCX _head.webp'
+import bgImg from '../../../assets/Lightning.svg';
+import icon from '../../../assets/icon_PCX _head.svg'
 import Model_echarts from './charts';
 import { EchartBox, TableWrapper } from './style';
 import { outSideAPI } from '../../../hooks/useApi';
