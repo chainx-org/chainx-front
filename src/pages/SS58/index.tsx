@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import Header from '../../components/Header';
-import Footer from '../../components/Footer';
 import CardBox from '../../components/CardBox';
 import { useTranslation } from 'react-i18next';
 import blockLeakage from '../../assets/icon_Account switch.svg';
@@ -98,5 +96,6 @@ export default function SS58(props:any) {
                cardBoxTitleContainer={BoxContainer} inputValue={inputValue} listValue={listValue}
                selectAddress={selectAddress} inputValueFun={changeAddress} correctValue={isCorrectValue} loading={loading}/>
     </>
+
   );
 }

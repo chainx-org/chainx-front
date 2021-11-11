@@ -238,7 +238,7 @@ export const ContainerEvent = styled.div`
       //  position: absolute;
       //  top:11px;
       //
-      
+
       & > ul {
         background: #FFFFFF;
         box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.15);
@@ -301,7 +301,7 @@ export const ContainerEvent = styled.div`
       }
     }
   }
-  
+
   .helpMessage{
     display: flex;
     flex-direction: row;
@@ -324,6 +324,11 @@ export const ContainerEvent = styled.div`
     }
   }
 `;
-
-
-export const SearchBox = styled.div`{}`;
+export const SearchBox = styled.div`
+{
+  @media screen and (min-width: 1700px) {
+    width: 1500px;
+    margin: 0 auto;
+  }
+}
+`;

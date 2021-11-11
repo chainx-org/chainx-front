@@ -53,13 +53,14 @@ export default function CardBox({
         <Container>
           <div className="items-center my-auto mx-0 text-center">
             <span className="inline-block mb-12 text-sm font-medium text-black-textColor">{cardBoxTitleContainer.title}</span>
-            <div className="border">
+            <div className="border" style={{borderRadius: '10px',}}>
               <TextArea
                 value={inputValue}
                 onChange={textInput}
                 placeholder={cardBoxTitleContainer.container}
                 autoSize={{minRows: 6, maxRows: 10}}
                 bordered={true}
+                style={{borderRadius:'10px',background:'#F9F9F9'}}
               />
             </div>
             <Button block style={{background: 'black', borderRadius: '4px', cursor: 'pointer'}}
@@ -81,8 +82,8 @@ export default function CardBox({
 
             {listValue.length > 0 ?
               <div className="overflow-scroll w-overSpread h-overSpread"
-                   style={{background: 'white', borderRadius: '10px'}}>
-                <CardListItem itemIcon={publicIcon} itemContent={listValue[0].value!==''?(decodeAddress(inputValue) ||''):''}
+                   style={{background: '#F9F9F9', borderRadius: '10px'}}>
+                <CardListItem isPublic={true} itemIcon={publicIcon} itemContent={listValue[0].value!==''?(decodeAddress(inputValue) ||''):''}
                               itemTitle={'Public Key'}/>
                 {listValue?.map((item: any,index:number) => {
                     return (
