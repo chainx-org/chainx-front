@@ -32,7 +32,12 @@ export default function CopyText({children, text, showText}: CopyTextProps) {
   return (
     <Wrapper>
       {!showText ? <div style={{margin: 'auto 0'}}>{children}</div> : ''}
+<<<<<<< HEAD
       {!showText ? <img src={Icon} alt="" onClick={onCopy} className="cursor-pointer"/> :
         <img src={listIcon} alt="" onClick={onCopy} className="cursor-pointer"/>}
+=======
+      {!showText ? <img src={Icon} alt="" onClick={onCopy} className="cursor-pointer" style={{maxWidth:'none',marginLeft:'8px'}}/> :
+        <img src={listIcon} alt="" onClick={onCopy} className="cursor-pointer" style={{maxWidth:'none',marginLeft:'8px'}}/>}
+>>>>>>> 19796b29ea2eae440b7803c158e093ba732e0dcb
     </Wrapper>);
 }

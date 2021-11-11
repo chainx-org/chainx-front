@@ -8,7 +8,7 @@ import 'echarts/lib/chart/pie';
 import React, { useEffect, useState } from 'react';
 
 const  Model_echarts = (props:any) => {
-  let [main , setMain] = useState<any>('')
+  let [mainEchats , setMain] = useState<any>('')
   const option ={
     animation: false,//去除动画渲染
     tooltip: {
@@ -52,23 +52,27 @@ const  Model_echarts = (props:any) => {
     ]
   };
   useEffect(()=>{
-    let node = document.getElementById('main')
+    if (mainEchats != null && mainEchats != "" && mainEchats != undefined) {
+      mainEchats.dispose();
+    }
+    let node = document.getElementById('mainEchats')
     setMain(node)
+
   } , [])
   // 基于准备好的dom，初始化echarts实例
-  if(main !== ""){
-    let myChart = echarts.init(main);
+  if(mainEchats != null && mainEchats != "" && mainEchats != undefined){
+    let myChart = echarts.init(mainEchats);
     myChart.resize()
     myChart.setOption(option);
     window.addEventListener("resize", function() {
-      let myChart = echarts.init(main);
+      let myChart = echarts.init(mainEchats);
       myChart.resize()
       myChart.setOption(option);
     });
   }
   // 绘制图表
   return (
-    <div id="main" style={{width: '410px', height: '280px', margin: 'auto'}}></div>
+    <div id="mainEchats" style={{width: '410px', height: '280px', margin: 'auto'}}></div>
   )
 }
 

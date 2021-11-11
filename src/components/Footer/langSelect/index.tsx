@@ -54,10 +54,10 @@ function LangSelect(): React.ReactElement {
       {
         isShow &&
         <ul className='absolute pointer' style={{bottom: '30px'}}>
-          <li className='cursor-pointer'>
+          <li className='cursor-pointer' key={1}>
             <div onClick={() => changeLanguage(1)}>English</div>
           </li>
-          <li className='cursor-pointer'>
+          <li className='cursor-pointer' key={2}>
             <div onClick={() => changeLanguage(2)}>中文</div>
           </li>
         </ul>

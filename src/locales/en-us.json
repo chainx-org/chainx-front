@@ -130,7 +130,7 @@
     "Mining Distribution": "Mining Distribution",
     "Enter the address of block leakage for query": "Enter the address of block leakage for query",
     "Please enter the block leakage address": "Please enter the block leakage address",
-    "1. Please first select the type of search: Event or Extrinsic and then enter the keyword.  2. Currently, Event supports Method and section query, extrinsic support Hash,name and section query.  3. If the table is empty, no query result is displayed.  4. Query parameters support case fuzzy matching": "1. Please first select the type of search: Event or Extrinsic and then enter the keyword.  2. Currently, Event supports Method and section query, extrinsic support Hash,name and section query.  3. If the table is empty, no query result is displayed.  4. Query parameters support case fuzzy matching",
+    "popMessage": "1. Please first select the type of search: Event or Extrinsic and then enter the keyword.  2. Currently, Event supports Method and section query, extrinsic support Hash,name and section query.  3. If the table is empty, no query result is displayed.  4. Query parameters support case fuzzy matching",
     "Assets": "Assets",
     "ChainX Assets": "ChainX Assets",
     "Usable": "Usable",
@@ -161,7 +161,8 @@
     "Total Issuance(PCX)": "Total Issuance(PCX)",
     "Staked Value": "Staked Value",
     "Session": "Session",
-    "Height": "Height"
+    "Height": "Height",
+    "Help": "Help"
 
 }
 

@@ -165,7 +165,6 @@ export default function NodeDetails() {
   };
   return (
     <>
-       <Header showSearch={true}/>
       <ListBgColor/>
       {noData ?
         <NoData/> :
@@ -182,6 +181,5 @@ export default function NodeDetails() {
           </div>
         </WrapperList>
       }
-       {/*<Footer/> */}
     </>);
 }

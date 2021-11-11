@@ -85,9 +85,9 @@ export default function CardBox({
                    style={{background: '#F9F9F9', borderRadius: '10px'}}>
                 <CardListItem isPublic={true} itemIcon={publicIcon} itemContent={listValue[0].value!==''?(decodeAddress(inputValue) ||''):''}
                               itemTitle={'Public Key'}/>
-                {listValue?.map((item: any) => {
+                {listValue?.map((item: any,index:number) => {
                     return (
-                      <CardListItem itemIcon={Icon} itemContent={item?.value} itemTitle={item?.name}/>
+                      <CardListItem key={index} itemIcon={Icon} itemContent={item?.value} itemTitle={item?.name}/>
                     );
                   }
                 )}

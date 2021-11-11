@@ -131,7 +131,6 @@ export default function AddressDetails() {
   };
   return (
     <>
-       <Header showSearch={true}/>
       <ListBgColor/>
       {noData ?
         <NoData/> :
@@ -149,6 +148,5 @@ export default function AddressDetails() {
           </div>
         </WrapperList>
       }
-       {/*<Footer/>*/}
     </>);
 }
