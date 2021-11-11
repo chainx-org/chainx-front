@@ -6,14 +6,11 @@ import Event from '../Chain/event';
 import Extrinsic from '../Chain/extrinsic';
 import { get } from '../../hooks/useApi';
 import List from '../../components/List';
-import Header from '../../components/Header';
-import Footer from '../../components/Footer';
 import TableMenuBox from '../../components/TableMenuBox';
 import { TabInfo } from '../../components/SwitchTab';
 import DetailTitle from '../../components/DetailTitle';
 import NoData from '../../components/NoData';
 import { ListBgColor, WrapperDetails, WrapperList } from '../../css/Wrapper';
-import Search from '../../components/Search';
 import CopyText from '../../components/copyText';
 
 
@@ -23,7 +20,8 @@ export default function BlockDetails() {
   const [loading, setLoading] = useState(true);
   const [noData, setNoData] = useState(false);
   const [blockDetails, setBlockDetails] = useState<any>();
-  const block = window.location.pathname.slice(14, window.location.pathname.length);
+  const block = window.location.hash.slice(15, window.location.hash.length);
+  debugger
   const isBlockNumber = (/^[0-9]*$/.test(block));
   const [nowBlock, setNowBlock] = useState(block);
   const tag = 'blockDetails'

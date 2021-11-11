@@ -2,8 +2,6 @@ import React, { useEffect, useState } from 'react';
 import List from '../../components/List';
 import { useTranslation } from 'react-i18next';
 import { get } from '../../hooks/useApi';
-import Header from '../../components/Header';
-import Footer from '../../components/Footer';
 import TableMenuBox from '../../components/TableMenuBox';
 import { TabInfo } from '../../components/SwitchTab';
 import DetailTitle from '../../components/DetailTitle';
@@ -24,7 +22,7 @@ export default function NodeDetails() {
   const {t} = useTranslation();
   const [loading, setLoading] = useState(true);
   const [addressDetails, setAddressDetails] = useState<any>();
-  const node = window.location.pathname.slice(13, window.location.pathname.length);
+  const node = window.location.hash.slice(14, window.location.hash.length);
   const [nowAddress, setNowAddress] = useState(node);
   const [noData, setNoData] = useState(false);
   const tag = 'nodeTetails'

@@ -2,11 +2,8 @@ import { useTranslation } from 'react-i18next';
 import React, { useEffect, useState } from 'react';
 import addressIcon from '../../assets/address_icon.svg';
 import { LinkX, Normal } from '../../components/LinkX';
-import ChainxTable from '../../components/Table/table';
 import { accuracy } from '../../helper/hooks';
 import TableX from '../../components/Table';
-import ExpandIcon from '../../components/ExpandIcon';
-import JsonApi from '../../components/Jsonformat';
 import { get } from '../../hooks/useApi';
 
 export default function Account() {
@@ -19,7 +16,8 @@ export default function Account() {
       render: (text: any, record: any) => {
         return (
           <div className="flex flex-row items-center">
-            <div style={{marginRight: '0.25rem', width: '2rem', height: '2rem', display: 'inline-block'}}><img
+            <div style={{marginRight: '0.25rem', width: '2rem', height: '2rem', display: 'inline-block'}}>
+              <img
               src={addressIcon} alt=""/>
             </div>
             <LinkX linkUrl={`/addressDetails/${record.address}`} content={record.address}/>

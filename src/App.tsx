@@ -28,7 +28,7 @@ function App(props: any) {
   },[props.location])
 
   return (
-    <>
+    <div>
       <Header showSearch={showSearch}/>
       <Switch>
         <Route path="/tools/SS58" exact component={SS58}/>
@@ -46,8 +46,7 @@ function App(props: any) {
         <Route path="/" component={Home}/>
       </Switch>
       <Footer/>
-
-    </>
+    </div>
   );
 };
 

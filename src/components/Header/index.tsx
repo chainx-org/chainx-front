@@ -1,7 +1,7 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import icon from '../../assets/Group8Copy1.svg';
 import Search from '../Search';
-import { NavLink, Wrapper,HomeSearch,HeardLine,MobileSearch } from './style';
+import { HeardLine, HomeSearch, MobileSearch, NavLink, Wrapper } from './style';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useOnClickOutside } from '../../helper/hooks';
@@ -10,7 +10,8 @@ import MobileMenu from '../MobileMenu';
 interface HeaderPop {
     showSearch?: boolean
 }
-function Header(props:any) {
+
+function Header(props: any) {
     const {t} = useTranslation();
     const [showMenu, setShowMenu] = useState(false);
     const toolLink = (value: string) => {
@@ -63,9 +64,9 @@ function Header(props:any) {
           <MobileSearch>
               <div
                 className="w-overSpread flex flex-col justify-atart bg-gray-arrow px-4 pt-2 pb-4">
-                  <div className='flex flex-row justify-between'>
+                  <div className="flex flex-row justify-between">
                       <Wrapper className="relative z-10">
-                          <div className='flex flex-row justify-start'>
+                          <div className="flex flex-row justify-start">
                               <div><Link to="/"><img src={icon} alt=""
                                                      style={{maxWidth: 'none', width: '93px', height: '20px'}}/></Link>
                               </div>
@@ -86,4 +87,4 @@ function Header(props:any) {
     );
 }
 
-export default React.memo(Header)
+export default React.memo(Header);

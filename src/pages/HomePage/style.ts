@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const ContainerBox = styled.div`
   width: 100%;
   background: black;
-  @media screen and (min-width: 1600px) {
+  @media screen and (min-width: 1700px) {
     width: 1500px;
     margin:0 auto;
   }

@@ -7,7 +7,7 @@ export const Wrapper = styled.div`
   border-radius: 10px;
   border: 1px solid #E9E9E9;
   position: relative;
-  @media screen and (min-width: 1600px) {
+  @media screen and (min-width: 1700px) {
     width: 1500px;
     margin: 0 auto;
   }
@@ -194,6 +194,10 @@ export const ContainerEvent = styled.div`
   @media screen and (max-width: 900px) {
     flex-direction: column;
   }
+  @media screen and (min-width: 1700px) {
+    width: 1500px;
+    margin: 0 auto;
+  }
   .selectiveText{
     display: flex;
     align-items: center;
@@ -320,3 +324,6 @@ export const ContainerEvent = styled.div`
     }
   }
 `;
+
+
+export const SearchBox = styled.div`{}`;

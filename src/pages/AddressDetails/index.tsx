@@ -25,7 +25,7 @@ export default function AddressDetails() {
   const [loading, setLoading] = useState(true);
   const [noData, setNoData] = useState(false);
   const [blockDetails, setBlockDetails] = useState<any>();
-  const address = window.location.pathname.slice(16, window.location.pathname.length);
+  const address = window.location.hash.slice(17, window.location.hash.length);
   const pubKey = decodeAddress(address) || '';
   const [nowBlock, setNowBlock] = useState(address);
   const tag = 'address'

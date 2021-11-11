@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import Header from '../../components/Header';
 import TableMenuBox from '../../components/TableMenuBox';
 import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
@@ -40,43 +39,43 @@ const BridgeWrapper = styled.div`
     }
   }
 `;
-export default function CrossBlock() {
+function CrossBlock() {
   const {t} = useTranslation();
 
-  const tag = 'crossBlock'
+  const tag = 'crossBlock';
   const [currentTab, setCurrentTab] = useState('block');
   const tabList: TabInfo[] = [
     {
       title: t('Block'),
       content: <BitcoinBlock/>,
-      key:1,
-      name:'block'
+      key: 1,
+      name: 'block'
     },
     {
       title: t('Deposit Deals'),
       content: <Deposit/>,
-      key:2,
-      name:'deals'
+      key: 2,
+      name: 'deals'
 
     },
     {
       title: t('Withdraw'),
       content: <Withdraw/>,
-      key:3,
-      name:'withdraw'
+      key: 3,
+      name: 'withdraw'
 
     },
     {
       title: t('Host'),
       content: <Host/>,
-      key:4,
+      key: 4,
       name: 'host'
 
     },
     {
       title: t('Claim'),
       content: <Claim/>,
-      key:5,
+      key: 5,
       name: 'claim'
     }
   ];
@@ -127,16 +126,16 @@ export default function CrossBlock() {
   useEffect(() => {
     getData();
   }, []);
-  useEffect(()=>{
-    
-    const activeTab = sessionStorage.getItem(tag)
-    if(activeTab){
-      setCurrentTab(activeTab)
-    }else{
-      setCurrentTab('block')
+  useEffect(() => {
+
+    const activeTab = sessionStorage.getItem(tag);
+    if (activeTab) {
+      setCurrentTab(activeTab);
+    } else {
+      setCurrentTab('block');
     }
 
-  },[])
+  }, []);
   return (
     <>
       <WrapperBgWhite className="px-24 py-4 screen:px-4 medium:px-4">
@@ -186,14 +185,14 @@ export default function CrossBlock() {
                       <div className="flex flex-row">
                         <CardDiv>
                           <div className="flex flex-col justify-start my-auto ">
-                        <span className="titleName">{t(`${item[0]?.name}`)}</span>
+                            <span className="titleName">{t(`${item[0]?.name}`)}</span>
                             <span className="titleValue">{(item[0]?.data)}</span>
                           </div>
                         </CardDiv>
                         <RightLine/>
                         <CardDiv>
                           <div className="flex flex-col justify-start my-auto ">
-                        <span className="titleName">{t(`${item[1]?.name}`)}</span>
+                            <span className="titleName">{t(`${item[1]?.name}`)}</span>
                             <span className="titleValue">{(item[1]?.data)}</span>
                           </div>
                         </CardDiv>
@@ -230,3 +229,5 @@ export default function CrossBlock() {
     </>
   );
 }
+
+export default CrossBlock

@@ -22,7 +22,7 @@ export default function ExtrinsicDetails() {
   const [loading, setLoading] = useState(true);
   const [noData, setNoData] = useState(false);
   const [extrinsicDetails, setExtrinsicDetails] = useState<any>();
-  const extrinsic = window.location.pathname.slice(18, window.location.pathname.length);
+  const extrinsic = window.location.hash.slice(19, window.location.hash.length);
   const tag = 'extrinsicsDetails';
   const [currentTab, setCurrentTab] = useState('event');
   const [nowExtrinsic, setNowExtrinsics] = useState(extrinsic);

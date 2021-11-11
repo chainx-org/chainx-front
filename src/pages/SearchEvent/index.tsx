@@ -1,15 +1,25 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import Search from '../../components/Search';
-import { ContainerEvent, Wrapper } from '../../components/CardBox/style';
+import { Input } from 'antd';
+import { ContainerEvent, Wrapper,SearchBox } from '../../components/CardBox/style';
 import pulldown from '../../assets/icon-pulldown.svg';
-import Block from '../Chain/block';
+import  Event from './searchEvent'
+import  Exc from './searchExc'
+import api from '../../helper/api';
+
 
 export default function SearchEvent() {
   const {t} = useTranslation();
+  const {Search} = Input;
   const [nowSearch, setNowSearch] = useState('Event');
-
-
+  const [inputValue, setInputValue] = useState('');
+  const [loading, setLoading] = useState(false);
+  const onSearch = async (value: any) => {
+    if(value??'' !== ''){
+      setLoading(true);
+      setInputValue(value)
+    }
+  };
   return (
     <div className="Container">
       <ContainerEvent>
@@ -39,12 +49,13 @@ export default function SearchEvent() {
           </div>
         </div>
       </ContainerEvent>
-      <div className="my-4">
-        <Search className="Home_pageSearch "/>
-      </div>
-      <div className="px-24 pt-8 pb-16 bg-gray-bgWhite screen:px-4 medium:px-4">
+      <SearchBox className="my-4">
+        <Search className={'Home_pageSearch'} placeholder={t('Please select the type before searching')} onSearch={onSearch}
+        enterButton disabled={loading} loading={loading}/>
+      </SearchBox>
+      <div className="pt-8 pb-16 bg-gray-bgWhite screen:px-4 medium:px-4">
         <Wrapper>
-          <Block/>
+          {nowSearch === 'Event'?<Event value={inputValue}/>:<Exc value={inputValue}/>}
         </Wrapper>
       </div>
     </div>
