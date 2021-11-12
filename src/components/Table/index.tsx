@@ -30,12 +30,10 @@ export default function TableX({Children, columns, dataList, pagination,loading,
   const {t} = useTranslation();
   const emptyDiv = ()=>{
     return (
-      <div style={{height:'10rem'}}>
-         <div className="flex flex-col ">
+         <div className="flex flex-col mt-12">
           <img src={noDataIcon} alt="" className='inline-block w-12 mx-auto '/>
           <span className='inline-block w-28 mx-auto text-center mx-auto mt-4'>{t('No Data')}</span>
         </div>
-      </div>
     )
   }
   return (

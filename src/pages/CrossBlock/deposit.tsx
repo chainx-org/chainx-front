@@ -15,9 +15,11 @@ export default function Deposit() {
       key: 'bitcoinTransactionHash',
       render: (text: any, record: any) => {
         return (
-        <a style={{display: 'inline-block', color: '#3C88C6'}}
+        <a className='inline-block text-blue-aText font-medium'
            href={`https://live.blockcypher.com/btc/tx/${swapEndian(record.data[0])}`}
-           target="_Blank">{record.data[0]}</a>
+           target="_Blank">
+          {(record.data[0])?.substring(0, 7).concat('...').concat((record.data[0])?.substring((record.data[0]).length - 5))}
+        </a>
         );
       }
     },

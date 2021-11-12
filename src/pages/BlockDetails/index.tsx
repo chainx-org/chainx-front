@@ -87,7 +87,7 @@ export default function BlockDetails() {
     {
       title: t('Parent Hash'),
       content: (
-        <a style={{display: 'inline-block', color: '#3C88C6'}}
+        <a className='inline-block text-blue-aText font-medium'
            href={`/#/blockDetails/${blockDetails?.header?.parentHash}`}>{blockDetails?.header?.parentHash}</a>)
     },
     {

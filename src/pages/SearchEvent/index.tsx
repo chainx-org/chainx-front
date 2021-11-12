@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Input, Popover } from 'antd';
 import { ContainerEvent, SearchBox, Wrapper } from '../../components/CardBox/style';
@@ -24,6 +24,9 @@ export default function SearchEvent() {
   const [nowSearch, setNowSearch] = useState('Event');
   const [inputValue, setInputValue] = useState('');
   const [loading, setLoading] = useState(false);
+  useEffect(()=>{
+    setInputValue('')
+  },[nowSearch])
   const onSearch = async (value: any) => {
     if (value ?? '' !== '') {
       setLoading(true);
@@ -76,7 +79,7 @@ export default function SearchEvent() {
       </SearchBox>
       <div className="pt-8 pb-16 bg-gray-bgWhite screen:px-4 medium:px-4">
         <Wrapper>
-          {nowSearch === 'Event'?<Event value={inputValue}/>:<Exc value={inputValue}/>}
+          {nowSearch === 'Event'?<Event value={inputValue} setLoading={setLoading}/>:<Exc value={inputValue} setLoading={setLoading}/>}
         </Wrapper>
       </div>
     </div>

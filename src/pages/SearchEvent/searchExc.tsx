@@ -38,9 +38,11 @@ export default function SearchExc(props:any) {
       setListValue(res.items);
       setTotal(res.total)
       setLoading(false);
+      props.setLoading(false)
     } catch (e) {
       setIsCorrectValue('No Data');
       setLoading(false);
+      props.setLoading(false)
     }
   };
   useEffect(()=>{
@@ -72,7 +74,7 @@ export default function SearchExc(props:any) {
       }
     },
     {
-      title: t('Hash'),
+      title: t('Extrinsic Hash'),
       dataIndex: 'hash',
       key: 'hash',
       width: 150,
@@ -80,18 +82,6 @@ export default function SearchExc(props:any) {
         return (
           <ShorterLink linkUrl={`/blockDetails/${record.extrinsicHash}`} state={record} content={record.extrinsicHash}/>);
       }}
-    // },
-    // {
-    //   title: t('Module'),
-    //   dataIndex: 'extrinsic',
-    //   key: 'extrinsic',
-    //   width: 100,
-    //   render: (text: any, record: any) => {
-    //     return (
-    //       <Normal state={record?.extrinsics.length}/>
-    //     );
-    //   }
-    // }
   ];
 
 

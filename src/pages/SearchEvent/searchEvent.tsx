@@ -54,7 +54,7 @@ export default function SearchEvent(props: any) {
       width: 150,
       render: (text: any, record: any) => {
         return (
-          <ShorterLink linkUrl={`/blockDetails/${record.extrinsicHash}`} state={record} content={record.extrinsicHash}/>);
+          <ShorterLink linkUrl={`/blockDetails/${record.indexer.blockHash}`} state={record} content={record.indexer.blockHash}/>);
       }
     },
     {
@@ -92,9 +92,11 @@ export default function SearchEvent(props: any) {
       setListValue(res.data);
       setTotal(res.total)
       setLoading(false);
+      props.setLoading(false)
     } catch (e) {
       setIsCorrectValue('No Data');
       setLoading(false);
+      props.setLoading(false)
     }
   };
 
@@ -102,6 +104,8 @@ export default function SearchEvent(props: any) {
     if (props.value) {
       setLoading(true)
       getData();
+    }else{
+
     }
   }, [props.value]);
 
