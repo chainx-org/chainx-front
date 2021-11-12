@@ -14,25 +14,28 @@ const Wrapper = styled.div`
     margin-right: 8px;
   }
 `;
-interface CopyTextProps{
+interface CopyTextProps
+{
   children?: any,
   text: string,
   showText?: boolean
 }
 
 // @ts-ignore
-export default function CopyText({children, text, showText}: CopyTextProps) {
-  const {t} = useTranslation();
-  const onCopy = () => {
+export default function CopyText({ children, text, showText }: CopyTextProps)
+{
+  const { t } = useTranslation();
+  const onCopy = () =>
+  {
     if (text && copy(text)) {
-      message.success({content: t('copy success')});
+      message.success({ content: t('copy success') });
     }
   };
 
   return (
     <Wrapper>
-      {!showText ? <div style={{margin: 'auto 0'}}>{children}</div> : ''}
-      {!showText ? <img src={Icon} alt="" onClick={onCopy} className="cursor-pointer" style={{maxWidth:'none',marginLeft:'8px'}}/> :
-        <img src={listIcon} alt="" onClick={onCopy} className="cursor-pointer" style={{maxWidth:'none',marginLeft:'8px'}}/>}
+      {!showText ? <div style={{ margin: 'auto 0' }}>{children}</div> : ''}
+      {!showText ? <img src={Icon} alt="" onClick={onCopy} className="cursor-pointer" style={{ maxWidth: 'none', marginLeft: '8px' }} /> :
+        <img src={listIcon} alt="" onClick={onCopy} className="cursor-pointer" style={{ maxWidth: 'none', marginLeft: '8px' }} />}
     </Wrapper>);
 }

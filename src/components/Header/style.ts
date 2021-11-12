@@ -36,7 +36,7 @@ export const Wrapper = styled.div`
       box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.15);
       border-radius: 4px;
       width: 100%;
-      height: 2.5rem;
+      height: 5.5rem;
 
       & > li {
         height: 2.5rem;
@@ -76,5 +76,47 @@ export const NavLink = styled.div`
   @media screen and (max-width: 1150px) {
     display: none;
   }
+`;
+
+export const SelectList = styled.div`
+    display: none;
+    @media screen and (max-width: 1150px) {
+        display: block;
+    }
+`;
+
+export const HeardLine = styled.div`
+    height: 1.5rem;
+    border-right: 1px solid #E9E9E9;
+    margin: auto 0;
+    margin-left: 12px;;
+`;
+
+export const HomeSearch = styled.div`
+    display: flex;
+    .NavSearch {
+        margin:auto 0;
+        width:20rem;
+    }
+    @media screen and (max-width: 1150px) {
+        display: none;
+    }
+`;
+
+export const MobileSearch = styled.div`
+    display: none;
+    @media screen and (max-width: 1150px) {
+        display: flex;
+        .NavSearch {
+            width: 100%;
+            margin:auto 0;
+        }
+        .NavSearch .ant-input-group{
+            height:2.5rem;
+        }
+        .NavSearch .ant-input-group .ant-input{
+            height:2.5rem;
+        }
+    }
 `;
 

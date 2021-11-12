@@ -9,7 +9,7 @@ import { encodeAddress } from '@polkadot/keyring';
 import decodeAddress from '../../helper/encodeAddress';
 const {hexToU8a, isHex} = require('@polkadot/util');
 
-export default function SS58() {
+export default function SS58(props:any) {
   const {t} = useTranslation();
   const [inputValue, setInputValue] = useState('');
   const [listValue, setListValue] = useState<any>([]);
@@ -94,12 +94,10 @@ export default function SS58() {
 
   return (
     <>
-       <Header showSearch={true}/>
       <CardBox cardBoxTitleIcon={blockLeakage} cardBoxTitleName={t('Transform Address/Public Key')}
                cardBoxTitleContainer={BoxContainer} inputValue={inputValue} listValue={listValue}
                selectAddress={selectAddress} inputValueFun={changeAddress} correctValue={isCorrectValue} loading={loading}/>
-      {/* <Footer/> */}
-
     </>
+
   );
 }

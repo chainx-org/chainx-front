@@ -5,8 +5,6 @@ import moment from 'moment';
 import { get } from '../../hooks/useApi';
 import Event from '../Chain/event';
 import List from '../../components/List';
-import Header from '../../components/Header';
-import Footer from '../../components/Footer';
 import JsonApi from '../../components/Jsonformat';
 import TableMenuBox from '../../components/TableMenuBox';
 import { TabInfo } from '../../components/SwitchTab';
@@ -25,7 +23,7 @@ export default function ExtrinsicDetails() {
   const [noData, setNoData] = useState(false);
   const [extrinsicDetails, setExtrinsicDetails] = useState<any>();
   const extrinsic = window.location.pathname.slice(18, window.location.pathname.length);
-  const tag = 'extrinsicsDetails'
+  const tag = 'extrinsicsDetails';
   const [currentTab, setCurrentTab] = useState('event');
   const [nowExtrinsic, setNowExtrinsics] = useState(extrinsic);
   const getData = async () => {
@@ -42,14 +40,14 @@ export default function ExtrinsicDetails() {
   }, []);
   useEffect(() => {
 
-    const activeTab = sessionStorage.getItem(tag)
+    const activeTab = sessionStorage.getItem(tag);
     if (activeTab) {
-      setCurrentTab(activeTab)
+      setCurrentTab(activeTab);
     } else {
-      setCurrentTab('event')
+      setCurrentTab('event');
     }
 
-  }, [])
+  }, []);
   const list = [
     {
       title: t('Block'),
@@ -57,7 +55,7 @@ export default function ExtrinsicDetails() {
         <LinkX linkUrl={`/blockDetails/${extrinsicDetails?.indexer?.blockHeight}`}
                content={
                  <div className="flex flex-row items-center">
-                   <img src={successIcon} alt="" className='inline-block mr-4'/>
+                   <img src={successIcon} alt="" className="inline-block mr-4"/>
                    <span className="inline-block">{extrinsicDetails?.indexer?.blockHeight}</span>
                  </div>
                }/>
@@ -73,9 +71,9 @@ export default function ExtrinsicDetails() {
     {
       title: t('Extrinsic Hash'),
       content: (
-        <div className='flex flex-row'>
+        <div className="flex flex-row">
           <Normal state={(extrinsicDetails?.hash) ? (extrinsicDetails?.hash) : '-'}/>
-          {(extrinsicDetails?.hash) ?  <CopyText text={extrinsicDetails?.hash} showText={true}/>:''}
+          {(extrinsicDetails?.hash) ? <CopyText text={extrinsicDetails?.hash} showText={true}/> : ''}
         </div>
 
       )
@@ -112,7 +110,7 @@ export default function ExtrinsicDetails() {
     {
       title: t('Arguments'),
       content:
-          <JsonApi json={extrinsicDetails?.args}/>
+        <JsonApi json={extrinsicDetails?.args}/>
     }
     // , {
     //   title: t('Signature'),
@@ -129,17 +127,21 @@ export default function ExtrinsicDetails() {
     }
   ];
   const routerPath = () => {
-    return (<div className="flex flex-row cursor-pointer text-gray-white text-base mx-0 my-auto" style={{'whiteSpace': 'nowrap'}}>
-      <Link to={'/'} style={{color: 'rgba(255, 255, 255, 0.65)'}}><div className='flex flex-row'>{t('Home')}<span
-        className="inline-block mx-2">/</span></div></Link>
-      <Link to={'/chain/extrinsic'} style={{color: 'rgba(255, 255, 255, 0.65)'}}><div className='flex flex-row'>{t('Extrinsic')}<span
-        className="inline-block mx-2">/</span></div></Link>
+    return (<div className="flex flex-row cursor-pointer text-gray-white text-base mx-0 my-auto"
+                 style={{'whiteSpace': 'nowrap'}}>
+      <Link to={'/'} style={{color: 'rgba(255, 255, 255, 0.65)'}}>
+        <div className="flex flex-row">{t('Home')}<span
+          className="inline-block mx-2">/</span></div>
+      </Link>
+      <Link to={'/chain/extrinsic'} style={{color: 'rgba(255, 255, 255, 0.65)'}}>
+        <div className="flex flex-row">{t('Extrinsic')}<span
+          className="inline-block mx-2">/</span></div>
+      </Link>
       <Link to={`./${extrinsic}`}>{t('ExtrinsicDetails')}</Link>
     </div>);
   };
   return (
     <>
-       <Header showSearch={true}/>
       <ListBgColor/>
       {noData ?
         <NoData/> :
@@ -159,7 +161,6 @@ export default function ExtrinsicDetails() {
           </WrapperList>
         </>
       }
-      {/* <Footer/> */}
     </>
-  )
+  );
 }

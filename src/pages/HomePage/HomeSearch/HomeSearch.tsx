@@ -1,108 +1,85 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Search from '../../../components/Search';
-import styled from 'styled-components';
-import bgImg from '../../../assets/Lightning@2x.webp'
+import bgImg from '../../../assets/Lightning.svg';
+import icon from '../../../assets/icon_PCX _head.svg'
+import Model_echarts from './charts';
+import { EchartBox, TableWrapper } from './style';
+import { outSideAPI } from '../../../hooks/useApi';
+import moment from 'moment';
+import { useTranslation } from 'react-i18next';
 
-const TableWrapper = styled.div`
-      display: grid;
-      grid-template-columns: 60% 40%;
-      place-content: space-around space-evenly;
-      padding: 3rem 6rem 2rem 6rem;
-      position: relative;
-      @media screen and (max-width: 1150px) {
-        grid-template-columns: 100%;
-        padding: 1rem;
-        > div {
-          > div {
-            font-size: 1.5rem !important;
-          }
-        }
-
-        //.bgImage {
-        //  display: none;
-        //}
+function HomeSearch() {
+  const {t} = useTranslation();
+  const [chainxResult, setChainxResult] = useState({});
+  const [currentPrice, setCurrentPrice] = useState('-');
+  //取每12小时的数据
+  const sliceChainxVolumesData = (value: Array<string>) => {
+    let result = {
+      resultTime: [] as any,
+      resultValue: [] as any
+    };
+    let targeIndex = [0, 11, 23, 35, 47, 59, 71];
+    value.map((item, index) => {
+      if (targeIndex.includes(index)) {
+        result.resultTime.push(moment(Number(item[0])).format(`MM ${t('Months')}DD`));
+        result.resultValue.push(item[1]);
       }
-  .bgImage{
-    height: 128%;
-    width: 73%;
-    position: relative;
-    max-width: none;
-    object-fit: cover;
-    z-index:1;
-    top:22px;
-    margin:auto;
-    @media screen and (max-width: 1150px) {
-      top:10px;
-      z-index:1
-    }
-  }
-  .Home_pageSearch {
-    width: 70%;
-    @media screen and (max-width: 1150px) {
-      width: 100%;
-    }
-  }
-`;
+    });
+    return result;
+  };
+  const getChainXData = async () => {
+    await outSideAPI.get('')
+      .then((response) => {
+        let totalVolumes = response?.data?.total_volumes;
+        setCurrentPrice(response?.data?.prices[response?.data?.prices?.length-1][1].toFixed(3))
+        let result = sliceChainxVolumesData(totalVolumes);
+        setChainxResult(result);
+      });
+  };
 
-const EchartBox = styled.div`
-      //grid grid-cols-2 border-gray-borderGray bg-gray-backgroundGray rounded-lg
-      display: grid;
-      grid-template-columns:1fr 1fr;
-      box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.04);
-      border-radius: 8px;
-      border: 1px solid rgba(105, 168, 237, 0.21);
-      background: #111519!important;
-      opacity: 1;
-      position:relative;
-      z-index:1;
-      @media screen and (max-width: 1150px) {
-        grid-template-columns:1fr;
-        grid-template-rows: 10rem 10rem;
-      }
-    `;
-
-function homeSearch() {
-
-    return (
-      <TableWrapper>
-        <div className='w-overSpread h-overSpread absolute items-center mx-auto my-auto'>
-          <img src={bgImg} alt="" className='bgImage' />
+  useEffect(() => {
+    getChainXData();
+  }, []);
+  return (
+    <TableWrapper>
+      <div className="w-overSpread h-overSpread absolute items-center mx-auto my-auto">
+        <img src={bgImg} alt="" className="bgImage"/>
+      </div>
+      <div className="grid grid-rows-2 relative" style={{zIndex: 2}}>
+        <div className="h-13 text-4xl PingFangSC-Medium, PingFang SC text-textColor-white mb-5">ChainX Blockchain
+          Explorer
         </div>
-        <div className="grid grid-rows-2 relative" style={{zIndex:2}}>
-          <div className="h-13 text-4xl PingFangSC-Medium, PingFang SC text-textColor-white mb-5">ChainX Blockchain
-            Explorer
-          </div>
-          <Search className="Home_pageSearch "/>
-          {/*<Search  className="media_pageSearch"/>*/}
-        </div>
-        {/*<EchartBox>*/}
-        {/*    <div className="flex flex-col justify-start px-6 py-1">*/}
-        {/*        <div className="flex flex-row">*/}
-        {/*            <img src={icon} alt="" className="h-6 pr-1"/>*/}
-        {/*            <span className="text-base text-gray-white">ChainX</span>*/}
-        {/*        </div>*/}
-        {/*        <div className="flex flex-row justify-between pb-2">*/}
-        {/*            <span className="text-3xl text-gray-white pr-6">$ 3.375</span>*/}
-        {/*            <div className="flex flex-row justify-start">*/}
-        {/*                <span className="miniGrayFront">11%</span>*/}
-        {/*                <div id="triangle" className="leading-12"/>*/}
-        {/*              </div>*/}
-        {/*          </div>*/}
-        {/*          <div className="Line" />*/}
-        {/*          <div className="flex flex-row justify-between py-2">*/}
-        {/*              <span className="miniGrayFront">发行总量</span>*/}
-        {/*              <span className="miniGrayFront">$ 6,731,598,423</span>*/}
-        {/*          </div>*/}
-        {/*        <div className="flex flex-row justify-between pt-2">*/}
-        {/*            <span className="miniGrayFront">24小时交易量</span>*/}
-        {/*            <span className="miniGrayFront">$ 12,423</span>*/}
-        {/*        </div>*/}
-        {/*    </div>*/}
-        {/*    <div className="w-overSpread h-overSpread">*/}
-        {/*        <Model_echarts/>*/}
-        {/*    </div>*/}
-        {/*</EchartBox>*/}
-      </TableWrapper>
-    )
+        <Search className="Home_pageSearch "/>
+      </div>
+      {/*<EchartBox>*/}
+      {/*  <div className="flex flex-col justify-start px-6 py-1">*/}
+      {/*    <div className="flex flex-row">*/}
+      {/*      <img src={icon} alt="" className="h-6 pr-2"/>*/}
+      {/*      <span className="text-base text-gray-white">ChainX</span>*/}
+      {/*    </div>*/}
+      {/*    <div className="flex flex-row justify-between pb-2">*/}
+      {/*      <span className="text-3xl text-gray-white pr-6">$ {currentPrice}</span>*/}
+      {/*      <div className="flex flex-row justify-start">*/}
+      {/*        /!*<span className="miniGrayFront">11%</span>*!/*/}
+      {/*        <div id="triangle" className="leading-12"/>*/}
+      {/*      </div>*/}
+      {/*    </div>*/}
+      {/*    <div className="Line"/>*/}
+      {/*    <div className="flex flex-row justify-between py-2">*/}
+      {/*      <span className="miniGrayFront">发行总量</span>*/}
+      {/*      <span className="miniGrayFront">$ 6,731,598,423</span>*/}
+      {/*    </div>*/}
+      {/*    <div className="flex flex-row justify-between pt-2">*/}
+      {/*      <span className="miniGrayFront">24小时交易量</span>*/}
+      {/*      <span className="miniGrayFront">$ 12,423</span>*/}
+      {/*    </div>*/}
+      {/*  </div>*/}
+      {/*  <div className="w-overSpread h-overSpread">*/}
+      {/*    <Model_echarts data={chainxResult}/>*/}
+      {/*  </div>*/}
+      {/*</EchartBox>*/}
+    </TableWrapper>
+  );
 }
-export default React.memo(homeSearch);
+
+export default React.memo(HomeSearch);

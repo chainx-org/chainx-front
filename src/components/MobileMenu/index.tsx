@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { MobileDataBox } from './style';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 
 export default function MobileMenu() {
   const {t} = useTranslation();
@@ -42,6 +43,23 @@ export default function MobileMenu() {
   function statusnode(node: any, index: number) {
     setRecordType(index);
   }
+  function closeMenu(){
+    const burgerBars = document.querySelectorAll('.hamburger>div');
+    const dropdown:any = document.querySelector('.dropdown')
+    if (!dropdown.classList.contains('dropdown-active')) {
+      //If dropdown isn't active give it and the bars their active classes
+      dropdown.classList.add('dropdown-active');
+      burgerBars[0].classList.add('one-active');
+      burgerBars[1].classList.add('two-active');
+      burgerBars[2].classList.add('three-active');
+    } else if (dropdown.classList.contains('dropdown-active')) {
+      //else remove them
+      dropdown.classList.remove('dropdown-active');
+      burgerBars[0].classList.remove('one-active');
+      burgerBars[1].classList.remove('two-active');
+      burgerBars[2].classList.remove('three-active');
+    }
+  }
 
   return (
     <MobileDataBox>
@@ -53,9 +71,7 @@ export default function MobileMenu() {
         </div>
         <div className="dropdown">
           {nodeList.map((item: any, index: number)=>
-            <a href={item.link} key={index}>
-              <p className="drop-item">{item.nodeName}</p>
-            </a>
+            <Link key={index} to={item.link} onClick={closeMenu}><p className="drop-item">{item.nodeName}</p> </Link>
           )
           }
         </div>

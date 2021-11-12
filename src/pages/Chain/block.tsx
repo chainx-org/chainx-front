@@ -84,6 +84,7 @@ export default function Block() {
     }
   ];
 
+
   return (
     <ChainTable Columns={chainColumns} urlControl={'/blocks?'} result={'items'} keyNum={1}/>
   );

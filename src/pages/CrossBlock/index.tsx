@@ -49,29 +49,34 @@ export default function CrossBlock() {
     {
       title: t('Block'),
       content: <BitcoinBlock/>,
+      key:1,
       name:'block'
     },
     {
       title: t('Deposit Deals'),
       content: <Deposit/>,
+      key:2,
       name:'deals'
 
     },
     {
       title: t('Withdraw'),
       content: <Withdraw/>,
+      key:3,
       name:'withdraw'
 
     },
     {
       title: t('Host'),
       content: <Host/>,
+      key:4,
       name: 'host'
 
     },
     {
       title: t('Claim'),
       content: <Claim/>,
+      key:5,
       name: 'claim'
     }
   ];
@@ -134,7 +139,6 @@ export default function CrossBlock() {
   },[])
   return (
     <>
-      <Header showSearch={true}/>
       <WrapperBgWhite className="px-24 py-4 screen:px-4 medium:px-4">
         <BridgeWrapper>
           <WrapperWith>
@@ -159,7 +163,7 @@ export default function CrossBlock() {
             <WrapperBridge>
               {mingApiData?.map((item: any, index: any) => {
                 return (
-                  <>
+                  <div key={index}>
                     <div className="itemThree">
                       <div className="flex flex-col">
                         <CardDiv>
@@ -195,7 +199,7 @@ export default function CrossBlock() {
                         </CardDiv>
                       </div>
                     </div>
-                  </>
+                  </div>
 
                 );
               })}
@@ -209,9 +213,7 @@ export default function CrossBlock() {
                   className="ml-4 text-base text-black-titleColor font-medium screen:text-sm">{t('Mining Distribution')}</span>
               </div>
             </CardTitle>
-            {/*<div className='w-20 h-13'>*/}
             <MyEchart/>
-            {/*</div>*/}
           </WrapperWith>
         </BridgeWrapper>
         <WrapperWith>
@@ -225,7 +227,6 @@ export default function CrossBlock() {
           <TableMenuBox tabList={tabList} currentTab={currentTab} setCurrentTab={setCurrentTab} tag={tag}/>
         </WrapperWith>
       </WrapperBgWhite>
-       {/*<Footer/>*/}
     </>
   );
 }

@@ -10,16 +10,8 @@ const JsonContainer = styled.div`
   border: 1px solid #DBDBDB;
   position: relative;
   .stringContainer{
-    //width: 200px;
-    //display: inline-block;
-    //margin:auto 0;
-    //word-break:normal;
-    //width:auto;
-    //display:block;
     white-space:pre-wrap;
     word-wrap : break-word ;
-    //overflow: hidden ;
-    //white-space: pre-wrap;
   }
 `;
 // @ts-ignore
@@ -83,7 +75,6 @@ export default function Jsonformat({ json }) {
         color: '#959595'
       }}
     >
-      {/*{JSON.stringify(json, null, 2)}*/}
 
       <JsonContainer>
         <div className="flex flex-row justify-end absolute" style={{right: '0'}}><CopyText children={''} text={JSON.stringify(json, null, 2)}/></div>
