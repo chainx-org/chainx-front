@@ -59,7 +59,10 @@ export default function Transfers({account}: ExtrinsicProps) {
       key: 'time',
       render: (text: any, record: any) => {
         return (
-          <TimeStatus content={record.indexer.blockTime}/>);
+          <>
+            {record.indexer.blockTime?<TimeStatus content={record.indexer.blockTime}/>:'-'}
+          </>
+          );
       }
     },
     {

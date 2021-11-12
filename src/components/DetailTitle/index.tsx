@@ -26,16 +26,13 @@ interface DetailTitleProps {
 
 export default function DetailTitle({routeTitle, routePath, content, isBlock, setNowBlock,showHeightIcon}: DetailTitleProps) {
   const {t} = useTranslation();
-  window.addEventListener('hashchange', function (e) {
-    console.log(e);
-  });
   const increaseBlock = () => {
     setNowBlock(Number(content) + 1);
-    window.location.href = `/blockDetails/${Number(content) + 1}`;
+    window.location.href = `/#/blockDetails/${Number(content) + 1}`;
   };
   const reduceBlock = () => {
     setNowBlock(Number(content) - 1);
-    window.location.href = `/blockDetails/${Number(content) - 1}`;
+    window.location.href = `/#/blockDetails/${Number(content) - 1}`;
   };
   const onCopy = () => {
     if (content && copy(`${content}`)) {

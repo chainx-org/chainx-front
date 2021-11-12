@@ -51,17 +51,10 @@ export default function AddressDetails() {
 
   },[])
   useEffect(() => {
-    // if (window.history.state && window.history.state?.state) {
-    //   setBlockDetails(window.history.state.state);
-    //   console.log('window', window.history.state.state);
-    //   setLoading(false);
-    // } else {
       getData().then(
       ).catch(() => {
-        // console.log('find error');
         setNoData(true);
       });
-    // }
   }, []);
   const PublicContainer = styled.div`
     .publicKey {

@@ -1,10 +1,10 @@
 import { useTranslation } from 'react-i18next';
 import React, { useEffect, useState } from 'react';
-import addressIcon from '../../assets/address_icon.svg';
 import { LinkX, Normal } from '../../components/LinkX';
 import { accuracy } from '../../helper/hooks';
 import TableX from '../../components/Table';
 import { get } from '../../hooks/useApi';
+import Identicon from '@polkadot/react-identicon';
 
 export default function Account() {
   const {t} = useTranslation();
@@ -17,8 +17,13 @@ export default function Account() {
         return (
           <div className="flex flex-row items-center">
             <div style={{marginRight: '0.25rem', width: '2rem', height: '2rem', display: 'inline-block'}}>
-              <img
-              src={addressIcon} alt=""/>
+              <Identicon className="imgIcon"
+                         value={record.address}
+                         size={32}
+                         theme="polkadot"
+              />
+              {/*<img*/}
+              {/*src={addressIcon} alt=""/>*/}
             </div>
             <LinkX linkUrl={`/addressDetails/${record.address}`} content={record.address}/>
           </div>
@@ -43,7 +48,7 @@ export default function Account() {
       key: 'TotalBalance',
       render: (text: any, record: any) => {
         return (
-        <Normal state={(record?.data?.free)?(accuracy(record.data.free)):'-'}/>
+          <Normal state={(record?.data?.free || record?.data?.free === 0) ? (accuracy(record.data.free)) : '-'}/>
         );
       },
       sorter: (a: any, b: any) => {

@@ -20,7 +20,6 @@ export default function BlockDetails() {
   const [noData, setNoData] = useState(false);
   const [blockDetails, setBlockDetails] = useState<any>();
   const block = window.location.hash.slice(15, window.location.hash.length);
-  debugger
   const isBlockNumber = (/^[0-9]*$/.test(block));
   const [nowBlock, setNowBlock] = useState(block);
   const tag = 'blockDetails'
@@ -36,11 +35,12 @@ export default function BlockDetails() {
 
   };
   useEffect(() => {
+    setLoading(true)
     getData().then(
       ).catch(() => {
         setNoData(true);
       });
-  }, [nowBlock]);
+  }, [nowBlock,block]);
   useEffect(()=>{
     
     const activeTab = sessionStorage.getItem(tag)
@@ -88,7 +88,7 @@ export default function BlockDetails() {
       title: t('Parent Hash'),
       content: (
         <a style={{display: 'inline-block', color: '#3C88C6'}}
-           href={`/blockDetails/${blockDetails?.header?.parentHash}`}>{blockDetails?.header?.parentHash}</a>)
+           href={`/#/blockDetails/${blockDetails?.header?.parentHash}`}>{blockDetails?.header?.parentHash}</a>)
     },
     {
       title: t('Extrinsics Root'),
@@ -138,23 +138,25 @@ export default function BlockDetails() {
   };
   return (
     <>
-      <ListBgColor/>
       {noData ?
         <NoData/> :
-        <WrapperList>
-          {/*<Search className="NavSearch"/>*/}
-          <div className="px-24 bg-gray-arrow desktop:pt-8 screen:px-4 medium:px-4">
-            <DetailTitle routeTitle={t('Block Height')} content={nowBlock} isBlock={isBlockNumber}
-                         setNowBlock={setNowBlock}
-                         routePath={routerPath} showHeightIcon = {true}/>
-          </div>
-          <List list={list} loading={loading}/>
-          <div className="px-24 pb-4 bg-gray-bgWhite screen:px-4 medium:px-4">
-            <WrapperDetails>
-              <TableMenuBox tabList={tabList} currentTab={currentTab} setCurrentTab={setCurrentTab} tag={tag}/>
-            </WrapperDetails>
-          </div>
-        </WrapperList>
+        <>
+          <ListBgColor/>
+          <WrapperList>
+            <div className="px-24 bg-gray-arrow desktop:pt-8 screen:px-4 medium:px-4">
+              <DetailTitle routeTitle={t('Block Height')} content={block} isBlock={isBlockNumber}
+                           setNowBlock={setNowBlock}
+                           routePath={routerPath} showHeightIcon={isBlockNumber}/>
+            </div>
+            <List list={list} loading={loading}/>
+            <div className="px-24 pb-4 bg-gray-bgWhite screen:px-4 medium:px-4">
+              <WrapperDetails>
+                <TableMenuBox tabList={tabList} currentTab={currentTab} setCurrentTab={setCurrentTab} tag={tag}/>
+              </WrapperDetails>
+            </div>
+          </WrapperList>
+        </>
       }
-    </>);
+    </>
+  );
 }

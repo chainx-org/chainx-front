@@ -116,11 +116,12 @@ export default function Extrinsic({block}: ExtrinsicProps) {
   }
 
   useEffect(() => {
+    setLoading(true)
     getExtrinsicData().then(() => {
 
     });
 
-  }, [page, pageSize]);
+  }, [page, pageSize,block]);
 
 const expandedRowRender =(record:any)=>{
     return (

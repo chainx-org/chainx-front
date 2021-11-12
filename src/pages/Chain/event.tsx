@@ -112,8 +112,9 @@ export default function Event({block, extrinsic}: EventProps) {
   }
 
   useEffect(() => {
+    setLoading(true)
     getEventData();
-  }, [page, pageSize]);
+  }, [page, pageSize,block]);
   const expandedRowRender = (record: any) => {
     return (
       <JsonApi json={record?.meta}/>
