@@ -21,9 +21,9 @@ axios.interceptors.response.use(function (response)
     if (response.data.code === 500) {
         message.error('miss error');//提示错误信息
     }
-    if (response.status === 204) {
-        message.error('网络请求出错，请刷新');//提示错误信息
-    }
+    // if (response.status === 204) {
+    //     message.error('网络请求出错，请刷新');//提示错误信息
+    // }
     // if(response.status!==200||response.data.code!==200){//接口请求失败，具体根据实际情况判断
     //     message.error('miss error');//提示错误信息
     //     return Promise.reject(response.data.code)//接口Promise返回错误状态

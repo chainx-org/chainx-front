@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Input, Popover } from 'antd';
 import { ContainerEvent, SearchBox, Wrapper } from '../../components/CardBox/style';
@@ -20,6 +20,7 @@ const CircleIndex = styled.div`{
 }`;
 export default function SearchEvent() {
   const {t} = useTranslation();
+  const ref = useRef();
   const {Search} = Input;
   const [nowSearch, setNowSearch] = useState('Event');
   const [inputValue, setInputValue] = useState('');
@@ -74,8 +75,7 @@ export default function SearchEvent() {
         </div>
       </ContainerEvent>
       <SearchBox className="my-4">
-        <Search className={'Home_pageSearch'} placeholder={t('Please select the type before searching')} onSearch={onSearch}
-        enterButton disabled={loading} loading={loading}/>
+          <Search className={'Home_pageSearch'} placeholder={t('Please select the type before searching')} onSearch={onSearch} onPressEnter={onSearch} enterButton  disabled={loading} loading={loading}/>
       </SearchBox>
       <div className="pt-8 pb-16 bg-gray-bgWhite screen:px-4 medium:px-4">
         <Wrapper>
