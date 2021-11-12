@@ -5,8 +5,16 @@ import { get } from '../../hooks/useApi';
 import { LinkX, Normal, ShorterLink } from '../../components/LinkX';
 import TrustTag from '../../components/TrustTag';
 import { accuracy } from '../../helper/hooks';
+import styled from 'styled-components';
 
-
+const CircleIndex = styled.div`{
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  border-radius: 50%;
+  position: relative;
+}`;
 export default function Validator() {
   const {t} = useTranslation();
   const [validatorData, setValidatorData] = useState([]);
@@ -33,32 +41,14 @@ export default function Validator() {
       render:(text:number)=> {
         return (
           <>
-            {text<=10? <div style={{
-              width: '32px',
-              height: '32px',
-              display: 'flex',
-              justifyContent: 'center',
-              borderRadius: '50%',
-              background: '#2C83EA',
-              position: 'relative'
-            }}>
-            <span
-              style={{display: 'inline-block', position: 'relative', color: 'white', margin: 'auto 0'}}>{text}</span>
-            </div>: <div style={{
-              width: '32px',
-              height: '32px',
-              display: 'flex',
-              justifyContent: 'center',
-              borderRadius: '50%',
-              background: '#FAFAFA',
-              border: '1px solid #080810',
-              position: 'relative'
-            }}>
-            <span
-              style={{display: 'inline-block', position: 'relative', color: '#080810', margin: 'auto 0'}}>{text}</span>
-            </div>}
+            {text <= 10 ?
+              <CircleIndex style={{background: '#2C83EA'}}>
+                <span className="inline-block relative" style={{color: 'white', margin: 'auto 0'}}>{text}</span>
+              </CircleIndex> :
+              <CircleIndex style={{background: '#FAFAFA'}}>
+                <span className="inline-block relative" style={{color: '#080810', margin: 'auto 0'}}>{text}</span>
+              </CircleIndex>}
           </>
-
         );
       }
     },

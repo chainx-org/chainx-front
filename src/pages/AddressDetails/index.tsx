@@ -17,7 +17,7 @@ import Assets from './assets';
 import Transaction from './transaction';
 import Transfers from './transfers';
 import { ListBgColor, WrapperDetails, WrapperList } from '../../css/Wrapper';
-import { BgColor } from '../HomePage/style';
+import { BgColor } from '../HomePage/HomeStyle';
 
 export default function AddressDetails() {
 

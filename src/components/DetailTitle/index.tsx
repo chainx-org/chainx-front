@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import arrow from '../../assets/icon_forward_hover.svg';
 import Icon from '../../assets/icon_copy_head_hover.svg';
+import arrowBack from '../../assets/icon_forward_back.svg'
 import copy from 'copy-to-clipboard';
 import { message } from 'antd';
 import { useTranslation } from 'react-i18next';
@@ -24,14 +25,17 @@ interface DetailTitleProps {
 }
 
 export default function DetailTitle({routeTitle, routePath, content, isBlock, setNowBlock,showHeightIcon}: DetailTitleProps) {
-  const {t} = useTranslation()
+  const {t} = useTranslation();
+  window.addEventListener('hashchange', function (e) {
+    console.log(e);
+  });
   const increaseBlock = () => {
     setNowBlock(Number(content) + 1);
-    window.location.pathname = `blockDetails/${Number(content) + 1}`;
+    window.location.href = `/blockDetails/${Number(content) + 1}`;
   };
   const reduceBlock = () => {
     setNowBlock(Number(content) - 1);
-    window.location.pathname = `blockDetails/${Number(content) - 1}`;
+    window.location.href = `/blockDetails/${Number(content) - 1}`;
   };
   const onCopy = () => {
     if (content && copy(`${content}`)) {
@@ -42,20 +46,25 @@ export default function DetailTitle({routeTitle, routePath, content, isBlock, se
   return (
     <div
       className="flex desktop:flex-row desktop:justify-between screen:px-4 desktop:py-2 screen:flex-col screen:justify-start">
-      <div className="w-overSpread flex flex-row">
+      <div className="flex flex-row">
         <span className="text-gray-white text-xl font-medium my-auto">{routeTitle}</span>
         {isBlock ?
-          <DetailSpan className="inline-block text-topBar-blueLight font-medium cursor-pointer text-xl h-fitContent pl-1"
-                style={{margin: 'auto 0'}}> <span style={{verticalAlign: 'middle'}}>{(content==="undefined-undefined"?'-':'#'+content)}</span></DetailSpan>
-          : <DetailSpan className="inline-block text-topBar-blueLight font-medium text-base cursor-pointer h-fitContent pl-1"
-                  style={{margin: 'auto 0'}}><span style={{verticalAlign: 'middle'}}>{content==="undefined-undefined"?'-':content}</span> <img src={Icon} onClick={onCopy} alt="" className='inline-block cursor-pointer'/></DetailSpan>
+          <DetailSpan
+            className="inline-block text-topBar-blueLight font-medium cursor-pointer text-xl h-fitContent pl-1 mx-0 my-auto">
+            <span
+              className="align-middle">{(content === 'undefined-undefined' ? '-' : '#' + content)}</span></DetailSpan>
+          : <DetailSpan
+            className="inline-block text-topBar-blueLight font-medium text-base cursor-pointer h-fitContent pl-1 mx-0 my-auto"><span
+            className="align-middle">{content === 'undefined-undefined' ? '-' : content}</span> <img src={Icon}
+                                                                                                     onClick={onCopy}
+                                                                                                     alt=""
+                                                                                                     className="inline-block cursor-pointer"/></DetailSpan>
         }
         {showHeightIcon ?
           <>
-            <img src={arrow} alt="" style={{display: 'inline-block', transform: 'rotateY(180deg)',width:'48px'}}
-                 onClick={reduceBlock} className="cursor-pointer"/>
-            <img src={arrow} alt="" style={{display: 'inline-block' ,width:'48px'}} onClick={increaseBlock}
-                 className="cursor-pointer"/>
+            <img src={arrowBack} alt="" onClick={reduceBlock}
+                 className="inline-block cursor-pointer w-12"/>
+            <img src={arrow} alt="" onClick={increaseBlock} className="inline-block cursor-pointer w-12"/>
           </> : ''}
 
       </div>

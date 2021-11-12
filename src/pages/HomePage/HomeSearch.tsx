@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import Search from '../../../components/Search';
-import bgImg from '../../../assets/Lightning.svg';
-import icon from '../../../assets/icon_PCX _head.svg'
-import Model_echarts from './charts';
-import { EchartBox, TableWrapper } from './style';
-import { outSideAPI } from '../../../hooks/useApi';
-import moment from 'moment';
+import Search from '../../components/Search';
+import bgImg from '../../assets/Lightning.svg';
+import dayjs from 'dayjs';
+import { EchartBoxSearch,TableWrapperSearch } from './HomeStyle';
+import { outSideAPI } from '../../hooks/useApi';
 import { useTranslation } from 'react-i18next';
 
 function HomeSearch() {
@@ -21,7 +19,7 @@ function HomeSearch() {
     let targeIndex = [0, 11, 23, 35, 47, 59, 71];
     value.map((item, index) => {
       if (targeIndex.includes(index)) {
-        result.resultTime.push(moment(Number(item[0])).format(`MM ${t('Months')}DD`));
+        result.resultTime.push(dayjs(Number(item[0])).format(`MM ${t('Months')}DD`));
         result.resultValue.push(item[1]);
       }
     });
@@ -41,7 +39,7 @@ function HomeSearch() {
     getChainXData();
   }, []);
   return (
-    <TableWrapper>
+    <TableWrapperSearch>
       <div className="w-overSpread h-overSpread absolute items-center mx-auto my-auto">
         <img src={bgImg} alt="" className="bgImage"/>
       </div>
@@ -51,7 +49,7 @@ function HomeSearch() {
         </div>
         <Search className="Home_pageSearch "/>
       </div>
-      {/*<EchartBox>*/}
+      {/*<EchartBoxSearch>*/}
       {/*  <div className="flex flex-col justify-start px-6 py-1">*/}
       {/*    <div className="flex flex-row">*/}
       {/*      <img src={icon} alt="" className="h-6 pr-2"/>*/}
@@ -77,8 +75,8 @@ function HomeSearch() {
       {/*  <div className="w-overSpread h-overSpread">*/}
       {/*    <Model_echarts data={chainxResult}/>*/}
       {/*  </div>*/}
-      {/*</EchartBox>*/}
-    </TableWrapper>
+      {/*</EchartBoxSearch>*/}
+    </TableWrapperSearch>
   );
 }
 

@@ -7,16 +7,9 @@ import { useTranslation } from 'react-i18next';
 import { useOnClickOutside } from '../../helper/hooks';
 import MobileMenu from '../MobileMenu';
 
-interface HeaderPop {
-    showSearch?: boolean
-}
-
 function Header(props: any) {
     const {t} = useTranslation();
     const [showMenu, setShowMenu] = useState(false);
-    const toolLink = (value: string) => {
-        window.location.href = window.location.origin + `${value}`;
-    };
     const ref = useRef();
     useOnClickOutside(ref, () => setShowMenu(false));
     return (
@@ -27,7 +20,7 @@ function Header(props: any) {
                   <Wrapper className="relative z-10">
                       <div><Link to="/"><img src={icon} alt=""
                                              style={{maxWidth: 'none', width: '93px', height: '20px'}}/></Link></div>
-                      <HeardLine></HeardLine>
+                      <HeardLine/>
                       <span className="pl-3 text-gray-white mr-9.5" style={{
                           letterSpacing: '1px', fontWeight: 'bold',
                           lineHeight: '19px', fontSize: '19px'
@@ -70,7 +63,7 @@ function Header(props: any) {
                               <div><Link to="/"><img src={icon} alt=""
                                                      style={{maxWidth: 'none', width: '93px', height: '20px'}}/></Link>
                               </div>
-                              <HeardLine></HeardLine>
+                              <HeardLine/>
                               <span className="pl-3 text-gray-white mr-9.5" style={{
                                   letterSpacing: '1px', fontWeight: 'bold',
                                   lineHeight: '19px', fontSize: '19px'

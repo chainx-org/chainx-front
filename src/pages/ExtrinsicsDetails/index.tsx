@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import moment from 'moment';
+import dayjs from 'dayjs';
 import { get } from '../../hooks/useApi';
 import Event from '../Chain/event';
 import List from '../../components/List';
@@ -65,7 +65,7 @@ export default function ExtrinsicDetails() {
     {
       title: t('Block Time'),
       content: (
-        <Normal state={moment(Number(extrinsicDetails?.indexer?.blockTime)).format('YYYY-MM-DD HH:mm:ss')}/>
+        <Normal state={dayjs(Number(extrinsicDetails?.indexer?.blockTime)).format('YYYY-MM-DD HH:mm:ss')}/>
       )
     },
     {

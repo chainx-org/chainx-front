@@ -146,20 +146,13 @@ export function ShorterLinkCross({linkUrl, content, state,style}: LinkProps) {
 
 export function Shorter({linkUrl, content, state}: LinkProps) {
   let value = content?.toString();
-  const popWithCopy = (
-    <div>
-      <CopyText children={value} text={value}/>
-    </div>
-  );
   return (
-    // <Popover content={popWithCopy}>
       <Link to={{
         pathname: linkUrl,
         state: state
       }}>
         <LinkSpan>{value?.substring(0, 7).concat('...').concat(value?.substring(value.length - 5))}</LinkSpan>
       </Link>
-    // </Popover>
 );
 }
 

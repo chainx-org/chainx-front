@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import moment from 'moment';
+import dayjs from 'dayjs';
 import Event from '../Chain/event';
 import Extrinsic from '../Chain/extrinsic';
 import { get } from '../../hooks/useApi';
@@ -15,7 +15,6 @@ import CopyText from '../../components/copyText';
 
 
 export default function BlockDetails() {
-
   const {t} = useTranslation();
   const [loading, setLoading] = useState(true);
   const [noData, setNoData] = useState(false);
@@ -41,7 +40,7 @@ export default function BlockDetails() {
       ).catch(() => {
         setNoData(true);
       });
-  }, []);
+  }, [nowBlock]);
   useEffect(()=>{
     
     const activeTab = sessionStorage.getItem(tag)
@@ -64,7 +63,7 @@ export default function BlockDetails() {
       title: t('Time'),
       content: (
         <div className="text-black-textColor">
-          {(blockDetails?.blockTime) ? moment(Number(blockDetails?.blockTime)).format('YYYY-MM-DD HH:mm:ss') + '(+UTC)' : '-'}
+          {(blockDetails?.blockTime) ? dayjs(Number(blockDetails?.blockTime)).format('YYYY-MM-DD HH:mm:ss') + '(+UTC)' : '-'}
         </div>)
     },
     // {
@@ -104,7 +103,7 @@ export default function BlockDetails() {
     //   title: t('Block Time'),
     //   content:
     //     <div className="font-medium text-gray-arrow ">
-    //       {/*{moment(Number(blockDetails?.blockTime)).format('YYYY-MM-DD HH:mm:ss')}*/}
+    //       {/*{dayjs(Number(blockDetails?.blockTime)).format('YYYY-MM-DD HH:mm:ss')}*/}
     //       -
     //     </div>,
     // }, {

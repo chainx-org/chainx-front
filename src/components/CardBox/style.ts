@@ -228,6 +228,7 @@ export const ContainerEvent = styled.div`
     .selectBtn {
       width: 10%;
       height: 2.5rem;
+      background: #2C83EA;
       border-radius: 0px 4px 4px 0px;
       border: 1px solid #DBDBDB;
       display: flex;
@@ -272,7 +273,7 @@ export const ContainerEvent = styled.div`
       .toolList {
         display: block;
         position: absolute;
-        width: 100%;
+        width: 93.5%;
         z-index: 999;
         margin-top: 2.5rem;
       }
@@ -306,6 +307,8 @@ export const ContainerEvent = styled.div`
     display: flex;
     flex-direction: row;
     position:relative;
+    margin:auto 0;
+    height: 20px;
     .popverMessage{
       display: none;
     }
@@ -314,7 +317,6 @@ export const ContainerEvent = styled.div`
         display: block;
         position: absolute;
         top: 80%;
-        left: -600%;
         z-index: 999;
         width: 300px;
         background: #FAFAFA;

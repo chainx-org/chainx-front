@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import Home from './pages/HomePage';
+import Home from './pages/HomePage/Container';
 import Chain from './pages/Chain';
 import Validator from './pages/Validator';
 import CrossBlock from './pages/CrossBlock';
-import SearchTool from './pages/SearchTool';
 import { Route, Switch, withRouter } from 'react-router-dom';
 import AccountTransfer from './pages/AccountTransfer';
 import SS58 from './pages/SS58';

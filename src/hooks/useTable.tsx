@@ -24,7 +24,6 @@ const useTable = ({Columns, getData, result, keyNum,rowKey,expandedRowRender,row
   const [pageSize, setPageSize] = useState(10);
   const [dataTotal, setDataTotal] = useState(0);
   const [loading, setLoading] = useState(true);
-  debugger
   const emptyDiv = () => {
     return (
       <div style={{height: '10rem'}}>

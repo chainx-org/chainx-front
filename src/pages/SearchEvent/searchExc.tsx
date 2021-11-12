@@ -5,6 +5,7 @@ import TimeStatus from '../../components/TimeStatus';
 import ChainTable from '../../components/Table/table';
 import _encodeAddress from '../../helper/encodeAddress';
 import { get } from '../../hooks/useApi';
+import TableX from '../../components/Table';
 
 export default function SearchExc(props:any) {
   const {t} = useTranslation();
@@ -12,25 +13,43 @@ export default function SearchExc(props:any) {
   const [pageSize, setPageSize] = useState(10);
   const [listValue, setListValue] = useState<any>('');
   const [loading, setLoading] = useState(false);
+  const [total,setTotal] = useState(0)
   const [isCorrectValue, setIsCorrectValue] = useState('');
+  const pagination = {
+    pageSize: pageSize,
+    current: page,
+    defaultCurrent: page,
+    total: total,
+    showSizeChanger: true,
+    showQuickJumper: true,
+    hideOnSinglePage: true,
+    onChange: (page: number, pageSize: number) => onChange(page, pageSize),
+    showTotal: (eventTotal: number) => `${t('total')} ${eventTotal} ${t('items')}`
+  };
+  function onChange(page: number, pageSize: any) {
+    setPage(page);
+    setPageSize(pageSize);
+    setLoading(true);
+  }
 
-  useEffect(()=>{
-    if(props.value){
-      getData()
-    }
-  },[props.value])
   const getData = async () => {
     try {
       let res: any = await get(`/searchExtrinsic/${props?.value}?page=${page}&page_size=${pageSize}`, ``);
-      setListValue(res);
+      setListValue(res.items);
+      setTotal(res.total)
       setLoading(false);
     } catch (e) {
       setIsCorrectValue('No Data');
       setLoading(false);
     }
   };
-
-  const chainColumns = [
+  useEffect(()=>{
+    if(props.value){
+      setLoading(true)
+      getData()
+    }
+  },[props.value])
+  const Columns = [
     {
       title: t('Height'),
       dataIndex: 'number',
@@ -38,7 +57,7 @@ export default function SearchExc(props:any) {
       width: 100,
       render: (text: any, record: any) => {
         return (
-          <LinkX linkUrl={`/blockDetails/${record.header.number}`} state={record} content={record.header.number}/>
+          <LinkX linkUrl={`/blockDetails/${record.indexer.blockHeight}`} state={record} content={record.indexer.blockHeight}/>
         );
       }
     },
@@ -49,7 +68,7 @@ export default function SearchExc(props:any) {
       width: 100,
       render: (text: any, record: any) => {
         return (
-          <TimeStatus content={record.blockTime}/>);
+          <TimeStatus content={record.indexer.blockTime}/>);
       }
     },
     {
@@ -59,24 +78,25 @@ export default function SearchExc(props:any) {
       width: 150,
       render: (text: any, record: any) => {
         return (
-          <ShorterLink linkUrl={`/blockDetails/${record.hash}`} state={record} content={record.hash}/>);
-      }
-    },
-    {
-      title: t('Module'),
-      dataIndex: 'extrinsic',
-      key: 'extrinsic',
-      width: 100,
-      render: (text: any, record: any) => {
-        return (
-          <Normal state={record?.extrinsics.length}/>
-        );
-      }
-    }
+          <ShorterLink linkUrl={`/blockDetails/${record.extrinsicHash}`} state={record} content={record.extrinsicHash}/>);
+      }}
+    // },
+    // {
+    //   title: t('Module'),
+    //   dataIndex: 'extrinsic',
+    //   key: 'extrinsic',
+    //   width: 100,
+    //   render: (text: any, record: any) => {
+    //     return (
+    //       <Normal state={record?.extrinsics.length}/>
+    //     );
+    //   }
+    // }
   ];
 
 
   return (
-    <ChainTable Columns={chainColumns} urlControl={'/blocks?'} result={'items'} keyNum={1}/>
-  );
+    <div className="overflow-scroll">
+      <TableX columns={Columns} dataList={listValue} pagination={pagination} loading={loading}/>
+    </div>);
 }

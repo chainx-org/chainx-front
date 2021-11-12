@@ -12,7 +12,6 @@ export default function SS58(props:any) {
   const [inputValue, setInputValue] = useState('');
   const [listValue, setListValue] = useState<any>([]);
   const [isCorrectValue,setIsCorrectValue] = useState('')
-  const [searchNoData,setSearchNoData] = useState(false)
   const BoxContainer = {
     title: t('Enter the address of block leakage for query'),
     container: t('Enter the address or public key for conversion'),

@@ -11,13 +11,14 @@ export default function SearchEvent(props: any) {
   const [page, setPage] = useState(1);
   const [pageSize, setPageSize] = useState(10);
   const [listValue, setListValue] = useState<any>('');
+  const [total,setTotal] = useState(0)
   const [loading, setLoading] = useState(false);
   const [isCorrectValue, setIsCorrectValue] = useState('');
   const pagination = {
     pageSize: pageSize,
     current: page,
     defaultCurrent: page,
-    total: listValue.total,
+    total: total,
     showSizeChanger: true,
     showQuickJumper: true,
     hideOnSinglePage: true,
@@ -88,7 +89,8 @@ export default function SearchEvent(props: any) {
   const getData = async () => {
     try {
       let res: any = await get(`/search/${props?.value}?page=${page}&page_size=${pageSize}`, ``);
-      setListValue(res);
+      setListValue(res.data);
+      setTotal(res.total)
       setLoading(false);
     } catch (e) {
       setIsCorrectValue('No Data');
@@ -98,6 +100,7 @@ export default function SearchEvent(props: any) {
 
   useEffect(() => {
     if (props.value) {
+      setLoading(true)
       getData();
     }
   }, [props.value]);
