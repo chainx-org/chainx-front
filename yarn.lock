@@ -3300,6 +3300,11 @@ ajv@^6.12.5:
     json-schema-traverse "^0.4.1"
     uri-js "^4.2.2"
 
+alife-logger@^1.8.30:
+  version "1.8.30"
+  resolved "https://registry.npmjs.org/alife-logger/-/alife-logger-1.8.30.tgz#08407fce823311356dd963dce54fef5124fcaf45"
+  integrity sha512-uDJP/D5BMfsBZfV72ZeRZzhLCP267SKoilercjxv34wuXpk65ttOO9STNI49XjOZ5TwZtFm+97r3tE4ONMsI4w==
+
 alphanum-sort@^1.0.0:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/alphanum-sort/-/alphanum-sort-1.0.2.tgz#97a1119649b211ad33691d9f9f486a8ec9fbe0a3"

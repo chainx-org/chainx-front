@@ -15,6 +15,7 @@
     "@types/react": "^17.0.6",
     "@types/react-dom": "16.9.8",
     "add": "^2.0.6",
+    "alife-logger": "^1.8.30",
     "antd": "^4.16.13",
     "axios": "^0.21.1",
     "bignumber.js": "^9.0.1",
