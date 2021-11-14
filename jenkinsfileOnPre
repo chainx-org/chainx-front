@@ -25,8 +25,7 @@ pipeline {
       }
     }
 
-
-    stage('推送镜像') {
+  stage('推送镜像') {
       steps {
         container('base') {
           withCredentials([usernamePassword(credentialsId : "$DOCKER_CREDENTIAL_ID" ,passwordVariable : 'DOCKER_PASSWORD' ,usernameVariable : 'DOCKER_USERNAME' ,)]) {
@@ -34,13 +33,11 @@ pipeline {
             sh 'docker build -f Dockerfile.dev -t $REGISTRY/$DOCKERHUB_NAMESPACE/$APP_NAME:$BUILD_NUMBER .'
             sh 'docker push $REGISTRY/$DOCKERHUB_NAMESPACE/$APP_NAME:$BUILD_NUMBER'
           }
-
         }
-
       }
-    }
+  }
 
-    stage('部署') {
+  stage('部署') {
       steps {
         container('base') {
           script {
@@ -58,9 +55,7 @@ pipeline {
         }
 
       }
-
     }
-
   }
 }
   
