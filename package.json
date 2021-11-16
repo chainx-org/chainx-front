@@ -20,6 +20,7 @@
     "axios": "^0.21.1",
     "bignumber.js": "^9.0.1",
     "buffer": "^6.0.3",
+    "bundle": "^2.1.0",
     "caniuse-lite": "^1.0.30001277",
     "compression-webpack-plugin": "^9.0.0",
     "copy-to-clipboard": "^3.3.1",
