@@ -142,23 +142,26 @@ export default function ExtrinsicDetails() {
   };
   return (
     <>
-      <ListBgColor/>
+
       {noData ?
         <NoData/> :
         <>
-          <WrapperList>
-            <div className="px-24 bg-gray-arrow desktop:pt-8 screen:px-4  medium:px-4">
-              <DetailTitle routeTitle={t('Extrinsics')}
-                           content={extrinsicDetails?.indexer?.blockHeight + '-' + extrinsicDetails?.indexer?.index}
-                           isBlock={true} setNowBlock={extrinsic} routePath={routerPath}/>
-            </div>
-            <List list={list} loading={loading}/>
-            <div className="px-24 pb-4 bg-gray-bgWhite screen:px-4 medium:px-4">
-              <WrapperDetails>
-                <TableMenuBox tabList={tabList} currentTab={currentTab} setCurrentTab={setCurrentTab} tag={tag}/>
-              </WrapperDetails>
-            </div>
-          </WrapperList>
+          <ListBgColor/>
+          <>
+            <WrapperList>
+              <div className="px-24 bg-gray-arrow desktop:pt-8 screen:px-4  medium:px-4">
+                <DetailTitle routeTitle={t('Extrinsics')}
+                             content={extrinsicDetails?.indexer?.blockHeight + '-' + extrinsicDetails?.indexer?.index}
+                             isBlock={true} setNowBlock={extrinsic} routePath={routerPath}/>
+              </div>
+              <List list={list} loading={loading}/>
+              <div className="px-24 pb-4 bg-gray-bgWhite screen:px-4 medium:px-4">
+                <WrapperDetails>
+                  <TableMenuBox tabList={tabList} currentTab={currentTab} setCurrentTab={setCurrentTab} tag={tag}/>
+                </WrapperDetails>
+              </div>
+            </WrapperList>
+          </>
         </>
       }
     </>

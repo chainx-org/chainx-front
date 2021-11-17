@@ -45,7 +45,7 @@ export function accuracy(num) {
     let accuracyNum = num / (100000000)
     let header = parseInt(accuracyNum)
     let end = (accuracyNum - header)
-    let endstr = end.toFixed(8).substring(2)
+    let endstr = end.toFixed(4).substring(2)
     let headerSplit = reName(header)
     resultParse = headerSplit.concat('.' + endstr)
     return resultParse
