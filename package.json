@@ -6,7 +6,6 @@
     "@chainx-v2/account": "^0.0.50",
     "@chainx-v2/api": "^0.0.50",
     "@polkadot/api": "^6.4.2",
-    "@polkadot/react-identicon": "^0.86.5",
     "@types/jest": "25.2.3",
     "@types/jquery": "^3.5.6",
     "@types/node": "14.0.5",
