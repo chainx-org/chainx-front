@@ -31,9 +31,10 @@ export default function Trustees()
       {
         return (
           <div className="flex flex-row">
-            <LinkX linkUrl={`/addressDetails/${record.account}`} content={record.referralId} />
+            <Normal state={(record.referralId) ? (record.referralId) : '-'} />
             <TrustTag />
-          </div>);
+          </div>
+        );
       }
     },
     {

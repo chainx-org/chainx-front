@@ -26,6 +26,17 @@ const LinkSpanHome = styled.div`
   }
 `;
 
+const LinkSpanCross= styled.div`
+  font-size: 18px;
+  font-weight: 500;
+  color: #3C88C6;
+  line-height: 22px;
+  cursor: pointer;
+  @media screen and (max-width: 900px) {
+    font-size: 16px;
+  }
+`;
+
 interface LinkProps {
   linkUrl?: string,
   content?: any,
@@ -115,22 +126,33 @@ export function ShorterLinkHome({linkUrl, content, state,style}: LinkProps) {
         style={style}>{value?.substring(0, 7).concat('...').concat(value?.substring(value.length - 5))}</LinkSpanHome></Link></Popover>);
 }
 
-export function Shorter({linkUrl, content, state}: LinkProps) {
+export function ShorterLinkCross({linkUrl, content, state,style}: LinkProps) {
   let value = content?.toString();
   const popWithCopy = (
     <div>
-      <CopyText children={value} text={value}/>
+      {value}
     </div>
   );
   return (
-    // <Popover content={popWithCopy}>
+    <Popover content={popWithCopy}  style={style}>
+      <Link to={{
+        pathname: linkUrl,
+        state: state
+      }}><LinkSpanCross
+        style={style}>{value?.substring(0, 7).concat('...').concat(value?.substring(value.length - 5))}</LinkSpanCross></Link></Popover>);
+}
+
+
+
+export function Shorter({linkUrl, content, state}: LinkProps) {
+  let value = content?.toString();
+  return (
       <Link to={{
         pathname: linkUrl,
         state: state
       }}>
         <LinkSpan>{value?.substring(0, 7).concat('...').concat(value?.substring(value.length - 5))}</LinkSpan>
       </Link>
-    // </Popover>
 );
 }
 

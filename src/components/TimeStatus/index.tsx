@@ -7,9 +7,7 @@ interface TimeStatusProps {
   content: any,
   isHome?:boolean
 }
-// const popverStylr = {
-//
-// }
+
 export default function TimeStatus({content,isHome}:TimeStatusProps) {
   const {t} = useTranslation();
   const originTime = (

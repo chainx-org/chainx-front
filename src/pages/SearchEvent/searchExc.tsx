@@ -1,0 +1,92 @@
+import { useTranslation } from 'react-i18next';
+import React, { useEffect, useState } from 'react';
+import { LinkX, Normal, ShorterLink } from '../../components/LinkX';
+import TimeStatus from '../../components/TimeStatus';
+import ChainTable from '../../components/Table/table';
+import _encodeAddress from '../../helper/encodeAddress';
+import { get } from '../../hooks/useApi';
+import TableX from '../../components/Table';
+
+export default function SearchExc(props:any) {
+  const {t} = useTranslation();
+  const [page, setPage] = useState(1);
+  const [pageSize, setPageSize] = useState(10);
+  const [listValue, setListValue] = useState<any>('');
+  const [loading, setLoading] = useState(false);
+  const [total,setTotal] = useState(0)
+  const [isCorrectValue, setIsCorrectValue] = useState('');
+  const pagination = {
+    pageSize: pageSize,
+    current: page,
+    defaultCurrent: page,
+    total: total,
+    showSizeChanger: true,
+    showQuickJumper: true,
+    hideOnSinglePage: true,
+    onChange: (page: number, pageSize: number) => onChange(page, pageSize),
+    showTotal: (eventTotal: number) => `${t('total')} ${eventTotal} ${t('items')}`
+  };
+  function onChange(page: number, pageSize: any) {
+    setPage(page);
+    setPageSize(pageSize);
+    setLoading(true);
+  }
+
+  const getData = async () => {
+    try {
+      let res: any = await get(`/searchExtrinsic/${props?.value}?page=${page}&page_size=${pageSize}`, ``);
+      setListValue(res.items);
+      setTotal(res.total)
+      setLoading(false);
+      props.setLoading(false)
+    } catch (e) {
+      setIsCorrectValue('No Data');
+      setLoading(false);
+      props.setLoading(false)
+    }
+  };
+  useEffect(()=>{
+    if(props.value){
+      setLoading(true)
+      getData()
+    }
+  },[props.value])
+  const Columns = [
+    {
+      title: t('Height'),
+      dataIndex: 'number',
+      key: 'number',
+      width: 100,
+      render: (text: any, record: any) => {
+        return (
+          <LinkX linkUrl={`/blockDetails/${record.indexer.blockHeight}`} state={record} content={record.indexer.blockHeight}/>
+        );
+      }
+    },
+    {
+      title: t('Block Time'),
+      dataIndex: 'blockTime',
+      key: 'blockTime',
+      width: 100,
+      render: (text: any, record: any) => {
+        return (
+          <TimeStatus content={record.indexer.blockTime}/>);
+      }
+    },
+    {
+      title: t('Extrinsic Hash'),
+      dataIndex: 'hash',
+      key: 'hash',
+      width: 150,
+      render: (text: any, record: any) => {
+        return (
+          <ShorterLink linkUrl={`/blockDetails/${record.extrinsicHash}`} state={record} content={record.extrinsicHash}/>);
+      }}
+  ];
+
+
+  return (
+    <div className="overflow-scroll">
+      <TableX columns={Columns} dataList={listValue} pagination={pagination} loading={loading}/>
+    </div>);
+}

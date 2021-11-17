@@ -15,7 +15,7 @@ export default function Missed() {
   const [pageSize, setPageSize] = useState(10);
   const [eventTotal, setEventTotal] = useState(0);
   const [loading, setLoading] = useState(true);
-  const address = window.location.pathname.slice(13, window.location.pathname.length);
+  const address = window.location.hash.slice(14, window.location.hash.length);
   const getEventData = async () => {
     try {
       let res: any = await get(`/unitmissed/${address}?page=${page - 1}&page_size=${pageSize}`, ``);

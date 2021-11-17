@@ -3,7 +3,6 @@ import React from 'react';
 import swapEndian from '../../helper/swapEndian';
 import ChainxTable from '../../components/Table/table';
 
-
 export default function Claim() {
   const {t} = useTranslation();
 
@@ -14,7 +13,10 @@ export default function Claim() {
       key: 'Bitcoin Transaction Hash',
       render: (text: any, record: any) => {
         return (
-          <a style={{display:'inline-block',color:'#3C88C6'}} href={`https://live.blockcypher.com/btc/tx/${swapEndian(record.data[0])}/`} target="_Blank">{(swapEndian(record.data[0]))}</a>
+          <a className='inline-block text-blue-aText font-medium'
+             href={`https://live.blockcypher.com/btc/tx/${swapEndian(record.data[0])}/`} target="_Blank">
+            {((swapEndian(record.data[0]))?.substring(0, 7).concat('...').concat(((swapEndian(record.data[0]))?.substring(((swapEndian(record.data[0])).length - 5)))))}
+          </a>
         );
       }
     },
@@ -24,7 +26,7 @@ export default function Claim() {
       key: 'Bitcoin Source Address',
       render: (text: any, record: any) => {
         return (
-          <a style={{display: 'inline-block', color: '#3C88C6'}}
+          <a className='inline-block text-blue-aText font-medium'
              href={`https://live.blockcypher.com/btc/address/${record.data[1]}/`}
              target="_Blank">{'0x'.concat(record.data[1])}</a>
         );

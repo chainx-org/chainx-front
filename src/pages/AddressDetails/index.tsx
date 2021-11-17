@@ -17,7 +17,7 @@ import Assets from './assets';
 import Transaction from './transaction';
 import Transfers from './transfers';
 import { ListBgColor, WrapperDetails, WrapperList } from '../../css/Wrapper';
-import { BgColor } from '../HomePage/style';
+import { BgColor } from '../HomePage/HomeStyle';
 
 export default function AddressDetails() {
 
@@ -25,7 +25,7 @@ export default function AddressDetails() {
   const [loading, setLoading] = useState(true);
   const [noData, setNoData] = useState(false);
   const [blockDetails, setBlockDetails] = useState<any>();
-  const address = window.location.pathname.slice(16, window.location.pathname.length);
+  const address = window.location.hash.slice(17, window.location.hash.length);
   const pubKey = decodeAddress(address) || '';
   const [nowBlock, setNowBlock] = useState(address);
   const tag = 'address'
@@ -51,17 +51,10 @@ export default function AddressDetails() {
 
   },[])
   useEffect(() => {
-    // if (window.history.state && window.history.state?.state) {
-    //   setBlockDetails(window.history.state.state);
-    //   console.log('window', window.history.state.state);
-    //   setLoading(false);
-    // } else {
       getData().then(
       ).catch(() => {
-        // console.log('find error');
         setNoData(true);
       });
-    // }
   }, []);
   const PublicContainer = styled.div`
     .publicKey {
@@ -131,7 +124,6 @@ export default function AddressDetails() {
   };
   return (
     <>
-       <Header showSearch={true}/>
       <ListBgColor/>
       {noData ?
         <NoData/> :
@@ -149,6 +141,5 @@ export default function AddressDetails() {
           </div>
         </WrapperList>
       }
-       {/*<Footer/>*/}
     </>);
 }

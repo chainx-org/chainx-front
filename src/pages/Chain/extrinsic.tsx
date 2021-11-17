@@ -109,16 +109,19 @@ export default function Extrinsic({block}: ExtrinsicProps) {
   ];
 
   function onChange(page: number, pageSize: any) {
+    setExpandedRowKeys([])
     setPage(page);
     setPageSize(pageSize);
     setLoading(true);
   }
 
   useEffect(() => {
+    setLoading(true)
     getExtrinsicData().then(() => {
 
     });
-  }, [page, pageSize]);
+
+  }, [page, pageSize,block]);
 
 const expandedRowRender =(record:any)=>{
     return (
@@ -128,6 +131,10 @@ const expandedRowRender =(record:any)=>{
   const rowExpandable = (record: any) => {
     return true;
   };
+  const [expandedRowKeys,setExpandedRowKeys] = useState<string[]>([])
+  const onExpandedRowsChange = (expandedRows:string[])=>{
+    setExpandedRowKeys(expandedRows)
+  }
   const pagination = {
     pageSize: pageSize,
     current: page,
@@ -151,6 +158,8 @@ const expandedRowRender =(record:any)=>{
         expandIcon={({expanded, onExpand, record}: any) => ExpandIcon(expanded, onExpand, record)}
         expandedRowRender={expandedRowRender}
         rowExpandable={rowExpandable}
+        expandedRowKeys={expandedRowKeys}
+        onExpandedRowsChange={onExpandedRowsChange}
       />
     </div>
   );

@@ -1,27 +1,26 @@
 import React, { useEffect, useRef, useState } from 'react';
-import LatestItem from '../../../components/LatestItem';
+import LatestItem from '../../components/LatestItem';
 import HomeSearch from './HomeSearch';
-import { BgColor, ContainerBox, TableWrapper } from '../style';
-import MetaData from '../../../components/MetaData';
+import { BgColor, ContainerBox, TableWrapper } from './HomeStyle';
+import MetaData from '../../components/MetaData';
 import { useTranslation } from 'react-i18next';
-import { get } from '../../../hooks/useApi';
-import highSure from '../../../assets/icon_high_sure.svg';
-import Latest from '../../../assets/icon_new high.svg';
-import Extrinsics from '../../../assets/icon_sign.svg';
-import Accounts from '../../../assets/icon_holders.svg';
-import Count from '../../../assets/icon_transfer.svg';
-import Validators from '../../../assets/icon_node.svg';
-import Staked from '../../../assets/icon_zhiya.svg';
-import Issuance from '../../../assets/icon-issuance.svg';
-import { accuracy, accuracyInt } from '../../../helper/hooks';
-import i18n from '../../../i18n';
+import { get } from '../../hooks/useApi';
+import highSure from '../../assets/icon_high_sure.svg';
+import Latest from '../../assets/icon_new high.svg';
+import Extrinsics from '../../assets/icon_sign.svg';
+import Accounts from '../../assets/icon_holders.svg';
+import Count from '../../assets/icon_transfer.svg';
+import Validators from '../../assets/icon_node.svg';
+import Staked from '../../assets/icon_zhiya.svg';
+import Issuance from '../../assets/icon-issuance.svg';
+import {accuracyInt } from '../../helper/hooks';
+import i18n from '../../i18n';
 
 export default function Container() {
     const {t} = useTranslation();
-    const [timers, setTimers] = useState<Array<NodeJS.Timeout>>([]);
     const saveCallBack: any = useRef();
+    const [timers, setTimers] = useState<Array<NodeJS.Timeout>>([]);
     const [latestBlock, setListData] = useState<any>('');
-
     const [latestExtrinsic, setLatestExtrinsic] = useState([])
     const [metaData, setMetaData] = useState([{
         icon: highSure,
@@ -113,22 +112,25 @@ export default function Container() {
     };
 
     useEffect(() => {
+        const tick = () => {
+            saveCallBack.current();
+        };
+        const timer: NodeJS.Timeout = setInterval(tick, 5000);
+        console.log('creact timer')
+        timers.push(timer);
+        setTimers(timers);
+        return () => {
+            clearInterval(timer);
+            console.log('clear timer')
+        };
+    }, []);
+
+    useEffect(() => {
         saveCallBack.current = callBack;
         callBack();
         return () => { };
     }, [i18n.language]);
 
-    useEffect(() => {
-        const tick = () => {
-            saveCallBack.current();
-        };
-        const timer: NodeJS.Timeout = setInterval(tick, 5000);
-        timers.push(timer);
-        setTimers(timers);
-        return () => {
-            clearInterval(timer);
-        };
-    }, []);
 
     return (
       <>

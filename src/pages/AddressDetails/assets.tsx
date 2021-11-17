@@ -27,7 +27,7 @@ export default function Assets({account}: ExtrinsicProps) {
       title: t('Asset'),
       dataIndex: 'Asset',
       key: 'Asset',
-      render: (text: any, record: any) => {
+      render: () => {
         return (
           <div className='flex flex-row'>
             <img src={Icon} alt=""/>

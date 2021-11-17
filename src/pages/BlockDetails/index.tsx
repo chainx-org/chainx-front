@@ -1,29 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import moment from 'moment';
+import dayjs from 'dayjs';
 import Event from '../Chain/event';
 import Extrinsic from '../Chain/extrinsic';
 import { get } from '../../hooks/useApi';
 import List from '../../components/List';
-import Header from '../../components/Header';
-import Footer from '../../components/Footer';
 import TableMenuBox from '../../components/TableMenuBox';
 import { TabInfo } from '../../components/SwitchTab';
 import DetailTitle from '../../components/DetailTitle';
 import NoData from '../../components/NoData';
 import { ListBgColor, WrapperDetails, WrapperList } from '../../css/Wrapper';
-import Search from '../../components/Search';
 import CopyText from '../../components/copyText';
 
 
 export default function BlockDetails() {
-
   const {t} = useTranslation();
   const [loading, setLoading] = useState(true);
   const [noData, setNoData] = useState(false);
   const [blockDetails, setBlockDetails] = useState<any>();
-  const block = window.location.pathname.slice(14, window.location.pathname.length);
+  const block = window.location.hash.slice(15, window.location.hash.length);
   const isBlockNumber = (/^[0-9]*$/.test(block));
   const [nowBlock, setNowBlock] = useState(block);
   const tag = 'blockDetails'
@@ -39,11 +35,12 @@ export default function BlockDetails() {
 
   };
   useEffect(() => {
+    setLoading(true)
     getData().then(
       ).catch(() => {
         setNoData(true);
       });
-  }, []);
+  }, [nowBlock,block]);
   useEffect(()=>{
     
     const activeTab = sessionStorage.getItem(tag)
@@ -66,7 +63,7 @@ export default function BlockDetails() {
       title: t('Time'),
       content: (
         <div className="text-black-textColor">
-          {(blockDetails?.blockTime) ? moment(Number(blockDetails?.blockTime)).format('YYYY-MM-DD HH:mm:ss') + '(+UTC)' : '-'}
+          {(blockDetails?.blockTime) ? dayjs(Number(blockDetails?.blockTime)).format('YYYY-MM-DD HH:mm:ss') + '(+UTC)' : '-'}
         </div>)
     },
     // {
@@ -90,8 +87,8 @@ export default function BlockDetails() {
     {
       title: t('Parent Hash'),
       content: (
-        <a style={{display: 'inline-block', color: '#3C88C6'}}
-           href={`/blockDetails/${blockDetails?.header?.parentHash}`}>{blockDetails?.header?.parentHash}</a>)
+        <a className='inline-block text-blue-aText font-medium'
+           href={`/#/blockDetails/${blockDetails?.header?.parentHash}`}>{blockDetails?.header?.parentHash}</a>)
     },
     {
       title: t('Extrinsics Root'),
@@ -106,7 +103,7 @@ export default function BlockDetails() {
     //   title: t('Block Time'),
     //   content:
     //     <div className="font-medium text-gray-arrow ">
-    //       {/*{moment(Number(blockDetails?.blockTime)).format('YYYY-MM-DD HH:mm:ss')}*/}
+    //       {/*{dayjs(Number(blockDetails?.blockTime)).format('YYYY-MM-DD HH:mm:ss')}*/}
     //       -
     //     </div>,
     // }, {
@@ -141,25 +138,25 @@ export default function BlockDetails() {
   };
   return (
     <>
-       <Header showSearch={true}/>
-      <ListBgColor/>
       {noData ?
         <NoData/> :
-        <WrapperList>
-          {/*<Search className="NavSearch"/>*/}
-          <div className="px-24 bg-gray-arrow desktop:pt-8 screen:px-4 medium:px-4">
-            <DetailTitle routeTitle={t('Block Height')} content={nowBlock} isBlock={isBlockNumber}
-                         setNowBlock={setNowBlock}
-                         routePath={routerPath} showHeightIcon = {true}/>
-          </div>
-          <List list={list} loading={loading}/>
-          <div className="px-24 pb-4 bg-gray-bgWhite screen:px-4 medium:px-4">
-            <WrapperDetails>
-              <TableMenuBox tabList={tabList} currentTab={currentTab} setCurrentTab={setCurrentTab} tag={tag}/>
-            </WrapperDetails>
-          </div>
-        </WrapperList>
+        <>
+          <ListBgColor/>
+          <WrapperList>
+            <div className="px-24 bg-gray-arrow desktop:pt-8 screen:px-4 medium:px-4">
+              <DetailTitle routeTitle={t('Block Height')} content={block} isBlock={isBlockNumber}
+                           setNowBlock={setNowBlock}
+                           routePath={routerPath} showHeightIcon={isBlockNumber}/>
+            </div>
+            <List list={list} loading={loading}/>
+            <div className="px-24 pb-4 bg-gray-bgWhite screen:px-4 medium:px-4">
+              <WrapperDetails>
+                <TableMenuBox tabList={tabList} currentTab={currentTab} setCurrentTab={setCurrentTab} tag={tag}/>
+              </WrapperDetails>
+            </div>
+          </WrapperList>
+        </>
       }
-      {/* <Footer/> */}
-    </>);
+    </>
+  );
 }

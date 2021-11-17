@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import Header from '../../components/Header';
-import Footer from '../../components/Footer';
 import CardBox from '../../components/CardBox';
 import { useTranslation } from 'react-i18next';
 import blockLeakage from '../../assets/icon_Account switch.svg';
@@ -9,12 +7,11 @@ import { encodeAddress } from '@polkadot/keyring';
 import decodeAddress from '../../helper/encodeAddress';
 const {hexToU8a, isHex} = require('@polkadot/util');
 
-export default function SS58() {
+export default function SS58(props:any) {
   const {t} = useTranslation();
   const [inputValue, setInputValue] = useState('');
   const [listValue, setListValue] = useState<any>([]);
   const [isCorrectValue,setIsCorrectValue] = useState('')
-  const [searchNoData,setSearchNoData] = useState(false)
   const BoxContainer = {
     title: t('Enter the address of block leakage for query'),
     container: t('Enter the address or public key for conversion'),
@@ -94,12 +91,10 @@ export default function SS58() {
 
   return (
     <>
-       <Header showSearch={true}/>
       <CardBox cardBoxTitleIcon={blockLeakage} cardBoxTitleName={t('Transform Address/Public Key')}
                cardBoxTitleContainer={BoxContainer} inputValue={inputValue} listValue={listValue}
                selectAddress={selectAddress} inputValueFun={changeAddress} correctValue={isCorrectValue} loading={loading}/>
-      {/* <Footer/> */}
-
     </>
+
   );
 }

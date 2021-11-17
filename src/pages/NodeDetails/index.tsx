@@ -2,8 +2,6 @@ import React, { useEffect, useState } from 'react';
 import List from '../../components/List';
 import { useTranslation } from 'react-i18next';
 import { get } from '../../hooks/useApi';
-import Header from '../../components/Header';
-import Footer from '../../components/Footer';
 import TableMenuBox from '../../components/TableMenuBox';
 import { TabInfo } from '../../components/SwitchTab';
 import DetailTitle from '../../components/DetailTitle';
@@ -14,7 +12,7 @@ import { encodeAddress } from '@polkadot/keyring';
 import decodeAddress from '../../helper/encodeAddress';
 import TrustTag from '../../components/TrustTag';
 import { accuracy, reName } from '../../helper/hooks';
-import { ExtrinWrapper, ListBgColor, Wrapper, WrapperDetails, WrapperList } from '../../css/Wrapper';
+import {  ListBgColor,  WrapperDetails, WrapperList } from '../../css/Wrapper';
 import CopyText from '../../components/copyText';
 
 const {hexToU8a, isHex} = require('@polkadot/util');
@@ -24,14 +22,13 @@ export default function NodeDetails() {
   const {t} = useTranslation();
   const [loading, setLoading] = useState(true);
   const [addressDetails, setAddressDetails] = useState<any>();
-  const node = window.location.pathname.slice(13, window.location.pathname.length);
-  const [nowAddress, setNowAddress] = useState(node);
+  const node = window.location.hash.slice(14, window.location.hash.length);
   const [noData, setNoData] = useState(false);
   const tag = 'nodeTetails'
   const [currentTab, setCurrentTab] = useState('missed');
   const getData = async (node:string) => {
     const {items}: any = await get(`/validators/all`, ``);
-    const result =  items.filter((item: any, index: number) => {
+    const result =  items.filter((item: any) => {
       if(item.account === node){
         return item
       }
@@ -165,7 +162,6 @@ export default function NodeDetails() {
   };
   return (
     <>
-       <Header showSearch={true}/>
       <ListBgColor/>
       {noData ?
         <NoData/> :
@@ -182,6 +178,5 @@ export default function NodeDetails() {
           </div>
         </WrapperList>
       }
-       {/*<Footer/> */}
     </>);
 }

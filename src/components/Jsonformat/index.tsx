@@ -9,6 +9,10 @@ const JsonContainer = styled.div`
   padding: 2px 4px;
   border: 1px solid #DBDBDB;
   position: relative;
+  .stringContainer{
+    white-space:pre-wrap;
+    word-wrap : break-word ;
+  }
 `;
 // @ts-ignore
 export default function Jsonformat({ json }) {
@@ -40,7 +44,7 @@ export default function Jsonformat({ json }) {
 
     const keys = Object.keys(query)
     return (
-      <div style={{marginLeft:(deep-1)*60+'px'}} >
+      <div style={{marginLeft:(deep-1)*30+'px'}} >
         <span>{`{`}</span>
         {
           Object.keys(query).map((key:string)=>{
@@ -49,10 +53,10 @@ export default function Jsonformat({ json }) {
             }else{
               const value = query[key]
               return (
-                <div>
+                <div style={{marginLeft:(deep-1)*30+'px'}}>
                   <span>{`"${key}"`}</span>
                   <span>:</span>
-                  <span style={filterStyle(value)}>{filterInner(value)}</span>
+                  <span style={filterStyle(value)} className='stringContainer'>{filterInner(value)}</span>
                 </div>
               )
             }
@@ -71,7 +75,6 @@ export default function Jsonformat({ json }) {
         color: '#959595'
       }}
     >
-      {/*{JSON.stringify(json, null, 2)}*/}
 
       <JsonContainer>
         <div className="flex flex-row justify-end absolute" style={{right: '0'}}><CopyText children={''} text={JSON.stringify(json, null, 2)}/></div>

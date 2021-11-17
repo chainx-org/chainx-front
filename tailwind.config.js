@@ -31,6 +31,7 @@ module.exports = {
       blue: {
         light: "#4572DE",
         lighter: "#F2F5F9",
+        aText:'#3C88C6'
       },
       black: {
         light: "#777777",
