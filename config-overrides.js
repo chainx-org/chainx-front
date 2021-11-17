@@ -1,3 +1,5 @@
+import { addWebpackAlias } from 'customize-cra'
+
 const {override, addWebpackPlugin, setWebpackOptimizationSplitChunks, fixBabelImports} = require('customize-cra')
 const ProgressBarPlugin = require('progress-bar-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
@@ -69,6 +71,11 @@ module.exports = override(
     libraryDirectory: 'es',
     style: true, //自动打包相关的样式 默认为 style:'css'
   }),
+  //配置alias别名
+  addWebpackAlias({
+    crypto: false,
+    'react/jsx-runtime': require.resolve('react/jsx-runtime'),
+  })
   //添加压缩图片
   // addCompression(),
   // addAnalyzer()
