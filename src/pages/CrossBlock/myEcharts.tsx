@@ -25,16 +25,16 @@ const  Model_echarts = (props:any) => {
       itemGap: 40 // 设置间距
     },
 
-    color: ['#2C83EA', '#FFE403', '#E0E0E0'],
+    color: ['#E0E0E0', '#FFE403', '#2C83EA'],
     series: [
       {
         name: 'Rate',
         type: 'pie',
         radius: ['40%', '70%'],
         data: [
-          {value: 42.87, name: 'TR'},
-          {value: 50.00, name: 'X-BTC'},
-          {value: 2.00, name: 'PCX'},
+          {value: 12, name: 'TR'},
+          {value: 8.8, name: 'X-BTC'},
+          {value: 79.2, name: 'PCX'},
         ],
         label: {            //饼图图形上的文本标签
           normal: {
