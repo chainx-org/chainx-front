@@ -68,7 +68,6 @@
     "@fullhuman/postcss-purgecss": "2.2.0",
     "@tailwindcss/custom-forms": "0.2.1",
     "@types/customize-cra": "^1.0.2",
-    "@types/react-router-dom": "^5.1.7",
     "@types/styled-components": "^5.1.11",
     "autoprefixer": "9.8.0",
     "commitizen": "^4.2.4",
