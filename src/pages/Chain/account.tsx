@@ -4,7 +4,7 @@ import { LinkX, Normal } from '../../components/LinkX';
 import { accuracy } from '../../helper/hooks';
 import TableX from '../../components/Table';
 import { get } from '../../hooks/useApi';
-// import Identicon from '@polkadot/react-identicon';
+import Identicon from '@polkadot/react-identicon';
 
 export default function Account() {
   const {t} = useTranslation();
@@ -17,11 +17,11 @@ export default function Account() {
         return (
           <div className="flex flex-row items-center">
             <div style={{marginRight: '0.25rem', width: '2rem', height: '2rem', display: 'inline-block'}}>
-              {/*<Identicon className="imgIcon"*/}
-              {/*           value={record.address}*/}
-              {/*           size={32}*/}
-              {/*           theme="polkadot"*/}
-              {/*/>*/}
+              <Identicon className="imgIcon"
+                         value={record.address}
+                         size={32}
+                         theme="polkadot"
+              />
               {/*<img*/}
               {/*src={addressIcon} alt=""/>*/}
             </div>
