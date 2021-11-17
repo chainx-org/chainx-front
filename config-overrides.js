@@ -68,11 +68,6 @@ module.exports = override(
     libraryName: 'antd',
     libraryDirectory: 'es',
     style: true, //自动打包相关的样式 默认为 style:'css'
-  }),
-  //配置alias别名
-  addWebpackAlias({
-    crypto: false,
-    'react/jsx-runtime': require.resolve('react/jsx-runtime'),
   })
   //添加压缩图片
   // addCompression(),
