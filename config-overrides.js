@@ -1,6 +1,4 @@
-import { addWebpackAlias } from 'customize-cra'
-
-const {override, addWebpackPlugin, setWebpackOptimizationSplitChunks, fixBabelImports} = require('customize-cra')
+const {override, addWebpackPlugin, setWebpackOptimizationSplitChunks, fixBabelImports,addWebpackAlias} = require('customize-cra')
 const ProgressBarPlugin = require('progress-bar-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const {BundleAnalyzerPlugin} = require('webpack-bundle-analyzer')
