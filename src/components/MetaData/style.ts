@@ -1,44 +1,45 @@
-import styled from 'styled-components';
+/** @format */
+
+import styled from 'styled-components'
 
 export const MetaDataBox = styled.div`
   width: 100%;
-  height:12rem;
-  padding:0rem 6rem;
+  height: 12rem;
+  padding: 0rem 6rem;
   background: linear-gradient(to bottom, black 0%, black 30%, #f5f5f5 30%, #f5f5f5 100%);
   border: 0px solid #ccc;
   position: relative;
   z-index: 1;
   @media screen and (max-width: 1150px) {
     height: 22rem;
-    padding:0rem 1rem;
-
+    padding: 0rem 1rem;
   }
-`;
+`
 
 export const Wrapper = styled.div`
   background: white;
   box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.04);
-  border: 1px solid #E9E9E9;
+  border: 1px solid #e9e9e9;
   border-radius: 10px;
   width: 100%;
   margin: 3rem auto;
   display: grid;
   grid-template-columns: 25% 25% 25% 25%;
 
-  > div:nth-child(-n+4) {
+  > div:nth-child(-n + 4) {
     .line-div {
       top: 20px;
       color: #000;
     }
   }
 
-  > div:nth-child(4n+0) {
+  > div:nth-child(4n + 0) {
     .line-div {
       display: none;
     }
   }
 
-  > div:nth-child(n+5) {
+  > div:nth-child(n + 5) {
     .container-div {
       border-bottom: 0px !important;
     }
@@ -46,36 +47,34 @@ export const Wrapper = styled.div`
 
   @media screen and (max-width: 1150px) {
     grid-template-columns: 50% 50%;
-    > div:nth-child(n+7) {
+    > div:nth-child(n + 7) {
       .container-div {
         border-bottom: 0px !important;
       }
     }
 
-    > div:nth-child(2n+2) {
-      > div:nth-child(2n+2) {
+    > div:nth-child(2n + 2) {
+      > div:nth-child(2n + 2) {
         border: none !important;
       }
     }
 
-    > div:nth-child(-n+6) {
+    > div:nth-child(-n + 6) {
       .container-div {
-        border-bottom: 1px solid #E9E9E9 !important;
+        border-bottom: 1px solid #e9e9e9 !important;
       }
     }
   }
-
-
-`;
+`
 export const RightLine = styled.div`
   position: relative;
   height: calc(100% - 20px);
-  border-right: 1px solid #E9E9E9;
-`;
+  border-right: 1px solid #e9e9e9;
+`
 
 export const Container = styled.div`
   width: 80%;
-  border-bottom: 1px solid #E9E9E9;;
+  border-bottom: 1px solid #e9e9e9;
   display: flex;
   flex-direction: row;
 
@@ -119,7 +118,6 @@ export const Container = styled.div`
           font-weight: 500;
         }
       }
-
     }
   }
 
@@ -140,30 +138,27 @@ export const Container = styled.div`
   //  }
   //
   //}
-  
-
-`;
+`
 export const CardDiv = styled.div`
   height: 87.5px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   padding-left: 36px;
-  
 
   .card-item {
     width: 248px;
     padding-bottom: 21px;
 
     &.border-bottom {
-      border-bottom: 1px solid #E9E9E9FF;
+      border-bottom: 1px solid #e9e9e9ff;
     }
   }
   .name {
     font-size: 14px;
     font-weight: 400;
     color: rgba(0, 0, 0, 0.45);
-    line-height: 22
+    line-height: 22;
   }
 
   .date {
@@ -172,7 +167,6 @@ export const CardDiv = styled.div`
     color: #333333;
     line-height: 22px;
   }
-
 
   .line {
     //height: 67px;
@@ -184,4 +178,5 @@ export const CardDiv = styled.div`
       position: relative;
       top: -21px;
     }
-  }`;
+  }
+`

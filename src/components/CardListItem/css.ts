@@ -1,4 +1,6 @@
-import styled from 'styled-components';
+/** @format */
+
+import styled from 'styled-components'
 
 export const ItemContainer = styled.div`
   width: 100%;
@@ -7,40 +9,41 @@ export const ItemContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: start;
-  margin-bottom:24px;
+  margin-bottom: 24px;
 
   :nth-child(1) {
-    margin-top:10px;
+    margin-top: 10px;
   }
 
   :nth-last-child(1) {
-    margin-bottom:10px;
+    margin-bottom: 10px;
   }
   .imgIcon {
     margin: 20px 7px 20px 32px;
   }
 
   :hover {
-    background: #2C83EA;
+    background: #2c83ea;
     cursor: pointer;
-    >div{
-      >span{
+    > div {
+      > span {
         color: rgba(255, 255, 255, 0.85);
       }
-      >div{
-        >div{
-          >span{
+      > div {
+        > div {
+          > span {
             color: rgba(255, 255, 255, 0.85);
           }
         }
       }
     }
-  }`;
+  }
+`
 export const ItemContext = styled.div`
   display: flex;
   flex-direction: column;
   margin: auto 0;
-  >span{
+  > span {
     display: flex;
     font-size: 16px;
     font-weight: 500;
@@ -48,8 +51,8 @@ export const ItemContext = styled.div`
     line-height: 22px;
     margin-bottom: 8px;
   }
-  >div{
-    >div {
+  > div {
+    > div {
       > span {
         display: flex;
         font-size: 14px;
@@ -58,4 +61,5 @@ export const ItemContext = styled.div`
         line-height: 22px;
       }
     }
-  }`;
+  }
+`

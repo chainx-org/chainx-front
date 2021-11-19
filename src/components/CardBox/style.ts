@@ -1,20 +1,21 @@
-import styled from 'styled-components';
+/** @format */
+
+import styled from 'styled-components'
 
 export const Wrapper = styled.div`
   //min-height: 688px;
-  background: #FFFFFF;
+  background: #ffffff;
   box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.04);
   border-radius: 10px;
-  border: 1px solid #E9E9E9;
+  border: 1px solid #e9e9e9;
   position: relative;
   @media screen and (min-width: 1700px) {
     width: 1500px;
     margin: 0 auto;
   }
-`;
+`
 export const CardTitle = styled.div`
-
-  border-bottom: 1px solid #E9E9E9;
+  border-bottom: 1px solid #e9e9e9;
   display: flex;
   flex-direction: row;
   padding: 12px 32px;
@@ -30,14 +31,14 @@ export const CardTitle = styled.div`
     font-weight: 500;
     color: #080810;
   }
-`;
+`
 export const SpliteLine = styled.div`
   position: absolute;
   top: 3rem;
   width: 100%;
   height: 1px;
-  background: #E9E9E9;
-`;
+  background: #e9e9e9;
+`
 
 export const Container = styled.div`
   position: relative;
@@ -46,13 +47,13 @@ export const Container = styled.div`
   //top: 4rem;
   padding: 2rem 2rem;
   display: grid;
-  grid-template-columns:40% 5% 55%;
+  grid-template-columns: 40% 5% 55%;
   grid-column-gap: 1rem;
   grid-row-gap: 1rem;
   @media screen and (max-width: 900px) {
-    grid-template-columns:100%;
+    grid-template-columns: 100%;
     grid-template-rows: 1fr 0.1fr 1fr;
-    .arrowChange{
+    .arrowChange {
       transform: rotate(90deg);
     }
     //&.div:nth-child(2){
@@ -77,10 +78,10 @@ export const Container = styled.div`
       }
     }
   }
-  .toolsBtn{
-    color:white !important;
+  .toolsBtn {
+    color: white !important;
     border: none;
-    :hover{
+    :hover {
       color: red;
     }
   }
@@ -91,9 +92,9 @@ export const Container = styled.div`
     .showSelect {
       width: 80%;
       height: 3rem;
-      background: #F9F9F9;
+      background: #f9f9f9;
       border-radius: 4px 0px 0px 4px;
-      border: 1px solid #DBDBDB;
+      border: 1px solid #dbdbdb;
       display: flex;
       flex-direction: row;
       justify-content: start;
@@ -105,18 +106,18 @@ export const Container = styled.div`
       width: 20%;
       height: 3rem;
       //padding:1rem 0rem;
-      background: #2C83EA;
+      background: #2c83ea;
       border-radius: 0px 4px 4px 0px;
-      border: 1px solid #DBDBDB;
+      border: 1px solid #dbdbdb;
       display: flex;
       position: relative;
       //flex-direction: column;
       justify-content: center;
       //background-image: url("../../");
-      >img{
+      > img {
         display: inline-block;
         position: absolute;
-        top:11px;
+        top: 11px;
       }
       .toolList {
         display: none;
@@ -132,7 +133,7 @@ export const Container = styled.div`
       }
 
       & > ul {
-        background: #FFFFFF;
+        background: #ffffff;
         box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.15);
         border-radius: 4px;
         width: 8rem;
@@ -160,7 +161,7 @@ export const Container = styled.div`
   }
 
   & > ul {
-    background: #FFFFFF;
+    background: #ffffff;
     box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.15);
     border-radius: 4px;
     width: 100%;
@@ -183,8 +184,7 @@ export const Container = styled.div`
       }
     }
   }
-`;
-
+`
 
 export const ContainerEvent = styled.div`
   position: relative;
@@ -198,7 +198,7 @@ export const ContainerEvent = styled.div`
     width: 1500px;
     margin: 0 auto;
   }
-  .selectiveText{
+  .selectiveText {
     display: flex;
     align-items: center;
     color: #4a4a4a;
@@ -210,14 +210,14 @@ export const ContainerEvent = styled.div`
     display: flex;
     flex-direction: row;
     width: 24rem;
-    padding:1rem 0.5rem 1rem 1rem;
+    padding: 1rem 0.5rem 1rem 1rem;
     position: relative;
     .showSelect {
       width: 90%;
       height: 2.5rem;
-      background: #F9F9F9;
+      background: #f9f9f9;
       border-radius: 4px 0px 0px 4px;
-      border: 1px solid #DBDBDB;
+      border: 1px solid #dbdbdb;
       display: flex;
       flex-direction: row;
       justify-content: start;
@@ -228,9 +228,9 @@ export const ContainerEvent = styled.div`
     .selectBtn {
       width: 10%;
       height: 2.5rem;
-      background: #2C83EA;
+      background: #2c83ea;
       border-radius: 0px 4px 4px 0px;
-      border: 1px solid #DBDBDB;
+      border: 1px solid #dbdbdb;
       display: flex;
       position: relative;
       justify-content: center;
@@ -241,7 +241,7 @@ export const ContainerEvent = styled.div`
       //
 
       & > ul {
-        background: #FFFFFF;
+        background: #ffffff;
         box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.15);
         border-radius: 4px;
         width: 8rem;
@@ -279,7 +279,7 @@ export const ContainerEvent = styled.div`
       }
     }
     & > ul {
-      background: #FFFFFF;
+      background: #ffffff;
       box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.15);
       border-radius: 4px;
       width: 100%;
@@ -303,34 +303,34 @@ export const ContainerEvent = styled.div`
     }
   }
 
-  .helpMessage{
+  .helpMessage {
     display: flex;
     flex-direction: row;
-    position:relative;
-    margin:auto 0;
+    position: relative;
+    margin: auto 0;
     height: 20px;
-    .popverMessage{
+    .popverMessage {
       display: none;
     }
-    :hover{
-      .popverMessage{
+    :hover {
+      .popverMessage {
         display: block;
         position: absolute;
         top: 80%;
         z-index: 999;
         width: 300px;
-        background: #FAFAFA;
+        background: #fafafa;
         border: 1px solid #080810;
         border-radius: 10px;
       }
     }
   }
-`;
+`
 export const SearchBox = styled.div`
-{
-  @media screen and (min-width: 1700px) {
-    width: 1500px;
-    margin: 0 auto;
+   {
+    @media screen and (min-width: 1700px) {
+      width: 1500px;
+      margin: 0 auto;
+    }
   }
-}
-`;
+`

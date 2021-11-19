@@ -1,7 +1,9 @@
-import { decodeAddress, setSS58Format } from '@polkadot/keyring'
-import { u8aToHex } from '@polkadot/util'
+/** @format */
 
-import { Keyring } from '@polkadot/keyring'
+import {decodeAddress, setSS58Format} from '@polkadot/keyring'
+import {u8aToHex} from '@polkadot/util'
+
+import {Keyring} from '@polkadot/keyring'
 
 const keyring = new Keyring()
 // keyring.setSS58Format(process.env.REACT_APP_ENV === 'test' ? 42 : 44)

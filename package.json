@@ -15,6 +15,7 @@
     "antd": "^4.16.13",
     "axios": "^0.21.1",
     "babel-plugin-import": "^1.13.3",
+    "babel-preset-react-app": "^10.0.0",
     "bignumber.js": "^9.0.1",
     "compression-webpack-plugin": "^9.0.0",
     "copy-to-clipboard": "^3.3.1",
@@ -22,6 +23,7 @@
     "echarts": "^5.2.0",
     "i18next": "^20.3.1",
     "i18next-browser-languagedetector": "^6.1.1",
+    "levenary": "^1.1.1",
     "lodash": "^4.17.21",
     "moment": "^2.29.1",
     "qs": "^6.10.1",
@@ -45,7 +47,8 @@
     "eject": "react-scripts eject",
     "build:css": "postcss src/css/index.src.css -o src/css/index.css",
     "watch:css": "postcss src/css/index.src.css -o src/css/index.css -w",
-    "dev": "concurrently \"yarn watch:css --silent\" \"yarn start --silent\""
+    "dev": "concurrently \"yarn watch:css --silent\" \"yarn start --silent\"",
+    "lint": "eslint --fix src --ext .ts,.tsx,.js"
   },
   "eslintConfig": {
     "extends": "react-app"

@@ -1,23 +1,24 @@
-import React, { useState } from 'react';
-import CardBox from '../../components/CardBox';
-import { useTranslation } from 'react-i18next';
-import blockLeakage from '../../assets/icon_Account switch.svg';
-import searchIcon from '../../assets/img_switch.png';
-import { encodeAddress } from '@polkadot/keyring';
-import decodeAddress from '../../helper/encodeAddress';
-const {hexToU8a, isHex} = require('@polkadot/util');
+/** @format */
 
-export default function SS58(props:any) {
-  const {t} = useTranslation();
-  const [inputValue, setInputValue] = useState('');
-  const [listValue, setListValue] = useState<any>([]);
-  const [isCorrectValue,setIsCorrectValue] = useState('')
+import React, {useState} from 'react'
+import CardBox from '../../components/CardBox'
+import {useTranslation} from 'react-i18next'
+import blockLeakage from '../../assets/icon_Account switch.svg'
+import searchIcon from '../../assets/img_switch.png'
+import {encodeAddress} from '@polkadot/keyring'
+import decodeAddress from '../../helper/encodeAddress'
+const {hexToU8a, isHex} = require('@polkadot/util')
+
+export default function SS58(props: any) {
+  const {t} = useTranslation()
+  const [inputValue, setInputValue] = useState('')
+  const [listValue, setListValue] = useState<any>([])
+  const [isCorrectValue, setIsCorrectValue] = useState('')
   const BoxContainer = {
     title: t('Enter the address of block leakage for query'),
     container: t('Enter the address or public key for conversion'),
     icon: searchIcon,
-    result: t('Enter the address or public key for conversion')
-
+    result: t('Enter the address or public key for conversion'),
   }
   let typeList = [
     {name: 'Chainx (Prefix: 44)', id: 44, value: ''},
@@ -41,14 +42,14 @@ export default function SS58(props:any) {
     {name: 'Acala (Prefix: 10)', id: 10, value: ''},
     {name: 'Polymath (Prefix: 12)', id: 12, value: ''},
     {name: 'Robonomics (Prefix: 32)', id: 32, value: ''},
-    {name: 'Substrate (Prefix: 42)', id: 42, value: ''}
-  ];
-  const [loading,setLoading] = useState(false)
-  const changeAddress = (value:string)=>{
+    {name: 'Substrate (Prefix: 42)', id: 42, value: ''},
+  ]
+  const [loading, setLoading] = useState(false)
+  const changeAddress = (value: string) => {
     setListValue('')
-    var input = value.trim();
+    var input = value.trim()
     setInputValue(input)
-    if(input){
+    if (input) {
       setIsCorrectValue('')
       setLoading(false)
     }
@@ -57,44 +58,47 @@ export default function SS58(props:any) {
   const selectAddress = () => {
     setLoading(true)
 
-    const getAddressList = (value:string) => {
+    const getAddressList = (value: string) => {
       typeList.reduce((acc, cur) => {
         if (typeList.length) {
-          cur.value = encodeAddress(value, cur.id);
+          cur.value = encodeAddress(value, cur.id)
           // @ts-ignore
-          acc.push(cur);
+          acc.push(cur)
         }
-        typeList.length--;
-        return acc;
-      }, []);
-      setListValue(typeList);
+        typeList.length--
+        return acc
+      }, [])
+      setListValue(typeList)
       setLoading(false)
-      return true;
-    };
+      return true
+    }
     if (inputValue.includes('0x')) {
-      let recordResult = encodeAddress(
-        isHex(inputValue)
-          ? hexToU8a(inputValue)
-          : decodeAddress(inputValue)
-      );
-      getAddressList(recordResult);
+      let recordResult = encodeAddress(isHex(inputValue) ? hexToU8a(inputValue) : decodeAddress(inputValue))
+      getAddressList(recordResult)
     } else {
       try {
-        return getAddressList(inputValue);
+        return getAddressList(inputValue)
       } catch (error) {
         setLoading(false)
         setIsCorrectValue('Transformation failed. Address or public key not found')
-        return false;
+        return false
       }
     }
-  };
+  }
 
   return (
     <>
-      <CardBox cardBoxTitleIcon={blockLeakage} cardBoxTitleName={t('Transform Address/Public Key')}
-               cardBoxTitleContainer={BoxContainer} inputValue={inputValue} listValue={listValue}
-               selectAddress={selectAddress} inputValueFun={changeAddress} correctValue={isCorrectValue} loading={loading}/>
+      <CardBox
+        cardBoxTitleIcon={blockLeakage}
+        cardBoxTitleName={t('Transform Address/Public Key')}
+        cardBoxTitleContainer={BoxContainer}
+        inputValue={inputValue}
+        listValue={listValue}
+        selectAddress={selectAddress}
+        inputValueFun={changeAddress}
+        correctValue={isCorrectValue}
+        loading={loading}
+      />
     </>
-
-  );
+  )
 }

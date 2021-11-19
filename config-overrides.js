@@ -1,4 +1,12 @@
-const {override, addWebpackPlugin, setWebpackOptimizationSplitChunks, fixBabelImports,addWebpackAlias} = require('customize-cra')
+/** @format */
+
+const {
+  override,
+  addWebpackPlugin,
+  setWebpackOptimizationSplitChunks,
+  fixBabelImports,
+  addWebpackAlias,
+} = require('customize-cra')
 const ProgressBarPlugin = require('progress-bar-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const {BundleAnalyzerPlugin} = require('webpack-bundle-analyzer')
@@ -17,8 +25,8 @@ const addCompression = () => config => {
         // 只处理比1kb大的资源
         threshold: 1024,
         // 只处理压缩率低于90%的文件
-        minRatio: 0.9
-      })
+        minRatio: 0.9,
+      }),
     )
   }
 
@@ -35,41 +43,40 @@ const addAnalyzer = () => config => {
 }
 
 module.exports = override(
-  isProductionEnv() && addWebpackPlugin(
-  new ProgressBarPlugin()
-  ),
-  isProductionEnv() && addWebpackPlugin(
-  new UglifyJsPlugin({
-    // 开启打包缓存
-    cache: true,
-    // 开启多线程打包
-    parallel: true,
-    uglifyOptions: {
-      // 删除警告
-      warnings: false,
-      // 压缩
-      compress: {
-        // 移除console
-        drop_console: true,
-        // 移除debugger
-        drop_debugger: true
-      }
-    }
-  })),
-  isProductionEnv() && addWebpackPlugin(
-  new HardSourceWebpackPlugin()
-  ),
-  isProductionEnv() && setWebpackOptimizationSplitChunks({
-    minSize: 10000,
-    maxSize: 250000,
-  }),
+  // isProductionEnv() && addWebpackPlugin(new ProgressBarPlugin()),
+  // isProductionEnv() &&
+  //   addWebpackPlugin(
+  //     new UglifyJsPlugin({
+  //       // 开启打包缓存
+  //       cache: true,
+  //       // 开启多线程打包
+  //       parallel: true,
+  //       uglifyOptions: {
+  //         // 删除警告
+  //         warnings: false,
+  //         // 压缩
+  //         compress: {
+  //           // 移除console
+  //           drop_console: true,
+  //           // 移除debugger
+  //           drop_debugger: true,
+  //         },
+  //       },
+  //     }),
+  //   ),
+  // isProductionEnv() && addWebpackPlugin(new HardSourceWebpackPlugin()),
+  // isProductionEnv() &&
+  //   setWebpackOptimizationSplitChunks({
+  //     minSize: 10000,
+  //     maxSize: 250000,
+  //   }),
   // 针对antd 实现按需打包：根据import来打包 (使用babel-plugin-import)
   fixBabelImports('import', {
     libraryName: 'antd',
     libraryDirectory: 'es',
     style: true, //自动打包相关的样式 默认为 style:'css'
-  })
+  }),
   //添加压缩图片
   // addCompression(),
-  // addAnalyzer()
+  // addAnalyzer(),
 )

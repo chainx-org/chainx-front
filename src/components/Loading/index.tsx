@@ -1,5 +1,7 @@
-import React from 'react';
-import styled from 'styled-components';
+/** @format */
+
+import React from 'react'
+import styled from 'styled-components'
 
 const Container = styled.div`
   .loading {
@@ -14,14 +16,15 @@ const Container = styled.div`
     width: 8px;
     height: 100%;
     border-radius: 4px;
-    background: #61B7FF;
+    background: #61b7ff;
     -webkit-animation: load 1s ease infinite;
   }
 
   @-webkit-keyframes load {
-    0%, 100% {
+    0%,
+    100% {
       height: 40px;
-      background: #61B7FF;
+      background: #61b7ff;
     }
     50% {
       height: 70px;
@@ -45,12 +48,11 @@ const Container = styled.div`
   .loading span:nth-child(5) {
     -webkit-animation-delay: 0.8s;
   }
-`;
+`
 export default function Loading() {
-
   return (
     <Container>
-      <div className="loading">
+      <div className='loading'>
         <span></span>
         <span></span>
         <span></span>
@@ -58,5 +60,5 @@ export default function Loading() {
         <span></span>
       </div>
     </Container>
-  );
+  )
 }

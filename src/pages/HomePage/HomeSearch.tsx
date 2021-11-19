@@ -1,53 +1,54 @@
-import React, { useEffect, useState } from 'react';
-import Search from '../../components/Search';
-import bgImg from '../../assets/Lightning.svg';
-import dayjs from 'dayjs';
-import { TableWrapperSearch } from './HomeStyle';
-import { outSideAPI } from '../../hooks/useApi';
-import { useTranslation } from 'react-i18next';
+/** @format */
+
+import React, {useEffect, useState} from 'react'
+import Search from '../../components/Search'
+import bgImg from '../../assets/Lightning.svg'
+import dayjs from 'dayjs'
+import {TableWrapperSearch} from './HomeStyle'
+import {outSideAPI} from '../../hooks/useApi'
+import {useTranslation} from 'react-i18next'
 
 function HomeSearch() {
-  const {t} = useTranslation();
-  const [chainxResult, setChainxResult] = useState({});
-  const [currentPrice, setCurrentPrice] = useState('-');
+  const {t} = useTranslation()
+  const [chainxResult, setChainxResult] = useState({})
+  const [currentPrice, setCurrentPrice] = useState('-')
   //取每12小时的数据
   const sliceChainxVolumesData = (value: Array<string>) => {
     let result = {
       resultTime: [] as any,
-      resultValue: [] as any
-    };
-    let targeIndex = [0, 11, 23, 35, 47, 59, 71];
+      resultValue: [] as any,
+    }
+    let targeIndex = [0, 11, 23, 35, 47, 59, 71]
     value.map((item, index) => {
       if (targeIndex.includes(index)) {
-        result.resultTime.push(dayjs(Number(item[0])).format(`MM ${t('Months')}DD`));
-        result.resultValue.push(item[1]);
+        result.resultTime.push(dayjs(Number(item[0])).format(`MM ${t('Months')}DD`))
+        result.resultValue.push(item[1])
       }
-    });
-    return result;
-  };
+    })
+    return result
+  }
   const getChainXData = async () => {
-    await outSideAPI.get('')
-      .then((response) => {
-        let totalVolumes = response?.data?.total_volumes;
-        setCurrentPrice(response?.data?.prices[response?.data?.prices?.length - 1][1].toFixed(3));
-        let result = sliceChainxVolumesData(totalVolumes);
-        setChainxResult(result);
-      });
-  };
+    await outSideAPI.get('').then(response => {
+      let totalVolumes = response?.data?.total_volumes
+      setCurrentPrice(response?.data?.prices[response?.data?.prices?.length - 1][1].toFixed(3))
+      let result = sliceChainxVolumesData(totalVolumes)
+      setChainxResult(result)
+    })
+  }
 
   useEffect(() => {
-    getChainXData();
-  }, []);
+    getChainXData()
+  }, [])
   return (
     <TableWrapperSearch>
-      <div className="w-overSpread h-overSpread absolute items-center mx-auto my-auto">
-        <img src={bgImg} alt="" className="bgImage"/>
+      <div className='w-overSpread h-overSpread absolute items-center mx-auto my-auto'>
+        <img src={bgImg} alt='' className='bgImage' />
       </div>
-      <div className="grid grid-rows-2 relative" style={{zIndex: 2}}>
-        <div className="h-13 text-4xl PingFangSC-Medium, PingFang SC text-textColor-white mb-5">ChainX Blockchain
-          Explorer
+      <div className='grid grid-rows-2 relative' style={{zIndex: 2}}>
+        <div className='h-13 text-4xl PingFangSC-Medium, PingFang SC text-textColor-white mb-5'>
+          ChainX Blockchain Explorer
         </div>
-        <Search className="Home_pageSearch "/>
+        <Search className='Home_pageSearch ' />
       </div>
       {/*<EchartBoxSearch>*/}
       {/*  <div className="flex flex-col justify-start px-6 py-1">*/}
@@ -77,7 +78,7 @@ function HomeSearch() {
       {/*  </div>*/}
       {/*</EchartBoxSearch>*/}
     </TableWrapperSearch>
-  );
+  )
 }
 
-export default React.memo(HomeSearch);
+export default React.memo(HomeSearch)
