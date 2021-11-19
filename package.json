@@ -78,7 +78,7 @@
     "cssnano": "4.1.10",
     "customize-cra": "^1.0.0",
     "cz-customizable": "^6.3.0",
-    "eslint": "^8.2.0",
+    "eslint": "^7.11.0",
     "eslint-config-airbnb": "^19.0.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.25.3",
@@ -116,8 +116,8 @@
       "git add"
     ],
     "src/*.{css,scss,less,json,html,md,markdown}": [
-      "node_modules/.bin/prettier --write",
-      "git add"
+      "git add",
+      "node_modules/.bin/prettier --write"
     ]
   }
 }

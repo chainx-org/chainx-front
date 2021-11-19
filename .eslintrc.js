@@ -1,5 +1,3 @@
-/* eslint-disable */
-
 module.exports = {
   parser: '@typescript-eslint/parser',
   extends: [

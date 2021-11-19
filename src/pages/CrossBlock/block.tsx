@@ -1,9 +1,9 @@
 import { useTranslation } from 'react-i18next';
 import React from 'react';
-import { LinkX, ShorterLink } from '../../components/LinkX';
+import { ShorterLink } from '../../components/LinkX';
 import TimeStatus from '../../components/TimeStatus';
 import swapEndian from '../../helper/swapEndian';
-import ChainxTable from '../../components/Table/table';
+import ChainXTable from '../../components/Table/table';
 
 
 export default function BitcoinBlock() {
@@ -65,6 +65,6 @@ export default function BitcoinBlock() {
   ];
 
   return (
-  <ChainxTable Columns={chainColumns} urlControl={'/crossblocks/bitcoin/blocks?'} result={'items'} keyNum={6}/>
+  <ChainXTable Columns={chainColumns} urlControl={'/crossblocks/bitcoin/blocks?'} result={'items'} keyNum={6}/>
 );
 }
