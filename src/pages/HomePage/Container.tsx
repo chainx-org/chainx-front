@@ -13,7 +13,7 @@ import Count from '../../assets/icon_transfer.svg';
 import Validators from '../../assets/icon_node.svg';
 import Staked from '../../assets/icon_zhiya.svg';
 import Issuance from '../../assets/icon-issuance.svg';
-import {accuracyInt } from '../../helper/hooks';
+import { accuracyInt } from '../../helper/hooks';
 import i18n from '../../i18n';
 
 export default function Container() {
@@ -21,7 +21,7 @@ export default function Container() {
     const saveCallBack: any = useRef();
     const [timers, setTimers] = useState<Array<NodeJS.Timeout>>([]);
     const [latestBlock, setListData] = useState<any>('');
-    const [latestExtrinsic, setLatestExtrinsic] = useState([])
+    const [latestExtrinsic, setLatestExtrinsic] = useState([]);
     const [metaData, setMetaData] = useState([{
         icon: highSure,
         name: t('Finalized Block'),
@@ -73,7 +73,7 @@ export default function Container() {
             name: t('Total Extrinsics'),
             data: latestChainStatus.extrinsic_count
         }, {
-            icon:Accounts,
+            icon: Accounts,
             name: t('Total Accounts'),
             data: latestChainStatus.account_count
         }, {
@@ -92,12 +92,12 @@ export default function Container() {
             icon: Staked,
             name: t('Staked Value'),
             data: ((latestChainStatus.totalValidatorBonded + latestChainStatus.totalNominationSum) /
-              latestChainStatus.pcx_issuance*100).toFixed(2)+'%'
+              latestChainStatus.pcx_issuance * 100).toFixed(2) + '%'
         }]]);
     };
     const getLatestBlockData = async () => {
         const {latestBlocks}: any = await get('/latestBlock', '');
-        let result = latestBlocks.slice(0,5)
+        let result = latestBlocks.slice(0, 5);
         setListData([...result]);
     };
     const getLatestExtrinsic = async () => {
@@ -116,12 +116,12 @@ export default function Container() {
             saveCallBack.current();
         };
         const timer: NodeJS.Timeout = setInterval(tick, 5000);
-        console.log('creact timer')
+        console.log('creact timer');
         timers.push(timer);
         setTimers(timers);
         return () => {
             clearInterval(timer);
-            console.log('clear timer')
+            console.log('clear timer');
         };
     }, []);
 
@@ -136,7 +136,7 @@ export default function Container() {
       <>
           <ContainerBox>
               <HomeSearch/>
-              <div className='bg-gray-bgWhite'>
+              <div className="bg-gray-bgWhite">
                   <MetaData metaData={metaData}/>
                   <div className="bg-gray-bgWhite">
                       <TableWrapper>

@@ -18,13 +18,13 @@ import SearchEvent from './pages/SearchEvent';
 
 function App(props: any) {
   const [showSearch, setShowSearch] = useState(window.location.pathname === '/');
-  useEffect(()=>{
-    if(props.location.pathname === '/'){
-      setShowSearch(false)
-    }else{
-      setShowSearch(true)
+  useEffect(() => {
+    if (props.location.pathname === '/') {
+      setShowSearch(false);
+    } else {
+      setShowSearch(true);
     }
-  },[props.location])
+  }, [props.location]);
 
   return (
     <div>

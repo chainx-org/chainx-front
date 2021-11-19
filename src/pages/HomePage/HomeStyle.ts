@@ -1,10 +1,11 @@
 import styled from 'styled-components';
+
 export const ContainerBox = styled.div`
   width: 100%;
   background: black;
   @media screen and (min-width: 1700px) {
     width: 1500px;
-    margin:0 auto;
+    margin: 0 auto;
   }
 `;
 
@@ -28,7 +29,7 @@ export const BgColor = styled.div`
   background-color: black;
   width: 100%;
   z-index: 0;
-  top:48px;
+  top: 48px;
   @media screen and (max-width: 1150px) {
     display: none;
   }
@@ -63,11 +64,12 @@ export const TableWrapperSearch = styled.div`
       top: 10px;
       z-index: 1
     }
-    @media screen and (max-width: 1150px){
+    @media screen and (max-width: 1150px) {
       width: 100%;
       height: 100%;
     }
   }
+
   .Home_pageSearch {
     width: 70%;
     @media screen and (max-width: 1150px) {

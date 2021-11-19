@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { WsProvider } from "@polkadot/rpc-provider";
+import React, { useEffect, useState } from 'react';
+import { WsProvider } from '@polkadot/rpc-provider';
 // import * as definitions from "../interfaces/definitions";
-import { ApiPromise } from "@polkadot/api";
-import { notification } from "antd";
-const { options } = require('@chainx-v2/api')
+import { ApiPromise } from '@polkadot/api';
+import { notification } from 'antd';
+
+const {options} = require('@chainx-v2/api');
 
 interface ApiProps {
   isApiReady: boolean;
@@ -19,23 +20,23 @@ interface Props {
   url?: string;
 }
 
-function ApiProvider({ children, url }: Props): React.ReactElement<Props> {
+function ApiProvider({children, url}: Props): React.ReactElement<Props> {
   const [isApiReady, setApiReady] = useState(false);
   const [api, setApi] = useState<ApiPromise | null>(null);
   const apiInit = (): void => {
-    notification.warn({ message: "Wait ws connecting..." });
+    notification.warn({message: 'Wait ws connecting...'});
     const provider = new WsProvider(url);
-    const api = new ApiPromise(options({ provider }));
-    api.on("error", (err) => {
+    const api = new ApiPromise(options({provider}));
+    api.on('error', (err) => {
       notification.error({
         message: `Cannot connect to ws endpoint. `,
       });
     });
-    api.on("disconnected", () => setApiReady(false));
-    api.on("ready", () => {
+    api.on('disconnected', () => setApiReady(false));
+    api.on('ready', () => {
       setApiReady(true);
       setApi(api);
-      notification.info({ message: "Endpoint connected." });
+      notification.info({message: 'Endpoint connected.'});
       //@ts-ignore
       window.api = api;
     });

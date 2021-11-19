@@ -9,15 +9,26 @@ interface chainxTableProps {
   getData: any,
   result?: string,
   keyNum?: number,
-  rowKey?:any,
-  expandedRowRender?:any,
-  rowExpandable?:any,
-  expandIcon?:any,
-  expandedRowKeys?:any,
-  onExpandedRowsChange?:any
+  rowKey?: any,
+  expandedRowRender?: any,
+  rowExpandable?: any,
+  expandIcon?: any,
+  expandedRowKeys?: any,
+  onExpandedRowsChange?: any
 }
 
-const useTable = ({Columns, getData, result, keyNum,rowKey,expandedRowRender,rowExpandable,expandIcon,expandedRowKeys,onExpandedRowsChange}: chainxTableProps) => {
+const useTable = ({
+                    Columns,
+                    getData,
+                    result,
+                    keyNum,
+                    rowKey,
+                    expandedRowRender,
+                    rowExpandable,
+                    expandIcon,
+                    expandedRowKeys,
+                    onExpandedRowsChange
+                  }: chainxTableProps) => {
   const {t} = useTranslation();
   const [data, setData] = useState([]);
   const [page, setPage] = useState(1);
@@ -49,7 +60,7 @@ const useTable = ({Columns, getData, result, keyNum,rowKey,expandedRowRender,row
   }, [keyNum]);
 
   //分页
-  const pagination= {
+  const pagination = {
     pageSize: pageSize,
     current: page,
     defaultCurrent: page,

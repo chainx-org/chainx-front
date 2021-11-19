@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Search from '../../components/Search';
 import bgImg from '../../assets/Lightning.svg';
 import dayjs from 'dayjs';
-import { EchartBoxSearch,TableWrapperSearch } from './HomeStyle';
+import { TableWrapperSearch } from './HomeStyle';
 import { outSideAPI } from '../../hooks/useApi';
 import { useTranslation } from 'react-i18next';
 
@@ -29,7 +29,7 @@ function HomeSearch() {
     await outSideAPI.get('')
       .then((response) => {
         let totalVolumes = response?.data?.total_volumes;
-        setCurrentPrice(response?.data?.prices[response?.data?.prices?.length-1][1].toFixed(3))
+        setCurrentPrice(response?.data?.prices[response?.data?.prices?.length - 1][1].toFixed(3));
         let result = sliceChainxVolumesData(totalVolumes);
         setChainxResult(result);
       });
