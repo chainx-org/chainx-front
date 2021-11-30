@@ -37,17 +37,17 @@ export default function CopyText({children, text, showText}: CopyTextProps) {
       {!showText ? (
         <img
           src={Icon}
-          alt=''
+          alt=""
           onClick={onCopy}
-          className='cursor-pointer'
+          className="cursor-pointer"
           style={{maxWidth: 'none', marginLeft: '8px'}}
         />
       ) : (
         <img
           src={listIcon}
-          alt=''
+          alt=""
           onClick={onCopy}
-          className='cursor-pointer'
+          className="cursor-pointer"
           style={{maxWidth: 'none', marginLeft: '8px'}}
         />
       )}

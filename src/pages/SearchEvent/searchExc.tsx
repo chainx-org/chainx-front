@@ -96,7 +96,7 @@ export default function SearchExc(props: any) {
   ]
 
   return (
-    <div className='overflow-scroll'>
+    <div className="overflow-scroll">
       <TableX columns={Columns} dataList={listValue} pagination={pagination} loading={loading} />
     </div>
   )

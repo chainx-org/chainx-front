@@ -41,14 +41,14 @@ function HomeSearch() {
   }, [])
   return (
     <TableWrapperSearch>
-      <div className='w-overSpread h-overSpread absolute items-center mx-auto my-auto'>
-        <img src={bgImg} alt='' className='bgImage' />
+      <div className="w-overSpread h-overSpread absolute items-center mx-auto my-auto">
+        <img src={bgImg} alt="" className="bgImage" />
       </div>
-      <div className='grid grid-rows-2 relative' style={{zIndex: 2}}>
-        <div className='h-13 text-4xl PingFangSC-Medium, PingFang SC text-textColor-white mb-5'>
+      <div className="grid grid-rows-2 relative" style={{zIndex: 2}}>
+        <div className="h-13 text-4xl PingFangSC-Medium, PingFang SC text-textColor-white mb-5">
           ChainX Blockchain Explorer
         </div>
-        <Search className='Home_pageSearch ' />
+        <Search className="Home_pageSearch " />
       </div>
       {/*<EchartBoxSearch>*/}
       {/*  <div className="flex flex-col justify-start px-6 py-1">*/}

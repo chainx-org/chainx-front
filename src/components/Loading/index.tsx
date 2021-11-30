@@ -52,7 +52,7 @@ const Container = styled.div`
 export default function Loading() {
   return (
     <Container>
-      <div className='loading'>
+      <div className="loading">
         <span></span>
         <span></span>
         <span></span>

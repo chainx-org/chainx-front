@@ -17,8 +17,8 @@ export default function Transfer() {
       width: 800,
       render: (text: any, record: any) => {
         return (
-          <div className='flex flex-row items-center'>
-            <img src={addressIcon} alt='' style={{marginRight: '0.25rem'}} />
+          <div className="flex flex-row items-center">
+            <img src={addressIcon} alt="" style={{marginRight: '0.25rem'}} />
             <LinkX linkUrl={'/block'} content={record.address} />
           </div>
         )

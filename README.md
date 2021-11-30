@@ -1,25 +1,16 @@
-# chainx-front
+# Webpack-React-Typescript-Basic-Cli
+A basic webpack cli , contains react, typescript, tailwindcss,  and other basic tools, able to meet the basic needs of general projects
 
-## Setup
+# Get started
+```
+git clone git@github.com:wbh1328551759/webpack-react-typescript-basic-cli.git
+cd ./webpack-react-typescript-basic-cli
 
-### `yarn install`
+yarn install
+yarn run dev
+```
 
-Clone the repo and run `yarn` to install all dependencies.
-
-## Start
-
-### `yarn start`
-
-Builds css once and starts react-scripts.<br>
-
-http://localhost:3000 <br>
-
-## Used
-
-creact-react-app <br>
-tailwindcss <br>
-antd<br>
-
-
-
-
+# Package the project
+```
+yarn build
+```

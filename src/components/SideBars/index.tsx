@@ -156,10 +156,10 @@ function Sidebars({className = '', onClose, isCollapsed}: Props): React.ReactEle
 
   return (
     <Wrapper className={`wrapernav ${isCollapsed ? 'collapsed' : 'expanded'}`} style={{width: '9rem'}}>
-      <div className='wrappers'>
+      <div className="wrappers">
         <img
           src={closeIcon}
-          alt=''
+          alt=""
           style={{width: '2rem', height: '2rem', padding: '0.3rem 0.3rem'}}
           onClick={onClose}
         />
@@ -168,8 +168,7 @@ function Sidebars({className = '', onClose, isCollapsed}: Props): React.ReactEle
             <li
               key={index}
               className={` ${recordType === index ? 'statusrisk' : ''}`}
-              onClick={() => statusnode(node, index)}
-            >
+              onClick={() => statusnode(node, index)}>
               <Link to={node.link} onClick={onClose}>
                 {node.nodeName}
               </Link>

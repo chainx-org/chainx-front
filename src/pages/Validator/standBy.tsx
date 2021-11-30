@@ -28,7 +28,7 @@ export default function StandBy() {
       key: 'NikeName',
       render: (text: any, record: any) => {
         return (
-          <div className='flex flex-row'>
+          <div className="flex flex-row">
             <Normal state={record.referralId ? record.referralId : '-'} />
             <Normal state={record.isTrust === true ? <TrustTag /> : ''} />
           </div>
@@ -114,7 +114,7 @@ export default function StandBy() {
   }
 
   return (
-    <div className='px-8 overflow-scroll'>
+    <div className="px-8 overflow-scroll">
       <TableX columns={chainColumns} dataList={unsettledData} pagination={pagination} loading={loading} />
     </div>
   )

@@ -160,25 +160,25 @@ function CrossBlock() {
   }, [])
   return (
     <>
-      <WrapperBgWhite className='px-24 py-4 screen:px-4 medium:px-4'>
+      <WrapperBgWhite className="px-24 py-4 screen:px-4 medium:px-4">
         <BridgeWrapper>
           <WrapperWith>
             <CardTitle>
-              <div className='flex flex-row'>
-                <img src={mining} alt='' />
-                <span className='ml-4 text-base text-black-titleColor font-medium screen:text-sm'>
+              <div className="flex flex-row">
+                <img src={mining} alt="" />
+                <span className="ml-4 text-base text-black-titleColor font-medium screen:text-sm">
                   {t('Deposit Mining')}
                 </span>
               </div>
             </CardTitle>
-            <div className='flex flex-row w-overSpread justify-between desktop:pl-8 desktop:pr-14 screen:px-8 py-4'>
-              <div className='flex flex-col'>
-                <span className='titleName'>{t('Asset Type')}</span>
-                <span className='titleValue'>Interchain BTC(X-BTC)</span>
+            <div className="flex flex-row w-overSpread justify-between desktop:pl-8 desktop:pr-14 screen:px-8 py-4">
+              <div className="flex flex-col">
+                <span className="titleName">{t('Asset Type')}</span>
+                <span className="titleValue">Interchain BTC(X-BTC)</span>
               </div>
-              <div className='flex flex-col'>
-                <span className='titleName'>{t('Reward Pot Address(PCX)')}</span>
-                <span className='titleValue'>
+              <div className="flex flex-col">
+                <span className="titleName">{t('Reward Pot Address(PCX)')}</span>
+                <span className="titleValue">
                   <ShorterLinkCross linkUrl={`/addressDetails/${rewardPot}`} content={rewardPot} />
                 </span>
               </div>
@@ -187,37 +187,37 @@ function CrossBlock() {
               {mingApiData?.map((item: any, index: any) => {
                 return (
                   <div key={index}>
-                    <div className='itemThree'>
-                      <div className='flex flex-col'>
+                    <div className="itemThree">
+                      <div className="flex flex-col">
                         <CardDiv>
-                          <div className='flex flex-col justify-start my-auto '>
-                            <span className='titleName'>{t(`${item[0]?.name}`)}</span>
-                            <span className='titleValue'>{item[0]?.data}</span>
+                          <div className="flex flex-col justify-start my-auto ">
+                            <span className="titleName">{t(`${item[0]?.name}`)}</span>
+                            <span className="titleValue">{item[0]?.data}</span>
                           </div>
                         </CardDiv>
                         <BottomLine />
                         <CardDiv>
-                          <div className='flex flex-col justify-start my-auto '>
-                            <span className='titleName'>{t(`${item[1]?.name}`)}</span>
-                            <span className='titleValue'>{item[1]?.data}</span>
+                          <div className="flex flex-col justify-start my-auto ">
+                            <span className="titleName">{t(`${item[1]?.name}`)}</span>
+                            <span className="titleValue">{item[1]?.data}</span>
                           </div>
                         </CardDiv>
                       </div>
                       <RightLine />
                     </div>
-                    <div className='itemTwo'>
-                      <div className='flex flex-row'>
+                    <div className="itemTwo">
+                      <div className="flex flex-row">
                         <CardDiv>
-                          <div className='flex flex-col justify-start my-auto '>
-                            <span className='titleName'>{t(`${item[0]?.name}`)}</span>
-                            <span className='titleValue'>{item[0]?.data}</span>
+                          <div className="flex flex-col justify-start my-auto ">
+                            <span className="titleName">{t(`${item[0]?.name}`)}</span>
+                            <span className="titleValue">{item[0]?.data}</span>
                           </div>
                         </CardDiv>
                         <RightLine />
                         <CardDiv>
-                          <div className='flex flex-col justify-start my-auto '>
-                            <span className='titleName'>{t(`${item[1]?.name}`)}</span>
-                            <span className='titleValue'>{item[1]?.data}</span>
+                          <div className="flex flex-col justify-start my-auto ">
+                            <span className="titleName">{t(`${item[1]?.name}`)}</span>
+                            <span className="titleValue">{item[1]?.data}</span>
                           </div>
                         </CardDiv>
                       </div>
@@ -229,9 +229,9 @@ function CrossBlock() {
           </WrapperWith>
           <WrapperWith>
             <CardTitle>
-              <div className='flex flex-row'>
-                <img src={distributionIcon} alt='' />
-                <span className='ml-4 text-base text-black-titleColor font-medium screen:text-sm'>
+              <div className="flex flex-row">
+                <img src={distributionIcon} alt="" />
+                <span className="ml-4 text-base text-black-titleColor font-medium screen:text-sm">
                   {t('Mining Distribution')}
                 </span>
               </div>
@@ -241,9 +241,9 @@ function CrossBlock() {
         </BridgeWrapper>
         <WrapperWith>
           <CardTitle>
-            <div className='flex flex-row'>
-              <img src={bridgeIcon} alt='' />
-              <span className='ml-4 text-base text-black-titleColor font-medium screen:text-sm'>
+            <div className="flex flex-row">
+              <img src={bridgeIcon} alt="" />
+              <span className="ml-4 text-base text-black-titleColor font-medium screen:text-sm">
                 {t('Bitcoin Bridge')}
               </span>
             </div>

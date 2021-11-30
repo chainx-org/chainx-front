@@ -54,13 +54,13 @@ export default function BlockDetails() {
     {
       title: t('Block Height'),
       content: (
-        <div className='text-black-textColor'>{blockDetails?.header?.number ? blockDetails?.header?.number : '-'}</div>
+        <div className="text-black-textColor">{blockDetails?.header?.number ? blockDetails?.header?.number : '-'}</div>
       ),
     },
     {
       title: t('Time'),
       content: (
-        <div className='text-black-textColor'>
+        <div className="text-black-textColor">
           {blockDetails?.blockTime
             ? dayjs(Number(blockDetails?.blockTime)).format('YYYY-MM-DD HH:mm:ss') + '(+UTC)'
             : '-'}
@@ -79,15 +79,14 @@ export default function BlockDetails() {
     // },
     {
       title: t('Block Hash'),
-      content: <div className='text-black-textColor'>{blockDetails?.hash}</div>,
+      content: <div className="text-black-textColor">{blockDetails?.hash}</div>,
     },
     {
       title: t('Parent Hash'),
       content: (
         <a
-          className='inline-block text-blue-aText font-medium'
-          href={`/#/blockDetails/${blockDetails?.header?.parentHash}`}
-        >
+          className="inline-block text-blue-aText font-medium"
+          href={`/#/blockDetails/${blockDetails?.header?.parentHash}`}>
           {blockDetails?.header?.parentHash}
         </a>
       ),
@@ -95,8 +94,8 @@ export default function BlockDetails() {
     {
       title: t('Extrinsics Root'),
       content: (
-        <div className='flex flex-row'>
-          <div className='text-black-textColor mr-1'>{blockDetails?.header?.stateRoot}</div>
+        <div className="flex flex-row">
+          <div className="text-black-textColor mr-1">{blockDetails?.header?.stateRoot}</div>
           <CopyText text={blockDetails?.header?.stateRoot} showText={true} />
         </div>
       ),
@@ -132,17 +131,17 @@ export default function BlockDetails() {
   ]
   const routerPath = () => {
     return (
-      <div className='flex flex-row cursor-pointer text-gray-white text-base' style={{whiteSpace: 'nowrap'}}>
+      <div className="flex flex-row cursor-pointer text-gray-white text-base" style={{whiteSpace: 'nowrap'}}>
         <Link to={'/'} style={{color: 'rgba(255, 255, 255, 0.65)'}}>
-          <div className='flex flex-row w-fitContent'>
+          <div className="flex flex-row w-fitContent">
             {t('Home')}
-            <span className='inline-block mx-2'>/</span>
+            <span className="inline-block mx-2">/</span>
           </div>
         </Link>
         <Link to={'/chain'} style={{color: 'rgba(255, 255, 255, 0.65)'}}>
-          <div className='flex flex-row w-fitContent'>
+          <div className="flex flex-row w-fitContent">
             {t('Chain')}
-            <span className='inline-block mx-2'>/</span>
+            <span className="inline-block mx-2">/</span>
           </div>
         </Link>
         <Link to={`./${block}`}>{t('BlockDetails')}</Link>
@@ -157,7 +156,7 @@ export default function BlockDetails() {
         <>
           <ListBgColor />
           <WrapperList>
-            <div className='px-24 bg-gray-arrow desktop:pt-8 screen:px-4 medium:px-4'>
+            <div className="px-24 bg-gray-arrow desktop:pt-8 screen:px-4 medium:px-4">
               <DetailTitle
                 routeTitle={t('Block Height')}
                 content={block}
@@ -168,7 +167,7 @@ export default function BlockDetails() {
               />
             </div>
             <List list={list} loading={loading} />
-            <div className='px-24 pb-4 bg-gray-bgWhite screen:px-4 medium:px-4'>
+            <div className="px-24 pb-4 bg-gray-bgWhite screen:px-4 medium:px-4">
               <WrapperDetails>
                 <TableMenuBox tabList={tabList} currentTab={currentTab} setCurrentTab={setCurrentTab} tag={tag} />
               </WrapperDetails>

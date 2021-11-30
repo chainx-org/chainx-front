@@ -159,12 +159,12 @@ export default function Container() {
     <>
       <ContainerBox>
         <HomeSearch />
-        <div className='bg-gray-bgWhite'>
+        <div className="bg-gray-bgWhite">
           <MetaData metaData={metaData} />
-          <div className='bg-gray-bgWhite'>
+          <div className="bg-gray-bgWhite">
             <TableWrapper>
-              <LatestItem key={1} title={t('Latest block')} icon='latestblock' ListData={[...latestBlock]} />
-              <LatestItem key={2} title={t('Latest transaction')} icon='icon' ListData={latestExtrinsic} />
+              <LatestItem key={1} title={t('Latest block')} icon="latestblock" ListData={[...latestBlock]} />
+              <LatestItem key={2} title={t('Latest transaction')} icon="icon" ListData={latestExtrinsic} />
             </TableWrapper>
           </div>
         </div>

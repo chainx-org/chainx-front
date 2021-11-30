@@ -16,10 +16,9 @@ export default function Claim() {
       render: (text: any, record: any) => {
         return (
           <a
-            className='inline-block text-blue-aText font-medium'
+            className="inline-block text-blue-aText font-medium"
             href={`https://live.blockcypher.com/btc/tx/${swapEndian(record.data[0])}/`}
-            target='_Blank'
-          >
+            target="_Blank">
             {swapEndian(record.data[0])
               ?.substring(0, 7)
               .concat('...')
@@ -35,10 +34,9 @@ export default function Claim() {
       render: (text: any, record: any) => {
         return (
           <a
-            className='inline-block text-blue-aText font-medium'
+            className="inline-block text-blue-aText font-medium"
             href={`https://live.blockcypher.com/btc/address/${record.data[1]}/`}
-            target='_Blank'
-          >
+            target="_Blank">
             {'0x'.concat(record.data[1])}
           </a>
         )

@@ -20,11 +20,11 @@ export default function NoData() {
   const {t} = useTranslation()
 
   return (
-    <div className='px-24 py-4 bg-gray-bgWhite  screen:px-4'>
+    <div className="px-24 py-4 bg-gray-bgWhite  screen:px-4">
       <Wrapper>
-        <div className='flex flex-col '>
-          <img src={noDataIcon} alt='' className='inline-block w-12 mx-auto ' />
-          <span className='inline-block w-28 mx-auto text-center mx-auto mt-4'>{t('No Data')}</span>
+        <div className="flex flex-col ">
+          <img src={noDataIcon} alt="" className="inline-block w-12 mx-auto " />
+          <span className="inline-block w-28 mx-auto text-center mx-auto mt-4">{t('No Data')}</span>
         </div>
       </Wrapper>
     </div>

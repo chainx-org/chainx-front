@@ -38,8 +38,8 @@ function Faviconnav() {
   }
 
   return (
-    <Wrapper className='faviconnav'>
-      <img src={Catalog} alt='' onClick={testqwedsa} />
+    <Wrapper className="faviconnav">
+      <img src={Catalog} alt="" onClick={testqwedsa} />
       <Sidebars isCollapsed={isCollapsed} onClose={testqwedsa} />
       <div className={`${isCollapsed ? 'sidebarmarks' : ''}`} onClick={testqwedsa} />
     </Wrapper>

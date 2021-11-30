@@ -45,19 +45,19 @@ export default function CardBox({
     selectAddress()
   }
   return (
-    <div className='Container'>
+    <div className="Container">
       <Wrapper>
         <CardTitle>
-          <img src={cardBoxTitleIcon} alt='' />
+          <img src={cardBoxTitleIcon} alt="" />
           <span>{cardBoxTitleName}</span>
         </CardTitle>
         <SpliteLine />
         <Container>
-          <div className='items-center my-auto mx-0 text-center'>
-            <span className='inline-block mb-12 text-sm font-medium text-black-textColor'>
+          <div className="items-center my-auto mx-0 text-center">
+            <span className="inline-block mb-12 text-sm font-medium text-black-textColor">
               {cardBoxTitleContainer.title}
             </span>
-            <div className='border' style={{borderRadius: '10px'}}>
+            <div className="border" style={{borderRadius: '10px'}}>
               <TextArea
                 value={inputValue}
                 onChange={textInput}
@@ -70,31 +70,28 @@ export default function CardBox({
             <Button
               block
               style={{background: 'black', borderRadius: '4px', cursor: 'pointer'}}
-              className='toolsBtn w-overSpread h-12 bg-topBar-black text-topBar-white mt-12 items-center text-center'
+              className="toolsBtn w-overSpread h-12 bg-topBar-black text-topBar-white mt-12 items-center text-center"
               onClick={searchFun}
               disabled={loading}
-              loading={loading}
-            >
-              {!loading && <span className='inline-block mx-auto my-auto'>{t('Search')}</span>}
+              loading={loading}>
+              {!loading && <span className="inline-block mx-auto my-auto">{t('Search')}</span>}
             </Button>
           </div>
-          <div className='items-center my-auto mx-auto text-center'>
-            <img className='arrowChange' src={arrowChangeIcon} alt='' />
+          <div className="items-center my-auto mx-auto text-center">
+            <img className="arrowChange" src={arrowChangeIcon} alt="" />
           </div>
           <div
-            className='items-center my-auto ml-0 text-center mr-6 bg-topBar-gray h-overSpread flex justify-center items-center'
+            className="items-center my-auto ml-0 text-center mr-6 bg-topBar-gray h-overSpread flex justify-center items-center"
             style={{
               background: '#F9F9F9',
               borderRadius: '10px',
               border: '1px solid #DBDBDB',
               maxHeight: '34rem',
-            }}
-          >
+            }}>
             {listValue.length > 0 ? (
               <div
-                className='overflow-scroll w-overSpread h-overSpread'
-                style={{background: '#F9F9F9', borderRadius: '10px'}}
-              >
+                className="overflow-scroll w-overSpread h-overSpread"
+                style={{background: '#F9F9F9', borderRadius: '10px'}}>
                 <CardListItem
                   isPublic={true}
                   itemIcon={publicIcon}
@@ -108,21 +105,21 @@ export default function CardBox({
             ) : (
               <>
                 {loading ? (
-                  <img src='https://scan.chainx.org/static/media/loading.80f33db6.png' alt='' />
+                  <img src="https://scan.chainx.org/static/media/loading.80f33db6.png" alt="" />
                 ) : (
                   <>
                     {' '}
                     {!correctValue ? (
-                      <div className='flex flex-col'>
-                        <img className='inline-block w-18 my-0 mx-auto' src={cardBoxTitleContainer.icon} alt='' />
-                        <div className='inline-block mb-12 text-sm text-black-textLighter'>
+                      <div className="flex flex-col">
+                        <img className="inline-block w-18 my-0 mx-auto" src={cardBoxTitleContainer.icon} alt="" />
+                        <div className="inline-block mb-12 text-sm text-black-textLighter">
                           {t('Enter the address or public key for conversion')}
                         </div>
                       </div>
                     ) : (
-                      <div className='flex flex-col'>
-                        <img className='inline-block w-18 my-0 mx-auto' src={noDataIcon} alt='' />
-                        <div className='inline-block mb-12 text-sm text-black-textLighter'>{t(`${correctValue}`)}</div>
+                      <div className="flex flex-col">
+                        <img className="inline-block w-18 my-0 mx-auto" src={noDataIcon} alt="" />
+                        <div className="inline-block mb-12 text-sm text-black-textLighter">{t(`${correctValue}`)}</div>
                       </div>
                     )}
                   </>

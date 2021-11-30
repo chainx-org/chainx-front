@@ -74,8 +74,7 @@ function ChangeNet({name, setNetName}: ChangeNetProps): React.ReactElement {
     <ChangeNetDiv className={`${name ? 'border-white' : 'border-blue'}`}>
       <div
         className={`${name ? 'flex flex-row border border-gray-white' : 'flex flex-row border-gray-arrow border'}`}
-        onMouseEnter={onMouseEnterUl}
-      >
+        onMouseEnter={onMouseEnterUl}>
         {/*<img src={name ? netB : netW} alt="browser" />*/}
         <span className={name ? 'text-white-light px-2 min-w-12 text-center' : 'text-topBar-blue px-2 min-w-12'}>
           {name ? 'TESTNET' : 'MAINNET'}

@@ -147,7 +147,7 @@ export default function Event({block, extrinsic}: EventProps) {
   }
 
   return (
-    <div className='px-8 overflow-scroll'>
+    <div className="px-8 overflow-scroll">
       <TableX
         rowKey={(row: any) => {
           return row.index

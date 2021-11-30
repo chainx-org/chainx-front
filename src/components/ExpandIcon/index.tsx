@@ -11,14 +11,14 @@ export default function ExpandIcon(expanded: any, onExpand: any, record: any) {
       {expanded ? (
         <img
           src={pulldownIcon}
-          alt=''
+          alt=""
           style={{cursor: 'pointer', width: '2.5rem', maxWidth: 'none'}}
           onClick={e => onExpand(record, e)}
         />
       ) : (
         <img
           src={moreIcon}
-          alt=''
+          alt=""
           style={{cursor: 'pointer', width: '2.5rem', maxWidth: 'none'}}
           onClick={e => onExpand(record, e)}
         />

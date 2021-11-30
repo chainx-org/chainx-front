@@ -148,7 +148,7 @@ export default function Transfers({account}: ExtrinsicProps) {
     showTotal: (extrinsicTotal: number) => `${t('total')} ${extrinsicTotal} ${t('items')}`,
   }
   return (
-    <div className='px-8 overflow-scroll'>
+    <div className="px-8 overflow-scroll">
       <TableX
         rowKey={(row: any) => {
           return row.index

@@ -37,29 +37,28 @@ function LangSelect(): React.ReactElement {
 
   return (
     // @ts-ignore
-    <ChangeNetDiv ref={ref} className='border-white pointer'>
+    <ChangeNetDiv ref={ref} className="border-white pointer">
       <div
         style={{border: '1px solid rgba(233, 233, 233, 0.18)', minWidth: '7.5rem'}}
         className={
           'flex flex-row mx-0 my-auto border-1 rounded-sm bg-topBar-gray opacity-80 ring-select text-topBar-white px-2 py-1'
         }
-        onClick={handleClick}
-      >
-        <div className='flex flex-row relative w-overSpread justify-between cursor-pointer'>
-          <img src={global} alt='' />
+        onClick={handleClick}>
+        <div className="flex flex-row relative w-overSpread justify-between cursor-pointer">
+          <img src={global} alt="" />
           <span className={'mx-2'}>{currenLangName}</span>
           {/* {isShow ?  */}
-          <img src={pulldown} alt='' style={{maxWidth: 'none'}} className={`rotate ${isShow ? 'rotated' : ''}`} />
+          <img src={pulldown} alt="" style={{maxWidth: 'none'}} className={`rotate ${isShow ? 'rotated' : ''}`} />
           {/* : <img src={selectDown} alt="" style={{maxWidth: 'none'}}/> */}
           {/* } */}
         </div>
       </div>
       {isShow && (
-        <ul className='absolute pointer' style={{bottom: '30px'}}>
-          <li className='cursor-pointer' key={1}>
+        <ul className="absolute pointer" style={{bottom: '30px'}}>
+          <li className="cursor-pointer" key={1}>
             <div onClick={() => changeLanguage(1)}>English</div>
           </li>
-          <li className='cursor-pointer' key={2}>
+          <li className="cursor-pointer" key={2}>
             <div onClick={() => changeLanguage(2)}>中文</div>
           </li>
         </ul>

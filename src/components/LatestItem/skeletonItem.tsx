@@ -10,15 +10,14 @@ export default function SkeletonItem() {
       {fisrtInit?.map((item, index) => {
         return (
           <div
-            className='flex flex-row justify-start py-3 overflow-scroll'
+            className="flex flex-row justify-start py-3 overflow-scroll"
             style={{borderBottom: '1px solid #E9E9E9'}}
-            key={index}
-          >
-            <div className='latestDiv'>
-              <Skeleton active paragraph={{rows: 0}} className='indexSkeleton' />
+            key={index}>
+            <div className="latestDiv">
+              <Skeleton active paragraph={{rows: 0}} className="indexSkeleton" />
             </div>
-            <div className='flex flex-col justify-start ml-4 w-overSpread'>
-              <Skeleton active paragraph={{rows: 0}} className='indexSkeleton' />
+            <div className="flex flex-col justify-start ml-4 w-overSpread">
+              <Skeleton active paragraph={{rows: 0}} className="indexSkeleton" />
             </div>
           </div>
         )

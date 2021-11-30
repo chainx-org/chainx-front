@@ -17,9 +17,9 @@ export default function Account() {
       key: 'address',
       render: (text: any, record: any) => {
         return (
-          <div className='flex flex-row items-center'>
+          <div className="flex flex-row items-center">
             <div style={{marginRight: '0.25rem', width: '2rem', height: '2rem', display: 'inline-block'}}>
-              <Identicon className='imgIcon' value={record.address} size={32} theme='polkadot' />
+              <Identicon className="imgIcon" value={record.address} size={32} theme="polkadot" />
               {/*<img*/}
               {/*src={addressIcon} alt=""/>*/}
             </div>
@@ -82,7 +82,7 @@ export default function Account() {
   }
 
   return (
-    <div className='px-8 overflow-scroll'>
+    <div className="px-8 overflow-scroll">
       <TableX columns={AccountColumns} dataList={eventData} pagination={pagination} loading={loading} />
     </div>
   )

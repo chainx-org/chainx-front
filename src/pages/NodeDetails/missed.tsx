@@ -96,7 +96,7 @@ export default function Missed() {
   }
 
   return (
-    <div className='px-8 overflow-scroll'>
+    <div className="px-8 overflow-scroll">
       <TableX columns={chainColumns} dataList={eventData} pagination={pagination} loading={loading} />
     </div>
   )

@@ -16,9 +16,9 @@ export default function CardListItem({itemTitle, itemIcon, itemContent, isPublic
   return (
     <ItemContainer>
       {isPublic ? (
-        <img src={itemIcon} className='imgIcon' alt='' />
+        <img src={itemIcon} className="imgIcon" alt="" />
       ) : (
-        <Identicon className='imgIcon' value={itemContent} size={40} theme='polkadot' />
+        <Identicon className="imgIcon" value={itemContent} size={40} theme="polkadot" />
       )}
 
       <ItemContext>

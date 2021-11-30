@@ -51,8 +51,7 @@ function ApiProvider({children, url}: Props): React.ReactElement<Props> {
       value={{
         isApiReady,
         api,
-      }}
-    >
+      }}>
       {children}
     </ApiContext.Provider>
   )

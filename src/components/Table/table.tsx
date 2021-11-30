@@ -56,7 +56,7 @@ export default function ChainxTable({Columns, urlControl, result, keyNum}: chain
   }
 
   return (
-    <div className='px-8 overflow-scroll'>
+    <div className="px-8 overflow-scroll">
       <TableX columns={Columns} dataList={data} pagination={pagination} loading={loading} />
     </div>
   )

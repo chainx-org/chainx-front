@@ -47,13 +47,13 @@ export default function Validator() {
           <>
             {text <= 10 ? (
               <CircleIndex style={{background: '#2C83EA'}}>
-                <span className='inline-block relative' style={{color: 'white', margin: 'auto 0'}}>
+                <span className="inline-block relative" style={{color: 'white', margin: 'auto 0'}}>
                   {text}
                 </span>
               </CircleIndex>
             ) : (
               <CircleIndex style={{background: '#FAFAFA'}}>
-                <span className='inline-block relative' style={{color: '#080810', margin: 'auto 0'}}>
+                <span className="inline-block relative" style={{color: '#080810', margin: 'auto 0'}}>
                   {text}
                 </span>
               </CircleIndex>
@@ -68,7 +68,7 @@ export default function Validator() {
       key: 'NikeName',
       render: (text: any, record: any) => {
         return (
-          <div className='flex flex-row'>
+          <div className="flex flex-row">
             <Normal state={record.referralId ? record.referralId : '-'} />
             <Normal state={record.isTrust === true ? <TrustTag /> : ''} />
           </div>
@@ -160,7 +160,7 @@ export default function Validator() {
   }
 
   return (
-    <div className='px-8 overflow-scroll'>
+    <div className="px-8 overflow-scroll">
       <TableX columns={chainColumns} dataList={frontList} pagination={pagination} loading={loading} />
     </div>
   )

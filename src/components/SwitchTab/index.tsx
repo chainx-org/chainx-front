@@ -42,8 +42,7 @@ function SwitchTab({
       defaultActiveKey={currentTab}
       activeKey={currentTab}
       className={`${className} ui--switchTabs-${size ? size : ''}`}
-      onChange={changeTab}
-    >
+      onChange={changeTab}>
       {tabList.map(tab => (
         <TabPane tab={tab.title} key={tab.name}>
           {tab.content}

@@ -52,7 +52,7 @@ export default function Jsonformat({json}) {
             <div style={{marginLeft: (deep - 1) * 30 + 'px'}}>
               <span>{`"${key}"`}</span>
               <span>:</span>
-              <span style={filterStyle(value)} className='stringContainer'>
+              <span style={filterStyle(value)} className="stringContainer">
                 {filterInner(value)}
               </span>
             </div>
@@ -69,10 +69,9 @@ export default function Jsonformat({json}) {
         backgroundColor: 'white',
         padding: 0,
         color: '#959595',
-      }}
-    >
+      }}>
       <JsonContainer>
-        <div className='flex flex-row justify-end absolute' style={{right: '0'}}>
+        <div className="flex flex-row justify-end absolute" style={{right: '0'}}>
           <CopyText children={''} text={JSON.stringify(json, null, 2)} />
         </div>
         {filterJson(json, 1)}

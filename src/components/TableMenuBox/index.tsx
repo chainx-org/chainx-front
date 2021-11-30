@@ -11,7 +11,7 @@ interface SwitchTabProps {
 export default function TableMenuBox({tabList, currentTab, setCurrentTab, tag}: SwitchTabProps) {
   return (
     <>
-      <SwitchTab size='lg' tabList={tabList} currentTab={currentTab} setCurrentTab={setCurrentTab} tag={tag} />
+      <SwitchTab size="lg" tabList={tabList} currentTab={currentTab} setCurrentTab={setCurrentTab} tag={tag} />
     </>
   )
 }

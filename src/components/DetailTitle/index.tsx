@@ -50,29 +50,29 @@ export default function DetailTitle({
   }
 
   return (
-    <div className='flex desktop:flex-row desktop:justify-between screen:px-4 desktop:py-2 screen:flex-col screen:justify-start'>
-      <div className='flex flex-row'>
-        <span className='text-gray-white text-xl font-medium my-auto'>{routeTitle}</span>
+    <div className="flex desktop:flex-row desktop:justify-between screen:px-4 desktop:py-2 screen:flex-col screen:justify-start">
+      <div className="flex flex-row">
+        <span className="text-gray-white text-xl font-medium my-auto">{routeTitle}</span>
         {isBlock ? (
-          <DetailSpan className='inline-block text-topBar-blueLight font-medium cursor-pointer text-xl h-fitContent pl-1 mx-0 my-auto'>
-            <span className='align-middle'>{content === 'undefined-undefined' ? '-' : '#' + content}</span>
+          <DetailSpan className="inline-block text-topBar-blueLight font-medium cursor-pointer text-xl h-fitContent pl-1 mx-0 my-auto">
+            <span className="align-middle">{content === 'undefined-undefined' ? '-' : '#' + content}</span>
           </DetailSpan>
         ) : (
-          <DetailSpan className='inline-block text-topBar-blueLight font-medium text-base cursor-pointer h-fitContent pl-1 mx-0 my-auto'>
-            <span className='align-middle'>{content === 'undefined-undefined' ? '-' : content}</span>{' '}
-            <img src={Icon} onClick={onCopy} alt='' className='inline-block cursor-pointer' />
+          <DetailSpan className="inline-block text-topBar-blueLight font-medium text-base cursor-pointer h-fitContent pl-1 mx-0 my-auto">
+            <span className="align-middle">{content === 'undefined-undefined' ? '-' : content}</span>{' '}
+            <img src={Icon} onClick={onCopy} alt="" className="inline-block cursor-pointer" />
           </DetailSpan>
         )}
         {showHeightIcon ? (
           <>
-            <img src={arrowBack} alt='' onClick={reduceBlock} className='inline-block cursor-pointer w-12' />
-            <img src={arrow} alt='' onClick={increaseBlock} className='inline-block cursor-pointer w-12' />
+            <img src={arrowBack} alt="" onClick={reduceBlock} className="inline-block cursor-pointer w-12" />
+            <img src={arrow} alt="" onClick={increaseBlock} className="inline-block cursor-pointer w-12" />
           </>
         ) : (
           ''
         )}
       </div>
-      <span className='text-gray-white text-xl font-medium mx-0 my-4'>{routePath()}</span>
+      <span className="text-gray-white text-xl font-medium mx-0 my-4">{routePath()}</span>
     </div>
   )
 }

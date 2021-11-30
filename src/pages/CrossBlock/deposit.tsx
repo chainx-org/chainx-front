@@ -17,10 +17,9 @@ export default function Deposit() {
       render: (text: any, record: any) => {
         return (
           <a
-            className='inline-block text-blue-aText font-medium'
+            className="inline-block text-blue-aText font-medium"
             href={`https://live.blockcypher.com/btc/tx/${swapEndian(record.data[0])}`}
-            target='_Blank'
-          >
+            target="_Blank">
             {record.data[0]
               ?.substring(0, 7)
               .concat('...')

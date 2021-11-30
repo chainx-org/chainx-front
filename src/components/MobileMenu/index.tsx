@@ -63,16 +63,16 @@ export default function MobileMenu() {
 
   return (
     <MobileDataBox>
-      <nav className='nav-container'>
-        <div className='hamburger'>
-          <div className='nav-bar one'></div>
-          <div className='nav-bar two'></div>
-          <div className='nav-bar three'></div>
+      <nav className="nav-container">
+        <div className="hamburger">
+          <div className="nav-bar one"></div>
+          <div className="nav-bar two"></div>
+          <div className="nav-bar three"></div>
         </div>
-        <div className='dropdown'>
+        <div className="dropdown">
           {nodeList.map((item: any, index: number) => (
             <Link key={index} to={item.link} onClick={closeMenu}>
-              <p className='drop-item'>{item.nodeName}</p>{' '}
+              <p className="drop-item">{item.nodeName}</p>{' '}
             </Link>
           ))}
         </div>

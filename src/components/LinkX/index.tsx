@@ -106,8 +106,8 @@ export function LinkXWithPopAndIcon({linkUrl, content, img, state}: LinkProps) {
   return (
     <CopyText
       children={
-        <div className='flex flex-row items-center mr-1'>
-          <img src={img} alt='' style={{display: 'inline-block'}} />
+        <div className="flex flex-row items-center mr-1">
+          <img src={img} alt="" style={{display: 'inline-block'}} />
           <Link to={{pathname: linkUrl, state: state}}>
             <LinkSpan>{content}</LinkSpan>
           </Link>
@@ -128,8 +128,7 @@ export function ShorterLink({linkUrl, content, state, style}: LinkProps) {
         to={{
           pathname: linkUrl,
           state: state,
-        }}
-      >
+        }}>
         <LinkSpan style={style}>
           {value
             ?.substring(0, 7)
@@ -150,8 +149,7 @@ export function ShorterLinkHome({linkUrl, content, state, style}: LinkProps) {
         to={{
           pathname: linkUrl,
           state: state,
-        }}
-      >
+        }}>
         <LinkSpanHome style={style}>
           {value
             ?.substring(0, 7)
@@ -172,8 +170,7 @@ export function ShorterLinkCross({linkUrl, content, state, style}: LinkProps) {
         to={{
           pathname: linkUrl,
           state: state,
-        }}
-      >
+        }}>
         <LinkSpanCross style={style}>
           {value
             ?.substring(0, 7)
@@ -192,8 +189,7 @@ export function Shorter({linkUrl, content, state}: LinkProps) {
       to={{
         pathname: linkUrl,
         state: state,
-      }}
-    >
+      }}>
       <LinkSpan>
         {value
           ?.substring(0, 7)

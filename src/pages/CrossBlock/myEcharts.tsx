@@ -72,7 +72,7 @@ const Model_echarts = (props: any) => {
     })
   }
   // 绘制图表
-  return <div id='mainEchats' style={{width: '410px', height: '280px', margin: 'auto'}}></div>
+  return <div id="mainEchats" style={{width: '410px', height: '280px', margin: 'auto'}}></div>
 }
 
 export default Model_echarts

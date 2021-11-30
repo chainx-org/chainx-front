@@ -4,7 +4,6 @@ module.exports = {
     // type 类型定义
     'type-enum': [2, 'always', [
       "feat", // 新功能 feature
-      "merge", // 合并代码
       "fix", // 修复 bug
       "docs", // 文档注释
       "style", // 代码格式(不影响代码运行的变动)

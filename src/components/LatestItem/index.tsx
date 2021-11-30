@@ -64,40 +64,38 @@ export default function LatestItem({title, icon, ListData}: LatestItemPop) {
   return (
     <ItemContainer>
       <div
-        className='flex flex-row justify-between text-homeText-gray'
-        style={{borderBottom: '1px solid #E9E9E9', padding: '1rem'}}
-      >
-        <span className='text-gray-backgroundGray font-medium desktop:text-xl screen:text-base'>{title}</span>
-        <div id='homePageBtn' onClick={() => linkToChain()}>
+        className="flex flex-row justify-between text-homeText-gray"
+        style={{borderBottom: '1px solid #E9E9E9', padding: '1rem'}}>
+        <span className="text-gray-backgroundGray font-medium desktop:text-xl screen:text-base">{title}</span>
+        <div id="homePageBtn" onClick={() => linkToChain()}>
           <span>{t('See All')}</span>
         </div>
       </div>
-      <LatestItemBox className='overflow-scroll' style={{whiteSpace: 'nowrap'}}>
+      <LatestItemBox className="overflow-scroll" style={{whiteSpace: 'nowrap'}}>
         {title === t('Latest block') ? (
           <>
             {ListData.length > 0 ? (
               ListData?.map((item, index) => {
                 return (
-                  <div className='px-4' key={index}>
+                  <div className="px-4" key={index}>
                     <div
-                      className='flex flex-row justify-start py-3 overflow-scroll'
-                      style={{borderBottom: '1px solid #E9E9E9'}}
-                    >
-                      <div className='latestDiv'>
+                      className="flex flex-row justify-start py-3 overflow-scroll"
+                      style={{borderBottom: '1px solid #E9E9E9'}}>
+                      <div className="latestDiv">
                         <span>BX</span>
                       </div>
-                      <div className='flex flex-col justify-start desktop:ml-4 w-overSpread'>
-                        <div className=' flex flex-row justify-between text-homeText-gray text-homeText-gray'>
+                      <div className="flex flex-col justify-start desktop:ml-4 w-overSpread">
+                        <div className=" flex flex-row justify-between text-homeText-gray text-homeText-gray">
                           <LinkXHome linkUrl={`/blockDetails/${item.number}`} content={item.number} />
-                          <div className='flex flex-row'>
-                            <div className='inline-block mr-1'>{t('Validator')}</div>
+                          <div className="flex flex-row">
+                            <div className="inline-block mr-1">{t('Validator')}</div>
                             <LinkXHome linkUrl={`/nodeDetails/${item.address}`} content={item.nikename} />
                           </div>
                         </div>
-                        <div className='flex flex-row justify-between text-homeText-gray'>
+                        <div className="flex flex-row justify-between text-homeText-gray">
                           <div>
-                            <div className='inline-block mr-1'>{t('include')}</div>
-                            <div className='inline-block mr-1'>
+                            <div className="inline-block mr-1">{t('include')}</div>
+                            <div className="inline-block mr-1">
                               {item.extrinsicsCnt ? item.extrinsicsCnt : 0}
                               {t('extrinsic')}
                             </div>
@@ -124,16 +122,15 @@ export default function LatestItem({title, icon, ListData}: LatestItemPop) {
             {ListData.length > 0 ? (
               ListData?.map((item, index) => {
                 return (
-                  <div className='px-4' key={index}>
+                  <div className="px-4" key={index}>
                     <div
-                      className='flex flex-row justify-start py-3 overflow-scroll'
-                      style={{borderBottom: '1px solid #E9E9E9'}}
-                    >
-                      <div className='latestDiv'>
+                      className="flex flex-row justify-start py-3 overflow-scroll"
+                      style={{borderBottom: '1px solid #E9E9E9'}}>
+                      <div className="latestDiv">
                         <span>TX</span>
                       </div>
-                      <div className='flex flex-col justify-start desktop:ml-4  w-overSpread'>
-                        <div className='flex flex-row justify-between text-homeText-gray text-homeText-gray'>
+                      <div className="flex flex-col justify-start desktop:ml-4  w-overSpread">
+                        <div className="flex flex-row justify-between text-homeText-gray text-homeText-gray">
                           <LinkXHome
                             linkUrl={`/extrinsicDetails/${item.hash}`}
                             content={
@@ -144,12 +141,12 @@ export default function LatestItem({title, icon, ListData}: LatestItemPop) {
                                 : ''
                             }
                           />
-                          <div className='flex flex-row'>
+                          <div className="flex flex-row">
                             <ShorterLinkHome linkUrl={`/extrinsicDetails/${item.hash}`} content={item.hash} />
                             {/*<img src={iconImg} alt="" style={{width: '12px', height: '12px'}}/>*/}
                           </div>
                         </div>
-                        <div className='flex flex-row justify-between text-homeText-gray'>
+                        <div className="flex flex-row justify-between text-homeText-gray">
                           <div>
                             <Operation
                               mini={true}

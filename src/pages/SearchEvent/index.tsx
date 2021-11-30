@@ -63,47 +63,45 @@ export default function SearchEvent() {
     </div>
   )
   return (
-    <div className='Container'>
+    <div className="Container">
       <ContainerEvent>
-        <div className='flex flex-row'>
-          <span className='selectiveText'>{t('selective type')}</span>
-          <div className='toolSearch'>
-            <div className='showSelect'>
+        <div className="flex flex-row">
+          <span className="selectiveText">{t('selective type')}</span>
+          <div className="toolSearch">
+            <div className="showSelect">
               <span>{nowSearch}</span>
             </div>
-            <div className='selectBtn'>
+            <div className="selectBtn">
               <img
                 src={pulldown}
-                alt=''
+                alt=""
                 style={{width: '16px', height: '16px', display: 'inline-block', margin: 'auto 0'}}
               />
             </div>
-            <ul className='toolList cursor-pointer'>
+            <ul className="toolList cursor-pointer">
               <li
                 onClick={() => {
                   setNowSearch('Event')
-                }}
-              >
+                }}>
                 <div>{t('Search Event')}</div>
               </li>
               <li
                 onClick={() => {
                   setNowSearch('Extrinsic')
-                }}
-              >
+                }}>
                 <div>{t('Search Extrinsic')}</div>
               </li>
             </ul>
           </div>
           <Popover content={popWithCopy} style={{top: '-20px'}}>
-            <div className='helpMessage'>
-              <img className='selectiveText' src={problem} alt='' style={{width: '16px'}} />
-              <span className='selectiveText'>{t('Help')}</span>
+            <div className="helpMessage">
+              <img className="selectiveText" src={problem} alt="" style={{width: '16px'}} />
+              <span className="selectiveText">{t('Help')}</span>
             </div>
           </Popover>
         </div>
       </ContainerEvent>
-      <SearchBox className='my-4'>
+      <SearchBox className="my-4">
         <Search
           className={'Home_pageSearch'}
           placeholder={t('Please select the type before searching')}
@@ -114,7 +112,7 @@ export default function SearchEvent() {
           loading={loading}
         />
       </SearchBox>
-      <div className='pt-8 pb-16 bg-gray-bgWhite screen:px-4 medium:px-4'>
+      <div className="pt-8 pb-16 bg-gray-bgWhite screen:px-4 medium:px-4">
         <Wrapper>
           {nowSearch === 'Event' ? (
             <Event value={inputValue} setLoading={setLoading} />

@@ -56,7 +56,7 @@ export default function Validator() {
 
   return (
     <>
-      <div className='px-24 py-4 bg-gray-bgWhite  screen:px-4'>
+      <div className="px-24 py-4 bg-gray-bgWhite  screen:px-4">
         <Wrapper>
           <TableMenuBox tabList={tabList} currentTab={currentTab} setCurrentTab={setCurrentTab} tag={tag} />
         </Wrapper>

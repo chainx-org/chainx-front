@@ -115,7 +115,7 @@ export default function SearchEvent(props: any) {
   }, [props.value])
 
   return (
-    <div className='overflow-scroll'>
+    <div className="overflow-scroll">
       <TableX columns={Columns} dataList={listValue} pagination={pagination} loading={loading} />
     </div>
   )

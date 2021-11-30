@@ -40,9 +40,9 @@ const useTable = ({
   const emptyDiv = () => {
     return (
       <div style={{height: '10rem'}}>
-        <div className='flex flex-col '>
-          <img src={noDataIcon} alt='' className='inline-block w-12 mx-auto ' />
-          <span className='inline-block w-28 mx-auto text-center mx-auto mt-4'>{t('No Data')}</span>
+        <div className="flex flex-col ">
+          <img src={noDataIcon} alt="" className="inline-block w-12 mx-auto " />
+          <span className="inline-block w-28 mx-auto text-center mx-auto mt-4">{t('No Data')}</span>
         </div>
       </div>
     )
@@ -79,7 +79,7 @@ const useTable = ({
     setData(getData())
   }, [])
   return (
-    <div className='flex flex-col'>
+    <div className="flex flex-col">
       <Table
         locale={{emptyText: loading ? <div style={{height: '10rem'}}>' '</div> : emptyDiv()}}
         columns={Columns}
@@ -96,7 +96,7 @@ const useTable = ({
           onExpandedRowsChange: onExpandedRowsChange,
         }}
       />
-      <div className='flex justify-end py-4'>{/*{Children}*/}</div>
+      <div className="flex justify-end py-4">{/*{Children}*/}</div>
     </div>
   )
 }

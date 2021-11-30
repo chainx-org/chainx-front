@@ -74,20 +74,20 @@ export default function AddressDetails() {
       title: t('PublicKey'),
       content: (
         <PublicContainer>
-          <span className='publicKey'>{pubKey}</span>
-          <Popover content={pubKey} className='publicKeyWeb'>
-            <img src={publicKeyIcon} alt='' />
+          <span className="publicKey">{pubKey}</span>
+          <Popover content={pubKey} className="publicKeyWeb">
+            <img src={publicKeyIcon} alt="" />
           </Popover>
         </PublicContainer>
       ),
     },
     {
       title: t('Address'),
-      content: <div className='font-medium text-gray-arrow '>{address}</div>,
+      content: <div className="font-medium text-gray-arrow ">{address}</div>,
     },
     {
       title: t('Nonce'),
-      content: <div className='font-medium text-gray-arrow '>{blockDetails?.nonce}</div>,
+      content: <div className="font-medium text-gray-arrow ">{blockDetails?.nonce}</div>,
     },
   ]
   const tabList: TabInfo[] = [
@@ -110,19 +110,18 @@ export default function AddressDetails() {
   const routerPath = () => {
     return (
       <div
-        className='flex flex-row cursor-pointer text-gray-white text-base mx-0 my-auto'
-        style={{whiteSpace: 'nowrap'}}
-      >
+        className="flex flex-row cursor-pointer text-gray-white text-base mx-0 my-auto"
+        style={{whiteSpace: 'nowrap'}}>
         <Link to={'/'} style={{color: 'rgba(255, 255, 255, 0.65)'}}>
-          <div className='flex flex-row'>
+          <div className="flex flex-row">
             {t('Home')}
-            <span className='inline-block mx-2'>/</span>
+            <span className="inline-block mx-2">/</span>
           </div>
         </Link>
         <Link to={'/chain/extrinsic'} style={{color: 'rgba(255, 255, 255, 0.65)'}}>
-          <div className='flex flex-row'>
+          <div className="flex flex-row">
             {t('Chain')}
-            <span className='inline-block mx-2'>/</span>
+            <span className="inline-block mx-2">/</span>
           </div>
         </Link>
         <Link to={`./${address}`}>{t('AccountDetails')}</Link>
@@ -136,7 +135,7 @@ export default function AddressDetails() {
         <NoData />
       ) : (
         <WrapperList>
-          <div className='px-24 bg-gray-arrow desktop:pt-8 screen:px-4  medium:px-4'>
+          <div className="px-24 bg-gray-arrow desktop:pt-8 screen:px-4  medium:px-4">
             <DetailTitle
               routeTitle={t('Address')}
               content={nowBlock}
@@ -145,7 +144,7 @@ export default function AddressDetails() {
             />
           </div>
           <List list={list} loading={loading} />
-          <div className='px-24 pb-4 bg-gray-bgWhite screen:px-4 medium:px-4'>
+          <div className="px-24 pb-4 bg-gray-bgWhite screen:px-4 medium:px-4">
             <WrapperDetails>
               <TableMenuBox tabList={tabList} currentTab={currentTab} setCurrentTab={setCurrentTab} tag={tag} />
             </WrapperDetails>

@@ -43,8 +43,7 @@ export default function TimeStatus({content, isHome}: TimeStatusProps) {
           fontSize: '14px',
           color: 'rgba(0,0,0,0.65)',
           cursor: 'pointer',
-        }}
-      >
+        }}>
         <Normal state={TimeData} isHome={isHome} />
       </div>
     </Popover>

@@ -78,7 +78,7 @@ const Model_echarts = (props: any) => {
     })
   }
   // 绘制图表
-  return <div id='mainChat' style={{width: '100%', height: '100%'}}></div>
+  return <div id="mainChat" style={{width: '100%', height: '100%'}}></div>
 }
 
 export default Model_echarts

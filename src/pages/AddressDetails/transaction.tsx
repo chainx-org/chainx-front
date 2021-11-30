@@ -85,7 +85,7 @@ export default function Transaction({account}: ExtrinsicProps) {
       dataIndex: 'result',
       key: 'result',
       render: (text: any, record: any) => {
-        return <div>{record.isSuccess === true ? <img src={successIcon} alt='' /> : <img src={failIcon} alt='' />}</div>
+        return <div>{record.isSuccess === true ? <img src={successIcon} alt="" /> : <img src={failIcon} alt="" />}</div>
       },
     },
     {
@@ -133,7 +133,7 @@ export default function Transaction({account}: ExtrinsicProps) {
     showTotal: (extrinsicTotal: number) => `${t('total')} ${extrinsicTotal} ${t('items')}`,
   }
   return (
-    <div className='px-8 overflow-scroll'>
+    <div className="px-8 overflow-scroll">
       <TableX
         rowKey={(row: any) => {
           return row.index

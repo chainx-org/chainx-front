@@ -34,12 +34,12 @@ export default function Operation({content, more, mini, left}: OperationProps) {
   return (
     <>
       {left ? (
-        <div className='flex flex-row justify-start'>
+        <div className="flex flex-row justify-start">
           {mini ? <ContentMiniBox>{content}</ContentMiniBox> : <ContentBox>{content}</ContentBox>}
           {/*{!more && <img src={moreIcon} alt="" style={{cursor: 'pointer'}}/>}*/}
         </div>
       ) : (
-        <div className='flex flex-row justify-end'>
+        <div className="flex flex-row justify-end">
           {mini ? <ContentMiniBox>{content}</ContentMiniBox> : <ContentBox>{content}</ContentBox>}
           {/*{!more && <img src={moreIcon} alt="" style={{cursor: 'pointer'}}/>}*/}
         </div>

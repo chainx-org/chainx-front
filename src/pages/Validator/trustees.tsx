@@ -28,7 +28,7 @@ export default function Trustees() {
       key: 'NikeName',
       render: (text: any, record: any) => {
         return (
-          <div className='flex flex-row'>
+          <div className="flex flex-row">
             <Normal state={record.referralId ? record.referralId : '-'} />
             <TrustTag />
           </div>
@@ -101,7 +101,7 @@ export default function Trustees() {
   }
 
   return (
-    <div className='px-8 overflow-scroll'>
+    <div className="px-8 overflow-scroll">
       <TableX columns={chainColumns} dataList={trusteesData} pagination={pagination} loading={loading} />
     </div>
   )

@@ -18,10 +18,9 @@ export default function BitcoinBlock() {
       render: (text: any, record: any) => {
         return (
           <a
-            className='inline-block text-blue-aText font-medium'
+            className="inline-block text-blue-aText font-medium"
             href={`https://live.blockcypher.com/btc/block/${record.btcHeight}/`}
-            target='_Blank'
-          >
+            target="_Blank">
             {record.btcHeight}
           </a>
         )
@@ -34,10 +33,9 @@ export default function BitcoinBlock() {
       render: (text: any, record: any) => {
         return (
           <a
-            className='inline-block text-blue-aText font-medium'
+            className="inline-block text-blue-aText font-medium"
             href={`https://live.blockcypher.com/btc/block/${swapEndian(record.btcHash.slice(2))}/`}
-            target='_Blank'
-          >
+            target="_Blank">
             {swapEndian(record.btcHash)
               ?.substring(0, 7)
               .concat('...')

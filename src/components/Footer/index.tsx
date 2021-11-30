@@ -55,48 +55,46 @@ function Footer(): React.ReactElement {
   return (
     <div
       style={{bottom: '0px', zIndex: 99}}
-      className='w-overSpread bottom-0 flex bg-topBar-black mt-29 desktop:px-7 desktop:fixed desktop:flex-row desktop:justify-between screen:flex-col screen:items-center'
-    >
-      <div className='flex flex-row screen:flex-col'>
+      className="w-overSpread bottom-0 flex bg-topBar-black mt-29 desktop:px-7 desktop:fixed desktop:flex-row desktop:justify-between screen:flex-col screen:items-center">
+      <div className="flex flex-row screen:flex-col">
         <ImgContent>
           <a onClick={() => copyEmail('hi@chainx.org')}>
-            <img src='https://i.postimg.cc/1XwVYXsb/2x.png' alt='' style={{width: '3rem'}} />
+            <img src="https://i.postimg.cc/1XwVYXsb/2x.png" alt="" style={{width: '3rem'}} />
           </a>
-          <a href='https://github.com/chainx-org/sherpax-web' target='_black'>
-            <img src='https://i.postimg.cc/26qZhTJk/wechat-2x-1.png' alt='' style={{width: '3rem'}} />
+          <a href="https://github.com/chainx-org/sherpax-web" target="_black">
+            <img src="https://i.postimg.cc/26qZhTJk/wechat-2x-1.png" alt="" style={{width: '3rem'}} />
           </a>
-          <a href='https://chainx-org.medium.com/' target='_black'>
-            <img src='https://i.postimg.cc/fRKmNVmN/medium-1-2x.png' alt='' style={{width: '3rem'}} />
+          <a href="https://chainx-org.medium.com/" target="_black">
+            <img src="https://i.postimg.cc/fRKmNVmN/medium-1-2x.png" alt="" style={{width: '3rem'}} />
           </a>
-          <a href='https://t.me/chainx_org' target='_black'>
-            <img src='https://i.postimg.cc/jjSNdR4J/telegram-2x.png' alt='' style={{width: '3rem'}} />
+          <a href="https://t.me/chainx_org" target="_black">
+            <img src="https://i.postimg.cc/jjSNdR4J/telegram-2x.png" alt="" style={{width: '3rem'}} />
           </a>
-          <a href='https://twitter.com/chainx_org' target='_black'>
-            <img src='https://i.postimg.cc/5tKzXDsK/twitter-2x.png' alt='' style={{width: '3rem'}} />
+          <a href="https://twitter.com/chainx_org" target="_black">
+            <img src="https://i.postimg.cc/5tKzXDsK/twitter-2x.png" alt="" style={{width: '3rem'}} />
           </a>
-          <div className='weChatImg'>
-            <img src='https://i.postimg.cc/B6d1gH9x/wechat-2x.png' alt='' style={{width: '3rem'}} />
+          <div className="weChatImg">
+            <img src="https://i.postimg.cc/B6d1gH9x/wechat-2x.png" alt="" style={{width: '3rem'}} />
           </div>
-          <div className='wechatHover'>
-            <img src={wechatImg} alt='' />
+          <div className="wechatHover">
+            <img src={wechatImg} alt="" />
           </div>
-          <div className='wechatHoverImg'>
-            <img src={wechatImg} alt='' />
+          <div className="wechatHoverImg">
+            <img src={wechatImg} alt="" />
           </div>
         </ImgContent>
         <div
           className={'text-topBar-white mx-0 my-auto text-center text-sm desktop:ml-12 screen:ml-0'}
-          style={{opacity: '38%'}}
-        >
+          style={{opacity: '38%'}}>
           All rights reserved © 2019 ChainX
         </div>
       </div>
-      <div className='flex flex-row screen:flex-col'>
+      <div className="flex flex-row screen:flex-col">
         <LangSelect />
         <img
           src={logo}
-          alt=''
-          className='inline-block h-6 my-auto ml-8 screen:ml-0 screen:mb-8'
+          alt=""
+          className="inline-block h-6 my-auto ml-8 screen:ml-0 screen:mb-8"
           style={{width: '112px', height: '24px'}}
         />
       </div>

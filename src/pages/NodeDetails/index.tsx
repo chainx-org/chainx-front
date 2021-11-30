@@ -72,8 +72,8 @@ export default function NodeDetails() {
     {
       title: t('NikeName'),
       content: (
-        <div className='text-black-textColor'>
-          <div className='flex flex-row'>
+        <div className="text-black-textColor">
+          <div className="flex flex-row">
             <span>{addressDetails?.referralId}</span>
             {addressDetails?.isValidating ? <TrustTag /> : '-'}
           </div>
@@ -83,10 +83,10 @@ export default function NodeDetails() {
     {
       title: t('Account'),
       content: (
-        <div className='text-black-textColor'>
+        <div className="text-black-textColor">
           <CopyText
             text={addressDetails?.rewardPotAccount}
-            children={<div className='text-black-textColor'>{reName(addressDetails?.account)}</div>}
+            children={<div className="text-black-textColor">{reName(addressDetails?.account)}</div>}
           />
         </div>
       ),
@@ -103,21 +103,21 @@ export default function NodeDetails() {
       content: (
         <CopyText
           text={addressDetails?.rewardPotAccount}
-          children={<div className='text-black-textColor'>{addressDetails?.rewardPotAccount}</div>}
+          children={<div className="text-black-textColor">{addressDetails?.rewardPotAccount}</div>}
         />
       ),
     },
     {
       title: t('Missed Blocks'),
-      content: <div className='text-black-textColor'>{addressDetails?.missed ? addressDetails?.missed : '0'}</div>,
+      content: <div className="text-black-textColor">{addressDetails?.missed ? addressDetails?.missed : '0'}</div>,
     },
     {
       title: t('Self Bonded'),
-      content: <div className='text-black-textColor'>{accuracy(addressDetails?.selfBonded)}</div>,
+      content: <div className="text-black-textColor">{accuracy(addressDetails?.selfBonded)}</div>,
     },
     {
       title: t('Total Nominations'),
-      content: <div className='text-black-textColor'>{accuracy(addressDetails?.totalNomination)}</div>,
+      content: <div className="text-black-textColor">{accuracy(addressDetails?.totalNomination)}</div>,
     },
     // {
     //   title: t('Authored Blocks'),
@@ -128,11 +128,11 @@ export default function NodeDetails() {
     // },
     {
       title: t('Vote Weight Last Update'),
-      content: <div className='text-black-textColor'>{addressDetails?.lastTotalVoteWeightUpdate}</div>,
+      content: <div className="text-black-textColor">{addressDetails?.lastTotalVoteWeightUpdate}</div>,
     },
     {
       title: t('Total Weight'),
-      content: <div className='text-black-textColor'>{reName(addressDetails?.lastTotalVoteWeight)}</div>,
+      content: <div className="text-black-textColor">{reName(addressDetails?.lastTotalVoteWeight)}</div>,
     },
   ]
   const tabList: TabInfo[] = [
@@ -146,19 +146,18 @@ export default function NodeDetails() {
   const routerPath = () => {
     return (
       <div
-        className='flex flex-row cursor-pointer text-gray-white text-base mx-0 my-auto'
-        style={{whiteSpace: 'nowrap'}}
-      >
+        className="flex flex-row cursor-pointer text-gray-white text-base mx-0 my-auto"
+        style={{whiteSpace: 'nowrap'}}>
         <Link to={'/'} style={{color: 'rgba(255, 255, 255, 0.65)'}}>
-          <div className='flex flex-row'>
+          <div className="flex flex-row">
             {t('Home')}
-            <span className='inline-block mx-2'>/</span>
+            <span className="inline-block mx-2">/</span>
           </div>
         </Link>
         <Link to={'/validators'} style={{color: 'rgba(255, 255, 255, 0.65)'}}>
-          <div className='flex flex-row'>
+          <div className="flex flex-row">
             {t('Chain')}
-            <span className='inline-block mx-2'>/</span>
+            <span className="inline-block mx-2">/</span>
           </div>
         </Link>
         <Link to={`./${node}`}>{t('NodeDetails')}</Link>
@@ -172,11 +171,11 @@ export default function NodeDetails() {
         <NoData />
       ) : (
         <WrapperList>
-          <div className='px-24 bg-gray-arrow desktop:pt-8 screen:px-4  medium:px-4'>
+          <div className="px-24 bg-gray-arrow desktop:pt-8 screen:px-4  medium:px-4">
             <DetailTitle routeTitle={t('Validator')} content={node} isBlock={false} routePath={routerPath} />
           </div>
           <List list={list} loading={loading} />
-          <div className='px-24 pb-4 bg-gray-bgWhite screen:px-4 medium:px-4'>
+          <div className="px-24 pb-4 bg-gray-bgWhite screen:px-4 medium:px-4">
             <WrapperDetails>
               <TableMenuBox tabList={tabList} currentTab={currentTab} setCurrentTab={setCurrentTab} tag={tag} />
             </WrapperDetails>
