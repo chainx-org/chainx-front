@@ -11,6 +11,7 @@ import Account from './account'
 import Extrinsic from './extrinsic'
 import Event from './event'
 import {Wrapper} from '../../css/Wrapper'
+import Test from './test'
 
 export default function Chain() {
   const {t} = useTranslation()
@@ -46,6 +47,11 @@ export default function Chain() {
       title: t('Accounts'),
       content: <Account />,
       name: 'account',
+    },
+    {
+      title: t('test'),
+      content: <Test />,
+      name: 'test',
     },
   ]
   return (

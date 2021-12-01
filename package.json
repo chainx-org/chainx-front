@@ -78,7 +78,7 @@
     "webpackbar": "^5.0.0-3"
   },
   "scripts": {
-    "start": "cross-env API_ENV=dev webpack serve --config build/webpack.dev.config.js --open",
+    "start": "webpack serve --config build/webpack.dev.config.js --open",
     "build": "yarn build:css && yarn build:prod",
     "build:prod": "npx webpack --config build/webpack.prod.config.js",
     "build:css": "postcss src/css/styles.css -o src/css/output.css",

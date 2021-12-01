@@ -16,7 +16,7 @@ module.exports = {
     chunkFilename: '[name].[chunkhash:8].js',
     path: path.resolve(rootDir, 'dist'),
     filename: 'bundle.[contenthash:8].js',
-    publicPath: '/',
+    publicPath: '',
     clean: true,
   },
   module: {
@@ -72,7 +72,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.resolve(rootDir, './public/index.html'),
+      template: path.resolve(rootDir, 'public/index.html'),
       inject: 'body',
       scriptLoading: 'blocking',
       minify: {
@@ -80,16 +80,7 @@ module.exports = {
         removeComments: true, //移除HTML中的注释
         collapseWhitespace: true, //删除空白符与换行符
       },
-      favicon: path.resolve(rootDir, './public/favicon.png'),
-    }),
-    new CopyWebpackPlugin({
-      patterns: [
-        {
-          from: '*.js',
-          context: path.resolve(rootDir, 'public/js'),
-          to: path.resolve(rootDir, 'dist/js'),
-        },
-      ],
+      favicon: path.resolve(rootDir, 'public/favicon.png'),
     }),
     new MiniCssExtractPlugin({
       filename: 'css/[name].css',

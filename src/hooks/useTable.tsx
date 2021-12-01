@@ -1,104 +1,76 @@
 /** @format */
 
-//自定义封装table表格
-import React, {useEffect, useState} from 'react'
-import {useTranslation} from 'react-i18next'
-import {Table} from 'antd'
-import noDataIcon from '../assets/noData.svg'
+//能否展开
+//接口url
+import React, {useState, useEffect} from 'react'
 
-interface chainxTableProps {
-  Columns?: Array<any>
-  getData: any
-  result?: string
-  keyNum?: number
-  rowKey?: any
-  expandedRowRender?: any
-  rowExpandable?: any
-  expandIcon?: any
-  expandedRowKeys?: any
-  onExpandedRowsChange?: any
+interface PageAbout {
+  current: number
+  pageSize: number
 }
 
-const useTable = ({
-  Columns,
-  getData,
-  result,
-  keyNum,
-  rowKey,
-  expandedRowRender,
-  rowExpandable,
-  expandIcon,
-  expandedRowKeys,
-  onExpandedRowsChange,
-}: chainxTableProps) => {
-  const {t} = useTranslation()
-  const [data, setData] = useState([])
-  const [page, setPage] = useState(1)
-  const [pageSize, setPageSize] = useState(10)
-  const [dataTotal, setDataTotal] = useState(0)
-  const [loading, setLoading] = useState(true)
-  const emptyDiv = () => {
-    return (
-      <div style={{height: '10rem'}}>
-        <div className="flex flex-col ">
-          <img src={noDataIcon} alt="" className="inline-block w-12 mx-auto " />
-          <span className="inline-block w-28 mx-auto text-center mx-auto mt-4">{t('No Data')}</span>
-        </div>
-      </div>
-    )
-  }
-
-  function onChange(page: number, pageSize: any) {
-    setPage(page)
-    setPageSize(pageSize)
-    setLoading(true)
-  }
-
-  //索引key
+// 配合antd的table，生产table所需函数方法及state
+export function useTableData<
+  TableParams extends SearchData & PageAbout = any,
+  SearchData extends object = any,
+  Datasource = any,
+>({
+  tableParamsInit = {pageSize: 10, current: 1} as any,
+  searchDataInit = {},
+  pullData = () => {
+    // console.log('pullData')
+  },
+  getTotal = () => {
+    return 1
+  },
+}: {
+  tableParamsInit?: TableParams
+  searchDataInit?: SearchData | {}
+  // 调用接口的方法，接受setDatasource作为参数, 在获取数据后，通过其将数据注回useTableData
+  pullData: (params: TableParams, setDatasource: React.Dispatch<React.SetStateAction<Datasource[] | []>>) => void
+  // 从结果中获取数据总数
+  getTotal?: (res: any) => number
+}) {
+  const [datasource, setDatasource] = useState<Datasource[] | []>([])
+  const [tableParams, setTableParams] = useState<TableParams>(tableParamsInit)
+  const [searchData, setSearchData] = useState<SearchData | {}>(searchDataInit)
+  const [total, setTotal] = useState(1)
+  //表格接口依赖变动，调用接口，拉取新的数据
   useEffect(() => {
-    setPage(1)
-    setPageSize(10)
-    setLoading(true)
-  }, [keyNum])
-
-  //分页
-  const pagination = {
-    pageSize: pageSize,
-    current: page,
-    defaultCurrent: page,
-    total: dataTotal,
-    showSizeChanger: true,
-    showQuickJumper: true,
-    hideOnSinglePage: true,
-    bordered: true,
-    onChange: (page: number, pageSize?: number) => onChange(page, pageSize),
-    showTotal: (dataTotal: number) => `${t('total')} ${dataTotal} ${t('items')}`,
+    const res = pullData(tableParams, setDatasource)
+    setTotal(getTotal(res))
+  }, [tableParams])
+  // 搜索时，将搜索state set至表格接口依赖，表格接口依赖变化，自动触发接口调用
+  const handleSearch = () => {
+    setTableParams(s => ({...s, current: 1, ...searchData}))
   }
-
-  useEffect(() => {
-    setData(getData())
-  }, [])
-  return (
-    <div className="flex flex-col">
-      <Table
-        locale={{emptyText: loading ? <div style={{height: '10rem'}}>' '</div> : emptyDiv()}}
-        columns={Columns}
-        dataSource={data}
-        pagination={pagination}
-        loading={loading}
-        bordered
-        rowKey={rowKey}
-        expandable={{
-          expandIcon: expandIcon,
-          expandedRowRender: expandedRowRender,
-          rowExpandable: rowExpandable,
-          expandedRowKeys: expandedRowKeys,
-          onExpandedRowsChange: onExpandedRowsChange,
-        }}
-      />
-      <div className="flex justify-end py-4">{/*{Children}*/}</div>
-    </div>
-  )
+  // 重置，将搜索依赖及表格接口依赖重置为init
+  const handleReset = () => {
+    setTableParams(tableParamsInit)
+    setSearchData(searchDataInit)
+  }
+  // 页码变更
+  const handlePageChange = (v: number) => {
+    setTableParams(s => ({...s, current: v}))
+  }
+  return {
+    // 数据总数
+    total,
+    setTotal,
+    // 表格数据源
+    datasource,
+    setDatasource,
+    // 表格接口依赖
+    tableParams,
+    setTableParams,
+    // 搜索依赖state
+    searchData,
+    setSearchData,
+    // 搜索操作
+    handleSearch,
+    // 重置操作
+    handleReset,
+    // 页面变化
+    handlePageChange,
+  }
 }
-
-export default useTable
