@@ -112,6 +112,7 @@
     "less-loader": "4.1.0",
     "levenary": "^1.1.1",
     "lodash": "^4.17.21",
+    "mobx-state-tree": "^5.0.5",
     "moment": "^2.29.1",
     "qs": "^6.10.1",
     "react": "^17.0.2",

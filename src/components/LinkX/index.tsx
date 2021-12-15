@@ -175,7 +175,8 @@ export function ShorterLinkCross({linkUrl, content, state, style}: LinkProps) {
           {value
             ?.substring(0, 7)
             .concat('...')
-            .concat(value?.substring(value.length - 5))}
+            .concat(value?.substring(value.length - 5))
+          }
         </LinkSpanCross>
       </Link>
     </Popover>

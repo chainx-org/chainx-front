@@ -8,6 +8,7 @@ import copy from 'copy-to-clipboard'
 import LangSelect from './langSelect'
 import {message} from 'antd'
 import {useTranslation} from 'react-i18next'
+import {linkToOuter} from './linkState'
 
 const ImgContent = styled.div`
   display: flex;
@@ -21,27 +22,22 @@ const ImgContent = styled.div`
 
   .weChatImg {
     cursor: pointer;
-  }
-
-  .wechatHover img {
-    display: none;
-  }
-
-  .wechatHoverImg {
-    position: absolute;
-    left: 15rem; //位置和大小自己定义
-    top: -6rem;
-    width: 100px;
-    height: 9rem;
-    cursor: pointer; //cursor即鼠标悬浮时鼠标样式,pointer为小手
-  }
-
-  .wechatHoverImg img {
-    display: none;
-  }
-
-  .wechatHoverImg:hover img {
-    display: block;
+    .wechatHoverImg {
+      display: none;
+    }
+    :hover {
+      .wechatHoverImg {
+        display: block;
+        > img {
+          position: absolute;
+          left: 15rem; //位置和大小自己定义
+          top: -6rem;
+          width: 100px;
+          height: 100px;
+          cursor: pointer; //cursor即鼠标悬浮时鼠标样式,pointer为小手
+        }
+      }
+    }
   }
 `
 
@@ -61,26 +57,18 @@ function Footer(): React.ReactElement {
           <a onClick={() => copyEmail('hi@chainx.org')}>
             <img src="https://i.postimg.cc/1XwVYXsb/2x.png" alt="" style={{width: '3rem'}} />
           </a>
-          <a href="https://github.com/chainx-org/sherpax-web" target="_black">
-            <img src="https://i.postimg.cc/26qZhTJk/wechat-2x-1.png" alt="" style={{width: '3rem'}} />
-          </a>
-          <a href="https://chainx-org.medium.com/" target="_black">
-            <img src="https://i.postimg.cc/fRKmNVmN/medium-1-2x.png" alt="" style={{width: '3rem'}} />
-          </a>
-          <a href="https://t.me/chainx_org" target="_black">
-            <img src="https://i.postimg.cc/jjSNdR4J/telegram-2x.png" alt="" style={{width: '3rem'}} />
-          </a>
-          <a href="https://twitter.com/chainx_org" target="_black">
-            <img src="https://i.postimg.cc/5tKzXDsK/twitter-2x.png" alt="" style={{width: '3rem'}} />
-          </a>
+          {linkToOuter.map(item => {
+            return (
+              <a href={item.linkUrl} key={item.name} target="_black">
+                <img src={item.imgSrc} alt="" style={{width: '3rem'}} />
+              </a>
+            )
+          })}
           <div className="weChatImg">
             <img src="https://i.postimg.cc/B6d1gH9x/wechat-2x.png" alt="" style={{width: '3rem'}} />
-          </div>
-          <div className="wechatHover">
-            <img src={wechatImg} alt="" />
-          </div>
-          <div className="wechatHoverImg">
-            <img src={wechatImg} alt="" />
+            <div className="wechatHoverImg">
+              <img src={wechatImg} alt="" />
+            </div>
           </div>
         </ImgContent>
         <div
