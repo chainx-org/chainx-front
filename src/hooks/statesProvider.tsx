@@ -1,7 +1,7 @@
 /** @format */
 
 import React, {createContext, FC, useContext} from 'react'
-import {RootInstance, rootStore} from '../models/index'
+import {RootInstance, rootStore} from '../models/Root'
 
 export const RootStoreContext = createContext<null | RootInstance>(null)
 

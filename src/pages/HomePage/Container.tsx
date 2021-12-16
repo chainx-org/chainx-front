@@ -17,9 +17,11 @@ import Staked from '../../assets/icon_zhiya.svg'
 import Issuance from '../../assets/icon-issuance.svg'
 import {accuracyInt} from '../../helper/hooks'
 import i18n from '../../i18n'
+import { useMst } from '../../hooks/statesProvider'
 
 export default function Container() {
   const {t} = useTranslation()
+  const {chainMeta} = useMst()
   const saveCallBack: any = useRef()
   const [timers, setTimers] = useState<Array<NodeJS.Timeout>>([])
   const [latestBlock, setListData] = useState<any>('')

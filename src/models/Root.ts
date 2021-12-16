@@ -1,23 +1,26 @@
 /** @format */
 
 import {types, Instance, onSnapshot} from 'mobx-state-tree'
-import {ChainBlock} from './ChainBlock'
-
+import {ChainMeta} from './ChainMeta'
 const RootModel = types
   .model({
-    chainBlock: ChainBlock,
+    chainMeta: ChainMeta,
   })
   .actions(self => ({
     afterCreate() {},
   }))
 
 const initialState = RootModel.create({
-  chainBlock: {
-    address: '',
-    items: '',
-    page: 0,
-    pageSize: 10,
-    total: 0,
+  chainMeta: {
+    isLoading: false,
+    mtLatestBlock: null,
+    mtFinalizedBlock: null,
+    mtTotalExtrinsics: null,
+    mtTotalAccounts: null,
+    mtTransferCount: null,
+    mtTotalValidators: null,
+    mtStakedValue: null,
+    mtTotalIssuance: null,
   },
 })
 
