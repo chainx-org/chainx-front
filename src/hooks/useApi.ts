@@ -4,7 +4,7 @@ import message from 'antd/lib/message'
 import axios from 'axios'
 
 axios.defaults.headers.post['Content-Type'] = 'application/json;charset=UTF-8'
-axios.defaults.baseURL = 'https://api-v2.chainx.cc/'
+axios.defaults.baseURL = process.env.REACT_APP_API_URL
 export const outSideAPI = axios.create({
   baseURL: 'https://api.coingecko.com/api/v3/coins/chainx/market_chart?vs_currency=usd&days=3&interval=true',
 })
