@@ -1,8 +1,9 @@
-import { get } from '../hooks/useApi'
+/** @format */
 
-export default function api(a, window ,setLoading) {
+import {get} from '../hooks/useApi'
 
-  const tryExc = async(value, window)=>{
+export default function api(a, window, setLoading) {
+  const tryExc = async (value, window) => {
     try {
       const res1 = await get(`/extrinsics/${value}`, ``)
       if (res1) {
@@ -25,10 +26,10 @@ export default function api(a, window ,setLoading) {
         window.location.href = `/#/blockDetails/${value}`
         setLoading(false)
       } else {
-        tryExc(value,window)
+        tryExc(value, window)
       }
     } catch (e) {
-      tryExc(value,window)
+      tryExc(value, window)
     }
   }
 
@@ -51,22 +52,17 @@ export default function api(a, window ,setLoading) {
     input = input.trim()
     if (input === '') {
       return `/`
+    }
+    if (/^[0-9]*$/.test(input)) {
+      const res = await get(`/blocks/${input}`, ``)
+      res ? (window.location.href = `/#/blockDetails/${input}`) : (window.location.href = `/#/Nodata`)
     } else {
-      if (/^[0-9]*$/.test(input)) {
-        const res = await get(`/blocks/${input}`, ``)
-        res ? window.location.href = `/#/blockDetails/${input}`
-          : window.location.href = `/#/Nodata`
-      } else {
-        //判断是交易hash还是地址
-        if(input.length>48){
-          return getBlockData(input, window)
-        }else {
-          return getAccountData(input, window)
-        }
-
+      //判断是交易hash还是地址
+      if (input.length > 48) {
+        return getBlockData(input, window)
       }
+      return getAccountData(input, window)
     }
   }
   return search(a, window)
 }
-

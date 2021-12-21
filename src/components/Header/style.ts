@@ -1,4 +1,6 @@
-import styled from 'styled-components';
+/** @format */
+
+import styled from 'styled-components'
 
 export const Wrapper = styled.div`
   display: flex;
@@ -7,7 +9,7 @@ export const Wrapper = styled.div`
   justify-content: flex-end;
   @media screen and (max-width: 1150px) {
     justify-content: space-between;
-    margin:1rem 0rem;
+    margin: 1rem 0rem;
   }
   .topLink {
     .topLinkTool {
@@ -30,9 +32,9 @@ export const Wrapper = styled.div`
         width: 14rem;
         z-index: 999;
       }
-    }   
+    }
     & > ul {
-      background: #FFFFFF;
+      background: #ffffff;
       box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.15);
       border-radius: 4px;
       width: 100%;
@@ -43,11 +45,11 @@ export const Wrapper = styled.div`
         width: 14rem;
         display: flex;
         justify-content: start;
-        padding-left:1rem;
+        padding-left: 1rem;
         & > div {
           line-height: 2.5rem;
           //text-align: start;
-          color:#666666;
+          color: #666666;
         }
 
         :hover {
@@ -56,7 +58,7 @@ export const Wrapper = styled.div`
       }
     }
   }
-`;
+`
 
 export const NavLink = styled.div`
   display: flex;
@@ -64,59 +66,58 @@ export const NavLink = styled.div`
   justify-content: space-between;
   height: 3rem;
   line-height: 3rem;
-  >a{
+  > a {
     min-width: 80px;
   }
-  >a:nth-child(n+3){
+  > a:nth-child(n + 3) {
     min-width: 116px;
   }
-  >a:nth-child(5){
+  > a:nth-child(5) {
     min-width: 230px;
   }
   @media screen and (max-width: 1150px) {
     display: none;
   }
-`;
+`
 
 export const SelectList = styled.div`
-    display: none;
-    @media screen and (max-width: 1150px) {
-        display: block;
-    }
-`;
+  display: none;
+  @media screen and (max-width: 1150px) {
+    display: block;
+  }
+`
 
 export const HeardLine = styled.div`
-    height: 1.5rem;
-    border-right: 1px solid #E9E9E9;
-    margin: auto 0;
-    margin-left: 12px;;
-`;
+  height: 1.5rem;
+  border-right: 1px solid #e9e9e9;
+  margin: auto 0;
+  margin-left: 12px; ;
+`
 
 export const HomeSearch = styled.div`
-    display: flex;
-    .NavSearch {
-        margin:auto 0;
-        width:20rem;
-    }
-    @media screen and (max-width: 1150px) {
-        display: none;
-    }
-`;
+  display: flex;
+  .NavSearch {
+    margin: auto 0;
+    width: 20rem;
+  }
+  @media screen and (max-width: 1150px) {
+    display: none;
+  }
+`
 
 export const MobileSearch = styled.div`
-    display: none;
-    @media screen and (max-width: 1150px) {
-        display: flex;
-        .NavSearch {
-            width: 100%;
-            margin:auto 0;
-        }
-        .NavSearch .ant-input-group{
-            height:2.5rem;
-        }
-        .NavSearch .ant-input-group .ant-input{
-            height:2.5rem;
-        }
+  display: none;
+  @media screen and (max-width: 1150px) {
+    display: flex;
+    .NavSearch {
+      width: 100%;
+      margin: auto 0;
     }
-`;
-
+    .NavSearch .ant-input-group {
+      height: 2.5rem;
+    }
+    .NavSearch .ant-input-group .ant-input {
+      height: 2.5rem;
+    }
+  }
+`

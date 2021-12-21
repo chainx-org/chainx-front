@@ -1,34 +1,36 @@
-import { useTranslation } from 'react-i18next';
-import React, { useEffect, useState } from 'react';
-import TableX from '../../components/Table';
-import { get } from '../../hooks/useApi';
-import { LinkX, ShorterLink } from '../../components/LinkX';
-import TimeStatus from '../../components/TimeStatus';
-import Operation from '../../components/Operation';
-import JsonApi from '../../components/Jsonformat';
-import ExpandIcon from '../../components/ExpandIcon';
+/** @format */
+
+import {useTranslation} from 'react-i18next'
+import React, {useEffect, useState} from 'react'
+import TableX from '../../components/Table'
+import {get} from '../../hooks/useApi'
+import {LinkX, ShorterLink} from '../../components/LinkX'
+import TimeStatus from '../../components/TimeStatus'
+import Operation from '../../components/Operation'
+import JsonApi from '../../components/Jsonformat'
+import ExpandIcon from '../../components/ExpandIcon'
 
 interface ExtrinsicProps {
-  account?: number | string,
+  account?: number | string
 }
 
 export default function Transfers({account}: ExtrinsicProps) {
-  const {t} = useTranslation();
-  const [extrinsicData, setExtrinsicData] = useState([]);
-  const [page, setPage] = useState(1);
-  const [pageSize, setPageSize] = useState(10);
-  const [extrinsicTotal, setExtrinsicTotal] = useState(0);
-  const [loading, setLoading] = useState(true);
+  const {t} = useTranslation()
+  const [extrinsicData, setExtrinsicData] = useState([])
+  const [page, setPage] = useState(1)
+  const [pageSize, setPageSize] = useState(10)
+  const [extrinsicTotal, setExtrinsicTotal] = useState(0)
+  const [loading, setLoading] = useState(true)
 
   const getExtrinsicData = async () => {
-    let res: any = await get(`/accounts/${account}/transfers?page=${page - 1}&page_size=${pageSize}`, ``);
-    setExtrinsicTotal(res.total);
+    let res: any = await get(`/accounts/${account}/transfers?page=${page - 1}&page_size=${pageSize}`, ``)
+    setExtrinsicTotal(res.total)
     res.items.map((item: any, index: number) => {
-      item['index'] = index + 1;
-    });
-    setExtrinsicData(res.items);
-    setLoading(false);
-  };
+      item['index'] = index + 1
+    })
+    setExtrinsicData(res.items)
+    setLoading(false)
+  }
 
   const chainColumns = [
     {
@@ -37,10 +39,13 @@ export default function Transfers({account}: ExtrinsicProps) {
       key: 'extrinsicId',
       render: (text: any, record: any) => {
         return (
-          <LinkX linkUrl={`/extrinsicDetails/${record.hash}`} state={record}
-                 content={(record.indexer.blockHeight) + '-' + (record.sort)}/>
-        );
-      }
+          <LinkX
+            linkUrl={`/extrinsicDetails/${record.hash}`}
+            state={record}
+            content={record.indexer.blockHeight + '-' + record.sort}
+          />
+        )
+      },
     },
     {
       title: t('Extrinsic Hash'),
@@ -48,42 +53,37 @@ export default function Transfers({account}: ExtrinsicProps) {
       key: 'extrinsicHash',
       render: (text: any, record: any) => {
         return (
-          <ShorterLink linkUrl={`/extrinsicDetails/${record.extrinsicHash}`} state={record}
-                       content={record.extrinsicHash}/>
-        );
-      }
+          <ShorterLink
+            linkUrl={`/extrinsicDetails/${record.extrinsicHash}`}
+            state={record}
+            content={record.extrinsicHash}
+          />
+        )
+      },
     },
     {
       title: t('Time'),
       dataIndex: 'time',
       key: 'time',
       render: (text: any, record: any) => {
-        return (
-          <>
-            {record.indexer.blockTime?<TimeStatus content={record.indexer.blockTime}/>:'-'}
-          </>
-          );
-      }
+        return <>{record.indexer.blockTime ? <TimeStatus content={record.indexer.blockTime} /> : '-'}</>
+      },
     },
     {
       title: t('Sender'),
       dataIndex: 'extrinsicHash',
       key: 'extrinsicHash',
       render: (text: any, record: any) => {
-        return (
-          <ShorterLink linkUrl={`/extrinsicDetails/${record.data[0]}`} state={record} content={record.data[0]}/>
-        );
-      }
+        return <ShorterLink linkUrl={`/extrinsicDetails/${record.data[0]}`} state={record} content={record.data[0]} />
+      },
     },
     {
       title: t('Receiver'),
       dataIndex: 'extrinsicHash',
       key: 'extrinsicHash',
       render: (text: any, record: any) => {
-        return (
-          <ShorterLink linkUrl={`/extrinsicDetails/${record.data[1]}`} state={record} content={record.data[1]}/>
-        );
-      }
+        return <ShorterLink linkUrl={`/extrinsicDetails/${record.data[1]}`} state={record} content={record.data[1]} />
+      },
     },
     // {
     //   title: t('Result'),
@@ -100,10 +100,8 @@ export default function Transfers({account}: ExtrinsicProps) {
       dataIndex: 'Balance',
       key: 'Balance',
       render: (text: any, record: any) => {
-        return (
-          <div>{record.data[2] / 10000000}</div>
-        );
-      }
+        return <div>{record.data[2] / 10000000}</div>
+      },
     },
     {
       title: t('Operation'),
@@ -112,39 +110,32 @@ export default function Transfers({account}: ExtrinsicProps) {
       align: 'right',
       width: '15rem',
       render: (text: any, record: any) => {
-        return (
-          <Operation content={record.section}/>
-        );
-      }
-    }
-
-  ];
+        return <Operation content={record.section} />
+      },
+    },
+  ]
 
   function onChange(page: number, pageSize: any) {
     setExpandedRowKeys([])
-    setPage(page);
-    setPageSize(pageSize);
-    setLoading(true);
+    setPage(page)
+    setPageSize(pageSize)
+    setLoading(true)
   }
 
   useEffect(() => {
-    getExtrinsicData().then(() => {
-
-    });
-  }, [page, pageSize]);
+    getExtrinsicData().then(() => {})
+  }, [page, pageSize])
 
   const expandedRowRender = (record: any) => {
-    return (
-      <JsonApi json={record?.meta}/>
-    );
-  };
+    return <JsonApi json={record?.meta} />
+  }
   const rowExpandable = (record: any) => {
-    return true;
-  };
-  const [expandedRowKeys, setExpandedRowKeys] = useState<string[]>([]);
+    return true
+  }
+  const [expandedRowKeys, setExpandedRowKeys] = useState<string[]>([])
   const onExpandedRowsChange = (expandedRows: string[]) => {
-    setExpandedRowKeys(expandedRows);
-  };
+    setExpandedRowKeys(expandedRows)
+  }
   const pagination = {
     pageSize: pageSize,
     current: page,
@@ -155,12 +146,13 @@ export default function Transfers({account}: ExtrinsicProps) {
     hideOnSinglePage: true,
     onChange: (page: number, pageSize: number) => onChange(page, pageSize),
     showTotal: (extrinsicTotal: number) => `${t('total')} ${extrinsicTotal} ${t('items')}`,
-
-  };
+  }
   return (
-    <div className="px-8 overflow-scroll">
+    <div className='px-8 overflow-scroll'>
       <TableX
-        rowKey={(row: any) => {return row.index;}}
+        rowKey={(row: any) => {
+          return row.index
+        }}
         columns={chainColumns}
         dataList={extrinsicData}
         pagination={pagination}
@@ -172,5 +164,5 @@ export default function Transfers({account}: ExtrinsicProps) {
         onExpandedRowsChange={onExpandedRowsChange}
       />
     </div>
-  );
+  )
 }

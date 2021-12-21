@@ -1,13 +1,15 @@
-import { useTranslation } from 'react-i18next';
-import React from 'react';
-import { LinkX, Normal, ShorterLink } from '../../components/LinkX';
-import TimeStatus from '../../components/TimeStatus';
-import waitIcon from '../../assets/icon_waiting.svg';
-import ChainTable from '../../components/Table/table';
-import _encodeAddress from '../../helper/encodeAddress';
+/** @format */
+
+import {useTranslation} from 'react-i18next'
+import React from 'react'
+import {LinkX, Normal, ShorterLink} from '../../components/LinkX'
+import TimeStatus from '../../components/TimeStatus'
+import waitIcon from '../../assets/icon_waiting.svg'
+import ChainTable from '../../components/Table/table'
+import _encodeAddress from '../../helper/encodeAddress'
 
 export default function Block() {
-  const {t} = useTranslation();
+  const {t} = useTranslation()
   const chainColumns = [
     {
       title: t('Block'),
@@ -15,10 +17,8 @@ export default function Block() {
       key: 'number',
       width: 100,
       render: (text: any, record: any) => {
-        return (
-          <LinkX linkUrl={`/blockDetails/${record.header.number}`} state={record} content={record.header.number}/>
-        );
-      }
+        return <LinkX linkUrl={`/blockDetails/${record.header.number}`} state={record} content={record.header.number} />
+      },
     },
     // {
     //   title: t('Status'),
@@ -36,9 +36,8 @@ export default function Block() {
       key: 'blockTime',
       width: 100,
       render: (text: any, record: any) => {
-        return (
-          <TimeStatus content={record.blockTime}/>);
-      }
+        return <TimeStatus content={record.blockTime} />
+      },
     },
     {
       title: t('Block hash'),
@@ -46,9 +45,8 @@ export default function Block() {
       key: 'hash',
       width: 150,
       render: (text: any, record: any) => {
-        return (
-          <ShorterLink linkUrl={`/blockDetails/${record.hash}`} state={record} content={record.hash}/>);
-      }
+        return <ShorterLink linkUrl={`/blockDetails/${record.hash}`} state={record} content={record.hash} />
+      },
     },
     {
       title: t('Extrinsic'),
@@ -56,10 +54,8 @@ export default function Block() {
       key: 'extrinsic',
       width: 100,
       render: (text: any, record: any) => {
-        return (
-          <Normal state={record?.extrinsics.length}/>
-        );
-      }
+        return <Normal state={record?.extrinsics.length} />
+      },
     },
     {
       title: t('Events'),
@@ -67,10 +63,8 @@ export default function Block() {
       key: 'eventCount',
       width: 100,
       render: (text: any, record: any) => {
-        return (
-          <Normal state={record?.eventCount}/>
-        );
-      }
+        return <Normal state={record?.eventCount} />
+      },
     },
     {
       title: t('Validator'),
@@ -79,13 +73,15 @@ export default function Block() {
       width: 150,
       render: (text: any, record: any) => {
         return (
-          <LinkX linkUrl={`/nodeDetails/${_encodeAddress(record?.author)}`} state={record} content={record.referralId}/>);
-      }
-    }
-  ];
+          <LinkX
+            linkUrl={`/nodeDetails/${_encodeAddress(record?.author)}`}
+            state={record}
+            content={record.referralId}
+          />
+        )
+      },
+    },
+  ]
 
-
-  return (
-    <ChainTable Columns={chainColumns} urlControl={'/blocks?'} result={'items'} keyNum={1}/>
-  );
+  return <ChainTable Columns={chainColumns} urlControl={'/blocks?'} result={'items'} keyNum={1} />
 }

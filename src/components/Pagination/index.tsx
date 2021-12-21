@@ -1,22 +1,11 @@
+/** @format */
+
 import React from 'react'
-import { Pagination } from 'antd';
+import {Pagination} from 'antd'
 
-interface PaginationXProps
-{
-    // size: string;
+interface PaginationXProps {
+  // size: string;
 }
-export default function PaginationX(size: PaginationXProps)
-{
-
-    return (
-      <Pagination
-        total={85}
-        showSizeChanger
-        showQuickJumper
-        showTotal={total => `Total ${total} items`}
-      />
-    )
+export default function PaginationX(size: PaginationXProps) {
+  return <Pagination total={85} showSizeChanger showQuickJumper showTotal={total => `Total ${total} items`} />
 }
-
-
-

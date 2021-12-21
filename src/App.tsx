@@ -1,53 +1,32 @@
-import React, { useEffect, useState } from 'react';
-import Home from './pages/HomePage/Container';
-import Chain from './pages/Chain';
-import Validator from './pages/Validator';
-import CrossBlock from './pages/CrossBlock';
-import { Route, Switch, withRouter } from 'react-router-dom';
-import AccountTransfer from './pages/AccountTransfer';
-import SS58 from './pages/SS58';
-import searchPage from './pages/SearchPage';
-import blockDetails from './pages/BlockDetails';
-import extrinsicDetails from './pages/ExtrinsicsDetails';
-import addressDetails from './pages/AddressDetails';
-import NodeDetails from './pages/NodeDetails';
-import NoDataPage from './pages/NoData';
-import Header from './components/Header';
-import Footer from './components/Footer';
-import SearchEvent from './pages/SearchEvent';
+/** @format */
+
+import React, {useEffect, useState} from 'react'
+import {Route, Switch, withRouter} from 'react-router-dom'
+import Header from './components/Header'
+import Footer from './components/Footer'
+import {RouteItem, routeList} from './route'
 
 function App(props: any) {
-  const [showSearch, setShowSearch] = useState(window.location.pathname === '/');
-  useEffect(()=>{
-    if(props.location.pathname === '/'){
+  const [showSearch, setShowSearch] = useState(window.location.pathname === '/')
+  useEffect(() => {
+    if (props.location.pathname === '/') {
       setShowSearch(false)
-    }else{
+    } else {
       setShowSearch(true)
     }
-  },[props.location])
+  }, [props.location])
 
   return (
     <div>
-      <Header showSearch={showSearch}/>
+      <Header showSearch={showSearch} />
       <Switch>
-        <Route path="/tools/SS58" exact component={SS58}/>
-        <Route path="/tools/SearchEvent" exact component={SearchEvent}/>
-        <Route path="/Search" component={searchPage}/>
-        <Route path="/AccountTransfer" component={AccountTransfer}/>
-        <Route path="/blockDetails" component={blockDetails}/>
-        <Route path="/extrinsicDetails" component={extrinsicDetails}/>
-        <Route path="/nodeDetails" component={NodeDetails}/>
-        <Route path="/addressDetails" component={addressDetails}/>
-        <Route path="/crossBlock" component={CrossBlock}/>
-        <Route path="/validators" component={Validator}/>
-        <Route path="/chain" component={Chain}/>
-        <Route path="/Nodata" component={NoDataPage}/>
-        <Route path="/" component={Home}/>
+        {routeList.map((item: RouteItem) => (
+          <Route path={item.path} component={item.component} exact={item.exact} key={item.path} />
+        ))}
       </Switch>
-      <Footer/>
+      <Footer />
     </div>
-  );
-};
+  )
+}
 
-
-export default withRouter(App);
+export default withRouter(App)

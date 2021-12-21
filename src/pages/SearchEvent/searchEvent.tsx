@@ -1,19 +1,20 @@
-import { useTranslation } from 'react-i18next';
-import React, { useEffect, useState } from 'react';
-import { LinkX, Normal, ShorterLink } from '../../components/LinkX';
-import TimeStatus from '../../components/TimeStatus';
-import { get } from '../../hooks/useApi';
-import TableX from '../../components/Table';
+/** @format */
 
+import {useTranslation} from 'react-i18next'
+import React, {useEffect, useState} from 'react'
+import {LinkX, Normal, ShorterLink} from '../../components/LinkX'
+import TimeStatus from '../../components/TimeStatus'
+import {get} from '../../hooks/useApi'
+import TableX from '../../components/Table'
 
 export default function SearchEvent(props: any) {
-  const {t} = useTranslation();
-  const [page, setPage] = useState(1);
-  const [pageSize, setPageSize] = useState(10);
-  const [listValue, setListValue] = useState<any>('');
-  const [total,setTotal] = useState(0)
-  const [loading, setLoading] = useState(false);
-  const [isCorrectValue, setIsCorrectValue] = useState('');
+  const {t} = useTranslation()
+  const [page, setPage] = useState(1)
+  const [pageSize, setPageSize] = useState(10)
+  const [listValue, setListValue] = useState<any>('')
+  const [total, setTotal] = useState(0)
+  const [loading, setLoading] = useState(false)
+  const [isCorrectValue, setIsCorrectValue] = useState('')
   const pagination = {
     pageSize: pageSize,
     current: page,
@@ -23,8 +24,8 @@ export default function SearchEvent(props: any) {
     showQuickJumper: true,
     hideOnSinglePage: true,
     onChange: (page: number, pageSize: number) => onChange(page, pageSize),
-    showTotal: (eventTotal: number) => `${t('total')} ${eventTotal} ${t('items')}`
-  };
+    showTotal: (eventTotal: number) => `${t('total')} ${eventTotal} ${t('items')}`,
+  }
   const Columns = [
     {
       title: t('Height'),
@@ -33,9 +34,13 @@ export default function SearchEvent(props: any) {
       width: 100,
       render: (text: any, record: any) => {
         return (
-          <LinkX linkUrl={`/blockDetails/${record.indexer.blockHeight}`} state={record} content={record.indexer.blockHeight}/>
-        );
-      }
+          <LinkX
+            linkUrl={`/blockDetails/${record.indexer.blockHeight}`}
+            state={record}
+            content={record.indexer.blockHeight}
+          />
+        )
+      },
     },
     {
       title: t('Block Time'),
@@ -43,9 +48,8 @@ export default function SearchEvent(props: any) {
       key: 'blockTime',
       width: 100,
       render: (text: any, record: any) => {
-        return (
-          <TimeStatus content={record.indexer.blockTime}/>);
-      }
+        return <TimeStatus content={record.indexer.blockTime} />
+      },
     },
     {
       title: t('Extrinsic Hash'),
@@ -54,8 +58,13 @@ export default function SearchEvent(props: any) {
       width: 150,
       render: (text: any, record: any) => {
         return (
-          <ShorterLink linkUrl={`/blockDetails/${record.indexer.blockHash}`} state={record} content={record.indexer.blockHash}/>);
-      }
+          <ShorterLink
+            linkUrl={`/blockDetails/${record.indexer.blockHash}`}
+            state={record}
+            content={record.indexer.blockHash}
+          />
+        )
+      },
     },
     {
       title: t('Module'),
@@ -63,55 +72,51 @@ export default function SearchEvent(props: any) {
       key: 'extrinsic',
       width: 100,
       render: (text: any, record: any) => {
-        return (
-          <Normal state={record?.section}/>
-        );
-      }
-    }, {
+        return <Normal state={record?.section} />
+      },
+    },
+    {
       title: t('Result'),
       dataIndex: 'extrinsic',
       key: 'extrinsic',
       width: 100,
       render: (text: any, record: any) => {
-        return (
-          <Normal state={record?.method}/>
-        );
-      }
-    }
-  ];
+        return <Normal state={record?.method} />
+      },
+    },
+  ]
 
   function onChange(page: number, pageSize: any) {
-    setPage(page);
-    setPageSize(pageSize);
-    setLoading(true);
+    setPage(page)
+    setPageSize(pageSize)
+    setLoading(true)
   }
 
   const getData = async () => {
     try {
-      let res: any = await get(`/search/${props?.value}?page=${page}&page_size=${pageSize}`, ``);
-      setListValue(res.data);
+      let res: any = await get(`/search/${props?.value}?page=${page}&page_size=${pageSize}`, ``)
+      setListValue(res.data)
       setTotal(res.total)
-      setLoading(false);
+      setLoading(false)
       props.setLoading(false)
     } catch (e) {
-      setIsCorrectValue('No Data');
-      setLoading(false);
+      setIsCorrectValue('No Data')
+      setLoading(false)
       props.setLoading(false)
     }
-  };
+  }
 
   useEffect(() => {
     if (props.value) {
       setLoading(true)
-      getData();
-    }else{
-
+      getData()
+    } else {
     }
-  }, [props.value]);
-
+  }, [props.value])
 
   return (
-    <div className="overflow-scroll">
-      <TableX columns={Columns} dataList={listValue} pagination={pagination} loading={loading}/>
-    </div>);
+    <div className='overflow-scroll'>
+      <TableX columns={Columns} dataList={listValue} pagination={pagination} loading={loading} />
+    </div>
+  )
 }

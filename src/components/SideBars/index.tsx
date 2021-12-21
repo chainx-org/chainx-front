@@ -1,18 +1,20 @@
+/** @format */
+
 // Copyright 2017-2020 @polkadot/apps authors & contributors
 // SPDX-License-Identifier: Apache-2.0
 
-import React, { useEffect, useState } from 'react';
-import closeIcon  from '../../assets/icon_close.svg';
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
-import { useTranslation } from 'react-i18next';
+import React, {useEffect, useState} from 'react'
+import closeIcon from '../../assets/icon_close.svg'
+import {Link} from 'react-router-dom'
+import styled from 'styled-components'
+import {useTranslation} from 'react-i18next'
 
 // import store from 'store';
 
 interface Props {
-  className?: string;
-  onClose: any;
-  isCollapsed?: boolean;
+  className?: string
+  onClose: any
+  isCollapsed?: boolean
 }
 
 const Wrapper = styled.div`
@@ -26,7 +28,7 @@ const Wrapper = styled.div`
   width: 0;
   background: #fff;
   color: rgba(0, 0, 0, 0.4);
-  transition: .1s;
+  transition: 0.1s;
 
   &.collapsed {
     width: 12em;
@@ -48,7 +50,7 @@ const Wrapper = styled.div`
       font-size: 12px;
       padding: 0.5em 1.3em 0.5em 1.3em;
       background: rgba(249, 249, 249);
-      border: 1px solid #EFEFEF;
+      border: 1px solid #efefef;
       border-radius: 18px;
       margin: 3.5rem 1rem 0.5rem;
 
@@ -101,7 +103,8 @@ const Wrapper = styled.div`
       }
     }
 
-    .linkOutBrowser, .helpicon {
+    .linkOutBrowser,
+    .helpicon {
       padding: 1em 1.5em;
 
       a {
@@ -131,51 +134,51 @@ const Wrapper = styled.div`
       }
     }
   }
-
-`;
+`
 
 function Sidebars({className = '', onClose, isCollapsed}: Props): React.ReactElement<Props> {
-  const {t} = useTranslation();
-  const [url, setUrl] = useState<string>('');
-  const [recordType, setRecordType] = useState(0);
+  const {t} = useTranslation()
+  const [url, setUrl] = useState<string>('')
+  const [recordType, setRecordType] = useState(0)
 
-  const nodeList = ([
+  const nodeList = [
     {nodeName: t('Home'), link: '/'},
     {nodeName: t('Chain'), link: '/Chain'},
     {nodeName: t('Cross Block'), link: '/validators'},
     {nodeName: t('Cross Bridge'), link: '/crossBlock'},
     // {nodeName: t('Search Events/Extrinsics'), link: '/tools/SS58'},
     {nodeName: t('Transform Address/Public Key'), link: '/tools/SS58'},
-
-  ]);
-
+  ]
 
   function statusnode(node: any, index: number) {
-    setRecordType(index);
+    setRecordType(index)
   }
 
   return (
-    <Wrapper
-      className={`wrapernav ${isCollapsed ? 'collapsed' : 'expanded'}`}
-      style={{width:'9rem'}}
-    >
-      <div className="wrappers">
-        <img src={closeIcon} alt="" style={{width:'2rem',height:'2rem',padding:'0.3rem 0.3rem'}} onClick={onClose}/>
+    <Wrapper className={`wrapernav ${isCollapsed ? 'collapsed' : 'expanded'}`} style={{width: '9rem'}}>
+      <div className='wrappers'>
+        <img
+          src={closeIcon}
+          alt=''
+          style={{width: '2rem', height: '2rem', padding: '0.3rem 0.3rem'}}
+          onClick={onClose}
+        />
         <ul>
-          {
-            nodeList.map((node: any, index: number) =>
-              <li key={index} className={` ${recordType === index ? 'statusrisk' : ''}`}
-                  onClick={() => statusnode(node, index)}>
-                <Link to={node.link} onClick={onClose}>
-                  {node.nodeName}
-                </Link>
-              </li>
-            )
-          }
+          {nodeList.map((node: any, index: number) => (
+            <li
+              key={index}
+              className={` ${recordType === index ? 'statusrisk' : ''}`}
+              onClick={() => statusnode(node, index)}
+            >
+              <Link to={node.link} onClick={onClose}>
+                {node.nodeName}
+              </Link>
+            </li>
+          ))}
         </ul>
       </div>
     </Wrapper>
-  );
+  )
 }
 
-export default Sidebars;
+export default Sidebars

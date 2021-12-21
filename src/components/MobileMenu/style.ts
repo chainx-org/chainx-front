@@ -1,17 +1,19 @@
-import styled from 'styled-components';
+/** @format */
+
+import styled from 'styled-components'
 
 export const MobileDataBox = styled.div`
   background: transparent;
   //height: 2rem;
   position: absolute;
-  right:0px;
-  top:0px;
+  right: 0px;
+  top: 0px;
   z-index: 3;
   width: 100%;
   a {
     text-decoration: none;
   }
-  body{
+  body {
     background-color: black;
   }
 
@@ -58,13 +60,13 @@ export const MobileDataBox = styled.div`
   .dropdown p {
     font-size: 18px;
     font-weight: 500;
-    font-family: "Urbanist", sans-serif;
+    font-family: 'Urbanist', sans-serif;
     color: white;
     margin: 0.2rem 0;
     border-bottom: 1px solid transparent;
     padding: 0 0.4em; /* adjust padding to make the underline longer or shorter */
     padding-bottom: 7px; /* this padding can be used to adjust the distance from text to underlink */
-    padding-top:10px;
+    padding-top: 10px;
     transition: 300ms ease all;
   }
 
@@ -90,5 +92,4 @@ export const MobileDataBox = styled.div`
     background-color: white;
     transform: translateY(-9px) rotate(135deg);
   }
-
-`;
+`

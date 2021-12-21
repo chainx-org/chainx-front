@@ -1,3 +1,5 @@
+/** @format */
+
 export default function swapEndian(string) {
   const result = []
   let len = string.length - 2
