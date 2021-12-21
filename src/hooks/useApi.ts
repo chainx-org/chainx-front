@@ -10,16 +10,19 @@ export const outSideAPI = axios.create({
 })
 
 axios.interceptors.request.use(
-  config => {
+  config =>
+  {
     return config
   },
-  function (error) {
+  function (error)
+  {
     return Promise.reject(error)
   },
 )
 
 axios.interceptors.response.use(
-  function (response) {
+  function (response)
+  {
     //
     if (response.data.code === 500) {
       message.error('miss error') //提示错误信息
@@ -33,7 +36,8 @@ axios.interceptors.response.use(
     // }
     return response
   },
-  function (error) {
+  function (error)
+  {
     if (axios.isCancel(error)) {
       throw new axios.Cancel('cancel request')
     } else {
@@ -48,46 +52,56 @@ const request = function (
   params: any,
   config: any,
   method: 'get' | 'post' | 'put' | 'delete' | 'head' | 'options' | 'patch',
-) {
-  return new Promise((resolve, reject) => {
+)
+{
+  return new Promise((resolve, reject) =>
+  {
     if (method === 'post') {
       axios
         .post(url, params, Object.assign({}, config))
         .then(
-          (response: any) => {
+          (response: any) =>
+          {
             resolve(response.data)
           },
-          (err: any) => {
+          (err: any) =>
+          {
             reject(err)
           },
         )
-        .catch((err: any) => {
+        .catch((err: any) =>
+        {
           reject(err)
         })
     } else {
       axios
         .get(url, params)
         .then(
-          (response: any) => {
+          (response: any) =>
+          {
             resolve(response.data)
           },
-          (err: any) => {
+          (err: any) =>
+          {
             reject(err)
           },
         )
-        .catch((err: any) => {
+        .catch((err: any) =>
+        {
           reject(err)
         })
     }
   })
 }
 
-const post = (url: string, params: any, config = {}) => {
+const post = (url: string, params: any, config = {}) =>
+{
   return request(url, params, config, 'post')
 }
 
-const get = (url: string, params: any, config = {}) => {
+const get = (url: string, params: any, config = {}) =>
+{
   return request(url, params, config, 'get')
 }
 
-export {request, post, get}
+export { request, post, get }
