@@ -121,7 +121,7 @@ export default function LatestItem({title, icon, ListData}: LatestItemPop) {
                           <div className="flex flex-row">
                             {/*<ShorterLinkHome linkUrl={`/extrinsicDetails/${item.hash}`} content={item.hash}/>*/}
                             {/*<img src={iconImg} alt="" style={{width: '12px', height: '12px'}}/>*/}
-                            <ShorterLinkHome linkUrl={`/extrinsicDetails/${item.signer}`} content={item.signer}/>
+                            <ShorterLinkHome linkUrl={`/addressDetails/${item.signer}`} content={item.signer}/>
                           </div>
                         </div>
                         <div className="flex flex-row justify-between text-homeText-gray">
