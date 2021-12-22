@@ -114,22 +114,24 @@ export default function LatestItem({title, icon, ListData}: LatestItemPop) {
                       </div>
                       <div className="flex flex-col justify-start desktop:ml-4  w-overSpread">
                         <div className="flex flex-row justify-between text-homeText-gray text-homeText-gray">
-                          <LinkXHome linkUrl={`/extrinsicDetails/${item.hash}`}
-                                     content={(item?.indexer?.blockHeight) ? (item?.indexer?.blockHeight) : '' + '-' + (item?.indexer?.index) ? (item?.indexer?.index) : ''}
-                          />
+                          {/*<LinkXHome linkUrl={`/extrinsicDetails/${item.hash}`}*/}
+                          {/*           content={(item?.indexer?.blockHeight) ? (item?.indexer?.blockHeight) : '' + '-' + (item?.indexer?.index) ? (item?.indexer?.index) : ''}*/}
+                          {/*/>*/}
+                          <ShorterLinkHome linkUrl={`/extrinsicDetails/${item.hash}`} content={item.hash}/>
                           <div className="flex flex-row">
-                            <ShorterLinkHome linkUrl={`/extrinsicDetails/${item.hash}`} content={item.hash}/>
+                            {/*<ShorterLinkHome linkUrl={`/extrinsicDetails/${item.hash}`} content={item.hash}/>*/}
                             {/*<img src={iconImg} alt="" style={{width: '12px', height: '12px'}}/>*/}
+                            <ShorterLinkHome linkUrl={`/extrinsicDetails/${item.signer}`} content={item.signer}/>
                           </div>
                         </div>
                         <div className="flex flex-row justify-between text-homeText-gray">
                           <div>
                             <Operation mini={true}
-                                       content={(item.section) ? (item.section) : '' + '-' + (item.name) ? (item.name) : ''}
+                                       content={(item.section) + '-' + (item.name)}
                                        more={true}/>
                           </div>
                           <div>
-                            <TimeStatus content={item?.indexer?.blockTime} isHome={true}/>
+                            {/*<TimeStatus content={item?.indexer?.blockTime} isHome={true}/>*/}
                           </div>
                         </div>
                       </div>
