@@ -101,8 +101,9 @@ export default function Container() {
         setListData([...result]);
     };
     const getLatestExtrinsic = async () => {
-        const res: any = await get(`/extrinsics?page=${1}&page_size=${5}`, ``);
-        setLatestExtrinsic(res.items);
+        const {latestExtrinsics}: any = await get(`/latestExtrinsic`, ``);
+        let result = latestExtrinsics.slice(0,5)
+        setLatestExtrinsic(result);
     };
     const callBack = () => {
         getHomeMetaData().then();
