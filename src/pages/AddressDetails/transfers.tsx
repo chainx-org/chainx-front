@@ -101,7 +101,7 @@ export default function Transfers({account}: ExtrinsicProps) {
       key: 'Balance',
       render: (text: any, record: any) => {
         return (
-          <div>{record.data[2] / 10000000}</div>
+          <div>{record.data[2] / Math.pow(10,8)}</div>
         );
       }
     },
