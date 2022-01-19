@@ -54,7 +54,7 @@ export default function LatestItem({title, icon, ListData}: LatestItemPop) {
 
   function linkToChain() {
     title === t('Latest block') ? sessionStorage.setItem('chain','block'):sessionStorage.setItem('chain','extrinsic')
-    window.location.href = window.location.origin + '/chain'
+    window.location.href = window.location.origin + '#/chain'
   }
 
 
