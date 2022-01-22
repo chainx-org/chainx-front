@@ -30,7 +30,13 @@ export default function BitcoinBlock() {
         return (
         <a className='inline-block text-blue-aText font-medium'
            href={`https://live.blockcypher.com/btc/block/${swapEndian(record.btcHash.slice(2))}/`}
-           target="_Blank">{(swapEndian(record.btcHash))?.substring(0, 7).concat('...').concat((swapEndian(record.btcHash))?.substring((swapEndian(record.btcHash)).length - 5))}</a>
+           target="_Blank">{
+               record.btcHash
+            ?.substring(0, 7)
+            .concat('...')
+            .concat(record.btcHash?.substring(record.btcHash.length - 5))
+//               (swapEndian(record.btcHash))?.substring(0, 7).concat('...').concat((swapEndian(record.btcHash))?.substring((swapEndian(record.btcHash)).length - 5))
+            }</a>
         );
       }
     },
