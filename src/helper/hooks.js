@@ -42,7 +42,7 @@ export function accuracy(num) {
   let type = Object.prototype.toString.call(num)
   let resultParse
   if (type === '[object Number]') {
-    let accuracyNum = num / (100000000)
+    let accuracyNum = num / Math.pow(10,8)
     let header = parseInt(accuracyNum)
     let end = (accuracyNum - header)
     let endstr = end.toFixed(4).substring(2)

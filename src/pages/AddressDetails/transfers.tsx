@@ -7,6 +7,7 @@ import TimeStatus from '../../components/TimeStatus';
 import Operation from '../../components/Operation';
 import JsonApi from '../../components/Jsonformat';
 import ExpandIcon from '../../components/ExpandIcon';
+import {useLocation} from "react-router-dom";
 
 interface ExtrinsicProps {
   account?: number | string,
@@ -14,6 +15,7 @@ interface ExtrinsicProps {
 
 export default function Transfers({account}: ExtrinsicProps) {
   const {t} = useTranslation();
+  const {pathname} = useLocation()
   const [extrinsicData, setExtrinsicData] = useState([]);
   const [page, setPage] = useState(1);
   const [pageSize, setPageSize] = useState(10);
@@ -71,7 +73,7 @@ export default function Transfers({account}: ExtrinsicProps) {
       key: 'extrinsicHash',
       render: (text: any, record: any) => {
         return (
-          <ShorterLink linkUrl={`/extrinsicDetails/${record.data[0]}`} state={record} content={record.data[0]}/>
+          <ShorterLink linkUrl={`/addressDetails/${record.data[0]}`} state={record} content={record.data[0]}/>
         );
       }
     },
@@ -81,7 +83,7 @@ export default function Transfers({account}: ExtrinsicProps) {
       key: 'extrinsicHash',
       render: (text: any, record: any) => {
         return (
-          <ShorterLink linkUrl={`/extrinsicDetails/${record.data[1]}`} state={record} content={record.data[1]}/>
+          <ShorterLink linkUrl={`/addressDetails/${record.data[1]}`} state={record} content={record.data[1]}/>
         );
       }
     },
@@ -131,7 +133,7 @@ export default function Transfers({account}: ExtrinsicProps) {
     getExtrinsicData().then(() => {
 
     });
-  }, [page, pageSize]);
+  }, [page, pageSize,pathname]);
 
   const expandedRowRender = (record: any) => {
     return (

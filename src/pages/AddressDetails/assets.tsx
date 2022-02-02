@@ -4,6 +4,7 @@ import TableX from '../../components/Table';
 import { get } from '../../hooks/useApi';
 import Icon from '../../assets/icon_PCX .svg'
 import { accuracy } from '../../helper/hooks';
+import {useLocation} from "react-router-dom";
 
 interface ExtrinsicProps {
   account?: number | string,
@@ -13,7 +14,7 @@ export default function Assets({account}: ExtrinsicProps) {
   const {t} = useTranslation();
   const [extrinsicData, setExtrinsicData] = useState([{}]);
   const [loading, setLoading] = useState(true);
-
+  const {pathname} = useLocation()
   const getExtrinsicData = async () => {
     let result = []
     let res: any = await get(`/accounts/${account}/assets`, ``);
@@ -99,7 +100,7 @@ export default function Assets({account}: ExtrinsicProps) {
   useEffect(() => {
     getExtrinsicData().then(() => {
     });
-  }, []);
+  }, [pathname]);
 
   return (
     <div className="px-8 overflow-scroll">

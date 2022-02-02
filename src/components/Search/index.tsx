@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import { Input } from 'antd';
 import { useTranslation } from 'react-i18next';
 import api from '../../helper/api';
+import {useLocation} from 'react-router-dom'
 
 interface SearchProps {
   className: string;
@@ -11,10 +12,12 @@ interface SearchProps {
 export default function Search({className}: SearchProps) {
   const {t} = useTranslation();
   const {Search} = Input;
+  const {pathname} = useLocation()
   const onSearch = async (value: any) => {
     if (value ?? '' !== '') {
       setLoading(true);
       await api(value, window , setLoading).then(()=>{
+        setLoading(false);
       })
     }
   };
@@ -22,6 +25,8 @@ export default function Search({className}: SearchProps) {
     const value = e.target.value;
     onSearch(value)
   }
+
+  useEffect(()=>{},[pathname])
   const [loading, setLoading] = useState(false);
   return (
     <>

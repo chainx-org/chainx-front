@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
+import {Link, useLocation} from 'react-router-dom';
 import styled from 'styled-components';
 import { get } from '../../hooks/useApi';
 import List from '../../components/List';
@@ -22,6 +22,7 @@ import { BgColor } from '../HomePage/HomeStyle';
 export default function AddressDetails() {
 
   const {t} = useTranslation();
+  const {pathname} = useLocation()
   const [loading, setLoading] = useState(true);
   const [noData, setNoData] = useState(false);
   const [blockDetails, setBlockDetails] = useState<any>();
@@ -49,13 +50,13 @@ export default function AddressDetails() {
       setCurrentTab('assets')
     }
 
-  },[])
+  },[pathname])
   useEffect(() => {
       getData().then(
       ).catch(() => {
         setNoData(true);
       });
-  }, []);
+  }, [pathname]);
   const PublicContainer = styled.div`
     .publicKey {
       display: none;
@@ -129,7 +130,7 @@ export default function AddressDetails() {
         <NoData/> :
         <WrapperList>
           <div className="px-24 bg-gray-arrow desktop:pt-8 screen:px-4  medium:px-4">
-            <DetailTitle routeTitle={t('Address')} content={nowBlock}
+            <DetailTitle routeTitle={t('Address')} content={address}
                          setNowBlock={setNowBlock}
                          routePath={routerPath}/>
           </div>
